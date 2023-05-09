@@ -1,6 +1,6 @@
-import React from 'react';
 
-function JobsShow(props) {
+
+function JobsShow() {
     return (
         <div>
             Details for ONE Job
