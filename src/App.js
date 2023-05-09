@@ -1,9 +1,13 @@
-import './App.css';
+import Nav from "./Components/Nav.js";
+import Footer from "./Components/Footer.js";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>Pursuit App Template</h1>
+      <Nav />
+      <h1>Welcome to inIT!</h1>
+      <Footer />
     </div>
   );
 }
