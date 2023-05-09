@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../Assets/LOGO.png";
+import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 import { RxHamburgerMenu } from "react-icons/rx";
 

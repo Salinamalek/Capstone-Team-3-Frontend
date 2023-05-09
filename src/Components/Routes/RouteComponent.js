@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom"
-import About from "../Pages/About.js"
-import EditForm from "../Pages/EditForm.js"
-import Error from "../Pages/Error.js"
-import Home from "../Pages/Home.js"
-import Jobs from "../Pages/Jobs.js"
-import JobsShow from "./JobsShow.js"
-import NewForm from "../Pages/NewForm.js"
-import User from "../Pages/User.js"
+import About from "../../Pages/About.js"
+import EditForm from "../../Pages/EditForm.js"
+import Error from "../../Pages/Error.js"
+import Home from "../../Pages/Home.js"
+import Jobs from "../../Pages/Jobs.js"
+import JobsShow from "../Job/JobsShow.js"
+import NewForm from "../../Pages/NewForm.js"
+import User from "../../Pages/User.js"
 
 function RouteComponent() {
     return (

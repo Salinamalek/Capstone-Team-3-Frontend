@@ -1,4 +1,4 @@
-import JobsIndex from "../Components/JobsIndex";
+import JobsIndex from "../Components/Job/JobsIndex";
 
 function Jobs() {
     return (
