@@ -1,0 +1,15 @@
+/* Mint : #41CDBC
+GOLD : #FFDE59
+BLUE: #0914AE */
+
+* {
+    margin: 0;
+}
+
+/* links */
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: #FFDE59;
+}
