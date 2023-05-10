@@ -1,10 +1,16 @@
 footer {
-    background-color: #0914AE;
-    color: #FFDE59;
+    /* background-color: #41cdbd9d; */
+    /* color: #FFDE59; */
+    /* color: #0914AE; */
+    /* color: #41cdbc ; */
+    
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;
     text-align: center;
-    padding: 2px;
+    padding: 3px;
+    font-size: 15px;
+    font-weight: 400;
+    border-top: 2px solid #41cdbc;
 }
