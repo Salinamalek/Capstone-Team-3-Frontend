@@ -19,7 +19,7 @@ export default function Nav() {
   return (
     <nav>
       <RxHamburgerMenu 
-      size={"50px"} 
+      size={"40px"} 
       color={"#41CDBC"}
       onClick = {() => navbarClick()} />
 

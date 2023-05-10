@@ -1,10 +1,13 @@
 footer {
-    background-color: #0914AE;
-    color: #FFDE59;
+    /* background-color: #0914AE; */
+    /* color: #FFDE59; */
+    /* color: #41cdbc ; */
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;
     text-align: center;
     padding: 2px;
+
+    border-top: 2px solid #41cdbc;
 }

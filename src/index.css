@@ -1,10 +1,19 @@
-/* Mint : #41CDBC
+/* 
+Mint : #41CDBC
 GOLD : #FFDE59
-BLUE: #0914AE */
+BLUE: #0914AE 
+#FF996B
+#5EBAFF
+#CC6C41
+#4B96CC
+#D28778
+*/
 
 * {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+
+    background-color: #d9e4ecd0;
 }
 
 /* links */
