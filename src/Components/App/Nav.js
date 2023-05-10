@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import logo from "../../Assets/LOGO.png";
@@ -7,20 +7,22 @@ import "./Nav.css";
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false)
-
+  
   function navbarClick () {
     setOpenNav(!openNav)
   }
 
 
-
   return (
     <nav>
+      
       <RxHamburgerMenu 
       size={"50px"} 
       color={"#41CDBC"}
       onClick = {() => navbarClick()} />
+
       <img src={logo} alt="logo" height="90%" />
+
       <Link to="/">Sign-in</Link>
 
       {/* sliding nav bar section */}
@@ -30,9 +32,9 @@ export default function Nav() {
           <br/>
           <span className="slogan">"Your first tech opportunity awaits..."</span>
         </p>
-        <Link to = "/">Home</Link>
-        <Link to = "/jobs">Jobs</Link>
-        <Link to = "/about">About</Link>
+        <Link to = "/" onClick = {() => navbarClick()} >Home</Link>
+        <Link to = "/jobs" onClick = {() => navbarClick()}>Jobs</Link>
+        <Link to = "/about" onClick = {() => navbarClick()}>About</Link>
         <button>LOGOUT</button>
         {/* maybe have footer info here ??  */}
         <div className="footer-info">
