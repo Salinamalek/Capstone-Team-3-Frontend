@@ -44,7 +44,7 @@ nav a {
   align-self: flex-start;
   margin-top: 7%;
 }
-.slide-nav p h2 {
+.slide-nav p span:first-child {
   font-size: 40px;
 }
 .slogan {

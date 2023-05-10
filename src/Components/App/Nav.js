@@ -28,7 +28,7 @@ export default function Nav() {
       {/* sliding nav bar section */}
         <aside className={ openNav ? " slide-nav nav-open" : " slide-nav nav-close"}>
         <p>
-          <h2>inIT</h2>
+          <span>inIT</span>
           <br/>
           <span className="slogan">"Your first tech opportunity awaits..."</span>
         </p>
@@ -38,10 +38,11 @@ export default function Nav() {
         <button>LOGOUT</button>
         {/* maybe have footer info here ??  */}
         <div className="footer-info">
-            <span>inIT Capstone</span>
+          <span>inIT</span>
+            <span>Team 3 Capstone</span>
             <span>May 2023</span>
             <span>
-              <a href = "https://www.pursuit.org/" target = "_blank" className="pursuit">Pursuit</a> 
+              <a href = "https://www.pursuit.org/" target = "_blank" className="pursuit">Pursuit.org</a> 
             </span>
         </div>
       </aside>
