@@ -45,7 +45,7 @@ export default function Nav() {
           "Your first tech opportunity awaits..."
         </span>
       </p>
-      <Link to ="/" onClick = {() => navbarClick()} >
+      <Link to ="/"  onClick = {() => navbarClick()} >
         <AiOutlineHome size = {"30px"} color = {"#41cdbc"} />
         <span>Home</span>
       </Link>
