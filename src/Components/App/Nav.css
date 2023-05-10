@@ -52,6 +52,10 @@ nav a {
 }
 .slide-nav a {
   color: #FFDE59 ;
+  width: 80%;
+}
+.slide-nav a svg {
+  margin-right: 10%;
 }
 .slide-nav a:first-child {
   grid-row: 4;
@@ -79,6 +83,5 @@ nav a {
 
 .pursuit {
   font-size: 18px;
-  /* text-decoration: underline; */
 }
 
