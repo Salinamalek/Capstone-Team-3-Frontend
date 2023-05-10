@@ -7,9 +7,18 @@ nav {
   height: 100px;
 }
 
+nav img {
+  height: 140px;
+}
+
 nav a {
   color: #41cdbc;
   font-size: 28px;
+}
+.nav-sign {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 /* sliding nav link https://www.kirupa.com/react/smooth_sliding_menu_react_motion.htm */
@@ -19,13 +28,13 @@ nav a {
   /* background-color:#0914aeee ; */
   color: #41cdbc;
   display: grid;
-  grid-template-rows: 1.2fr repeat(4, .4fr) .7fr 2fr ;
+  grid-template-rows: 1fr repeat(4, .5fr) .5fr 1fr ;
   justify-items: center;
   align-items: center;
   position: fixed;
   left: 0;
   /* top: 12%; */
-  top: 98px;
+  top: 100px;
   width: 40vw;
   height: 85vh;
   z-index: 100;
@@ -46,6 +55,7 @@ nav a {
 }
 .slide-nav p span:first-child {
   font-size: 40px;
+  font-weight: 900;
 }
 .slogan {
   font-style: italic;

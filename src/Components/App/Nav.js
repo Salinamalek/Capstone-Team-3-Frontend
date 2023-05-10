@@ -4,6 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineHome } from "react-icons/ai"
 import { MdWorkOutline } from "react-icons/md"
 import { BiInfoCircle, BiCopyright } from "react-icons/bi"
+import { VscAccount } from "react-icons/vsc"
 import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 
@@ -25,9 +26,14 @@ export default function Nav() {
       <img 
       src={logo} 
       alt="logo" 
-      height="90%" />
+      />
 
-      <Link to="/">Sign-in</Link>
+      <Link to="/">
+        <VscAccount
+        className="nav-sign"  
+        size={"30px"} /><br/>
+        Sign-in
+      </Link>
 
       {/* sliding nav bar section */}
       <aside 
