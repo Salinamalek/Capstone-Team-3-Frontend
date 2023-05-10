@@ -19,7 +19,8 @@ export default function Nav() {
   return (
     <nav>
       <RxHamburgerMenu 
-      size={"40px"} 
+      size={"35px"}
+      style={{marginTop:"24px"}} 
       color={"#41CDBC"}
       onClick = {() => navbarClick()} />
 
@@ -39,10 +40,10 @@ export default function Nav() {
       <aside 
       className={ openNav ? " slide-nav nav-open" : " slide-nav nav-close"}>
       <p>
-        <span>inIT</span>
+        {/* <span>inIT</span> */}
         <br/><br/>
         <span className="slogan">
-          "Your first tech opportunity awaits..."
+          "Your first tech opportunity awaits!"
         </span>
       </p>
       <Link to ="/"  onClick = {() => navbarClick()} >
@@ -59,14 +60,14 @@ export default function Nav() {
       </Link>
       <button>LOGOUT</button>
       {/* maybe have footer info here ??  */}
-      <div className="footer-info">
+      {/* <div className="footer-info">
         <span> inIT <BiCopyright /></span>
         <span>Team 3 Capstone</span>
         <span>May 2023</span>
         <span>
           <a href = "https://www.pursuit.org/" target = "_blank" className="pursuit">Pursuit.org</a> 
         </span>
-      </div>
+      </div> */}
     </aside>
       
     </nav>

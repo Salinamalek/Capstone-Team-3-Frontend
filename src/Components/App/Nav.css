@@ -1,26 +1,28 @@
 nav {
   /* background-color: #0914ae; */
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 20px;
   height: 100px;
-
+  /* border: 3px solid black; */
   border-bottom: solid 3px #41cdbc;
   /* box-shadow: 2px 2px 5px grey; */
 }
 
 nav img {
-  height: 140px;
-  padding: 20px 0;
-  border: 1px solid red;
+  height: 90px;
+  margin-left: 15px;
+  /* border: 1px solid red; */
 }
 
 nav a {
   color: #41cdbc;
-  font-size: 28px;
+  font-size: 20px;
 }
 .nav-sign {
+  margin-top: 24px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -28,29 +30,31 @@ nav a {
 
 /* sliding nav link https://www.kirupa.com/react/smooth_sliding_menu_react_motion.htm */
 .slide-nav {
-  border: 1px solid black;
-  background-color: rgb(1, 1, 103);
-  /* background-color:#0914aeee ; */
+  /* border: 1px solid #FFDE59; */
+  /* background-color: rgb(1, 1, 103); */
+  background-color:#0914AE;
   color: #41cdbc;
   display: grid;
   grid-template-rows: 1fr repeat(4, .5fr) .5fr 1fr ;
-  justify-items: center;
+  /* justify-items: center; */
   align-items: center;
   position: fixed;
   left: 0;
   /* top: 12%; */
   top: 100px;
-  width: 40vw;
-  height: 80vh;
+  width: 83vw;
+  border-right: 40px solid #FFDE59;
+  height: 85.6vh;
   z-index: 100;
-  transition: transform .6s cubic-bezier(0, .52, 0, 1);
+  transition: transform 0.5s cubic-bezier(0, .52, 0, 1);
+  padding-left: 30px;
 }
 .nav-open {
   transform: translate3d(0vw, 0, 0);
   overflow: hidden;
 }
 .nav-close {
-  transform: translate3d(-50vw, 0, 0); 
+  transform: translate3d(-110vw, 0, 0); 
 }
 
 .slide-nav p {
@@ -64,11 +68,18 @@ nav a {
 }
 .slogan {
   font-style: italic;
+  font-size: 19px;
+  margin-right: 22px;
 }
 .slide-nav a {
   color: #FFDE59 ;
   width: 80%;
 }
+
+/* .slide-nav a:hover {
+  border: 2px solid #FFDE59;
+} */
+
 .slide-nav a svg {
   margin-right: 10%;
 }
@@ -82,7 +93,19 @@ nav a {
   grid-row: 3;
 }
 .slide-nav button {
-  grid-row: 5 ;
+  grid-row: 7 ;
+  background-color: #41CDBC;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  width: 30%;
+  color:#0914AE ;
+}
+
+.slide-nav button:hover{
+  border: 2px solid #FFDE59;
+  color: #FFDE59;
 }
 
 .footer-info {
