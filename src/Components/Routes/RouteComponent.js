@@ -7,12 +7,14 @@ import Jobs from "../../Pages/Jobs.js"
 import JobsShow from "../Job/JobsShow.js"
 import NewForm from "../../Pages/NewForm.js"
 import User from "../../Pages/User.js"
+import Login from "../../Pages/Login.js"
 
 function RouteComponent() {
     return (
       <Routes>
         <Route path = "/">
             <Route index element = {<Home />} />
+            <Route path = "login" element = {<Login />} />
             {/* USER ROUTES */}
             <Route path = "user" >
                 <Route index element = {<Navigate to = "/not-found" />} />
