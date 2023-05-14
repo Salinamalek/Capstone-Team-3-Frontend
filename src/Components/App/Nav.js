@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { AiOutlineHome } from "react-icons/ai";
-import { MdWorkOutline } from "react-icons/md";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { MdOutlineLightMode } from "react-icons/md";
+import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
+import {
+  MdWorkOutline,
+  MdOutlineDarkMode,
+  MdOutlineLightMode,
+} from "react-icons/md";
 import { BiInfoCircle, BiCopyright } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import logo from "../../Assets/LOGO.png";
@@ -31,12 +33,21 @@ export default function Nav() {
 
   return (
     <nav>
-      <RxHamburgerMenu
-        size={"35px"}
-        style={{ marginTop: "24px" }}
-        color={"#41CDBC"}
-        onClick={() => navbarClick()}
-      />
+      {!openNav ? (
+        <RxHamburgerMenu
+          size={"35px"}
+          style={{ marginTop: "24px" }}
+          color={"#41CDBC"}
+          onClick={() => navbarClick()}
+        />
+      ) : (
+        <AiOutlineClose
+          size={"35px"}
+          style={{ marginTop: "24px" }}
+          color={"#41CDBC"}
+          onClick={() => navbarClick()}
+        />
+      )}
 
       <img src={logo} alt="logo" />
 
