@@ -77,7 +77,7 @@ export default function Nav() {
         </Link>
         <Link to="/about" onClick={() => navbarClick()}>
           <BiInfoCircle size={"30px"} color={"#41cdbc"} />
-          <span>About</span>
+          <span>Meet the Devs</span>
         </Link>
         <hr></hr>
         <button className="toggleTheme" onClick={toggleTheme}>

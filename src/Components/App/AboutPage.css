@@ -1,0 +1,27 @@
+.dev-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: 20px;
+  border: 5px solid #ffffff;
+  text-align: center;
+}
+
+.dev-cards img {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  border: 5px solid #41cdbc;
+  margin: 20px;
+}
+
+.dev-cards div {
+  padding: 20px;
+  width: 45%;
+  border: 2px solid rgb(0, 21, 255);
+}
+
+.dev-cards p {
+  width: 100%;
+  border: 2px solid yellow;
+}
