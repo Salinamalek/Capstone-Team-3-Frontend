@@ -12,6 +12,15 @@ export default function UserProfile() {
   const [user, setUser] = useState({});
   const [userJobs, setUserJobs] = useState([]);
   const [editing, setEditing] = useState(false);
+  const [editForm, setEditForm] = useState({
+    first_name: "",
+    last_name: "",
+    school: "",
+    bio: "",
+    project_one: "",
+    project_two: "",
+    skills: [],
+  });
 
   let AUTH_TOKEN =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDE3MjM2MiwiZXhwIjoxNjg0MjU4NzYyfQ.8GhfUcrAdXXOrgQEFHB6oWTikH21Pw9S2i_uRvFhET8";
@@ -32,8 +41,26 @@ export default function UserProfile() {
       .catch((error) => console.log(error));
   }, [userID]);
 
+  useEffect(() => {
+    if (editing) {
+      setEditForm({
+        first_name: user["first_name"],
+        last_name: user["last_name"],
+        school: user.school,
+        bio: user.bio,
+        project_one: user["project_one"],
+        project_two: user["project_two"],
+        skills: user.skills,
+      });
+    }
+  }, [editing]);
+
   const handleEdit = () => {
     setEditing(!editing);
+  };
+
+  const handleChange = (event) => {
+    setEditForm({ ...editForm, [event.target.id]: event.target.value });
   };
 
   const dateFormat = (date) => {
@@ -46,7 +73,29 @@ export default function UserProfile() {
       <div className="left-side-profile">
         <div className="profile-details">
           <p>Name</p>
-          <p className="bold">{user["first_name"] + " " + user["last_name"]}</p>
+          {editing ? (
+            <div>
+              <input
+              id="first_name"
+                type="text"
+                placeholder="first name"
+                value={editForm["first_name"]}
+                onChange={handleChange}
+                required
+              />{" "}
+              <input
+                type="text"
+                placeholder="last name"
+                value={editForm["last_name"]}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          ) : (
+            <p className="bold">
+              {user["first_name"] + " " + user["last_name"]}
+            </p>
+          )}
           <br />
           <p>School</p>
           <p className="bold">{user.school}</p>
@@ -74,9 +123,10 @@ export default function UserProfile() {
         </ul> */}
       </div>
       <div id="bio">
-      <p>About me</p>
-      <br />
-      <p className="bold">{user.bio}</p></div>
+        <p>About me</p>
+        <br />
+        <p className="bold">{user.bio}</p>
+      </div>
       <div className="activity">
         <p className="bold">Recent Activity</p>
         <div>
