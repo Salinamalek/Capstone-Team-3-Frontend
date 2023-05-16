@@ -1,0 +1,11 @@
+.error {
+  text-align: center;
+}
+#error {
+  height: 400px;
+  width: 400px;
+}
+
+.backHome {
+  font-size: x-large;
+}
