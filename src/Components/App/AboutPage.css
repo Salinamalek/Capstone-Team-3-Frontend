@@ -26,7 +26,7 @@
   grid-template-rows: auto 1fr auto;
 }
 .dev-cards h2 {
-  color: #41cdbc;
+  color: #ffffff;
 }
 .dev-cards p {
   width: 90%;
@@ -41,8 +41,11 @@
   margin-top: 20px;
   padding: 20px;
   height: 50vh;
+  margin-left: 15px;
 }
 
-button .linkedin {
-  height: 100px;
+.dev-socials a {
+  padding: 10px;
+  font-size: x-large;
+  color: #ffde59;
 }

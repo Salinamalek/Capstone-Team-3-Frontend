@@ -1,8 +1,11 @@
-import "/Users/Salina/Documents/9.1/module-six/project/capstone/capstone-frontend/Capstone-Team-3-Frontend/src/Components/App/AboutPage.css";
+import { useState } from "react";
+// import Modal from "../Modal";
+import "../App/AboutPage.css";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
-import { AiOutlineMail } from "react-icons/ai";
+import { MdAlternateEmail } from "react-icons/md";
 
 function AboutPage(props) {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="dev-section">
       <div className="dev-cards">
@@ -10,33 +13,41 @@ function AboutPage(props) {
         <div className="indiv-card">
           <h2>Destiny Joyner</h2>
           <img src="https://avatars.githubusercontent.com/u/107226235?v=4"></img>
-          <p>
-            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
-            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
-            magnam ut provident laborum et officiis asperiores ea animi
-            dignissimos aut autem reprehenderit ut quidem architecto At amet
-            nulla.
-          </p>
+          <button
+            classname="openModalBtn"
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
+            Click Me
+          </button>
+          {openModal && (
+            <p>
+              Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis
+              galisum eum dolores molestiae qui tempora vitae sed dolor galisum.
+              Et earum magnam ut provident laborum et officiis asperiores ea
+              animi dignissimos aut autem reprehenderit ut quidem architecto At
+              amet nulla.
+            </p>
+          )}
           <div className="dev-socials">
             <a
               href="https://www.linkedin.com/in/destinyjoyner/"
               target="_blank"
             >
-              <button className="linkedin">
-                <BsLinkedin />
-              </button>
+              <BsLinkedin />
             </a>
             <a href="https://github.com/DestinyJoyner" target="_blank">
-              <button className="github">
+              <span className="github">
                 <BsGithub />
-              </button>
+              </span>
             </a>
             <a href="mailto:destinyjoyner@pursuit.org">
-              <button className="email">
-                <AiOutlineMail />
-              </button>
+              <MdAlternateEmail />
             </a>
           </div>
+
+          {/* ---- */}
         </div>
         <div className="indiv-card">
           <h2>Dan Mazzilli</h2>
@@ -53,19 +64,13 @@ function AboutPage(props) {
               href="https://www.linkedin.com/in/mazzilli-daniel/"
               target="_blank"
             >
-              <button className="linkedin">
-                <BsLinkedin />
-              </button>
+              <BsLinkedin />
             </a>
             <a href="https://github.com/Daniel-Mazzilli" target="_blank">
-              <button className="github">
-                <BsGithub />
-              </button>
+              <BsGithub />
             </a>
             <a href="mailto:danmazzilli@pursuit.org">
-              <button className="email">
-                <AiOutlineMail />
-              </button>
+              <MdAlternateEmail />
             </a>
           </div>
         </div>
@@ -81,19 +86,13 @@ function AboutPage(props) {
           </p>
           <div className="dev-socials">
             <a href="https://www.linkedin.com/in/salina-malek/" target="_blank">
-              <button className="linkedin">
-                <BsLinkedin />
-              </button>
+              <BsLinkedin />
             </a>
             <a href="https://github.com/Salinamalek" target="_blank">
-              <button className="github">
-                <BsGithub />
-              </button>
+              <BsGithub />
             </a>
             <a href="mailto:salinamalek@pursuit.org">
-              <button className="email">
-                <AiOutlineMail />
-              </button>
+              <MdAlternateEmail />
             </a>
           </div>
         </div>
@@ -112,19 +111,13 @@ function AboutPage(props) {
               href="https://www.linkedin.com/in/jahaad-petty-321066249/"
               target="_blank"
             >
-              <button className="linkedin">
-                <BsLinkedin />
-              </button>
+              <BsLinkedin />
             </a>
             <a href="https://github.com/PESolut" target="_blank">
-              <button className="github">
-                <BsGithub />
-              </button>
+              <BsGithub />
             </a>
             <a href="mailto:jahaadpetty@pursuit.org">
-              <button className="email">
-                <AiOutlineMail />
-              </button>
+              <MdAlternateEmail />
             </a>
           </div>
         </div>
@@ -143,19 +136,13 @@ function AboutPage(props) {
               href="https://www.linkedin.com/in/ronald-johnson-97b22830/"
               target="_blank"
             >
-              <button className="linkedin">
-                <BsLinkedin />
-              </button>
+              <BsLinkedin />
             </a>
             <a href="https://github.com/ronJohnPursuit" target="_blank">
-              <button className="github">
-                <BsGithub />
-              </button>
+              <BsGithub />
             </a>
             <a href="mailto:ronjohnson@pursuit.org">
-              <button className="email">
-                <AiOutlineMail />
-              </button>
+              <MdAlternateEmail />
             </a>
           </div>
         </div>

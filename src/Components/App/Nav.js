@@ -81,16 +81,9 @@ export default function Nav() {
         </Link>
         <hr></hr>
         <label class="switch">
-          <input type="checkbox" />
+          <input type="checkbox" onChange={toggleTheme} />
           <span class="slider round"></span>
         </label>
-        {/* <button className="toggleTheme" onClick={toggleTheme}>
-          {theme === "light" ? (
-            <MdOutlineLightMode size={"25px"} alt="lm" />
-          ) : (
-            <MdOutlineDarkMode size={"25px"} alt="dm" />
-          )}
-        </button> */}
         <button className="logoutBtn">LOGOUT</button>
         {/* maybe have footer info here ??  */}
         {/* <div className="footer-info">
