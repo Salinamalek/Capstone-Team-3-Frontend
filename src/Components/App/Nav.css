@@ -109,8 +109,8 @@ hr {
 .toggleTheme {
   background-color: #0914ae;
   border: none;
-  /* border-radius: 20px; */
-  /* padding: 5px; */
+  border-radius: 20px;
+  padding: 5px;
   font-size: 16px;
   width: 30%;
   color: #0914ae;

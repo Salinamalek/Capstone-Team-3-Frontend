@@ -1,27 +1,48 @@
 .dev-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  padding: 20px;
-  border: 5px solid #ffffff;
+  /* display: flex; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto; */
+  /* padding: 20px; */
+  /* border: 2px solid #ffffff; */
+  padding-bottom: 50px;
   text-align: center;
 }
 
 .dev-cards img {
-  height: 200px;
-  width: 200px;
+  height: 30%;
+  /* width: 20%; */
   border-radius: 100px;
-  border: 5px solid #41cdbc;
+  border: 5px solid #ffde59;
   margin: 20px;
 }
 
-.dev-cards div {
+.dev-cards {
+  padding-left: 10px;
+  width: 90%;
+  /* border: 2px solid rgb(0, 21, 255); */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+.dev-cards h2 {
+  color: #41cdbc;
+}
+.dev-cards p {
+  width: 90%;
+  /* border: 2px solid yellow; */
   padding: 20px;
-  width: 45%;
-  border: 2px solid rgb(0, 21, 255);
+  color: #41cdbc;
 }
 
-.dev-cards p {
-  width: 100%;
-  border: 2px solid yellow;
+.indiv-card {
+  border-radius: 20px;
+  border: 2px solid #0914ae;
+  margin-top: 20px;
+  padding: 20px;
+  height: 50vh;
+}
+
+button .linkedin {
+  height: 100px;
 }

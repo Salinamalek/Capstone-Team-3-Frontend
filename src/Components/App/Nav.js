@@ -80,17 +80,17 @@ export default function Nav() {
           <span>Meet the Devs</span>
         </Link>
         <hr></hr>
-        <button className="toggleTheme" onClick={toggleTheme}>
-          <label class="switch">
-            <input type="checkbox" />
-            <span class="slider round"></span>
-          </label>
-          {/* {theme === "light" ? (
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+        {/* <button className="toggleTheme" onClick={toggleTheme}>
+          {theme === "light" ? (
             <MdOutlineLightMode size={"25px"} alt="lm" />
           ) : (
             <MdOutlineDarkMode size={"25px"} alt="dm" />
-          )} */}
-        </button>
+          )}
+        </button> */}
         <button className="logoutBtn">LOGOUT</button>
         {/* maybe have footer info here ??  */}
         {/* <div className="footer-info">
