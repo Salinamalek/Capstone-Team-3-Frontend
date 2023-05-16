@@ -1,3 +1,37 @@
 .Home {
-    padding: 0 14px;
+  padding: 0 14px;
+  scroll-snap-type: y mandatory; /* added scroll type  ..... either use  proximity or mandatory*/
+  overflow-y: scroll;
+  height: 100vh;
+}
+/* scroll snap feature implimented*/
+section {
+  height: 100vh;
+  color: white;
+  display: flex;
+  scroll-snap-align: start;
+  justify-content: center;
+  align-items: center;
+}
+.scrolldown {
+  height: 60px;
+  width: 60px;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  bottom: 40px;
+}
+.one {
+  background: #41cdbc;
+}
+.two {
+  background: #ffde59;
+  color: black;
+}
+.three {
+  background: #0914ae;
+}
+.four {
+  background: #41cdbc;
 }
