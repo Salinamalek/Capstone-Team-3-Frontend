@@ -11,19 +11,9 @@ export default function UserProfile() {
   const { API } = useContextProvider();
   const [user, setUser] = useState({});
   const [userJobs, setUserJobs] = useState([]);
-  const [editing, setEditing] = useState(false);
-  const [editForm, setEditForm] = useState({
-    first_name: "",
-    last_name: "",
-    school: "",
-    bio: "",
-    project_one: "",
-    project_two: "",
-    skills: [],
-  });
 
   let AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDE3MjM2MiwiZXhwIjoxNjg0MjU4NzYyfQ.8GhfUcrAdXXOrgQEFHB6oWTikH21Pw9S2i_uRvFhET8";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDI1OTU0NSwiZXhwIjoxNjg0MzQ1OTQ1fQ.VnCf2NsXkaz1IUNSHUeklyeAZGadEsyVtSEtni7TxkM";
   axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
 
   useEffect(() => {
@@ -41,61 +31,18 @@ export default function UserProfile() {
       .catch((error) => console.log(error));
   }, [userID]);
 
-  useEffect(() => {
-    if (editing) {
-      setEditForm({
-        first_name: user["first_name"],
-        last_name: user["last_name"],
-        school: user.school,
-        bio: user.bio,
-        project_one: user["project_one"],
-        project_two: user["project_two"],
-        skills: user.skills,
-      });
-    }
-  }, [editing]);
-
-  const handleEdit = () => {
-    setEditing(!editing);
-  };
-
-  const handleChange = (event) => {
-    setEditForm({ ...editForm, [event.target.id]: event.target.value });
-  };
-
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
     return `${newDate[1]}/${newDate[2]}/${newDate[0]}`;
   };
 
   return (
-    <div className="profile">
+    <div>
+    {user.id && <div className="profile">
       <div className="left-side-profile">
         <div className="profile-details">
           <p>Name</p>
-          {editing ? (
-            <div>
-              <input
-              id="first_name"
-                type="text"
-                placeholder="first name"
-                value={editForm["first_name"]}
-                onChange={handleChange}
-                required
-              />{" "}
-              <input
-                type="text"
-                placeholder="last name"
-                value={editForm["last_name"]}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          ) : (
-            <p className="bold">
-              {user["first_name"] + " " + user["last_name"]}
-            </p>
-          )}
+          <p className="bold">{user["first_name"] + " " + user["last_name"]}</p>
           <br />
           <p>School</p>
           <p className="bold">{user.school}</p>
@@ -109,7 +56,7 @@ export default function UserProfile() {
       </div>
       <div className="right-side-profile">
         <VscAccount id="profile-icon" size={"100px"} />
-        <button onClick={handleEdit} className="profile-button">
+        <button onClick={() => navigate(`/user/${userID}/edit`)} className="profile-button">
           edit
         </button>
         <p>Skills and Technologies</p>
@@ -125,7 +72,7 @@ export default function UserProfile() {
       <div id="bio">
         <p>About me</p>
         <br />
-        <p className="bold">{user.bio}</p>
+        <p className="bold bio-box">{user.bio}</p>
       </div>
       <div className="activity">
         <p className="bold">Recent Activity</p>
@@ -142,6 +89,7 @@ export default function UserProfile() {
         </div>
       </div>
       <button className="profile-button logout">Logout</button>
+    </div>}
     </div>
   );
 }
