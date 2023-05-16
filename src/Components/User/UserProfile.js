@@ -36,6 +36,11 @@ export default function UserProfile() {
     setEditing(!editing);
   };
 
+  const dateFormat = (date) => {
+    const newDate = date.split("T")[0].split("-");
+    return `${newDate[1]}/${newDate[2]}/${newDate[0]}`;
+  };
+
   return (
     <div className="profile">
       <div className="left-side-profile">
@@ -51,34 +56,42 @@ export default function UserProfile() {
             <li className="bold">{user["project_one"] || "add a link"}</li>
             <li className="bold">{user["project_two"] || "add a link"}</li>
           </ul>
-          <br />
-          <p>About me</p>
-          <p className="bold">{user.bio}</p>
         </div>
       </div>
       <div className="right-side-profile">
-        <VscAccount id="profile-icon" size={"120px"} />
+        <VscAccount id="profile-icon" size={"100px"} />
         <button onClick={handleEdit} className="profile-button">
           edit
         </button>
         <p>Skills and Technologies</p>
-        <ul>
+        {/* <ul>
           {user.skills &&
             user.skills.map((e, i) => (
               <li key={i} className="bold">
                 {e}
               </li>
             ))}
-        </ul>
+        </ul> */}
       </div>
+      <div id="bio">
+      <p>About me</p>
+      <br />
+      <p className="bold">{user.bio}</p></div>
       <div className="activity">
         <p className="bold">Recent Activity</p>
-        <ul>
+        <div>
           {userJobs.length &&
-            userJobs.map(({id, title, company, date_applied}) => <li key={id}>{title} - {company}<br/>{date_applied}</li>)}
-        </ul>
+            userJobs.map(({ id, title, company, date_applied }) => (
+              <p key={id}>
+                <br />
+                <strong>{title}</strong> - <em>{company}</em>
+                <br />
+                Applied: {dateFormat(date_applied)}
+              </p>
+            ))}
+        </div>
       </div>
-      <button className="profile-button">Logout</button>
+      <button className="profile-button logout">Logout</button>
     </div>
   );
 }
