@@ -4,8 +4,6 @@ import { FaJava } from "react-icons/fa"
 import "./SkillsComponent.css"
 
 
-
-
 function SkillsComponent({skillsArr, justList}) {
    const [skillsObj, setSkillsObj] = useState(
        {
