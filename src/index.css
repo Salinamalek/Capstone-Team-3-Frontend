@@ -10,21 +10,26 @@ BLUE: #0914AE
 */
 
 * {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 
-    /* background-color: #deeff9d0; */
+  /* background-color: #deeff9d0; */
 }
 
 /* nav, footer, app -> background */
-nav, .App, footer {
-    background-color: #deeff9d0;
+.light {
+  background-color: #2d2d30;
+  color: #ffffffd0;
+}
+.dark {
+  background-color: #deeff9d0;
+  color: #000000;
 }
 
 /* links */
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:hover {
-    color: #0914AE;
+  color: #0914ae;
 }
