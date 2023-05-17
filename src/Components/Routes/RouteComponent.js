@@ -8,6 +8,7 @@ import JobsShow from "../Job/JobsShow.js"
 import NewForm from "../../Pages/NewForm.js"
 import User from "../../Pages/User.js"
 import Login from "../../Pages/Login.js"
+import Register from "../../Pages/Register.js"
 
 function RouteComponent() {
     return (
@@ -15,6 +16,7 @@ function RouteComponent() {
         <Route path = "/">
             <Route index element = {<Home />} />
             <Route path = "login" element = {<Login />} />
+            <Route path = "register" element = {<Register />} />
             {/* USER ROUTES */}
             <Route path = "user" >
                 <Route index element = {<Navigate to = "/not-found" />} />
