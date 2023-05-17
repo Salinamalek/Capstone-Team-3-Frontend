@@ -3,7 +3,7 @@
     THESE AREN'T DRASTICALLY AFFECTING THE OTHER TAGS ACROSS THE APP BUT JUST USING A CLASS NAME OR THE PATH TO THE ELEMENT WOULD BE BETTER
 */
 
-input {
+/* input {
     width: 140px;
     padding-left: 6px;
 }
@@ -18,7 +18,7 @@ textarea, input {
 textarea {
     width: 80%;
     height: 80px;
-}
+} */
 
 
 #user-icon {
