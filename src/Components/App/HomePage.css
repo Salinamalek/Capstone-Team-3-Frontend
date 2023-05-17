@@ -5,14 +5,18 @@
   height: 100vh;
 }
 /* scroll snap feature implimented*/
-section {
+
+/* 
+DESTINY:
+USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP */
+/* section {
   height: 100vh;
   color: white;
   display: flex;
   scroll-snap-align: start;
   justify-content: center;
   align-items: center;
-}
+} */
 .scrolldown {
   height: 60px;
   width: 60px;

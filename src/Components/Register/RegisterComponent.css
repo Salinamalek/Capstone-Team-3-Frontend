@@ -11,16 +11,19 @@
    }
    
    
-    hr {
+   /* DESTINY
+   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL HR ELEMENTS THROUGHOUT APP */
+    /* hr {
       border: 1px solid #deeff9d0;
       margin-top: 25px;
       margin-bottom: 25px;
-    }
+    } */
    
    
+    /* DESTINY
+   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL INPUT ELEMENTS THROUGHOUT APP */
    
-   
-    input[type=text], input[type=password], input[type=email], input[type=textarea] {
+    /* input[type=text], input[type=password], input[type=email], input[type=textarea] {
       width: 90%;
       height: 5px;
       padding: 15px;
@@ -38,7 +41,7 @@
    
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
-   }
+   } */
    
    
    .registerbutton {
