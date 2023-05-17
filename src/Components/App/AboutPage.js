@@ -13,7 +13,14 @@ function AboutPage(props) {
         <div className="indiv-card">
           <h2>Destiny Joyner</h2>
           <img src="https://avatars.githubusercontent.com/u/107226235?v=4"></img>
-          <button
+          <p>
+            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
+            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
+            magnam ut provident laborum et officiis asperiores ea animi
+            dignissimos aut autem reprehenderit ut quidem architecto At amet
+            nulla.
+          </p>
+          {/* <button
             classname="openModalBtn"
             onClick={() => {
               setOpenModal(true);
@@ -29,7 +36,7 @@ function AboutPage(props) {
               animi dignissimos aut autem reprehenderit ut quidem architecto At
               amet nulla.
             </p>
-          )}
+          )} */}
           <div className="dev-socials">
             <a
               href="https://www.linkedin.com/in/destinyjoyner/"

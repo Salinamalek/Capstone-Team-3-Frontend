@@ -7,6 +7,7 @@ import {
   MdOutlineDarkMode,
   MdOutlineLightMode,
 } from "react-icons/md";
+import { FiLogOut } from "react-icons/fi";
 import { BiInfoCircle, BiCopyright } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import logo from "../../Assets/LOGO.png";
@@ -84,7 +85,7 @@ export default function Nav() {
           <input type="checkbox" onChange={toggleTheme} />
           <span class="slider round"></span>
         </label>
-        <button className="logoutBtn">LOGOUT</button>
+        <button className="logoutBtn">Logout</button>
         {/* maybe have footer info here ??  */}
         {/* <div className="footer-info">
         <span> inIT <BiCopyright /></span>
