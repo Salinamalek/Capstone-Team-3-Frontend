@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useContextProvider } from "../../Providers/Provider.js";
 import axios from "axios";
 import { VscAccount } from "react-icons/vsc";
+import userIcon from "../../Assets/USER.png"
 import "./UserProfile.css";
 
 export default function UserProfile() {
@@ -55,11 +56,12 @@ export default function UserProfile() {
         </div>
       </div>
       <div className="right-side-profile">
-        <VscAccount id="profile-icon" size={"100px"} />
+        {/* <VscAccount id="profile-icon" size={"100px"} /> */}
+        <img id="user-icon" src={userIcon} alt="user icon" size="40px"/>
         <button onClick={() => navigate(`/user/${userID}/edit`)} className="profile-button">
           edit
         </button>
-        <p>Skills and Technologies</p>
+        <p className="skills">Skills and Technologies</p>
         {/* <ul>
           {user.skills &&
             user.skills.map((e, i) => (
@@ -83,9 +85,11 @@ export default function UserProfile() {
                 <br />
                 <strong>{title}</strong> - <em>{company}</em>
                 <br />
-                Applied: {dateFormat(date_applied)}
+                {dateFormat(date_applied)}
               </p>
             ))}
+            <br/>
+            <button id="activity-button">view full activity</button>
         </div>
       </div>
       <button className="profile-button logout">Logout</button>

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContextProvider } from "../../Providers/Provider";
 import axios from "axios";
 import { VscAccount } from "react-icons/vsc";
+import userIcon from "../../Assets/USER.png"
 import "./UserEdit.css";
 
 export default function UserEdit(props) {
@@ -91,11 +92,12 @@ export default function UserEdit(props) {
         </div>
       </div>
       <div className="right-side-profile">
-        <VscAccount id="profile-icon" size={"100px"} />
+        {/* <VscAccount id="profile-icon" size={"100px"} /> */}
+        <img id="user-icon" src={userIcon} alt="user icon" size="40px"/>
         <button onClick={() => navigate(`/user/${userID}`)} className="profile-button">
           return
         </button>
-        <p>Skills and Technologies</p>
+        <p className="skills">Skills and Technologies</p>
       {/* <ul>
           {user.skills &&
             user.skills.map((e, i) => (
