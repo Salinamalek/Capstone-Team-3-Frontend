@@ -1,9 +1,9 @@
 import React from 'react';
-
+import UserEdit from '../Components/User/UserEdit';
 function EditForm(props) {
     return (
         <div>
-            Edit Form
+            <UserEdit />
         </div>
     );
 }
