@@ -77,7 +77,7 @@ export default function UserProfile() {
         <p className="bold bio-box">{user.bio}</p>
       </div>
       <div className="activity">
-        <p className="bold">Recent Activity</p>
+        <p className="bold">My Applications</p>
         <div>
           {userJobs.length &&
             userJobs.map(({ id, title, company, date_applied }) => (
@@ -85,11 +85,11 @@ export default function UserProfile() {
                 <br />
                 <strong>{title}</strong> - <em>{company}</em>
                 <br />
-                {dateFormat(date_applied)}
+                applied: {dateFormat(date_applied)}
               </p>
             ))}
             <br/>
-            <button id="activity-button">view full activity</button>
+            <button id="activity-button">view all applications</button>
         </div>
       </div>
       <button className="profile-button logout">Logout</button>
