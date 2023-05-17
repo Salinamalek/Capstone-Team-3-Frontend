@@ -81,9 +81,10 @@ export default function Nav() {
           <span>Meet the Devs</span>
         </Link>
         <hr></hr>
-        <label class="switch">
+        {/* was class => to className */}
+        <label className="switch">
           <input type="checkbox" onChange={toggleTheme} />
-          <span class="slider round"></span>
+          <span className="slider round"></span>
         </label>
         <button className="logoutBtn">Logout</button>
         {/* maybe have footer info here ??  */}
