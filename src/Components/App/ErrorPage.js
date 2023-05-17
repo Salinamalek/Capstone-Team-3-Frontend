@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "/Users/Salina/Documents/9.1/module-six/project/capstone/capstone-frontend/Capstone-Team-3-Frontend/src/Components/App/ErrorPage.css";
-import error from "/Users/Salina/Documents/9.1/module-six/project/capstone/capstone-frontend/Capstone-Team-3-Frontend/src/Assets/404page.png";
+import "./ErrorPage.css";
+import error from "../../Assets/404page.png";
 
 function ErrorPage() {
   return (
