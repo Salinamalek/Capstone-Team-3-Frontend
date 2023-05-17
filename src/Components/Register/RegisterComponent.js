@@ -240,3 +240,52 @@ const RegisterComponent = () => {
 
 
 export default RegisterComponent;
+
+
+// DESTINY : CODE MOVED FROM NAVBAR, WILL BE USED ELSEWHERE
+/* const [userSignedIn, setUserSignedIn] = useState(false);
+ const [userInfo, setUserInfo] = useState({
+   name: "",
+   id: ""
+ })
+
+ function handleLogout() {
+    localStorage.removeItem("user_id"); // Remove the user_id from localStorage
+    localStorage.clear()
+    setUserSignedIn(false); // Update the state to reflect the signed-out status
+  }
+ 
+   // checks to see if user is logged in
+ useEffect(() => {
+    if (localStorage.getItem("user_id")) {
+      setUserSignedIn(true);
+      setUserInfo({
+        id: localStorage.getItem("user_id")
+      })
+      getNameForUser(userSignedIn)
+    }
+  }, []);
+ 
+ 
+  // after userID state changes
+  function getNameForUser(userSignedIn) {
+    if(true){
+      const user_ID = localStorage.getItem("user_id")
+      const AUTH_TOKEN = localStorage.getItem('token')
+      axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
+       axios
+        .get(`${API}users/${user_ID}`)
+        .then((res) => {
+          console.log(res.data)
+          setUserInfo({
+            id: res.data.id,
+            name: res.data.first_name
+          })
+          localStorage.setItem("first_name",res.data.first_name)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }
+  */
