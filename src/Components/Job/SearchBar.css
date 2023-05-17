@@ -1,0 +1,21 @@
+.search-component {
+    display: grid;
+    grid-template-rows: .7fr .1fr .2fr;
+    /* max-height: 23vh; */
+    height: fit-content;
+}
+
+.search-component .search-bar-icon {
+    position: relative;
+    left: 2vw;
+    bottom: 8vh;
+}
+
+.searchbar {
+    border: 2px solid #41CDBC;
+    width: 85vw;
+    height: 4vh;
+    border-radius: 20px;
+    text-indent: 10vw;
+    font-size: 18px;
+}
