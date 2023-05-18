@@ -8,6 +8,9 @@ import {
   MdOutlineLightMode,
 } from "react-icons/md";
 import { FiLogOut } from "react-icons/fi";
+// Destiny added icon for testing temp. links in nav bar
+import { GrAlert } from "react-icons/gr"
+
 import { BiInfoCircle, BiCopyright } from "react-icons/bi";
 import { VscAccount } from "react-icons/vsc";
 import logo from "../../Assets/LOGO.png";
@@ -80,10 +83,28 @@ export default function Nav() {
           <BiInfoCircle size={"30px"} color={"#41cdbc"} />
           <span>Meet the Devs</span>
         </Link>
+
+        {/* DESTINY adding register/ login/ user/4 route for easy navigation while testing */}
+        <Link to="/login" onClick={() => navbarClick()}>
+          <GrAlert size={"30px"} color={"#41cdbc"} />
+          <span>Login</span>
+        </Link>
+        <Link to="/register" onClick={() => navbarClick()}>
+        <GrAlert size={"30px"} color={"#41cdbc"} />
+          <span>Registration</span>
+        </Link>
+        <Link to="/user/4" onClick={() => navbarClick()}>
+        <GrAlert size={"30px"} color={"#41cdbc"} />
+          <span>User Profile</span>
+        </Link>
+
+
+
         <hr></hr>
-        <label class="switch">
+        {/* was class => to className */}
+        <label className="switch">
           <input type="checkbox" onChange={toggleTheme} />
-          <span class="slider round"></span>
+          <span className="slider round"></span>
         </label>
         <button className="logoutBtn">Logout</button>
         {/* maybe have footer info here ??  */}

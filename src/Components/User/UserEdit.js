@@ -13,8 +13,9 @@ export default function UserEdit(props) {
   const [user, setUser] = useState({});
   const [editForm, setEditForm] = useState({});
 
+  // Destiny Updated token value here (same as new one in user profile)
   let AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDI1OTU0NSwiZXhwIjoxNjg0MzQ1OTQ1fQ.VnCf2NsXkaz1IUNSHUeklyeAZGadEsyVtSEtni7TxkM";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDQyMjQwOSwiZXhwIjoxNjg0NTA4ODA5fQ.cN_YkDnVdplt7KYzmGo0mkf61of13uLauICHhpQnWWg";
   axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
 
   useEffect(() => {

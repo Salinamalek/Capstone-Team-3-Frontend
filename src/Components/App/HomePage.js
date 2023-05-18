@@ -1,4 +1,7 @@
 import "./HomePage.css";
+// Destiny moved the scrolldown gif into assets folder, will import it here now
+import scrollDown from "../../Assets/scrolldown.gif"
+
 // import logo from "../App/scrolldown.gif";
 function HomePage() {
   return (
@@ -9,7 +12,8 @@ function HomePage() {
           <br></br> first page
           <img
             className="scrolldown"
-            src={require("../App/scrolldown.gif")}
+            // Destiny will use imported image variable to replace src value here
+            src={scrollDown}
             alt="scroll down"
           />
         </section>
@@ -25,7 +29,8 @@ function HomePage() {
           <br />{" "}
           <img
             className="scrolldown"
-            src={require("../App/scrolldown.gif")}
+            // Destiny will use imported image variable to replace src value here
+            src={scrollDown}
             alt="scroll down"
           />
         </section>
@@ -40,7 +45,8 @@ function HomePage() {
           world of software development.{" "}
           <img
             className="scrolldown"
-            src={require("../App/scrolldown.gif")}
+            // Destiny will use imported image variable to replace src value here
+            src={scrollDown}
             alt="scroll down"
           />
         </section>

@@ -13,23 +13,22 @@ export default function UserProfile() {
   const [user, setUser] = useState({});
   const [userJobs, setUserJobs] = useState([]);
 
-  let AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDI1OTU0NSwiZXhwIjoxNjg0MzQ1OTQ1fQ.VnCf2NsXkaz1IUNSHUeklyeAZGadEsyVtSEtni7TxkM";
+  // Destiny Updated token value here (same as new one in user EDIT profile)
+  let AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDQyMjQwOSwiZXhwIjoxNjg0NTA4ODA5fQ.cN_YkDnVdplt7KYzmGo0mkf61of13uLauICHhpQnWWg";
+  
   axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
 
   useEffect(() => {
-    axios
-      .get(`${API}/users/${userID}`)
-      .then((res) => setUser(res.data))
-      .catch((error) => {
-        console.log(error);
-        navigate("/not-found");
+    axios.get(`${API}/users/${userID}`)
+    .then((res) => setUser(res.data))
+    .catch((error) => {
+      console.log(error);
+      navigate("/not-found");
       });
     // do we just console log the error here?
-    axios
-      .get(`${API}/user-jobs/${userID}`)
-      .then((res) => setUserJobs(res.data))
-      .catch((error) => console.log(error));
+    axios.get(`${API}/user-jobs/${userID}`)
+    .then((res) => setUserJobs(res.data))
+    .catch((error) => console.log(error));
   }, [userID]);
 
   const dateFormat = (date) => {

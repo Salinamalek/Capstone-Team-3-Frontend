@@ -5,7 +5,11 @@
   height: 100vh;
 }
 /* scroll snap feature implimented*/
-section {
+
+/* 
+DESTINY:
+USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP */
+.one, .two,.three, .four {
   height: 100vh;
   color: white;
   display: flex;
