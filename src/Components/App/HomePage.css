@@ -9,14 +9,14 @@
 /* 
 DESTINY:
 USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP */
-/* section {
+.one, .two,.three, .four {
   height: 100vh;
   color: white;
   display: flex;
   scroll-snap-align: start;
   justify-content: center;
   align-items: center;
-} */
+}
 .scrolldown {
   height: 60px;
   width: 60px;
