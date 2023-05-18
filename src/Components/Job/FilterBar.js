@@ -21,18 +21,19 @@ function FilterBar() {
 
 
    return (
-       <div className="filter-bar">
+       <div 
+       className="filter-bar"
+       onClick={(event) => filterBarSlide(event)}>
            <span className="filter-bar-arrow">
                {
                    !filterOptions ?
                    <BsCaretDownFill
                    color = {"#41CDBC"}
                    size = {"25px"}
-                   onClick={(event) => filterBarSlide(event)} /> :
+                    /> :
                    <BsCaretUpFill
                    color = {"#0914AE"}
                    size = {"25px"}
-                   onClick={() => {setFilterOptions(!filterOptions)}}
                     />
 
 

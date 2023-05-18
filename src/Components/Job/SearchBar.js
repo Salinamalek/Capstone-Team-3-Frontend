@@ -9,7 +9,7 @@ function SearchBar() {
             type= "text"
             className="searchbar">
             </input>
-            <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" />
+            {/* <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" /> */}
 
             <FilterBar />
         </section>

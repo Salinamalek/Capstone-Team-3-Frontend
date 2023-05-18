@@ -1,8 +1,4 @@
 .job-card {
-    /* color: #0914AE; */
-    /* background-color: #deeff9; */
-    /* border: 2px solid #FFDE59; */
-    /* outline: 3px solid #0914AE; */
     background-color: #ffde5995 ;
     border: 2px solid #41CDBC;
     border-radius: 14px;
@@ -12,7 +8,8 @@
     grid-template-rows: 1.5fr 1fr 1fr;
     grid-template-columns: 2fr .1fr .8fr;
     align-items: center;
-    justify-items: center;
+    justify-items: left;
+    text-indent: 10px;
 }
 
 .job-card-divider {
@@ -28,9 +25,10 @@
     height: 100%;
     width: 100%;
     font-size: 16px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 2vh;
+    display: grid;
+    grid-template-columns: .5fr .5fr;
+    justify-items: left;
+    align-items: center;
 }
 
 .job-card-company span:first-of-type {
