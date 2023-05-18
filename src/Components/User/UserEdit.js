@@ -15,7 +15,7 @@ export default function UserEdit(props) {
 
   // Destiny Updated token value here (same as new one in user profile)
   let AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDM2MDU1NiwiZXhwIjoxNjg0NDQ2OTU2fQ.NW-Z52nqzxJrdIqJsdh00ZxZdJdBnUuN4XoIHFMulL4";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDQyMjQwOSwiZXhwIjoxNjg0NTA4ODA5fQ.cN_YkDnVdplt7KYzmGo0mkf61of13uLauICHhpQnWWg";
   axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
 
   useEffect(() => {
