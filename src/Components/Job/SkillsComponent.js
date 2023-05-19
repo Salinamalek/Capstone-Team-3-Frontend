@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SiNodedotjs, SiJavascript, SiReact, SiExpress, SiPython, SiRuby, SiHtml5, SiCss3, SiCplusplus, SiMysql, SiSwift, SiGo, SiPhp, SiRust  } from "react-icons/si"
+import { SiNodedotjs, SiJavascript, SiReact, SiExpress, SiPython, SiRuby, SiHtml5, SiCss3, SiCplusplus, SiMysql, SiSwift, SiGo, SiPhp, SiRust, SiTypescript  } from "react-icons/si"
 import { FaJava } from "react-icons/fa"
 import "./SkillsComponent.css"
 
@@ -8,7 +8,7 @@ function SkillsComponent({skillsArr, justList}) {
    const [skillsObj, setSkillsObj] = useState(
        {
            1 : [<SiJavascript />, false],
-           2: [<SiExpress  />, false],
+           2: [<SiNodedotjs  />, false],
            3: [<SiReact />, false],
            4: [<SiPython />, false],
            5: [<FaJava />,false],
@@ -17,13 +17,26 @@ function SkillsComponent({skillsArr, justList}) {
            8: [<SiMysql />,false],
            9: [<SiSwift />,false],
            10: [<SiGo />,false],
-           11: [<SiRust />,false],
-           12: [<SiHtml5/>,false],
-           13: [<SiPhp />,false],
-
-
+           11: [<SiTypescript />,false],
+           12: [<SiPhp />,false],
        }
    )
+   const [skillsWithColor, setSkillsWithColor] = useState(
+    {
+        1 : <SiJavascript color ={"#f0db4f"} style={{backgroundColor: "black"}} />,
+        2: <SiNodedotjs color={"#3c873a"} />,
+        3: [<SiReact color={"#61DBFB"} style={{backgroundColor: "black"}} />],
+        4: [<SiPython color={"#306998"} style={{backgroundColor: "#FFE873"}} />],
+        5: [<FaJava color={"#f89820"} style={{backgroundColor: "#5382a1"}}/>],
+        6: [<SiCplusplus color={"#044F88"} style={{backgroundColor: "#5E97D0"}}/>],
+        7: [<SiRuby color={"#CC0000"}  />],
+        8: [<SiMysql color={"#00758F"} style={{backgroundColor: "#F29111"}} />],
+        9: [<SiSwift color={"#F05138"} />],
+        10: [<SiGo color={"#29BEB0"} />],
+        11: [<SiTypescript color={"#61DBFB"} style={{backgroundColor: "black"}} />],
+        12: [<SiPhp color={"#787CB5"} style={{backgroundColor: "black"}}/>]
+    }
+)
 /* 
 ruby Hex: #CC0000
 html Hex: #E34C26 + black
@@ -56,7 +69,7 @@ rust #281C1C + #CE422B
            <div className="skills-component">
            {
                skillsArr.map(skill =>
-                   skillsObj[skill][0] 
+                   skillsWithColor[skill]
               )
            }
        </div>

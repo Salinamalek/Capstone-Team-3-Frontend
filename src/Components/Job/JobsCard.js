@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2"
 import { SiNodedotjs, SiJavascript, SiReact, SiExpress } from "react-icons/si"
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from"react-icons/ai"
+import SkillsComponent from './SkillsComponent';
 import "./JobsCard.css"
 
 
@@ -28,8 +29,11 @@ function JobsCard({jobObj}) {
                {city}
            </span>
            <span className='job-card-divider'></span>
-           <section className="job-card-skills">               
-                   {
+           <section className="job-card-skills">   
+           <SkillsComponent 
+           skillsArr={[3,12,2,9]}
+           justList={true} />            
+                   {/* {
                        skill_name.map(el => {
                            if(el.toLowerCase() === "express"){
                                return <SiNodedotjs
@@ -52,7 +56,7 @@ function JobsCard({jobObj}) {
                                style={{backgroundColor: "black"}} />
                            }
                        })
-                   }
+                   } */}
               
            </section>
        </div>
