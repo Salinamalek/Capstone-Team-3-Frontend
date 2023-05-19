@@ -1,7 +1,6 @@
 .profile {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif */
+    grid-template-columns: 1fr 1fr;
 }
 
 .profile-details {

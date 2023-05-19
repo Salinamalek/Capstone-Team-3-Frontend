@@ -22,12 +22,12 @@ export default function UserProfile() {
           <p className="bold">{userProfile["first_name"] + " " + userProfile["last_name"]}</p>
           <br />
           <p>Education</p>
-          <p className="bold">{userProfile.school}</p>
+          <p className="bold">{userProfile.education}</p>
           <br />
           <p>Portfolio projects</p>
           <ul>
-            <li className="bold">{userProfile["project_one"] || "add a link"}</li>
-            <li className="bold">{userProfile["project_two"] || "add a link"}</li>
+            <li className="bold">{userProfile["project_one"]? <a href={userProfile["project_one"]} target="_blank">link 1</a>: "add link"}</li>
+            <li className="bold">{userProfile["project_two"]?<a href={userProfile["project_two"]} target="_blank">link 2</a>: "add link"}</li>
           </ul>
         </div>
       </div>
@@ -37,14 +37,14 @@ export default function UserProfile() {
           edit
         </button>
         <p className="skills">Skills and Technologies</p>
-        {/* <ul>
+        <ul>
           {userProfile.skills &&
             userProfile.skills.map((e, i) => (
               <li key={i} className="bold">
                 {e}
               </li>
             ))}
-        </ul> */}
+        </ul>
       </div>
       <div id="bio">
         <p>About me</p>
