@@ -7,7 +7,7 @@ import {
   MdOutlineDarkMode,
   MdOutlineLightMode,
 } from "react-icons/md";
-import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 // Destiny added icon for testing temp. links in nav bar
 import { GrAlert } from "react-icons/gr";
@@ -69,9 +69,18 @@ export default function Nav() {
         <p>
           {/* <span>inIT</span> */}
           <br />
-          <br />
+
           <span className="slogan">"Your first tech opportunity awaits!"</span>
         </p>
+        {/* DESTINY adding register/ login/ user/4 route for easy navigation while testing */}
+        <Link to="/login" onClick={() => navbarClick()}>
+          <FiLogIn size={"30px"} color={"#41cdbc"} />
+          <span>Login</span>
+        </Link>
+        <Link to="/register" onClick={() => navbarClick()}>
+          <FiUserPlus size={"30px"} color={"#41cdbc"} />
+          <span>Registration</span>
+        </Link>
         <Link to="/" onClick={() => navbarClick()}>
           <AiOutlineHome size={"30px"} color={"#41cdbc"} />
           <span>Home</span>
@@ -84,28 +93,18 @@ export default function Nav() {
           <BiInfoCircle size={"30px"} color={"#41cdbc"} />
           <span>Meet the Team</span>
         </Link>
-        {/* DESTINY adding register/ login/ user/4 route for easy navigation while testing */}
-        <Link to="/login" onClick={() => navbarClick()}>
-          <FiLogIn size={"30px"} color={"#41cdbc"} />
-          <span>Login</span>
-        </Link>
-        <Link to="/register" onClick={() => navbarClick()}>
-          <BiPlusCircle size={"30px"} color={"#41cdbc"} />
-          <span>Registration</span>
-        </Link>
         {/* <Link to="/user/4" onClick={() => navbarClick()}>
           <GrAlert size={"30px"} color={"#41cdbc"} />
           <span>User Profile</span>
         </Link> */}
         {/* <hr className="nav-line"></hr> */}
         {/* was class => to className */}
-        <BsFillSunFill />
         <label className="switch">
+          {" "}
           <input type="checkbox" onChange={toggleTheme} />
           <span className="slider round"></span>
         </label>
-        <BsFillMoonFill />
-        <button className="logoutBtn">{<FiLogOut />}Logout</button>
+        <button className="logoutBtn">{<FiLogOut />} Logout</button>
         {/* maybe have footer info here ??  */}
         {/* <div className="footer-info">
         <span> inIT <BiCopyright /></span>

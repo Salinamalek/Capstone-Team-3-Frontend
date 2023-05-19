@@ -72,8 +72,8 @@ nav a {
   margin-right: 22px;
 }
 .slide-nav a {
-  color: #ffde59;
-  width: 80%;
+  color: #41cdbc;
+  width: 70%;
 }
 
 .nav-line {
@@ -97,7 +97,7 @@ nav a {
 }
 
 .slide-nav .logoutBtn {
-  grid-row: 7;
+  /* grid-row: 7; */
   background-color: #41cdbc;
   border: none;
   border-radius: 20px;
@@ -106,6 +106,7 @@ nav a {
   width: 30%;
   color: #0914ae;
 }
+
 .toggleTheme {
   background-color: #0914ae;
   border: none;
@@ -142,7 +143,7 @@ nav a {
   display: inline-block;
   width: 60px;
   height: 34px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Hide default HTML checkbox */
@@ -172,13 +173,13 @@ nav a {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #deeff9d0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #41cdbc;
+  background-color: #050525;
 }
 
 input:focus + .slider {
@@ -198,4 +199,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+.logoutBtn {
+  margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
