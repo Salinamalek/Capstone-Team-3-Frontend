@@ -9,21 +9,25 @@ BLUE: #0914AE
 #D28778
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&family=Ysabeau:ital,wght@1,400;1,500;1,600&display=swap');
+
+
 * {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "Work Sans", Poppins, Cabin,Ysabeau;
 
   /* background-color: #deeff9d0; */
 }
 
 /* nav, footer, app -> background */
 .light {
-  background-color: #2d2d30;
-  color: #ffffffd0;
-}
-.dark {
   background-color: #deeff9d0;
   color: #000000;
+}
+.dark {
+  background-color: #101048;
+  color: #ffffffd0;
 }
 
 /* links */

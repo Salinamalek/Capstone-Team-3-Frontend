@@ -1,26 +1,29 @@
 .App {
     height: 100%;
-  }
-  .login {
+   }
+   .register_card {
       width: 85%;
       height: 100%;
       margin-left: auto;
       margin-right: auto;
       /* background-color: #b6c6d0e6; */
       padding: 16px;
-  }
-
-  /* 
-  DESTINY: 
-   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL HR/ INPUT ELEMENTS THROUGHOUT APP */
-  
-     /* hr {
+   }
+   
+   
+   /* DESTINY
+   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL HR ELEMENTS THROUGHOUT APP */
+    /* hr {
       border: 1px solid #deeff9d0;
       margin-top: 25px;
       margin-bottom: 25px;
-    }
-  
-    input[type=text], input[type=password], input[type=email], input[type=textarea] {
+    } */
+   
+   
+    /* DESTINY
+   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL INPUT ELEMENTS THROUGHOUT APP */
+   
+    /* input[type=text], input[type=password], input[type=email], input[type=textarea] {
       width: 90%;
       height: 5px;
       padding: 15px;
@@ -30,15 +33,18 @@
       border: none;
       background: #b6c6d0e6;
     }
-   
-    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=textarea]:focus  {
+     input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=textarea]:focus  {
       background-color: #ffde59ae;
       outline: none;
     }
-     input:-webkit-autofill {
+   
+   
+    input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
-  } */
-   .loginbutton {
+   } */
+   
+   
+   .registerbutton {
       background-color: #41CDBC;
       border: none;
       border-radius: 20px;
@@ -51,22 +57,23 @@
       width: 90%;
       opacity: 0.9
     }
-     .loginbutton:hover {
+   
+   
+    .registerbutton:hover {
       opacity: 1;
     }
-
-    /* 
-    DESTINY: USE CLASSNAME OR PATH TO THIS ELEMENT WILL EFFECT ALL A TAGS IN APP */
-     /* a {
+   
+   
+    a {
       color: dodgerblue;
-    } */
-
-
-     .signin {
+    }
+   
+   
+    .signin {
       background-color: #b6c6d0e6;
       text-align: center;
       padding-bottom: 25px;
       padding-top: 20px;
       margin-bottom: 30px;
     }
- 
+   

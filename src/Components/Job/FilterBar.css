@@ -1,0 +1,109 @@
+.filter-bar {
+    grid-row: 2;
+    margin-top: 1vh;
+}
+
+.filter-bar-arrow {
+    align-self: center;
+    display: flex;
+    font-size: 13px;
+    width: 50%;
+    height: 2vh;
+    margin-left: 12px;
+}
+.filter-bar-arrow svg {
+    /* margin-top: 5px; */
+    margin-right: 5px;
+    position: relative;
+    bottom: 5px;
+}
+.filter-bar-arrow span {
+    /* color: #FFDE59 ; */
+    margin-top: 1%;
+    background-color: #deeff9;
+    border: #41CDBC 1px solid;
+    padding: 2px;
+    font-size: 14px;
+    height: 2vh;
+    border-radius: 20px;
+    font-weight: 300;
+    width: 30vw; 
+}
+
+.filter-bar-expanded {
+    width: 80vw;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* background-color: #0914AE #FFDE59 #41CDBC ; */
+    background-color: #41CDBC;
+    border: 2px solid #0914AE;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-rows: 2fr .1fr 1.5fr;
+    row-gap: 5px;
+    align-items: center;
+    padding: 5px;
+    /* margin-top: 10px; */
+    overflow: hidden;
+    visibility: hidden;
+    height: 0;
+    transition: all .4s ease-in-out;
+}
+/* slide */
+.filter-bar-expanded:target{
+    height: 14vh;
+}
+.slide-down {
+    height: 12vh;
+    visibility: visible;
+}
+
+.filter-bar-expanded hr {
+    grid-row: 2;
+    grid-column: span 2;
+    border: #0914AE 1px solid;
+    width: 85%;
+    justify-self: center;
+}
+
+.filter-bar-expanded svg {
+    /* color:rgb(220, 220, 220); */
+    color: #deeff9;
+}
+
+.filter-bar-expanded select {
+    grid-column: 1;
+    grid-row: 1;
+    width: 80%;
+    height: 95%;
+    margin-left: 10px;
+    border-radius: 20px;
+    border: 1.5px solid #0914AE;
+    font-size: 16px;
+    text-align: center;
+    background-color: #deeff9; 
+}
+
+.remote-checkbox {
+    accent-color: #0914AE;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-color: #deeff9;
+}
+.remote-label {
+    font-size: 18px;
+    height: fit-content;
+    align-self: center;
+}
+.remote-label span {
+    position: relative;
+    bottom: 3px;
+}
+
+.filter-bar-expanded .skills-component {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}

@@ -1,5 +1,9 @@
 .App {
-  height: 100%; /* changed from 85vh */
-  padding-top: 20px;
-  text-align: center;
+  /* DESTINY REDUCED APP PADDING, APP HEIGHT BACK TO 84/ 85 VH 100% PUSHES PAST THE FOOTER */
+  /* height: 100%; changed from 85vh  */
+  height: 84vh;
+  /* padding-top: 20px; */
+  /* padding-top: 5px; */
+  /* text-align: center; */
+  /* border: 1px solid red; */
 }

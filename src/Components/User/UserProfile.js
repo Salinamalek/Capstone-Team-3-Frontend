@@ -1,36 +1,12 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useContextProvider } from "../../Providers/Provider.js";
-import axios from "axios";
-import { VscAccount } from "react-icons/vsc";
+import { useNavigate, Link } from "react-router-dom";
+import { useUserProvider } from "../../Providers/UserProvider.js";
 import userIcon from "../../Assets/USER.png"
 import "./UserProfile.css";
 
 export default function UserProfile() {
-  const { userID } = useParams();
+
   const navigate = useNavigate();
-  const { API } = useContextProvider();
-  const [user, setUser] = useState({});
-  const [userJobs, setUserJobs] = useState([]);
-
-  let AUTH_TOKEN =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDI1OTU0NSwiZXhwIjoxNjg0MzQ1OTQ1fQ.VnCf2NsXkaz1IUNSHUeklyeAZGadEsyVtSEtni7TxkM";
-  axios.defaults.headers.common["authorization"] = `Bearer ${AUTH_TOKEN}`;
-
-  useEffect(() => {
-    axios
-      .get(`${API}/users/${userID}`)
-      .then((res) => setUser(res.data))
-      .catch((error) => {
-        console.log(error);
-        navigate("/not-found");
-      });
-    // do we just console log the error here?
-    axios
-      .get(`${API}/user-jobs/${userID}`)
-      .then((res) => setUserJobs(res.data))
-      .catch((error) => console.log(error));
-  }, [userID]);
+  const { userProfile, userJobs } = useUserProvider();
 
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
@@ -39,32 +15,31 @@ export default function UserProfile() {
 
   return (
     <div>
-    {user.id && <div className="profile">
+    {userProfile.id && <div className="profile">
       <div className="left-side-profile">
         <div className="profile-details">
           <p>Name</p>
-          <p className="bold">{user["first_name"] + " " + user["last_name"]}</p>
+          <p className="bold">{userProfile["first_name"] + " " + userProfile["last_name"]}</p>
           <br />
-          <p>School</p>
-          <p className="bold">{user.school}</p>
+          <p>Education</p>
+          <p className="bold">{userProfile.school}</p>
           <br />
           <p>Portfolio projects</p>
           <ul>
-            <li className="bold">{user["project_one"] || "add a link"}</li>
-            <li className="bold">{user["project_two"] || "add a link"}</li>
+            <li className="bold">{userProfile["project_one"] || "add a link"}</li>
+            <li className="bold">{userProfile["project_two"] || "add a link"}</li>
           </ul>
         </div>
       </div>
       <div className="right-side-profile">
-        {/* <VscAccount id="profile-icon" size={"100px"} /> */}
         <img id="user-icon" src={userIcon} alt="user icon" size="40px"/>
-        <button onClick={() => navigate(`/user/${userID}/edit`)} className="profile-button">
+        <button onClick={() => navigate(`/user/edit`)} className="profile-button">
           edit
         </button>
         <p className="skills">Skills and Technologies</p>
         {/* <ul>
-          {user.skills &&
-            user.skills.map((e, i) => (
+          {userProfile.skills &&
+            userProfile.skills.map((e, i) => (
               <li key={i} className="bold">
                 {e}
               </li>
@@ -74,12 +49,12 @@ export default function UserProfile() {
       <div id="bio">
         <p>About me</p>
         <br />
-        <p className="bold bio-box">{user.bio}</p>
+        <p className="bold bio-box">{userProfile.bio}</p>
       </div>
       <div className="activity">
         <p className="bold">My Applications</p>
         <div>
-          {userJobs.length &&
+          {userJobs.length > 0 &&
             userJobs.map(({ id, title, company, date_applied }) => (
               <p key={id}>
                 <br />
@@ -89,10 +64,9 @@ export default function UserProfile() {
               </p>
             ))}
             <br/>
-            <button id="activity-button">view all applications</button>
+            <button id="activity-button">{userJobs.length > 0? "view all applications" : "view jobs"}</button>
         </div>
       </div>
-      <button className="profile-button logout">Logout</button>
     </div>}
     </div>
   );

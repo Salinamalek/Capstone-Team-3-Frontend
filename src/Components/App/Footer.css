@@ -1,9 +1,4 @@
 footer {
-  /* background-color: #41cdbd9d; */
-  /* color: #FFDE59; */
-  /* color: #0914AE; */
-  /* color: #41cdbc ; */
-
   position: fixed;
   left: 0;
   bottom: 0;
@@ -13,5 +8,6 @@ footer {
   font-size: 15px;
   font-weight: 400;
   border-top: 2px solid #41cdbc;
-  /* background-color: #0914ae; */
+  background-color: #deeff9;
+  z-index: 10;
 }
