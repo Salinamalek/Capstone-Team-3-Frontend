@@ -26,7 +26,7 @@
     width: 100%;
     font-size: 16px;
     display: grid;
-    grid-template-columns: .5fr .5fr;
+    grid-template-columns: .6fr .4fr;
     justify-items: left;
     align-items: center;
 }
@@ -40,15 +40,17 @@
     font-weight: 600;
     grid-row: 1;
     grid-column: 1;
-    /* justify-self: left; */
 }
 
 .job-card-remote  {
+    text-indent: unset;
+    text-align: left;
     color: #0914AE ;
     border: 1px solid #0914AE;
     border-radius: 20px;
     font-size: 12px;
     height: fit-content;
+    width: 72%;
     padding: 3px;
 }
 

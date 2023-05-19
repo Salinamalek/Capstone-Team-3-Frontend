@@ -69,8 +69,8 @@ function FilterBar() {
                    onChange={() => setRemoteSearch(!remoteSearch)}/>
                </label>
                {/* skills search options */}
-              {/* <SkillsComponent
-              skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> */}
+              <SkillsComponent
+              skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/>
               <hr/>
              
            </section>
