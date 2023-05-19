@@ -15,6 +15,7 @@ function RouteComponent() {
     <Routes>
       <Route path="/">
         <Route index element={<Home />} />
+        {/* LOGIN ROUTES */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         {/* USER ROUTES */}
