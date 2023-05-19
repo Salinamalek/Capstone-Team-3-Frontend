@@ -76,7 +76,7 @@ nav a {
   width: 80%;
 }
 
-hr {
+.nav-line {
   width: 88%;
 }
 /* .slide-nav a:hover {
@@ -142,6 +142,7 @@ hr {
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin-bottom: 20px;
 }
 
 /* Hide default HTML checkbox */
