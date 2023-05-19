@@ -1,9 +1,12 @@
-import UserProfile from "../Components/User/UserProfile";
+import UserProfile from "../Components/User/UserProfile.js";
+import UserProvider from "../Providers/UserProvider.js";
 
 function User() {
-    return (
-        <UserProfile />
-    );
+  return (
+    <UserProvider>
+      <UserProfile />
+    </UserProvider>
+  );
 }
 
 export default User;

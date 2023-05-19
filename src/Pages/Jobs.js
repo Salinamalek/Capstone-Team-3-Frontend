@@ -1,9 +1,12 @@
-import JobsIndex from "../Components/Job/JobsIndex";
+import JobsIndex from "../Components/Job/JobsIndex.js";
+import JobProvider from "../Providers/JobProvider.js";
 
 function Jobs() {
-    return (
-        <JobsIndex />  
-    );
+  return (
+    <JobProvider>
+      <JobsIndex />
+    </JobProvider>
+  );
 }
 
 export default Jobs;
