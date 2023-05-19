@@ -21,18 +21,19 @@ function FilterBar() {
 
 
    return (
-       <div className="filter-bar">
+       <div 
+       className="filter-bar"
+       onClick={(event) => filterBarSlide(event)}>
            <span className="filter-bar-arrow">
                {
                    !filterOptions ?
                    <BsCaretDownFill
                    color = {"#41CDBC"}
                    size = {"25px"}
-                   onClick={(event) => filterBarSlide(event)} /> :
+                    /> :
                    <BsCaretUpFill
                    color = {"#0914AE"}
                    size = {"25px"}
-                   onClick={() => {setFilterOptions(!filterOptions)}}
                     />
 
 
@@ -68,8 +69,8 @@ function FilterBar() {
                    onChange={() => setRemoteSearch(!remoteSearch)}/>
                </label>
                {/* skills search options */}
-              {/* <SkillsComponent
-              skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> */}
+              <SkillsComponent
+              skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/>
               <hr/>
              
            </section>

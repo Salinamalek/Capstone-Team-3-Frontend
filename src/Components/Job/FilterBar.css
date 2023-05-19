@@ -1,5 +1,6 @@
 .filter-bar {
     grid-row: 2;
+    margin-top: 1vh;
 }
 
 .filter-bar-arrow {

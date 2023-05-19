@@ -1,8 +1,7 @@
 .search-component {
     display: grid;
-    grid-template-rows: .7fr .1fr .2fr;
-    /* max-height: 23vh; */
-    height: fit-content;
+    grid-template-rows: 5vh auto;
+    max-height: 23vh;
 }
 
 .search-component .search-bar-icon {
