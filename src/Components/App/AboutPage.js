@@ -18,7 +18,7 @@ function AboutPage(props) {
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/107226235?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
@@ -70,7 +70,7 @@ function AboutPage(props) {
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/107490157?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
@@ -100,7 +100,7 @@ function AboutPage(props) {
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/105737474?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum

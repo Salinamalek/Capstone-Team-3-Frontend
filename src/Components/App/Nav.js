@@ -56,11 +56,11 @@ export default function Nav() {
 
       <img src={logo} alt="logo" />
 
-      <Link to="/">
+      {/* <Link to="/">
         <VscAccount className="nav-sign" size={"30px"} />
         <br />
         Sign-in
-      </Link>
+      </Link> */}
 
       {/* sliding nav bar section */}
       <aside
