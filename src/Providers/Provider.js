@@ -13,7 +13,7 @@ const API = process.env.REACT_APP_API_URL
 function Provider({children}) {
     const [isSignedIn, setIsSignedIn] = useState(false);
     // for the time being we will assign a fixed userID when clicking login
-    const [userID, setUserID] = useState(3);
+    const [userID, setUserID] = useState(1);
     // authToken will be manually hardcoded for now
     const [authToken, setAuthToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDQyMjQwOSwiZXhwIjoxNjg0NTA4ODA5fQ.cN_YkDnVdplt7KYzmGo0mkf61of13uLauICHhpQnWWg")
     const [isDarkMode, setIsDarkMode] = useState(false);

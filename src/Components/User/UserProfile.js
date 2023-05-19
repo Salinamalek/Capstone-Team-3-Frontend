@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import userIcon from "../../Assets/USER.png"
 import "./UserProfile.css";
@@ -7,7 +6,7 @@ import "./UserProfile.css";
 export default function UserProfile() {
 
   const navigate = useNavigate();
-  const { userProfile, userJobs, userID } = useUserProvider();
+  const { userProfile, userJobs } = useUserProvider();
 
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
@@ -34,7 +33,7 @@ export default function UserProfile() {
       </div>
       <div className="right-side-profile">
         <img id="user-icon" src={userIcon} alt="user icon" size="40px"/>
-        <button onClick={() => navigate(`/user/${userID}/edit`)} className="profile-button">
+        <button onClick={() => navigate(`/user/edit`)} className="profile-button">
           edit
         </button>
         <p className="skills">Skills and Technologies</p>

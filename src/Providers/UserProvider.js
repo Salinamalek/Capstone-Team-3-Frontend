@@ -11,13 +11,17 @@ function UserProvider({ children }) {
   const navigate = useNavigate();
   const { userID, API, axios } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
+  const [editForm, setEditForm] = useState({});
   const [userJobs, setUserJobs] = useState([]);
 
   useEffect(() => {
     if (userID !== undefined) {
       axios
         .get(`${API}/users/${userID}`)
-        .then(({ data }) => setUserProfile(data))
+        .then(({ data }) => {
+          setUserProfile(data);
+          setEditForm(data);
+        })
         .catch((error) => {
           console.log(error);
           navigate("/not-found");
@@ -39,6 +43,8 @@ function UserProvider({ children }) {
         setUserProfile,
         userJobs,
         setUserJobs,
+        editForm,
+        setEditForm,
       }}
     >
       {children}
