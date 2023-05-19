@@ -15,7 +15,7 @@ function Provider({children}) {
     // for the time being we will assign a fixed userID when clicking login
     const [userID, setUserID] = useState(1);
     // authToken will be manually hardcoded for now
-    const [authToken, setAuthToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDQyMjQwOSwiZXhwIjoxNjg0NTA4ODA5fQ.cN_YkDnVdplt7KYzmGo0mkf61of13uLauICHhpQnWWg")
+    const [authToken, setAuthToken] = useState("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDUwOTMyMSwiZXhwIjoxNjg0NTk1NzIxfQ._9tJuQ0etJpFNHFvD7MVEDvcFU9mJl4TGReQj-Wt5p0")
     const [isDarkMode, setIsDarkMode] = useState(false);
 
     axios.defaults.headers.common["authorization"] = `Bearer ${authToken}`

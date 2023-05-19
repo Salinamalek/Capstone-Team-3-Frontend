@@ -51,10 +51,10 @@ export default function UserEdit(props) {
           <br />
           <p>Education</p>
           <input
-            id="school"
+            id="education"
             type="text"
             placeholder="enter school / program"
-            value={editForm.school}
+            value={editForm.education}
             onChange={handleChange}
             required
           />
