@@ -1,7 +1,7 @@
 .jobsIndex {
     display: grid;
     grid-template-rows: 4vh auto auto;
-    row-gap: 8px;
+    row-gap: 15px;
     justify-items: center;
     overflow-y: scroll;
     height: 82vh;
