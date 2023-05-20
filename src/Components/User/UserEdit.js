@@ -27,12 +27,13 @@ export default function UserEdit(props) {
 
   return (
     <form className="profile">
-      <div className="left-side-profile">
-        <div className="profile-details">
+      <div className="top-profile">
+        <div>
           <p>Name</p>
           <div>
             <input
               id="first_name"
+              className="input-profile input-name"
               type="text"
               placeholder="first name"
               value={editForm["first_name"]}
@@ -41,6 +42,7 @@ export default function UserEdit(props) {
             />{" "}
             <input
               id="last_name"
+              className="input-profile input-name"
               type="text"
               placeholder="last name"
               value={editForm["last_name"]}
@@ -49,56 +51,65 @@ export default function UserEdit(props) {
             />
           </div>
           <br />
+          <div>
           <p>Education</p>
           <input
             id="education"
+            className="input-profile input-education"
             type="text"
-            placeholder="enter school / program"
             value={editForm.education}
             onChange={handleChange}
             required
-          />
+          /></div>
           <br />
-          <p>Portfolio projects</p>
-          <ul>
-            <li className="bold">
-              <input
-                id="project_one"
-                type="url"
-                placeholder="https://example.com"
-                value={editForm["project_one"]}
-                onChange={handleChange}
-              />
-            </li>
-            <li className="bold">
-              <input
-                id="project_two"
-                type="url"
-                placeholder="https://example.com"
-                value={editForm["project_two"]}
-                onChange={handleChange}
-              />
-            </li>
-          </ul>
+          <p className="skills">Skills and Technologies</p>
+          <div />
+        </div>
+        <div className="icon-edit">
+          <img id="icon-user" src={userIcon} alt="user icon" />
+          <button onClick={() => navigate(`/user/`)} className="profile-button">
+            CANCEL
+          </button>
         </div>
       </div>
-      <div className="right-side-profile">
-        <img id="user-icon" src={userIcon} alt="user icon" size="40px" />
-        <button onClick={() => navigate(`/user/`)} className="profile-button">
-          cancel
-        </button>
-        <p className="skills">Skills and Technologies</p>
+      <br />
+      <div>
+      <p>Portfolio projects</p>
+      <div className="ul-projects">
+        <p className="bold">
+          <input
+            id="project_one"
+            className="input-profile"
+            type="url"
+            placeholder="https://example.com"
+            value={editForm["project_one"]}
+            onChange={handleChange}
+          />
+        </p>
+        <p className="bold">
+          <input
+            id="project_two"
+            className="input-profile"
+            type="url"
+            placeholder="https://example.com"
+            value={editForm["project_two"]}
+            onChange={handleChange}
+          />
+        </p>
       </div>
-      <div id="bio">
-        <p>About me</p>
+      </div>
+      <div>
         <br />
+        <p>About me</p>
         <textarea
           id="bio"
+          className="input-profile input-bio"
           placeholder="add a short bio"
           value={editForm.bio}
           onChange={handleChange}
         />
       </div>
+      <br />
       <input type="submit" value="SAVE" className="profile-button logout" />
     </form>
   );

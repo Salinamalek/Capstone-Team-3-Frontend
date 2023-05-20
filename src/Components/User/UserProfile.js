@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import userIcon from "../../Assets/USER.png";
 import pencil from "../../Assets/pencil.png"
@@ -10,7 +10,7 @@ export default function UserProfile() {
 
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
-    return `${newDate[1]}/${newDate[2]}/${newDate[0]}`;
+    return `${newDate[1]}/${newDate[2]}/${newDate[0].substring(2)}`;
   };
 
   return (
@@ -20,14 +20,14 @@ export default function UserProfile() {
           <div className="top-profile">
             <div>
               <p>Name</p>
-              <p className="bold">
+              <p className="bold label-spacing">
                 {userProfile["first_name"] + " " + userProfile["last_name"]}
               </p>
               <br />
               <p>Education</p>
-              <p className="bold">{userProfile.education}</p>
+              <p className="bold label-spacing">{userProfile.education}</p>
               <br/>
-              <p className="skills">Skills and Technologies</p>
+              <p>Skills and Technologies</p>
           <ul>
             {userProfile.skills &&
               userProfile.skills.map((e, i) => (
@@ -50,7 +50,7 @@ export default function UserProfile() {
           <br />
           <p>Portfolio Projects</p>
           <ul className="portfolio">
-            <li className="bold">
+            <li className="bold label-spacing">
               {userProfile["project_one"] ? (
                 <a href={userProfile["project_one"]} target="_blank">
                   LINK 1
@@ -70,10 +70,8 @@ export default function UserProfile() {
             </li>
           </ul>
           <br/>
-          <div id="bio">
             <p>About me</p>
-            <p className="bold bio-box">{userProfile.bio}</p>
-          </div>
+            <p className="bold label-spacing">{userProfile.bio}</p>
           <br/>
           <div className="applications">
             <p className="bold">My Applications</p>
@@ -82,14 +80,14 @@ export default function UserProfile() {
                 userJobs.map(({ id, title, company, date_applied }, i) => (
                   i < 2 ? <p key={id}>
                     <br />
-                    <strong>{title}</strong> - <em>{company}</em>
-                    <br />
-                    applied: {dateFormat(date_applied)}
+                    <strong>{title}</strong>
+                    <br/>
+                    <em>{company}</em> - {dateFormat(date_applied)}
                   </p> : null
                 ))}
               <br />
               <button id="activity-button">
-                {userJobs.length > 0 ? "VIEW ALL" : "view jobs"}
+                {userJobs.length > 0 ? "VIEW ALL" : "FIND JOBS"}
               </button>
             </div>
           </div>

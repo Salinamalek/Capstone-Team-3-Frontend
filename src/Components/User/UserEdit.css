@@ -1,28 +1,21 @@
-/* 
-    DESTINY: 
-    THESE AREN'T DRASTICALLY AFFECTING THE OTHER TAGS ACROSS THE APP BUT JUST USING A CLASS NAME OR THE PATH TO THE ELEMENT WOULD BE BETTER
-*/
-
-/* input {
-    width: 140px;
-    padding-left: 6px;
-}
-
-textarea, input {
-    border-style: none;
-    border-radius: 10px;
+.input-profile {
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 3px;
     font-weight: 600;
-    font-size: 16px;
+    height: 26px;
 }
 
-textarea {
-    width: 80%;
-    height: 80px;
-} */
+.input-name, .input-education {
+    width: 160px;
+   
+}
 
+.ul-projects input, .input-bio {
+    width: 100%;
+}
 
-#user-icon {
-    height: 110px;
-    padding-top: 20px;
-    padding-right: 30px;
+.input-bio {
+    height: 90px;
 }
