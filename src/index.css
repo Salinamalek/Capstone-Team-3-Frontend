@@ -21,12 +21,12 @@ BLUE: #0914AE
 
 /* nav, footer, app -> background */
 .light {
-  background-color: #deeff9d0;
+  background-color: #deeff9;
   color: #000000;
 }
 .dark {
   background-color: #050525;
-  color: #ffffffd0;
+  color: #ffffff;
 }
 
 /* links */
