@@ -1,16 +1,34 @@
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import userIcon from "../../Assets/USER.png";
-import pencil from "../../Assets/pencil.png"
+import pencil from "../../Assets/pencil.png";
 import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
   const { userProfile, userJobs } = useUserProvider();
+  const [limit, setLimit] = useState(true);
 
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
     return `${newDate[1]}/${newDate[2]}/${newDate[0].substring(2)}`;
+  };
+
+  const mapJobs = (jobs) => {
+    const val = limit ? 2 : jobs.length;
+    return jobs.map(({ id, title, company, date_applied }, i) =>
+      i < val ? (
+        <p key={id}>
+          <br />
+          <strong>
+            <Link to={`/jobs/${id}`}>{title}</Link>
+          </strong>
+          <br />
+          <em>{company}</em> - {dateFormat(date_applied)}
+        </p>
+      ) : null
+    );
   };
 
   return (
@@ -26,16 +44,16 @@ export default function UserProfile() {
               <br />
               <p>Education</p>
               <p className="bold label-spacing">{userProfile.education}</p>
-              <br/>
+              <br />
               <p>Skills and Technologies</p>
-          <ul>
-            {userProfile.skills &&
-              userProfile.skills.map((e, i) => (
-                <li key={i} className="bold">
-                  {e}
-                </li>
-              ))}
-          </ul>
+              <ul>
+                {userProfile.skills &&
+                  userProfile.skills.map((e, i) => (
+                    <li key={i} className="bold">
+                      {e}
+                    </li>
+                  ))}
+              </ul>
             </div>
             <div className="icon-edit">
               <img id="icon-user" src={userIcon} alt="user icon" />
@@ -69,25 +87,17 @@ export default function UserProfile() {
               )}
             </li>
           </ul>
-          <br/>
-            <p>About me</p>
-            <p className="bold label-spacing">{userProfile.bio}</p>
-          <br/>
+          <br />
+          <p>About me</p>
+          <p className="bio-section bold label-spacing">{userProfile.bio}</p>
+          <br />
           <div className="applications">
             <p className="bold">My Applications</p>
             <div>
-              {userJobs.length > 0 &&
-                userJobs.map(({ id, title, company, date_applied }, i) => (
-                  i < 2 ? <p key={id}>
-                    <br />
-                    <strong><Link to={`/jobs/${id}`}>{title}</Link></strong>
-                    <br/>
-                    <em>{company}</em> - {dateFormat(date_applied)}
-                  </p> : null
-                ))}
+              {userJobs.length > 0 && mapJobs(userJobs)}
               <br />
-              <button id="activity-button">
-                {userJobs.length > 0 ? "VIEW ALL" : "FIND JOBS"}
+              <button id="activity-button" onClick={() => setLimit(!limit)}>
+                {userJobs.length > 0 ? limit ? "VIEW ALL" : "HIDE" : "FIND JOBS"}
               </button>
             </div>
           </div>
