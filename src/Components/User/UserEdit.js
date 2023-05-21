@@ -33,7 +33,7 @@ export default function UserEdit(props) {
               className="input-profile input-name"
               type="text"
               placeholder="first name"
-              value={editForm["first_name"]}
+              value={editForm["first_name"] || ""}
               onChange={handleChange}
               required
             />{" "}
@@ -42,7 +42,7 @@ export default function UserEdit(props) {
               className="input-profile input-name"
               type="text"
               placeholder="last name"
-              value={editForm["last_name"]}
+              value={editForm["last_name"] || ""}
               onChange={handleChange}
               required
             />
@@ -54,7 +54,7 @@ export default function UserEdit(props) {
               id="education"
               className="input-profile input-education"
               type="text"
-              value={editForm.education}
+              value={editForm.education || ""}
               onChange={handleChange}
               required
             />
@@ -80,7 +80,7 @@ export default function UserEdit(props) {
               className="input-profile"
               type="url"
               placeholder="https://example.com"
-              value={editForm["project_one"]}
+              value={editForm["project_one"] || ""}
               onChange={handleChange}
             />
           </p>
@@ -90,7 +90,7 @@ export default function UserEdit(props) {
               className="input-profile"
               type="url"
               placeholder="https://example.com"
-              value={editForm["project_two"]}
+              value={editForm["project_two"] || ""}
               onChange={handleChange}
             />
           </p>
@@ -103,7 +103,7 @@ export default function UserEdit(props) {
           id="bio"
           className="input-profile input-bio"
           placeholder="add a short bio"
-          value={editForm.bio}
+          value={editForm.bio || ""}
           onChange={handleChange}
         />
       </div>

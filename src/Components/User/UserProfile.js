@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import userIcon from "../../Assets/USER.png";
 import pencil from "../../Assets/pencil.png"
@@ -80,7 +80,7 @@ export default function UserProfile() {
                 userJobs.map(({ id, title, company, date_applied }, i) => (
                   i < 2 ? <p key={id}>
                     <br />
-                    <strong>{title}</strong>
+                    <strong><Link to={`/jobs/${id}`}>{title}</Link></strong>
                     <br/>
                     <em>{company}</em> - {dateFormat(date_applied)}
                   </p> : null

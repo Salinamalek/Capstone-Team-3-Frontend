@@ -51,6 +51,10 @@
     font-size: 18px;
 }
 
+.applications a {
+    color: #0914AE
+}
+
 
 #activity-button {
     border-style: none;
