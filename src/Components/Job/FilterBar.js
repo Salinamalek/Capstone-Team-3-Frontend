@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { useJobProvider } from "../../Providers/JobProvider.js";
 import SkillsComponent from "./SkillsComponent";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
@@ -46,7 +47,7 @@ function FilterBar() {
                    size = {"25px"}
                     />
                }
-                <span className={filterOptions && "filter-span"}>Filter Options</span>
+                <span className={filterOptions ? "filter-span" : ""}>Filter Options</span>
            </span>
           
            {/* expanded filter bar */}
@@ -77,12 +78,13 @@ function FilterBar() {
                <div className="filter-bar-skills">
               <MdChangeCircle 
               size={"23px"}
-              color={"white"} 
+              color={"#FFDE59"} 
               className="filter-bar-toggle"
               onClick={() => setSkillView(!skillView)}/>
                {
                 !skillView ? 
                 <SkillsComponent
+                key={uuidv4()}
                 skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
                 <SkillsComponent 
                 skillsArr={skillNames}
