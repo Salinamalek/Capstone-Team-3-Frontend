@@ -21,10 +21,10 @@ function FilterBar() {
 
 
    return (
-       <div 
-       className="filter-bar"
-       onClick={(event) => filterBarSlide(event)}>
-           <span className="filter-bar-arrow">
+       <div className="filter-bar">
+           <span 
+           className="filter-bar-arrow"  
+           onClick={(event) => filterBarSlide(event)}>
                {
                    !filterOptions ?
                    <BsCaretDownFill
@@ -38,11 +38,7 @@ function FilterBar() {
 
 
                }
-              
-               {
-                   !filterOptions &&
-                   <span>Search Options</span>
-               }
+            <span className={filterOptions && "filter-span"}>Filter Options</span>
            </span>
           
            {/* expanded filter bar */}
