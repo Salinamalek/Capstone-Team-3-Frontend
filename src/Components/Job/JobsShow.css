@@ -177,3 +177,35 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+.job-show-applied {
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-template-rows: 1fr .5fr;
+    height: 75%;
+    width: 50%;
+    padding: 1%;
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+
+    border: #0914AE 1px solid;
+    color: #0914AE;
+}
+.job-show-applied svg {
+    grid-column: 1;
+    grid-row: 1/3;
+    justify-self: left;
+}
+.job-show-applied span:first-of-type {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 16px;
+    font-weight: 500;
+    
+}
+.job-show-applied span:nth-of-type(2){
+    grid-column: 2;
+    grid-row: 2;
+    font-style: italic;
+}

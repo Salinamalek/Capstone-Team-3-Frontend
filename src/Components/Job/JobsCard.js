@@ -14,7 +14,8 @@ function JobsCard({ jobObj }) {
   return (
     <Link to={`/jobs/${job_id}`}>
       <div className="job-card">
-        <span className="job-card-title">{title}</span>
+        <span 
+        className="job-card-title">{title}</span>
         <section className="job-card-company">
           <span>{company}</span>
           {full_remote && <span className="job-card-remote">REMOTE</span>}

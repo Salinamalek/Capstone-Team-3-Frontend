@@ -6,6 +6,7 @@ import SkillsComponent from "./SkillsComponent";
 import { TfiAngleLeft } from "react-icons/tfi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GoLocation } from "react-icons/go";
+import { BsClipboardCheck } from "react-icons/bs"
 import "./JobsShow.css";
 
 function JobsShow() {
@@ -20,7 +21,25 @@ function JobsShow() {
 //   hardcoded userId for testing
 const [userID, setUserID] = useState(2)
 
+// function for date_applied 
+function convertDate(str){
+    const strArr= str.split("T")[0].split("-")
+    const arranged = [strArr[1], strArr[2], strArr[0]].join("/")
+    return arranged
+}
+
   useEffect(() => {
+     //   check if user-jobs table already has pairing
+     axios.get(`${API}/user-jobs/${userID}`)
+     .then(({data}) => {
+        const match = data.find(({id}) => id === +jobID) 
+        setApplied(match)
+        // if(match !== undefined){
+        //  setApplied(true)
+        // }
+     })
+     .catch(err => console.log(data))
+
     axios
       .get(`${API}/jobs/${jobID}`)
       .then(({ data }) => {
@@ -29,16 +48,8 @@ const [userID, setUserID] = useState(2)
         setSkillIdArr(extractSkills);
       })
       .catch((err) => console.log(err));
-    //   check if user-jobs table already has pairing
-    axios.get(`${API}/user-jobs/${userID}`)
-    .then(({data}) => {
-       const match = data.find(({id}) => id === jobID) 
-       if(match){
-        setApplied(true)
-       }
-    })
-    .catch(err => console.log(data))
-  }, [reload]);
+   
+  }, [reload, jobID]);
 
 //   apply button onclicks /user-jobs => {user_id, job_id}
 function applyToJob(){
@@ -57,7 +68,8 @@ function applyToJob(){
         <TfiAngleLeft
           className="job-show-back"
           size={"25px"}
-          onClick={() => navigate("/jobs")}
+          onClick={() => navigate(-1)}
+        
         />
         <h1>{jobDetails.title}</h1>
         <div className="job-show-header-details">
@@ -79,7 +91,9 @@ function applyToJob(){
         )}
         <button
         onClick={() => applyToJob()} 
-        className="job-show-header-apply">APPLY</button>
+        className="job-show-header-apply">
+            {!applied ? "APPLY" : "APPLIED"}
+        </button>
       </section>
 
       <SkillsComponent skillsArr={skillIdArr} justList={true} />
@@ -108,10 +122,16 @@ function applyToJob(){
       </section>
 
     {
-        applied && 
+        !applied ?
         <button
         onClick={() => applyToJob()}  
-        className="job-show-apply">Apply</button>
+        className="job-show-apply">Apply
+        </button> :
+        <div className="job-show-applied">
+            <BsClipboardCheck color={"#0914AE"} size={"47px"}/>
+            <span>APPLIED ON</span>
+            <span>{convertDate(applied["date_applied"])}</span>
+        </div>
     }
       
     </div>

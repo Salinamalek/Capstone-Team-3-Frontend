@@ -8,15 +8,14 @@ import "./JobsIndex.css"
 
 function JobsIndex() {
    const { API, axios, jobs } = useJobProvider()
+
    // jobs provider needed for searchbar/ filter bar to have cascade access for all jobs axios call
 
    return (
        <div className="jobsIndex">
-           <h2>Jobs Waiting For You</h2>
+           <h2
+           >Jobs Waiting For You</h2>
            <SearchBar />
-
-
-
            {
                jobs.map(obj =>
                <JobsCard
