@@ -14,6 +14,11 @@ function JobsShow() {
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
+  const [reload, setReload] = useState(false)
+  const [applied, setApplied] = useState(false)
+
+//   hardcoded userId for testing
+const [userID, setUserID] = useState(2)
 
   useEffect(() => {
     axios
@@ -24,7 +29,27 @@ function JobsShow() {
         setSkillIdArr(extractSkills);
       })
       .catch((err) => console.log(err));
-  }, []);
+    //   check if user-jobs table already has pairing
+    axios.get(`${API}/user-jobs/${userID}`)
+    .then(({data}) => {
+       const match = data.find(({id}) => id === jobID) 
+       if(match){
+        setApplied(true)
+       }
+    })
+    .catch(err => console.log(data))
+  }, [reload]);
+
+//   apply button onclicks /user-jobs => {user_id, job_id}
+function applyToJob(){
+    const obj = {
+        user_id: userID,
+        job_id: jobID
+    }
+    axios.post(`${API}/user-jobs`, obj)
+    .then(() => setReload(!reload))
+    .catch(err => console.log(err))
+}
 
   return (
     <div className="job-show">
@@ -52,7 +77,9 @@ function JobsShow() {
             <span>REMOTE</span>
           </span>
         )}
-        <button className="job-show-header-apply">APPLY</button>
+        <button
+        onClick={() => applyToJob()} 
+        className="job-show-header-apply">APPLY</button>
       </section>
 
       <SkillsComponent skillsArr={skillIdArr} justList={true} />
@@ -80,7 +107,13 @@ function JobsShow() {
         </div>
       </section>
 
-      <button className="job-show-apply">Apply</button>
+    {
+        applied && 
+        <button
+        onClick={() => applyToJob()}  
+        className="job-show-apply">Apply</button>
+    }
+      
     </div>
   );
 }
