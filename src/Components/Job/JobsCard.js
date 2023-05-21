@@ -8,8 +8,11 @@ import "./JobsCard.css"
 
 
 function JobsCard({jobObj}) {
-   const { title, company, skill_name, full_remote, city, job_id} = jobObj
+   const { title, company, skill_name, skill_id, full_remote, city, job_id} = jobObj
 
+    const combineSkills = skill_id.map((el, i) => {
+        return { [el] : skill_name[i]}
+    })
 
    return (
        <Link to ={`/jobs/${job_id}`}>
@@ -31,7 +34,7 @@ function JobsCard({jobObj}) {
            <span className='job-card-divider'></span>
            <section className="job-card-skills">   
            <SkillsComponent 
-           skillsArr={[3,12,2,9]}
+           skillsArr={combineSkills}
            justList={true} />            
                    {/* {
                        skill_name.map(el => {

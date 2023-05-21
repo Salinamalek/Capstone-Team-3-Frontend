@@ -37,10 +37,11 @@ function JobsShow() {
        <div className="job-show">
            <section className="job-show-header">
                <TfiAngleLeft
+               className="job-show-back"
                size={"25px"}
                onClick={() => navigate("/jobs")} />
                {/* <MdWorkOutline className= "job-show-header-icon" color={"#FFDE59"} /> */}
-               <h1><span>{jobDetails.title}</span></h1>
+               <h1>{jobDetails.title}</h1>
                <div className="job-show-header-details">
                <span className="job-show-company">
                 <HiOutlineBuildingOffice2 size={"20px"} color={"#FFDE59"}/>

@@ -27,13 +27,13 @@ function SkillsComponent({skillsArr, justList}) {
         2: <SiNodedotjs color={"#3c873a"} />,
         3: [<SiReact color={"#61DBFB"} style={{backgroundColor: "black"}} />],
         4: [<SiPython color={"#306998"} style={{backgroundColor: "#FFE873"}} />],
-        5: [<FaJava color={"#f89820"} style={{backgroundColor: "#5382a1"}}/>],
-        6: [<SiCplusplus color={"#044F88"} style={{backgroundColor: "#5E97D0"}}/>],
+        5: [<FaJava color={"white"} style={{backgroundColor: "#5382a1"}}/>],
+        6: [<SiCplusplus color={"#044F88"} />],
         7: [<SiRuby color={"#CC0000"}  />],
         8: [<SiMysql color={"#00758F"} style={{backgroundColor: "#F29111"}} />],
         9: [<SiSwift color={"#F05138"} />],
         10: [<SiGo color={"#29BEB0"} />],
-        11: [<SiTypescript color={"#61DBFB"} style={{backgroundColor: "black"}} />],
+        11: [<SiTypescript color={"#007acc"} style={{backgroundColor: "white"}} />],
         12: [<SiPhp color={"#787CB5"} style={{backgroundColor: "black"}}/>]
     }
 )
@@ -52,7 +52,7 @@ java #f89820 + #5382a1
 rust #281C1C + #CE422B
    } */
 
-
+// console.log(skillsArr)
   
    function skillClick(val){
        // console.log(val)
@@ -69,7 +69,7 @@ rust #281C1C + #CE422B
            <div className="skills-component">
            {
                skillsArr.map(skill =>
-                   skillsWithColor[skill]
+                   skillsWithColor[+Object.keys(skill)]
               )
            }
        </div>
