@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import SkillsComponent from "./SkillsComponent";
 import { TfiAngleLeft } from "react-icons/tfi"
 import { MdWorkOutline } from "react-icons/md"
+import { HiOutlineBuildingOffice2 } from "react-icons/hi2"
+import { GoLocation} from "react-icons/go"
 import "./JobsShow.css"
 
 
@@ -37,20 +39,30 @@ function JobsShow() {
                <TfiAngleLeft
                size={"25px"}
                onClick={() => navigate("/jobs")} />
-               <MdWorkOutline className= "job-show-header-icon" color={"#FFDE59"} />
-               <h1>{jobDetails.title}</h1>
-               <span className="job-show-company">{jobDetails.company}</span>
+               {/* <MdWorkOutline className= "job-show-header-icon" color={"#FFDE59"} /> */}
+               <h1><span>{jobDetails.title}</span></h1>
+               <div className="job-show-header-details">
+               <span className="job-show-company">
+                <HiOutlineBuildingOffice2 size={"20px"} color={"#FFDE59"}/>
+                <span>{jobDetails.company}</span>
+                </span>
+               <span className="job-show-location">
+                <GoLocation size={"20px"} color={"#FFDE59"} />
+                <span>{jobDetails.city}</span>
+                </span>
+               </div>
+              
                <hr/>
-               <span className="job-show-location">{jobDetails.city}</span>
                {
                   jobDetails.full_remote &&
-                  <span className="job-show-remote">REMOTE</span>
+                  <span className="job-show-remote"><span>REMOTE</span></span>
                }
+               <button className="job-show-header-apply">APPLY</button>
            </section>
           
-           {/* <SkillsComponent
+           <SkillsComponent
            skillsArr={skillIdArr}
-           justList={true}/> */}
+           justList={true}/>
         
            <section className="job-show-details">
                <div className="job-show-description">
@@ -59,7 +71,7 @@ function JobsShow() {
                </div>
               
                <div className="job-show-description">
-                   {/* <span className="job-show-label">Tasks:</span>
+                   <span className="job-show-label">Tasks:</span>
                    <span className="job-show-role-list">
                        {
                        jobDetails.tasks &&
@@ -71,7 +83,7 @@ function JobsShow() {
                            }
                        })
                        }
-                   </span> */}
+                   </span>
                </div>
              
            </section>
