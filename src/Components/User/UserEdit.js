@@ -5,7 +5,8 @@ import "./UserEdit.css";
 
 export default function UserEdit(props) {
   const navigate = useNavigate();
-  const { API, axios, userID, editForm, setEditForm } = useUserProvider();
+  const { API, axios, userID, userProfile, editForm, setEditForm } =
+    useUserProvider();
 
   const handleChange = (event) => {
     setEditForm({ ...editForm, [event.target.id]: event.target.value });
@@ -13,13 +14,29 @@ export default function UserEdit(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .put(`${API}/users/${userID}`, {
-        profile: editForm,
-        skills: editForm.skills,
-      })
-      .then(() => navigate("/user"))
-      .catch((error) => console.log(error));
+
+    let edited = false;
+    const fields = Object.keys(editForm);
+
+    for (let i = 0; i < fields.length; i++) {
+      if (editForm[fields[i]] !== userProfile[fields[i]]) {
+        edited = true;
+        break;
+      }
+    }
+
+    edited
+      ? axios
+          .put(`${API}/users/${userID}`, {
+            profile: editForm,
+            skills: editForm.skills,
+          })
+          .then(() => {
+            navigate("/user");
+            console.log(edited);
+          })
+          .catch((error) => console.log(error))
+      : navigate("/user");
   };
 
   return (
