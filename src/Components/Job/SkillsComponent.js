@@ -4,7 +4,7 @@ import { FaJava } from "react-icons/fa"
 import "./SkillsComponent.css"
 
 
-function SkillsComponent({skillsArr, justList}) {
+function SkillsComponent({skillsArr, justList, checkbox}) {
    const [skillsObj, setSkillsObj] = useState(
        {
            1 : [<SiJavascript />, false],
@@ -74,6 +74,28 @@ rust #281C1C + #CE422B
            }
        </div>
        )
+   }
+   if(checkbox){
+    return (
+        <div className="skills-checkboxes">
+            {
+                skillsArr.map(obj => 
+                    <>
+                    <label htmlFor={obj.id}>
+                    <input
+                    type="checkbox"
+                    id = {obj.id}
+                    value = {obj.id}
+                    onChange={() => {}}
+                    />
+                    {obj["skill_name"]}
+                    </label>
+                   
+                    </>
+                    )
+            }
+        </div>
+    )
    }
    else {
        return (

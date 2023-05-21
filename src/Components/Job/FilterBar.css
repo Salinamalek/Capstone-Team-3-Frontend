@@ -12,14 +12,11 @@
     margin-left: 12px;
 }
 .filter-bar-arrow svg {
-    /* margin-top: 5px; */
     margin-right: 5px;
     position: relative;
     bottom: 5px;
 }
 .filter-bar-arrow span {
-    /* color: #FFDE59 ; */
-    /* margin-top: 1%; */
     background-color: #deeff9;
     border: #41CDBC 1px solid;
     padding: 2px;
@@ -37,9 +34,6 @@
 
 .filter-bar-expanded {
     width: 84vw;
-    /* margin-left: auto;
-    margin-right: auto; */
-    /* background-color: #0914AE #FFDE59 #41CDBC ; */
     background-color: #41CDBC;
     border: 2px solid #0914AE;
     border-radius: 20px;
@@ -49,7 +43,6 @@
     row-gap: 8px;
     align-items: center;
     padding: 5px;
-    /* margin-top: 10px; */
     overflow: hidden;
     visibility: hidden;
     height: 0;
@@ -65,18 +58,15 @@
     margin-top: 3px;
 }
 
-
-
 .filter-bar-expanded hr {
     grid-row: 2;
     grid-column: span 2;
     border: #0914AE 1px solid;
-    width: 85%;
+    width: 80%;
     justify-self: center;
 }
 
 .filter-bar-expanded svg {
-    /* color:rgb(220, 220, 220); */
     color: #deeff9;
 }
 
@@ -110,10 +100,40 @@
     bottom: 3px;
 }
 
-.filter-bar-expanded .skills-component {
+.filter-bar-toggle {
+    position: relative;
+    bottom: 2.5vh;
+    left: 78vw;
+    
+}
+.filter-bar-skills {
+    /* border: 2px solid red; */
+    grid-column: span 2;
+    height: 8vh;
+}
+.filter-bar-skills .skills-component {
     grid-column: span 2;
     display: grid;
     grid-template-columns: repeat(6,1fr);
     justify-items: center;
-    height: 7vh;
+    height: 100%;
+    position: relative;
+    bottom: 2.8vh;
+}
+
+.filter-bar-skills .skills-checkboxes {
+    grid-column: span 2;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    position: relative;
+    bottom: 4vh;
+    left: 2vw;
+}
+.filter-bar-skills .skills-checkboxes label {
+    margin-left: 2vw;
+}
+.filter-bar-skills .skills-checkboxes label input {
+    margin-right: 1.2vw;
 }

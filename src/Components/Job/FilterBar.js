@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useJobProvider } from "../../Providers/JobProvider.js";
 import SkillsComponent from "./SkillsComponent";
-import { BsChevronDown, BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
+import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
+import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
 
-
 function FilterBar() {
+    const { API, axios } = useJobProvider()
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
+   const [skillNames, setSkillNames] = useState([])
+   const [skillView, setSkillView] = useState(false)
 
-
+    //will need get all skills call to map for names for checkbox toggle -> skills provider or add to jobsProvider
    function filterBarSlide(e) {
        setFilterOptions(!filterOptions)
    }
@@ -19,6 +23,12 @@ function FilterBar() {
        // will have access to job Provider to get and filter through all jobs
    }
 
+   useEffect(() => {
+    axios.get(`${API}/skills`)
+    .then (({data}) => setSkillNames(data))
+    .catch(err => console.log(err))
+   }, [])
+//    [{id: 1, skill_name: "JavaScript"}]
 
    return (
        <div className="filter-bar">
@@ -35,10 +45,8 @@ function FilterBar() {
                    color = {"#0914AE"}
                    size = {"25px"}
                     />
-
-
                }
-            <span className={filterOptions && "filter-span"}>Filter Options</span>
+                <span className={filterOptions && "filter-span"}>Filter Options</span>
            </span>
           
            {/* expanded filter bar */}
@@ -65,8 +73,24 @@ function FilterBar() {
                    onChange={() => setRemoteSearch(!remoteSearch)}/>
                </label>
                {/* skills search options */}
-              <SkillsComponent
-              skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/>
+               {/* need to toggle checkboxes and icons? */}
+               <div className="filter-bar-skills">
+              <MdChangeCircle 
+              size={"23px"}
+              color={"white"} 
+              className="filter-bar-toggle"
+              onClick={() => setSkillView(!skillView)}/>
+               {
+                !skillView ? 
+                <SkillsComponent
+                skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
+                <SkillsComponent 
+                skillsArr={skillNames}
+                checkbox={true}/>
+               }
+               </div>
+
+              
               <hr/>
              
            </section>
