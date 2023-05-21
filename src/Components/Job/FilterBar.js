@@ -47,7 +47,7 @@ function FilterBar() {
                    size = {"25px"}
                     />
                }
-                <span className={filterOptions ? "filter-span" : ""}>Filter Options</span>
+                <span className={filterOptions ? "filter-span" : ""}>{filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}</span>
            </span>
           
            {/* expanded filter bar */}
@@ -77,8 +77,8 @@ function FilterBar() {
                {/* need to toggle checkboxes and icons? */}
                <div className="filter-bar-skills">
               <MdChangeCircle 
-              size={"23px"}
-              color={"#FFDE59"} 
+              size={"25px"}
+              color={"white"} 
               className="filter-bar-toggle"
               onClick={() => setSkillView(!skillView)}/>
                {

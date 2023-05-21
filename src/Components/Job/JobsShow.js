@@ -24,7 +24,7 @@ const [userID, setUserID] = useState(2)
 // function for date_applied 
 function convertDate(str){
     const strArr= str.split("T")[0].split("-")
-    const arranged = [strArr[1], strArr[2], strArr[0]].join("/")
+    const arranged = [strArr[1], strArr[2], strArr[0].slice(2,4)].join("/")
     return arranged
 }
 
@@ -128,9 +128,9 @@ function applyToJob(){
         className="job-show-apply">Apply
         </button> :
         <div className="job-show-applied">
-            <BsClipboardCheck color={"#0914AE"} size={"47px"}/>
-            <span>APPLIED ON</span>
-            <span>{convertDate(applied["date_applied"])}</span>
+            <BsClipboardCheck color={"black"} size={"47px"}/>
+            <span>APPLIED ON {convertDate(applied["date_applied"])}</span>
+            <span></span>
         </div>
     }
       

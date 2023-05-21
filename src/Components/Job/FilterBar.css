@@ -7,7 +7,7 @@
     align-self: center;
     display: flex;
     font-size: 13px;
-    width: 50%;
+    width: 100%;
     height: 2vh;
     margin-left: 12px;
 }
@@ -19,13 +19,15 @@
 .filter-bar-arrow span {
     background-color: #deeff9;
     border: #41CDBC 1px solid;
-    padding: 2px;
+    /* padding: 2px; */
     font-size: 14px;
     height: 2vh;
     border-radius: 20px;
     font-weight: 300;
-    width: 30vw; 
+    width: fit-content; 
     text-align: center;
+    padding: 2px 8px;
+   
 }
 .filter-span {
     position: relative;

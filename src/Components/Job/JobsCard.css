@@ -41,6 +41,7 @@
     grid-row: 1;
     grid-column: 1;
     margin-left: 0px;
+    color: #0914AE;
 }
 
 .job-card-company, .job-card-title, .job-card-city {
@@ -50,10 +51,8 @@
 .job-card-remote  {
     text-indent: unset;
     padding-left:unset;
-    background-color: rgb(211, 211, 211);
-    /* border: 1px solid #0914AE; */
-    border: 1px solid black;
     font-size: 13px;
+    font-weight: 600;
     height: fit-content;
     width: fit-content;
     padding: 3px;
