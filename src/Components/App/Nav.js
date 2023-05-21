@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useContextProvider } from "../../Providers/Provider";
+
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
@@ -19,7 +21,19 @@ import "./Nav.css";
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  // const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   document.body.className = theme;
+  // }, [theme]);
+  const { theme, setTheme } = useContextProvider();
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -27,10 +41,6 @@ export default function Nav() {
       setTheme("light");
     }
   };
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
 
   function navbarClick() {
     setOpenNav(!openNav);
