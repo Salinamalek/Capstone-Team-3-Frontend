@@ -1,71 +1,71 @@
 .profile {
-    margin: 20px 30px;
-    font-size: 18px;
-    /* border: 3px solid red; */
-    height: 84vh;
+  margin: 20px 30px;
+  font-size: 18px;
+  /* border: 3px solid red; */
+  height: 84vh;
 }
 
 .top-profile {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .icon-edit {
-    display: grid;
-    height: 180px;
+  display: grid;
+  height: 180px;
 }
 
 .icon-edit img {
-    justify-self: right;
-    height: 130px;
+  justify-self: right;
+  height: 130px;
 }
 
 .profile-button {
-    border: none;
-    /* fix color of background of app */
-    background-color: #deeff9d0;
-    font-size: 22px;
-    justify-self: right;
-    color: #0914AE;
+  border: none;
+  /* fix color of background of app */
+  background-color: #deeff9;
+  font-size: 22px;
+  justify-self: right;
+  color: #0914ae;
 }
 
 .profile-button img {
-    height: 20px;
+  height: 20px;
 }
 
 .bold {
-    font-weight: 600;
+  font-weight: 600;
 }
 
-.portfolio li a{
-    color: #0914AE;
+.portfolio li a {
+  color: #0914ae;
 }
 
-.label-spacing{
-    padding: 3px 0;
+.label-spacing {
+  padding: 3px 0;
 }
 
 .bio-section {
-    padding-bottom: 20px;
-    border-bottom: 2px solid #0914AE;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #0914ae;
 }
 
 .applications {
-    text-align: left;
-    border-style: none;
-    font-size: 18px;
-    padding-bottom: 10px;
-    height: 32vh;
-    overflow-y: scroll;
+  text-align: left;
+  border-style: none;
+  font-size: 18px;
+  padding-bottom: 10px;
+  height: 32vh;
+  overflow-y: scroll;
 }
 
 .applications a {
-    color: #0914AE
+  color: #0914ae;
 }
 
-
 #activity-button {
-    border-style: none;
-    color: #0914AE;
-    font-size: 22px;
+  border-style: none;
+  color: #0914ae;
+  font-size: 22px;
+  background-color: #deeff9;
 }
