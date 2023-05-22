@@ -1,24 +1,43 @@
 import { useState } from "react";
-// import Modal from "../Modal";
 import "../App/AboutPage.css";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
-// import { MdAlternateEmail } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
 import { AiFillLinkedin } from "react-icons/ai";
 
 function AboutPage(props) {
-  // const [openModal, setOpenModal] = useState(false);
   return (
     <div className="dev-section">
       <div className="dev-cards">
         <h1>Meet the Team!</h1>
+        <div className="dev-icons">
+          <img
+            className="devicon"
+            src="https://avatars.githubusercontent.com/u/107226235?v=4"
+          ></img>
+          <img
+            className="devicon"
+            src="https://avatars.githubusercontent.com/u/107490157?v=4"
+          ></img>
+          <img
+            className="devicon"
+            src="https://avatars.githubusercontent.com/u/105737474?v=4"
+          ></img>
+          <img
+            className="devicon"
+            src="https://avatars.githubusercontent.com/u/105683843?v=4"
+          ></img>
+          <img
+            className="devicon"
+            src="https://avatars.githubusercontent.com/u/105737822?v=4"
+          ></img>
+        </div>
         <div className="indiv-card">
           <h2>Destiny Joyner</h2>
           <img
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/107226235?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
@@ -70,7 +89,7 @@ function AboutPage(props) {
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/107490157?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
@@ -100,7 +119,7 @@ function AboutPage(props) {
             className="dev-img"
             src="https://avatars.githubusercontent.com/u/105737474?v=4"
           ></img>
-          <h5 className="dev-title">Full Stack Web Developer</h5>
+          {/* <h5 className="dev-title">Full Stack Web Developer</h5> */}
           <p>
             Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
             eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum

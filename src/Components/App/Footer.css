@@ -8,6 +8,14 @@ footer {
   font-size: 15px;
   font-weight: 400;
   border-top: 2px solid #41cdbc;
-  background-color: #deeff9;
   z-index: 10;
 }
+
+/* .light {
+  background-color: #deeff9d0;
+  color: #000000;
+}
+.dark {
+  background-color: #050525;
+  color: #ffffffd0;
+} */
