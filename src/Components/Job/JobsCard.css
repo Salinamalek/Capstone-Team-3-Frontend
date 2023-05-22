@@ -3,20 +3,20 @@
     border: 2px solid #41CDBC;
     border-radius: 14px;
     width: 100%;
-    height: 13vh;
+    height: 14vh;
     display: grid;
-    grid-template-rows: 1.5fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr .8fr;
     grid-template-columns: 2fr .1fr .8fr;
     align-items: center;
     justify-items: left;
-    text-indent: 10px;
+    padding: 3px;
 }
 
 .job-card-divider {
     grid-column: 2;
     grid-row: span 3;
     height: 85%;
-    border-right: #0914AE 2px solid;
+    border-left: #0914AE 2px solid;
 }
 
 .job-card-company{
@@ -32,7 +32,7 @@
 }
 
 .job-card-company span:first-of-type {
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .job-card-title {
@@ -40,33 +40,44 @@
     font-weight: 600;
     grid-row: 1;
     grid-column: 1;
+    margin-left: 0px;
+    color: #0914AE;
+}
+
+.job-card-company, .job-card-title, .job-card-city {
+    padding-left: 10px;
 }
 
 .job-card-remote  {
     text-indent: unset;
-    text-align: left;
-    color: #0914AE ;
-    border: 1px solid #0914AE;
-    border-radius: 20px;
-    font-size: 12px;
+    padding-left:unset;
+    font-size: 13px;
+    font-weight: 600;
     height: fit-content;
-    width: 72%;
+    width: fit-content;
     padding: 3px;
 }
 
 .job-card-skills  {
     grid-column: 3;
     grid-row: 1/4;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-    align-items: center;
-    width: 90%;
-    height: 80%;
+    width: 92%;
+    height: 90%;
     border-radius: 10px;
     border: 1px solid #41CDBC ;
-    /* background-color: #deeff9f0; */
     background-color: #DEEFF9;
+}
+.job-card-skills .skills-component {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+.job-card svg {
+    height: 1.7em;
+    width: 1.7em;
 }
 
 .job-card-city {
@@ -74,4 +85,6 @@
     grid-row: 3;
     color: rgb(79, 77, 77);
 }
+
+
 
