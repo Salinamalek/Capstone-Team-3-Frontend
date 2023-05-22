@@ -47,7 +47,19 @@ function FilterBar() {
                    size = {"25px"}
                     />
                }
-                <span className={filterOptions ? "filter-span" : ""}>{filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}</span>
+                <span className={filterOptions ? "filter-span" : ""}>
+                    {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
+                </span>
+                <label htmlFor="remote-checkbox" >
+                    <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
+                    <input
+                    className={filterOptions ? "filter-remote remote-checkbox" : "remote-checkbox"}
+                    type="checkbox"
+                    value={remoteSearch}
+                    checked = {remoteSearch}
+                    onChange={() => setRemoteSearch(!remoteSearch)}
+                    />
+                </label>
            </span>
           
            {/* expanded filter bar */}
@@ -64,7 +76,7 @@ function FilterBar() {
                    <option value={"chicago"}>Chicago, IL</option>
                </select>
                {/* remote checkbox */}
-               <label htmlFor="remote-checkbox" className="remote-label">
+               {/* <label htmlFor="remote-checkbox" className="remote-label">
                <span >Remote</span>
                    <input
                    className="remote-checkbox"
@@ -72,15 +84,19 @@ function FilterBar() {
                    value={remoteSearch}
                    checked = {remoteSearch}
                    onChange={() => setRemoteSearch(!remoteSearch)}/>
-               </label>
+               </label> */}
                {/* skills search options */}
                {/* need to toggle checkboxes and icons? */}
+               <span className="filter-bar-toggle">
+                <MdChangeCircle 
+                size={"25px"}
+                color={"#FFDE59"} 
+                //   className="filter-bar-toggle"
+                onClick={() => setSkillView(!skillView)}/>
+                <span>{!skillView ? "Skill Text" : "Skill Icons"}</span>
+               </span>
+              
                <div className="filter-bar-skills">
-              <MdChangeCircle 
-              size={"25px"}
-              color={"white"} 
-              className="filter-bar-toggle"
-              onClick={() => setSkillView(!skillView)}/>
                {
                 !skillView ? 
                 <SkillsComponent

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useJobProvider } from '../../Providers/JobProvider'
 import FilterBar from './FilterBar'
+import {CiSearch} from  "react-icons/ci"
 import "./SearchBar.css"
 
 function SearchBar() {
@@ -26,6 +27,8 @@ function SearchBar() {
 
     return (
         <section className="search-component" >
+            <label htmlFor={search}>
+                 <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" />
             <input
             className="searchbar"
             type= "text"
@@ -34,6 +37,8 @@ function SearchBar() {
             onChange={(event) => handleSearchBar(event)}
             
             />
+            </label>
+            
             {/* <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" /> */}
 
             <FilterBar />

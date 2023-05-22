@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useJobProvider } from "../../Providers/JobProvider";
+// import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
 import {
   SiNodedotjs,
@@ -18,7 +18,7 @@ import { FaJava } from "react-icons/fa";
 import "./SkillsComponent.css";
 
 function SkillsComponent({ skillsArr, justList, checkbox }) {
-  const {searchResults, setSearchResults, jobs, setJobs} = useJobProvider()
+  // const {searchResults, setSearchResults, jobs, setJobs} = useJobProvider()
 
   const [skillsObj, setSkillsObj] = useState({
     1: [<SiJavascript key={uuidv4()} />, false],
