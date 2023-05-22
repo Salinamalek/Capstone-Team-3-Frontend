@@ -28,7 +28,7 @@ function UserProvider({ children }) {
         });
       axios
         .get(`${API}/user-jobs/${userID}`)
-        .then(({ data }) => setUserJobs(data))
+        .then(({ data }) => setUserJobs(data.reverse()))
         .catch((error) => console.log(error));
     }
   }, [userID]);
