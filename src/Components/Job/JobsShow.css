@@ -2,15 +2,17 @@
     display: grid;
     grid-template-rows: 1fr 2vh 2.5fr 1fr;
     justify-items: left;
-    width: 100vw;
+    width: 99vw;
     height: 85vh;
     background-color: #deeff9;
+    /* padding-bottom: 2vh; */
+    /* border: 2px solid red; */
 }
 
 .job-show-header {
     /* background-color: #0914AE #41CDBC #FFDE59; */
     height: 22vh;
-    width: 100vw;
+    width: 100%;
     margin-bottom: .5vh;
     background-color: #41CDBC;
     color: black;
@@ -78,7 +80,10 @@
     grid-column: 2;
     grid-row: 6;
     font-size: 15px;
-    font-weight: 200;
+    font-weight: 500;
+    position: relative;
+    bottom: .5vh;
+    left: 4vw;
 }
 .job-show-remote span {
     grid-column: span 2;
@@ -106,6 +111,19 @@
     right: 6vw;
 }
 
+.job-show-header-applied {
+    all: unset;
+    grid-column: 2;
+    grid-row: 6;
+    justify-self: right;
+    color: black;
+    border: 1px solid #FFDE59;
+    background-color: #FFDE59;
+    padding: 2px;
+    position: relative;
+    right: 7vw;
+}
+
 .job-show .skills-component {
     width: 100%;
     height: 100%;
@@ -120,8 +138,8 @@
 .job-show-details {
     display: grid;
     grid-template-rows: auto;
-    width: 93%;
-    height: 47vh;
+    width: 95%;
+    height: 48vh;
     overflow-y: auto;
     overflow-x: hidden;
     justify-items: left;
@@ -167,10 +185,11 @@
     color: #040a5d;
     font-size: 24px;
     border-radius: 20px;
-    height: 5vh;
+    height:40px;
     justify-self: center;
     border: #0914AE 2px solid;
     align-self: center;
+    /* margin-top: 1.6vh; */
 }
 
 .job-show-apply:hover {
@@ -180,30 +199,26 @@
 
 .job-show-applied {
     display: grid;
-    grid-template-columns: .3fr 1fr;
-    grid-template-rows: 1fr .5fr;
-    height: 75%;
-    width: 80%;
+    grid-template-columns: .2fr 2fr;
+    height: 85%;
+    width: 85%;
     padding: 1%;
     justify-self: center;
     align-self: center;
     align-items: center;
+    justify-items: center;
+    margin-top: .5vh;
+    
 
     /* border: #0914AE 1px solid; */
     /* color: #0914AE; */
 }
 .job-show-applied svg {
     grid-column: 1;
-    justify-self: left;
+    justify-self: right;
 }
 .job-show-applied span:first-of-type {
     grid-column: 2;
-    font-size: 19px;
-    font-weight: 500;
-    
-}
-.job-show-applied span:nth-of-type(2){
-    grid-column: 2;
-    grid-row: 2;
-    font-style: italic;
+    font-size: 20px;
+    font-weight: 500;  
 }

@@ -91,7 +91,7 @@ function applyToJob(){
         )}
         <button
         onClick={() => applyToJob()} 
-        className="job-show-header-apply">
+        className={!applied? "job-show-header-apply" : "job-show-header-applied"}>
             {!applied ? "APPLY" : "APPLIED"}
         </button>
       </section>
@@ -128,9 +128,8 @@ function applyToJob(){
         className="job-show-apply">Apply
         </button> :
         <div className="job-show-applied">
-            <BsClipboardCheck color={"black"} size={"47px"}/>
+            <BsClipboardCheck color={"black"} size={"40px"}/>
             <span>APPLIED ON {convertDate(applied["date_applied"])}</span>
-            <span></span>
         </div>
     }
       
