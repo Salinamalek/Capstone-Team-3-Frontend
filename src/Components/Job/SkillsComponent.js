@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
 import {
   SiNodedotjs,
@@ -17,6 +18,8 @@ import { FaJava } from "react-icons/fa";
 import "./SkillsComponent.css";
 
 function SkillsComponent({ skillsArr, justList, checkbox }) {
+  const {searchResults, setSearchResults, jobs, setJobs} = useJobProvider()
+
   const [skillsObj, setSkillsObj] = useState({
     1: [<SiJavascript key={uuidv4()} />, false],
     2: [<SiNodedotjs key={uuidv4()} />, false],
@@ -87,26 +90,51 @@ function SkillsComponent({ skillsArr, justList, checkbox }) {
       />,
     ],
   });
-  /* 
-ruby Hex: #CC0000
-html Hex: #E34C26 + black
-python #306998 + #FFE873
-css3 #264de4 + #ebebeb
-c++ #044F88 + #5E97D0
-Mysql #00758F + #F29111
-swift #F05138 #FFFFFF
-GO #29BEB0
-c# (c sharp) #9B4993 + #FFFFFF
-php #787CB5 black + white
-java #f89820 + #5382a1
-rust #281C1C + #CE422B
-   } */
+
 
   function skillClick(val) {
     const currentValArr = [...skillsObj[val]];
     currentValArr[1] = !currentValArr[1];
     setSkillsObj({ ...skillsObj, [val]: currentValArr });
   }
+
+  // checkbox onchange highlights icon vice versa
+  const [checkboxObj, setCheckboxObj] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+    6: false,
+    7: false,
+    8: false,
+    9: false,
+    10: false,
+    11: false,
+    12: false,
+  })
+
+  const [selectedSkills, setSelectedSkills]= useState([])
+// searchResult=> {skill_id} = [idvalues]
+  function handleSkillCheckbox(e) {
+    const skillId = e.target.id
+    const currentState = checkboxObj[skillId]
+    setCheckboxObj({...checkboxObj, [skillId] : !currentState})
+    if(!selectedSkills.includes(skillId)){
+      setSelectedSkills([...selectedSkills, skillId])
+      const skillFilter = jobs.filter(({skill_id})=> 
+        skill_id.includes(+skillId)
+      )
+      console.log(skillFilter, jobs)
+      setJobs(skillFilter)
+    }
+    else {
+      const remove = selectedSkills.filter(el => el !== skillId)
+      setSelectedSkills(remove)
+    }
+    
+  }
+
 
   if (justList) {
     return (
@@ -128,8 +156,8 @@ rust #281C1C + #CE422B
               <input
                 type="checkbox"
                 id={obj.id}
-                value={obj.id}
-                onChange={() => {}}
+                checked={checkboxObj[obj.id]}
+                onChange={(event) => handleSkillCheckbox(event)}
               />
               {obj["skill_name"]}
             </label>

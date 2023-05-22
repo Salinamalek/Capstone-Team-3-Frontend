@@ -10,13 +10,18 @@ function SearchBar() {
     function handleSearchBar(e) {
         const value = e.target.value
         setSearch(value)
-        const filt = searchResult.filter(({title}) =>{
-            const regex = new RegExp(search,"gi")
-            return title.match(regex)
-        } )
-        setJobs(filt)
-
-        
+        if(value === ""){
+            setJobs(searchResult)
+        }
+        else {
+            const filt = searchResult.filter(({title}) =>{
+                const joinSearch = search.replaceAll(" ", "")
+                const regex = new RegExp(joinSearch,"gi")
+                let joinTitle = title.replaceAll(" ", "")
+                return joinTitle.match(regex)
+            } )
+            setJobs(filt)
+        }    
     }
 
     return (
