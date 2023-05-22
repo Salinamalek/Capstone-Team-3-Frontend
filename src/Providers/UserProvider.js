@@ -9,13 +9,13 @@ export function useUserProvider() {
 
 function UserProvider({ children }) {
   const navigate = useNavigate();
-  const { userID, API, axios } = useContextProvider();
+  const { userID, API, axios, isSignedIn } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
   const [editForm, setEditForm] = useState({});
   const [userJobs, setUserJobs] = useState([]);
 
   useEffect(() => {
-    if (userID !== undefined) {
+    if (isSignedIn) {
       axios
         .get(`${API}/users/${userID}`)
         .then(({ data }) => {
@@ -31,7 +31,7 @@ function UserProvider({ children }) {
         .then(({ data }) => setUserJobs(data.reverse()))
         .catch((error) => console.log(error));
     }
-  }, [userID]);
+  }, [isSignedIn, userID]);
 
   return (
     <UserContextData.Provider

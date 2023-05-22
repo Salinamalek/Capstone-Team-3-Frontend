@@ -18,12 +18,23 @@ function Provider({ children }) {
   const [authToken, setAuthToken] = useState(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDc3NDAwNCwiZXhwIjoxNjg0ODYwNDA0fQ.dhbFdrc7AoY50sECP0AUfj17Q8TPs9JuMGvqxfzAiTQ"
   );
-  // const [isDarkMode, setIsDarkMode] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
+
+  // useEffect(() => {
+  //   if (isSignedIn) {
+  //     setUserID(1);
+  //     setAuthToken(
+  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDc3NDAwNCwiZXhwIjoxNjg0ODYwNDA0fQ.dhbFdrc7AoY50sECP0AUfj17Q8TPs9JuMGvqxfzAiTQ"
+  //     );
+  //   } else {
+  //     setUserID("");
+  //     setAuthToken("");
+  //   }
+  // }, [isSignedIn]);
 
   axios.defaults.headers.common["authorization"] = `Bearer ${authToken}`;
 
@@ -40,8 +51,6 @@ function Provider({ children }) {
           setAuthToken,
           theme,
           setTheme,
-          // isDarkMode,
-          // setIsDarkMode
         }}
       >
         <Nav />

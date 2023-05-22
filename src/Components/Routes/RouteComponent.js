@@ -9,6 +9,7 @@ import NewForm from "../../Pages/NewForm.js";
 import User from "../../Pages/User.js";
 import Login from "../../Pages/Login.js";
 import Register from "../../Pages/Register.js";
+import JobProvider from "../../Providers/JobProvider.js";
 
 function RouteComponent() {
   return (
@@ -27,7 +28,14 @@ function RouteComponent() {
         {/* JOBS ROUTES */}
         <Route path="jobs">
           <Route index element={<Jobs />} />
-          <Route path=":jobID" element={<JobsShow />} />
+          <Route
+            path=":jobID"
+            element={
+              <JobProvider>
+                <JobsShow />
+              </JobProvider>
+            }
+          />
         </Route>
         {/* ABOUT ROUTE */}
         <Route path="about" element={<About />} />

@@ -1,39 +1,22 @@
 import { useState, useEffect } from "react";
 import { useContextProvider } from "../../Providers/Provider";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
-import {
-  MdWorkOutline,
-  MdOutlineDarkMode,
-  MdOutlineLightMode,
-} from "react-icons/md";
+import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 // Destiny added icon for testing temp. links in nav bar
-import { GrAlert } from "react-icons/gr";
 
 import { BiInfoCircle, BiCopyright, BiPlusCircle } from "react-icons/bi";
-import { VscAccount } from "react-icons/vsc";
 import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
-  // const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  // const toggleTheme = () => {
-  //   if (theme === "light") {
-  //     setTheme("dark");
-  //   } else {
-  //     setTheme("light");
-  //   }
-  // };
-  // useEffect(() => {
-  //   localStorage.setItem("theme", theme);
-  //   document.body.className = theme;
-  // }, [theme]);
-  const { theme, setTheme } = useContextProvider();
+  const navigate = useNavigate();
+  const { theme, setTheme, isSignedIn, setIsSignedIn, API, axios, userID } =
+    useContextProvider();
   const toggleTheme = () => {
     if (theme === "light") {
       setTheme("dark");
@@ -59,6 +42,22 @@ export default function Nav() {
 
   function navbarClick() {
     setOpenNav(!openNav);
+  }
+
+  function loginClick() {
+    setIsSignedIn(true);
+    navbarClick();
+    navigate("/user");
+  }
+
+  function logoutClick() {
+    setIsSignedIn(false);
+    navbarClick();
+    navigate("/");
+  }
+
+  function profileClick() {
+    navigate("/user");
   }
 
   return (
@@ -98,14 +97,25 @@ export default function Nav() {
           <span className="slogan">"Your first tech opportunity awaits!"</span>
         </p>
         {/* DESTINY adding register/ login/ user/4 route for easy navigation while testing */}
-        <Link to="/login" onClick={() => navbarClick()}>
-          <FiLogIn size={"30px"} color={"#41cdbc"} />
-          <span>Login</span>
-        </Link>
-        <Link to="/register" onClick={() => navbarClick()}>
-          <FiUserPlus size={"30px"} color={"#41cdbc"} />
-          <span>Registration</span>
-        </Link>
+        {!isSignedIn && (
+          <Link to="/user" onClick={() => loginClick()}>
+            <FiLogIn size={"30px"} color={"#41cdbc"} />
+            <span>Login</span>
+          </Link>
+        )}
+        {isSignedIn && (
+          <Link to="/user" onClick={() => navbarClick()}>
+            <FiLogIn size={"30px"} color={"#41cdbc"} />
+            <span>Profile</span>
+          </Link>
+        )}
+        {!isSignedIn && (
+          <Link to="/register" onClick={() => navbarClick()}>
+            <FiUserPlus size={"30px"} color={"#41cdbc"} />
+            <span>Registration</span>
+          </Link>
+        )}
+
         <Link to="/" onClick={() => navbarClick()}>
           <AiOutlineHome size={"30px"} color={"#41cdbc"} />
           <span>Home</span>
@@ -128,7 +138,12 @@ export default function Nav() {
           <input type="checkbox" onChange={toggleTheme} />
           <span className="slider round"></span>
         </label>
-        <button className="logoutBtn">{<FiLogOut />} Logout</button>
+        {isSignedIn && (
+          <button className="logoutBtn" onClick={() => logoutClick()}>
+            {<FiLogOut />} Logout
+          </button>
+        )}
+
         {/* maybe have footer info here ??  */}
         {/* <div className="footer-info">
         <span> inIT <BiCopyright /></span>
