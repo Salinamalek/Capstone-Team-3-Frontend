@@ -51,7 +51,6 @@ function FilterBar() {
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
                 <label htmlFor="remote-checkbox" >
-                    <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                     <input
                     className={filterOptions ? "filter-remote remote-checkbox" : "remote-checkbox"}
                     type="checkbox"
@@ -59,6 +58,7 @@ function FilterBar() {
                     checked = {remoteSearch}
                     onChange={() => setRemoteSearch(!remoteSearch)}
                     />
+                    <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                 </label>
            </span>
           

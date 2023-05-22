@@ -37,22 +37,22 @@
     border: unset;
     background-color: unset;
     font-size: 18px;
-    /* height: fit-content; */
     position: relative;
     bottom: .6vh;
-    margin-left: 2vw;
+    left: 5vw;
 }
 .remote-checkbox {
     accent-color: #0914AE;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
     background-color: #deeff9;
     position: relative;
     bottom: .3vh;
+    left: 5vw;
 }
 .filter-remote {
     bottom: .5vh;
+    left: 5vw;
 }
 .filter-bar-arrow .filter-remote-label {
     bottom: 1vh;
