@@ -10,6 +10,7 @@ export function useJobProvider() {
 function JobProvider({ children }) {
   const { API, axios } = useContextProvider();
   const [jobs, setJobs] = useState([]);
+  const [searchResult, setSearchResult] = useState([])
   const [jobDetails, setJobDetails] = useState({});
   const [tasks, setTasks] = useState([]);
   const [skillIdArr, setSkillIdArr] = useState([]);
@@ -18,7 +19,11 @@ function JobProvider({ children }) {
   useEffect(() => {
     axios
       .get(`${API}/jobs`)
-      .then(({ data }) => setJobs(data))
+      .then(({ data }) => {
+        setJobs(data)
+        setSearchResult(data)
+      }
+      )
       .catch((error) => console.log(error));
   }, []);
 
@@ -29,6 +34,9 @@ function JobProvider({ children }) {
         axios,
         jobID,
         jobs,
+        setJobs,
+        searchResult,
+        setSearchResult,
       }}
     >
       {children}

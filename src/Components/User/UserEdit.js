@@ -5,100 +5,126 @@ import "./UserEdit.css";
 
 export default function UserEdit(props) {
   const navigate = useNavigate();
-  const { API, axios, userProfile, editForm, setEditForm } = useUserProvider();
-
-  // make it the put request in handleSubmit
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API}/users/${userID}`)
-  //     .then((res) => {
-  //       setUser(res.data);
-  //       setEditForm(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       navigate("/not-found");
-  //     });
-  // }, []);
+  const { API, axios, userID, userProfile, editForm, setEditForm } =
+    useUserProvider();
 
   const handleChange = (event) => {
     setEditForm({ ...editForm, [event.target.id]: event.target.value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let edited = false;
+    const fields = Object.keys(editForm);
+
+    for (let i = 0; i < fields.length; i++) {
+      if (editForm[fields[i]] !== userProfile[fields[i]]) {
+        edited = true;
+        break;
+      }
+    }
+
+    edited
+      ? axios
+          .put(`${API}/users/${userID}`, {
+            profile: editForm,
+            skills: editForm.skills,
+          })
+          .then(() => {
+            navigate("/user");
+            console.log(edited);
+          })
+          .catch((error) => console.log(error))
+      : navigate("/user");
+  };
+
   return (
-    <form className="profile">
-      <div className="left-side-profile">
-        <div className="profile-details">
+    <form className="profile" onSubmit={handleSubmit}>
+      <div className="top-profile">
+        <div>
           <p>Name</p>
           <div>
             <input
               id="first_name"
+              className="input-profile input-name"
               type="text"
               placeholder="first name"
-              value={editForm["first_name"]}
+              value={editForm["first_name"] || ""}
               onChange={handleChange}
               required
             />{" "}
             <input
               id="last_name"
+              className="input-profile input-name"
               type="text"
               placeholder="last name"
-              value={editForm["last_name"]}
+              value={editForm["last_name"] || ""}
               onChange={handleChange}
               required
             />
           </div>
           <br />
-          <p>Education</p>
-          <input
-            id="education"
-            type="text"
-            placeholder="enter school / program"
-            value={editForm.education}
-            onChange={handleChange}
-            required
-          />
+          <div>
+            <p>Education</p>
+            <input
+              id="education"
+              className="input-profile input-education"
+              type="text"
+              value={editForm.education || ""}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <br />
-          <p>Portfolio projects</p>
-          <ul>
-            <li className="bold">
-              <input
-                id="project_one"
-                type="url"
-                placeholder="https://example.com"
-                value={editForm["project_one"]}
-                onChange={handleChange}
-              />
-            </li>
-            <li className="bold">
-              <input
-                id="project_two"
-                type="url"
-                placeholder="https://example.com"
-                value={editForm["project_two"]}
-                onChange={handleChange}
-              />
-            </li>
-          </ul>
+          <p className="skills">Skills and Technologies</p>
+          <div />
+        </div>
+        <div className="icon-edit">
+          <img id="icon-user" src={userIcon} alt="user icon" />
+          <button onClick={() => navigate(`/user/`)} className="profile-button">
+            CANCEL
+          </button>
         </div>
       </div>
-      <div className="right-side-profile">
-        <img id="user-icon" src={userIcon} alt="user icon" size="40px" />
-        <button onClick={() => navigate(`/user/`)} className="profile-button">
-          cancel
-        </button>
-        <p className="skills">Skills and Technologies</p>
+      <br />
+      <div>
+        <p>Portfolio projects</p>
+        <div className="ul-projects">
+          <p className="bold">
+            <input
+              id="project_one"
+              className="input-profile"
+              type="url"
+              placeholder="https://example.com"
+              value={editForm["project_one"] || ""}
+              onChange={handleChange}
+            />
+          </p>
+          <p className="bold">
+            <input
+              id="project_two"
+              className="input-profile"
+              type="url"
+              placeholder="https://example.com"
+              value={editForm["project_two"] || ""}
+              onChange={handleChange}
+            />
+          </p>
+        </div>
       </div>
-      <div id="bio">
-        <p>About me</p>
+      <div>
         <br />
+        <p>About me</p>
         <textarea
           id="bio"
+          className="input-profile input-bio"
           placeholder="add a short bio"
-          value={editForm.bio}
+          value={editForm.bio || ""}
           onChange={handleChange}
         />
       </div>
+      <br />
       <input type="submit" value="SAVE" className="profile-button logout" />
     </form>
   );
