@@ -35,12 +35,8 @@ function SearchBar() {
             value={search}
             placeholder="Search Jobs..."
             onChange={(event) => handleSearchBar(event)}
-            
             />
             </label>
-            
-            {/* <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" /> */}
-
             <FilterBar />
         </section>
     );

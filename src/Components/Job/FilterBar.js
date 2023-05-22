@@ -34,20 +34,23 @@ function FilterBar() {
    return (
        <div className="filter-bar">
            <span 
-           className="filter-bar-arrow"  
-           onClick={(event) => filterBarSlide(event)}>
+           className="filter-bar-arrow">
                {
                    !filterOptions ?
                    <BsCaretDownFill
+                   onClick={(event) => filterBarSlide(event)}
                    color = {"#41CDBC"}
                    size = {"25px"}
                     /> :
                    <BsCaretUpFill
+                   onClick={(event) => filterBarSlide(event)}
                    color = {"#0914AE"}
                    size = {"25px"}
                     />
                }
-                <span className={filterOptions ? "filter-span" : ""}>
+                <span 
+                className={filterOptions ? "filter-span" : ""}
+                onClick={(event) => filterBarSlide(event)}>
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
                 <label htmlFor="remote-checkbox" >
