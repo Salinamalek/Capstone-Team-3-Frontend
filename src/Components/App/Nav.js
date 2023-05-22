@@ -41,6 +41,21 @@ export default function Nav() {
       setTheme("light");
     }
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (openNav) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    handleScroll();
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openNav]);
 
   function navbarClick() {
     setOpenNav(!openNav);
@@ -110,7 +125,6 @@ export default function Nav() {
         {/* <hr className="nav-line"></hr> */}
         {/* was class => to className */}
         <label className="switch">
-          {" "}
           <input type="checkbox" onChange={toggleTheme} />
           <span className="slider round"></span>
         </label>
