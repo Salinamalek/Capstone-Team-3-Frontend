@@ -7,7 +7,7 @@ import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
 
 function FilterBar() {
-    const { API, axios } = useJobProvider()
+    const { API, axios, jobs, setJobs, searchResult, setSearchResult } = useJobProvider()
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
@@ -20,8 +20,16 @@ function FilterBar() {
    }
 
 
-   function remoteFilter () {
-       // will have access to job Provider to get and filter through all jobs
+   function remoteFilter (e) {
+        setRemoteSearch(!remoteSearch)
+        if(e.target.checked){
+            const remoteJobs = jobs.filter(({full_remote}) => full_remote === true)
+            setJobs(remoteJobs)
+        }
+        else {
+            setJobs(searchResult)
+        }
+       
    }
 
    useEffect(() => {
@@ -59,7 +67,7 @@ function FilterBar() {
                     type="checkbox"
                     value={remoteSearch}
                     checked = {remoteSearch}
-                    onChange={() => setRemoteSearch(!remoteSearch)}
+                    onChange={(event) => remoteFilter(event)}
                     />
                     <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                 </label>
@@ -78,16 +86,6 @@ function FilterBar() {
                    <option value={"miami"}>Miami, FL</option>
                    <option value={"chicago"}>Chicago, IL</option>
                </select>
-               {/* remote checkbox */}
-               {/* <label htmlFor="remote-checkbox" className="remote-label">
-               <span >Remote</span>
-                   <input
-                   className="remote-checkbox"
-                   type="checkbox"
-                   value={remoteSearch}
-                   checked = {remoteSearch}
-                   onChange={() => setRemoteSearch(!remoteSearch)}/>
-               </label> */}
                {/* skills search options */}
                {/* need to toggle checkboxes and icons? */}
                <span className="filter-bar-toggle">
