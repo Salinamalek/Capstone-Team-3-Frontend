@@ -3,10 +3,10 @@
     grid-template-rows: 1fr 2vh 2.5fr 1fr;
     justify-items: left;
     width: 99vw;
-    height: 85vh;
+    height: 95%;
     background-color: #deeff9;
-    /* padding-bottom: 2vh; */
-    /* border: 2px solid red; */
+    padding-bottom: 5vh;
+    
 }
 
 .job-show-header {
