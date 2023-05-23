@@ -8,12 +8,9 @@ export function useJobProvider() {
 }
 
 function JobProvider({ children }) {
-  const { API, axios } = useContextProvider();
+  const { API, axios, userID } = useContextProvider();
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
-  const [jobDetails, setJobDetails] = useState({});
-  const [tasks, setTasks] = useState([]);
-  const [skillIdArr, setSkillIdArr] = useState([]);
   const { jobID } = useParams();
 
   useEffect(() => {
@@ -33,6 +30,7 @@ function JobProvider({ children }) {
         API,
         axios,
         jobID,
+        userID,
         jobs,
         setJobs,
         searchResult,
