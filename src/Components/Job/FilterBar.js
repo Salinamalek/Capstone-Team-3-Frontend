@@ -49,7 +49,7 @@ function FilterBar() {
                     />
                }
                 <span 
-                className={filterOptions ? "filter-span" : ""}
+                className={filterOptions ? "filter-span expand-text" : "expand-text"}
                 onClick={(event) => filterBarSlide(event)}>
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
@@ -96,7 +96,9 @@ function FilterBar() {
                 color={"#FFDE59"} 
                 //   className="filter-bar-toggle"
                 onClick={() => setSkillView(!skillView)}/>
-                <span>{!skillView ? "Skill Text" : "Skill Icons"}</span>
+                <span
+                onClick={() => setSkillView(!skillView)}
+                >{!skillView ? "Skill Text" : "Skill Icons"}</span>
                </span>
               
                <div className="filter-bar-skills">

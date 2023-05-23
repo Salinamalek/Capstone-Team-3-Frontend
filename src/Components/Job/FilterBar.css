@@ -168,3 +168,9 @@ font-size: 18px;
 .filter-bar-skills .skills-checkboxes label input {
     margin-right: 1.2vw;
 }
+
+
+/* DARK MODE UPDATES */
+.dark .filter-bar-arrow .expand-text{
+    background-color: #41CDBC;
+}
