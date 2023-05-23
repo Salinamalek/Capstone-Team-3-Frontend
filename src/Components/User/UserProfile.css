@@ -15,6 +15,11 @@
   color: #0914ae;
 }
 
+.dark .login-button {
+  background-color: #050525;
+  color: #FFDE59
+}
+
 .profile {
   margin: 20px 30px;
   font-size: 18px;
