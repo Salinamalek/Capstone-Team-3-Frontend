@@ -20,6 +20,14 @@ function FilterBar() {
    }
 
 
+   function cityFilter (e) {
+    setCityDropdown(e.target.value)
+    // if based on state better can display multiple city in that state, the values would be abbreviated states to search by
+    const state = e.target.value
+    console.log(state)
+   }
+
+
    function remoteFilter (e) {
         setRemoteSearch(!remoteSearch)
         if(e.target.checked){
@@ -28,8 +36,7 @@ function FilterBar() {
         }
         else {
             setJobs(searchResult)
-        }
-       
+        } 
    }
 
    useEffect(() => {
@@ -77,14 +84,18 @@ function FilterBar() {
            <section
            className={filterOptions ? "filter-bar-expanded slide-down" : "filter-bar-expanded slide-up"}>
                <select
-               onChange={(e) => {setCityDropdown(e.target.value)}}
+               onChange={(event) => cityFilter(event)}
                value={cityDropdown}>
                    <option value = {""}>Select City</option>
-                   <option value={"newYorkCity"}>New York City, NY</option>
-                   <option value={"houston"}>Houston, TX</option>
-                   <option value={"sanFrancisco"}>San Francisco, CA</option>
-                   <option value={"miami"}>Miami, FL</option>
-                   <option value={"chicago"}>Chicago, IL</option>
+                   <option value={"NY"}>New York City, NY</option>
+                   <option value={"TX"}>Austin, TX</option>
+                   <option value={"CA"}>San Francisco, CA</option>
+                   <option value={"FL"}>Miami, FL</option>
+                   <option value={"IL"}>Chicago, IL</option>
+                   <option value={"NJ"}>Jersey City, NJ</option>
+                   <option value={"GA"}>Atlanta, GA</option>
+                   <option value={"CO"}>Denver, CO</option>
+                   <option value={"WA"}>Seattle, WA</option>
                </select>
                {/* skills search options */}
                {/* need to toggle checkboxes and icons? */}

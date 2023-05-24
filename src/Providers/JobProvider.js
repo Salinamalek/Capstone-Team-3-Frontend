@@ -11,6 +11,7 @@ function JobProvider({ children }) {
   const { API, axios, userID } = useContextProvider();
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
+  // possibly a state to keep track of all search options selected, then will filter all jobs accordingly???
   const { jobID } = useParams();
 
   useEffect(() => {
