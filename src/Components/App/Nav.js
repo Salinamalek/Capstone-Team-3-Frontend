@@ -6,6 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 // Destiny added icon for testing temp. links in nav bar
 
 import { BiInfoCircle, BiCopyright, BiPlusCircle } from "react-icons/bi";
@@ -105,7 +106,7 @@ export default function Nav() {
         )}
         {isSignedIn && (
           <Link to="/user" onClick={() => navbarClick()}>
-            <FiLogIn size={"30px"} color={"#41cdbc"} />
+            <CgProfile size={"30px"} color={"#41cdbc"} />
             <span>Profile</span>
           </Link>
         )}
