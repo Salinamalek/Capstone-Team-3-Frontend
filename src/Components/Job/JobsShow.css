@@ -3,10 +3,10 @@
     grid-template-rows: 1fr 2vh 2.5fr 1fr;
     justify-items: left;
     width: 99vw;
-    height: 85vh;
+    height: 95%;
     background-color: #deeff9;
-    /* padding-bottom: 2vh; */
-    /* border: 2px solid red; */
+    padding-bottom: 5vh;
+    
 }
 
 .job-show-header {
@@ -208,10 +208,6 @@
     align-items: center;
     justify-items: center;
     margin-top: .5vh;
-    
-
-    /* border: #0914AE 1px solid; */
-    /* color: #0914AE; */
 }
 .job-show-applied svg {
     grid-column: 1;
@@ -221,4 +217,10 @@
     grid-column: 2;
     font-size: 20px;
     font-weight: 500;  
+}
+
+/* DARK MODE UPDATES */
+
+.dark .job-show-details, .dark .job-show-applied {
+    color: black;
 }
