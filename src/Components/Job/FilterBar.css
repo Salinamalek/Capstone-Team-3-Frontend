@@ -62,13 +62,13 @@
 
 
 .filter-bar-expanded {
-    width: 84vw;
+    width: 86vw;
     background-color: #41CDBC;
     border: 2px solid #0914AE;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 1.7fr 1fr;
-    grid-template-rows: 2fr .1fr 1.5fr;
+    grid-template-rows: 1fr .1fr 2fr;
     row-gap: 8px;
     align-items: center;
     padding: 5px;
@@ -77,14 +77,14 @@
     height: 0;
     transition: all .4s ease-in-out;
     position: relative;
-    left: 5vw;
+    left: 3vw;
 }
 /* slide */
 .filter-bar-expanded:target{
     height: 14vh;
 }
 .slide-down {
-    height: 15vh;
+    height: 17vh;
     visibility: visible;
     margin-top: 1vh;
 }
@@ -140,7 +140,7 @@ font-size: 18px;
 }
 .filter-bar-skills {
     grid-column: span 2;
-    height: 8vh;
+    height: 100%;
 }
 .filter-bar-skills .skills-component {
     grid-column: span 2;
@@ -151,22 +151,36 @@ font-size: 18px;
     /* position: relative;
     bottom: 2.8vh; */
 }
+.filter-bar-skills .skills-component svg {
+    height: 2em;
+    width: 2em;
+}
 
 .filter-bar-skills .skills-checkboxes {
     grid-column: span 2;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    
     align-items: center;
     position: relative;
-    bottom: .7vh;
-    left: 2vw;
+    /* bottom: .7vh; */
+    /* left: 2vw; */
+    
 }
 .filter-bar-skills .skills-checkboxes label {
-    margin-left: 2vw;
+    margin-left: 1vw;
+    height: 3vh;
 }
 .filter-bar-skills .skills-checkboxes label input {
     margin-right: 1.2vw;
+    height: 18px;
+    width: 18px;
+}
+.filter-bar-skills .skills-checkboxes label span {
+    position: relative;
+    bottom: .4vh;
+    font-size: 16px;
 }
 
 

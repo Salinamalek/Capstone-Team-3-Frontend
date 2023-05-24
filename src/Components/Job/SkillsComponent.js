@@ -159,7 +159,7 @@ function SkillsComponent({ skillsArr, justList, checkbox }) {
                 checked={checkboxObj[obj.id]}
                 onChange={(event) => handleSkillCheckbox(event)}
               />
-              {obj["skill_name"]}
+              <span>{obj["skill_name"]}</span>
             </label>
           </>
         ))}
