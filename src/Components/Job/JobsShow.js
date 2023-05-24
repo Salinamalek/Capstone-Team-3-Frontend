@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useContextProvider } from "../../Providers/Provider";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
+import { convertDate } from "../../Functions/JobFunctions";
 import { TfiAngleLeft } from "react-icons/tfi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GoLocation } from "react-icons/go";
@@ -10,22 +11,21 @@ import { BsClipboardCheck } from "react-icons/bs"
 import "./JobsShow.css";
 
 function JobsShow() {
-  const { API, axios } = useContextProvider();
-  const { jobID } = useParams();
+  const { API, axios, jobID, userID } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
   const [reload, setReload] = useState(false)
   const [applied, setApplied] = useState(false)
 
-//   hardcoded userId for testing
-const [userID, setUserID] = useState(2)
-
-// function for date_applied 
-function convertDate(str){
-    const strArr= str.split("T")[0].split("-")
-    const arranged = [strArr[1], strArr[2], strArr[0].slice(2,4)].join("/")
-    return arranged
+  function applyToJob(){
+    const obj = {
+        user_id: userID,
+        job_id: jobID
+    }
+    axios.post(`${API}/user-jobs`, obj)
+    .then(() => setReload(!reload))
+    .catch(err => console.log(err))
 }
 
   useEffect(() => {
@@ -34,9 +34,6 @@ function convertDate(str){
      .then(({data}) => {
         const match = data.find(({id}) => id === +jobID) 
         setApplied(match)
-        // if(match !== undefined){
-        //  setApplied(true)
-        // }
      })
      .catch(err => console.log(data))
 
@@ -48,19 +45,8 @@ function convertDate(str){
         setSkillIdArr(extractSkills);
       })
       .catch((err) => console.log(err));
-   
   }, [reload, jobID]);
 
-//   apply button onclicks /user-jobs => {user_id, job_id}
-function applyToJob(){
-    const obj = {
-        user_id: userID,
-        job_id: jobID
-    }
-    axios.post(`${API}/user-jobs`, obj)
-    .then(() => setReload(!reload))
-    .catch(err => console.log(err))
-}
 
   return (
     <div className="job-show">
@@ -69,7 +55,6 @@ function applyToJob(){
           className="job-show-back"
           size={"25px"}
           onClick={() => navigate(-1)}
-        
         />
         <h1>{jobDetails.title}</h1>
         <div className="job-show-header-details">

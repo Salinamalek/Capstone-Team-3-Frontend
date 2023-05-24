@@ -7,7 +7,7 @@ import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
 
 function FilterBar() {
-    const { API, axios } = useJobProvider()
+    const { API, axios, jobs, setJobs, searchResult, setSearchResult } = useJobProvider()
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
@@ -20,8 +20,23 @@ function FilterBar() {
    }
 
 
-   function remoteFilter () {
-       // will have access to job Provider to get and filter through all jobs
+   function cityFilter (e) {
+    setCityDropdown(e.target.value)
+    // if based on state better can display multiple city in that state, the values would be abbreviated states to search by
+    const state = e.target.value
+    console.log(state)
+   }
+
+
+   function remoteFilter (e) {
+        setRemoteSearch(!remoteSearch)
+        if(e.target.checked){
+            const remoteJobs = jobs.filter(({full_remote}) => full_remote === true)
+            setJobs(remoteJobs)
+        }
+        else {
+            setJobs(searchResult)
+        } 
    }
 
    useEffect(() => {
@@ -49,7 +64,7 @@ function FilterBar() {
                     />
                }
                 <span 
-                className={filterOptions ? "filter-span" : ""}
+                className={filterOptions ? "filter-span expand-text" : "expand-text"}
                 onClick={(event) => filterBarSlide(event)}>
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
@@ -59,7 +74,7 @@ function FilterBar() {
                     type="checkbox"
                     value={remoteSearch}
                     checked = {remoteSearch}
-                    onChange={() => setRemoteSearch(!remoteSearch)}
+                    onChange={(event) => remoteFilter(event)}
                     />
                     <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                 </label>
@@ -69,25 +84,19 @@ function FilterBar() {
            <section
            className={filterOptions ? "filter-bar-expanded slide-down" : "filter-bar-expanded slide-up"}>
                <select
-               onChange={(e) => {setCityDropdown(e.target.value)}}
+               onChange={(event) => cityFilter(event)}
                value={cityDropdown}>
                    <option value = {""}>Select City</option>
-                   <option value={"newYorkCity"}>New York City, NY</option>
-                   <option value={"houston"}>Houston, TX</option>
-                   <option value={"sanFrancisco"}>San Francisco, CA</option>
-                   <option value={"miami"}>Miami, FL</option>
-                   <option value={"chicago"}>Chicago, IL</option>
+                   <option value={"NY"}>New York City, NY</option>
+                   <option value={"TX"}>Austin, TX</option>
+                   <option value={"CA"}>San Francisco, CA</option>
+                   <option value={"FL"}>Miami, FL</option>
+                   <option value={"IL"}>Chicago, IL</option>
+                   <option value={"NJ"}>Jersey City, NJ</option>
+                   <option value={"GA"}>Atlanta, GA</option>
+                   <option value={"CO"}>Denver, CO</option>
+                   <option value={"WA"}>Seattle, WA</option>
                </select>
-               {/* remote checkbox */}
-               {/* <label htmlFor="remote-checkbox" className="remote-label">
-               <span >Remote</span>
-                   <input
-                   className="remote-checkbox"
-                   type="checkbox"
-                   value={remoteSearch}
-                   checked = {remoteSearch}
-                   onChange={() => setRemoteSearch(!remoteSearch)}/>
-               </label> */}
                {/* skills search options */}
                {/* need to toggle checkboxes and icons? */}
                <span className="filter-bar-toggle">
@@ -96,7 +105,9 @@ function FilterBar() {
                 color={"#FFDE59"} 
                 //   className="filter-bar-toggle"
                 onClick={() => setSkillView(!skillView)}/>
-                <span>{!skillView ? "Skill Text" : "Skill Icons"}</span>
+                <span
+                onClick={() => setSkillView(!skillView)}
+                >{!skillView ? "Skill Text" : "Skill Icons"}</span>
                </span>
               
                <div className="filter-bar-skills">
