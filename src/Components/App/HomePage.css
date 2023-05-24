@@ -2,18 +2,21 @@
   padding: 0 14px;
   scroll-snap-type: y mandatory; /* added scroll type  ..... either use  proximity or mandatory*/
   overflow-y: scroll;
-  height: 100vh;
+  height: 85vh;
 }
 /* scroll snap feature implimented*/
 
 /* 
 DESTINY:
 USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP */
-.one, .two,.three, .four {
+.one,
+.two,
+.three,
+.four {
   height: 100vh;
   color: white;
   display: flex;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   justify-content: center;
   align-items: center;
 }
