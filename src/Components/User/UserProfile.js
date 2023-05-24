@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
+import SkillsComponent from "../Job/SkillsComponent.js"
 import userIcon from "../../Assets/USER.png";
 import pencil from "../../Assets/pencil.png";
 import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs } = useUserProvider();
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn } = useUserProvider();
   const [limit, setLimit] = useState(true);
 
   const dateFormat = (date) => {
@@ -33,6 +34,14 @@ export default function UserProfile() {
 
   return (
     <div>
+      {!isSignedIn && (
+        <div className="user-login-prompt">
+          <h2>Login to access your user profile!</h2>
+          <button className="login-button" onClick={() => setIsSignedIn(true)}>
+            LOGIN
+          </button>
+        </div>
+      )}
       {userProfile.id && (
         <div className="profile">
           <div className="top-profile">
@@ -46,6 +55,7 @@ export default function UserProfile() {
               <p className="bold label-spacing">{userProfile.education}</p>
               <br />
               <p>Skills and Technologies</p>
+              {/* <SkillsComponent /> */}
               <ul>
                 {userProfile.skills &&
                   userProfile.skills.map((e, i) => (
@@ -97,7 +107,11 @@ export default function UserProfile() {
               {userJobs.length > 0 && mapJobs(userJobs)}
               <br />
               <button id="activity-button" onClick={() => setLimit(!limit)}>
-                {userJobs.length > 0 ? limit ? "VIEW ALL" : "HIDE" : "FIND JOBS"}
+                {userJobs.length > 0
+                  ? limit
+                    ? "VIEW ALL"
+                    : "HIDE"
+                  : "FIND JOBS"}
               </button>
             </div>
           </div>
