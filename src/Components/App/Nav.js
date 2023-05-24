@@ -74,6 +74,7 @@ export default function Nav() {
     <nav>
       {!openNav ? (
         <RxHamburgerMenu
+          className="burger"
           size={"35px"}
           style={{ marginTop: "24px" }}
           color={"#41CDBC"}
@@ -81,6 +82,7 @@ export default function Nav() {
         />
       ) : (
         <AiOutlineClose
+          className="burger"
           size={"35px"}
           style={{ marginTop: "24px" }}
           color={"#41CDBC"}
