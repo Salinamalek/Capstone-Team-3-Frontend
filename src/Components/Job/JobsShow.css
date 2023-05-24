@@ -1,19 +1,14 @@
 .job-show {
     display: grid;
-    grid-template-rows: 1fr 2vh 2.5fr 1fr;
+    grid-template-rows: 1.5fr .4fr 3fr .4fr;
     justify-items: left;
-    width: 99vw;
-    height: 95%;
+    height: 85vh;
+    width: 100%;
     background-color: #deeff9;
-    padding-bottom: 5vh;
-    
 }
 
 .job-show-header {
-    /* background-color: #0914AE #41CDBC #FFDE59; */
-    height: 22vh;
     width: 100%;
-    margin-bottom: .5vh;
     background-color: #41CDBC;
     color: black;
     display: grid;
@@ -75,7 +70,7 @@
     margin-left: 1vw;
 }
 
-.job-show-remote {
+/* .job-show-remote {
     color: black;
     grid-column: 2;
     grid-row: 6;
@@ -97,7 +92,7 @@
     grid-row: 5;
     justify-self: center;
     margin-top: 3px;
-}
+} */
 
 .job-show-header-apply {
     all: unset;
@@ -126,30 +121,26 @@
 
 .job-show .skills-component {
     width: 100%;
-    height: 100%;
-    margin-top: .5vh;
+    align-items: center;
 }
 
 .job-show .skills-component svg {
-    height: 1.5em;
-    width: 1.5em;
+    height: 1.8em;
+    width: 1.8em;
 }
 
 .job-show-details {
     display: grid;
     grid-template-rows: auto;
-    width: 95%;
-    height: 48vh;
+    width: 94%;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x:hidden;
     justify-items: left;
     text-align: left;
-    margin-top: 3vh;
-    margin-left: 2vw;
-    padding-bottom: 1vh;
+    margin: 0 2vw;
+    padding: 2vh 0;
     border-bottom: #0914AE 2px solid;
     border-top: #0914AE 2px solid;
-    padding-top: 1vh;
 }
 
 .job-show-description {
@@ -181,33 +172,30 @@
 
 .job-show-apply {
     width: 50%;
+    height: 70%;
     background-color: #7cc4f5;
     color: #040a5d;
     font-size: 24px;
     border-radius: 20px;
-    height:40px;
     justify-self: center;
     border: #0914AE 2px solid;
     align-self: center;
-    /* margin-top: 1.6vh; */
 }
 
 .job-show-apply:hover {
     cursor: pointer;
-    transform: scale(1.1);
 }
 
 .job-show-applied {
     display: grid;
     grid-template-columns: .2fr 2fr;
-    height: 85%;
     width: 85%;
-    padding: 1%;
+    height: 100%;
+    padding: 3%;
     justify-self: center;
     align-self: center;
     align-items: center;
     justify-items: center;
-    margin-top: .5vh;
 }
 .job-show-applied svg {
     grid-column: 1;
