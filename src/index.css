@@ -1,31 +1,25 @@
-/* 
-Mint : #41CDBC
-GOLD : #FFDE59
-BLUE: #0914AE 
-#FF996B
-#5EBAFF
-#CC6C41
-#4B96CC
-#D28778
-*/
-
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;500;600;700&family=Ysabeau:ital,wght@1,400;1,500;1,600&display=swap");
+
+/* color code variables */
+/* background-color: var(--init-mint); */
 
 * {
   margin: 0;
-  /* font-family: Arial, Helvetica, sans-serif; */
   font-family: "Work Sans", Poppins, Cabin, Ysabeau;
-
-  /* background-color: #deeff9d0; */
+  --init-mint: #41CDBC;
+  --init-gold: #FFDE59;
+  --init-blue: #0914AE;
+  --init-background: #DEEFF9;
+  --init-dark: #050525;
 }
 
 /* nav, footer, app -> background */
 .light {
-  background-color: #deeff9;
+  background-color: var(--init-background);
   color: #000000;
 }
 .dark {
-  background-color: #050525;
+  background-color: var(--init-dark);
   color: #ffffff;
 }
 
@@ -34,5 +28,5 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #0914ae;
+  color: var(--init-blue);
 }
