@@ -37,7 +37,8 @@ export default function UserEdit(props) {
       ? axios
           .put(`${API}/users/${userID}`, {
             profile: editForm,
-            skills: editForm.skills,
+            // skills: [1, 2, 3, 4],
+            skills: editForm.skills["skill_ids"],
           })
           .then(() => {
             navigate("/user");

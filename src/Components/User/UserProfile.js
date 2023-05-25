@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
-import SkillsComponent from "../Job/SkillsComponent.js"
+import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import pencil from "../../Assets/pencil.png";
 import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn } = useUserProvider();
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn } =
+    useUserProvider();
   const [limit, setLimit] = useState(true);
 
   const dateFormat = (date) => {
@@ -55,15 +56,11 @@ export default function UserProfile() {
               <p className="bold label-spacing">{userProfile.education}</p>
               <br />
               <p>Skills and Technologies</p>
-              {/* <SkillsComponent /> */}
-              <ul>
-                {userProfile.skills &&
-                  userProfile.skills.map((e, i) => (
-                    <li key={i} className="bold">
-                      {e}
-                    </li>
-                  ))}
-              </ul>
+              <SkillsComponent
+              // sorting ascending for skill ids
+                skillsArr={userProfile.skills["skill_ids"].sort((a, b) => a - b)}
+                justList={true}
+              />
             </div>
             <div className="icon-edit">
               <img id="icon-user" src={userIcon} alt="user icon" />
