@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 // import { useSkillProvider } from "../../Providers/SkillProvider.js";
 import SkillsComponent from "../Job/SkillsComponent.js";
@@ -17,6 +17,8 @@ export default function UserEdit(props) {
     setEditForm,
     isSignedIn,
     setIsSignedIn,
+    userSkills,
+    setUserSkills,
   } = useUserProvider();
 
   // const { allSkills } = useSkillProvider();
@@ -26,8 +28,13 @@ export default function UserEdit(props) {
   };
 
   const skillsEdit = (event) => {
-    console.log(event.target.id)
-  }
+    let selectedSkills = [...userSkills];
+    selectedSkills =
+      !selectedSkills.includes(+event.target.id) && selectedSkills.length < 4
+        ? [...selectedSkills, +event.target.id]
+        : selectedSkills.filter((e) => e !== +event.target.id);
+    setUserSkills(selectedSkills);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,16 +49,25 @@ export default function UserEdit(props) {
       }
     }
 
+    const currentSkills = editForm.skills["skill_ids"];
+    
+    if (
+      currentSkills.length !== userSkills.length ||
+      !currentSkills.every((e) => userSkills.includes(e))
+    ) {
+      edited = true;
+    }
+
     edited
       ? axios
           .put(`${API}/users/${userID}`, {
             profile: editForm,
             // skills: [1, 2, 3, 4],
-            skills: editForm.skills["skill_ids"],
+            skills: userSkills,
           })
           .then(() => {
             navigate("/user");
-            console.log(edited);
+            // console.log(edited);
           })
           .catch((error) => console.log(error))
       : navigate("/user");
@@ -106,7 +122,12 @@ export default function UserEdit(props) {
               <br />
               <p className="skills">Skills & Technologies</p>
               {/* potentially use an array of objects as the skill */}
-              <SkillsComponent key={uuidv4()} checkBoxHandle={skillsEdit} checkbox={true}  />
+              <SkillsComponent
+                key={uuidv4()}
+                checkBoxHandle={skillsEdit}
+                checkedArr={userSkills}
+                checkbox={true}
+              />
               <div />
             </div>
             <div className="icon-edit">

@@ -18,7 +18,7 @@ import {
 import { FaJava } from "react-icons/fa";
 import "./SkillsComponent.css";
 
-function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle }) {
+function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle, checkedArr }) {
   // const {searchResults, setSearchResults, jobs, setJobs} = useJobProvider()
 
   const { allSkills } = useSkillProvider();
@@ -159,7 +159,7 @@ function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle }) {
               <input
                 type="checkbox"
                 id={obj.id}
-                // checked={checkboxObj[obj.id]}
+                checked={checkedArr.includes(obj.id)}
                 onChange={(event) => checkBoxHandle(event)}
               />
               {obj["skill_name"]}
