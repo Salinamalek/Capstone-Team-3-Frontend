@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import {v4 as uuidv4} from "uuid"
 import { useUserProvider } from "../../Providers/UserProvider.js";
+// import { useSkillProvider } from "../../Providers/SkillProvider.js";
+import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import "./UserEdit.css";
 
@@ -16,9 +19,15 @@ export default function UserEdit(props) {
     setIsSignedIn,
   } = useUserProvider();
 
+  // const { allSkills } = useSkillProvider();
+
   const handleChange = (event) => {
     setEditForm({ ...editForm, [event.target.id]: event.target.value });
   };
+
+  const skillsEdit = (event) => {
+    console.log(event.target.id)
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -95,7 +104,9 @@ export default function UserEdit(props) {
                 />
               </div>
               <br />
-              <p className="skills">Skills and Technologies</p>
+              <p className="skills">Skills & Technologies</p>
+              {/* potentially use an array of objects as the skill */}
+              <SkillsComponent key={uuidv4()} checkBoxHandle={skillsEdit} checkbox={true}  />
               <div />
             </div>
             <div className="icon-edit">

@@ -55,7 +55,7 @@ export default function UserProfile() {
               <p>Education</p>
               <p className="bold label-spacing">{userProfile.education}</p>
               <br />
-              <p>Skills and Technologies</p>
+              <p>Skills & Technologies</p>
               <SkillsComponent
               // sorting ascending for skill ids
                 skillsArr={userProfile.skills["skill_ids"].sort((a, b) => a - b)}
