@@ -8,7 +8,6 @@
   overflow-x:hidden;
   height: 85vh;
   padding-bottom: 5vh;
-  background-color: var(--init-background);
 }
 
 .jobsIndex h2 {

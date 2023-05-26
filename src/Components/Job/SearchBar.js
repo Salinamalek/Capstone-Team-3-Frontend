@@ -8,7 +8,6 @@ import "./SearchBar.css"
 function SearchBar() {
     const {jobs, setJobs, searchResult, setSearchResult} = useJobProvider()
     const[search, setSearch] = useState("")
-      // possibly a state to keep track of all search options selected, then will filter all jobs accordingly???
     const [searchOptions, setSearchOptions] = useState({
         searchbar: "",
         isRemote: false,
