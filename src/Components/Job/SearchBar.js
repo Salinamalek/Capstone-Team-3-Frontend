@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useJobProvider } from '../../Providers/JobProvider'
 import FilterBar from './FilterBar'
+import { handleSearchBar } from '../../Functions/SearchBarFunctions'
 import {CiSearch} from  "react-icons/ci"
 import "./SearchBar.css"
 
@@ -13,19 +14,13 @@ function SearchBar() {
         isRemote: false,
         city: "",
     })
-
-    function handleSearchBar(e) {
-        const value = e.target.value
-        setSearch(value)
-        setSearchOptions({...searchOptions, searchbar: value})
-    }
     
     function handleSearch() {
         if(searchOptions.search === "" && !searchOptions.isRemote && searchOptions.dropdown === ""){
             setJobs(searchResult)
         } 
         let filterSearch = searchResult
-        if(search){
+        if(searchOptions.searchbar){
             const textFilter = filterSearch.filter(({title, company, details}) =>{
                 const joinSearch = search.replaceAll(" ", "")
                 const regex = new RegExp(joinSearch,"gis")
@@ -41,15 +36,16 @@ function SearchBar() {
             filterSearch = remoteFilter
         }
         if(searchOptions.city){
-            console.log(searchOptions.city, "city")
-            // const cityFilter = filterSearch.filter(({city}) => {
-            //     console.log(city)
-            // })
+            const cityFilter = filterSearch.filter(({city}) => city.split(",")[0] === searchOptions.city)
+            filterSearch = cityFilter
         }
         setJobs(filterSearch)
     }
-  
 
+    useEffect(() => {
+        handleSearch()
+    }, [searchOptions.searchbar, searchOptions.city, searchOptions.isRemote])
+  
 
     return (
         <section className="search-component" >
@@ -61,7 +57,7 @@ function SearchBar() {
             id = "searchbar"
             value={search}
             placeholder="Search Jobs..."
-            onChange={(event) => handleSearchBar(event)}
+            onChange={(event) => handleSearchBar(event, search, setSearch, searchOptions, setSearchOptions )}
             />
             </label>
             <FilterBar 
