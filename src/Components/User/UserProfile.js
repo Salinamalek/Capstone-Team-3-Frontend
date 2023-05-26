@@ -78,7 +78,7 @@ export default function UserProfile() {
             <li className="bold label-spacing">
               {userProfile["project_one"] ? (
                 <a href={userProfile["project_one"]} target="_blank">
-                  LINK 1
+                  Project one
                 </a>
               ) : (
                 "add link"
@@ -87,7 +87,7 @@ export default function UserProfile() {
             <li className="bold">
               {userProfile["project_two"] ? (
                 <a href={userProfile["project_two"]} target="_blank">
-                  LINK 2
+                  Project two
                 </a>
               ) : (
                 "add link"

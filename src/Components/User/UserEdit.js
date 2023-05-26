@@ -50,7 +50,7 @@ export default function UserEdit(props) {
     }
 
     const currentSkills = editForm.skills["skill_ids"];
-    
+
     if (
       currentSkills.length !== userSkills.length ||
       !currentSkills.every((e) => userSkills.includes(e))
@@ -119,15 +119,6 @@ export default function UserEdit(props) {
                   required
                 />
               </div>
-              <br />
-              <p className="skills">Skills & Technologies</p>
-              {/* potentially use an array of objects as the skill */}
-              <SkillsComponent
-                key={uuidv4()}
-                checkBoxHandle={skillsEdit}
-                checkedArr={userSkills}
-                checkbox={true}
-              />
               <div />
             </div>
             <div className="icon-edit">
@@ -139,6 +130,16 @@ export default function UserEdit(props) {
                 CANCEL
               </button>
             </div>
+          </div>
+          <p className="skills-edit">Skills & Technologies
+          <br/><span>select up to 4</span></p>
+          <div className="skill-icons-edit">
+            <SkillsComponent
+              key={uuidv4()}
+              checkBoxHandle={skillsEdit}
+              checkedArr={userSkills}
+              checkbox={true}
+            />
           </div>
           <br />
           <div>
@@ -171,6 +172,7 @@ export default function UserEdit(props) {
             <p>About me</p>
             <textarea
               id="bio"
+              maxLength={160}
               className="input-profile input-bio"
               placeholder="add a short bio"
               value={editForm.bio || ""}

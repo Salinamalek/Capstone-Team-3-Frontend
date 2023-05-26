@@ -9,7 +9,50 @@
 
 .input-name, .input-education {
     width: 160px;
-   
+}
+
+.skills-edit {
+    margin-bottom: 3px;
+}
+
+.skills-edit span {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    opacity: 0.7;
+}
+
+.skill-icons-edit .skills-checkboxes {
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6px;
+    margin-top: 8px;
+
+}
+
+.dark .skill-icons-edit {
+    background-color: white;
+    color: black;
+    border-radius: 6px;
+    padding: 2px;
+    padding-bottom: 6px;
+}
+
+.dark .skills-edit span {
+    font-size: 16px;
+    color: white;
+    opacity: 0.7;
+}
+
+.skill-icons-edit .skills-checkboxes label{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-items: left;
+}
+
+.skill-icons-edit .skills-checkboxes label input {
+    height: 18px;
+    width: 18px;
 }
 
 .ul-projects input, .input-bio {
