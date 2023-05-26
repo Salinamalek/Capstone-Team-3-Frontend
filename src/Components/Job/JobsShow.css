@@ -142,7 +142,8 @@
 
 .job-show-description {
     display: grid;
-    margin-left: 4vw;
+    width: 92%;
+    justify-self: center;
 }
 
 .job-show-role-list {
