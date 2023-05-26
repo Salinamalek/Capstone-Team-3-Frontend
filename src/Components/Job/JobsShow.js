@@ -75,7 +75,7 @@ function JobsShow() {
           </span>
         )}
         <button
-        onClick={() => applyToJob()} 
+        onClick={ !applied ? () => applyToJob() : () => navigate("/user")} 
         className={!applied? "job-show-header-apply" : "job-show-header-applied"}>
             {!applied ? "APPLY" : "APPLIED"}
         </button>
@@ -114,7 +114,10 @@ function JobsShow() {
         </button> :
         <div className="job-show-applied">
             <BsClipboardCheck color={"black"} size={"40px"}/>
-            <span>APPLIED ON {convertDate(applied["date_applied"])}</span>
+            <span
+            onClick={() => navigate("/user")}>
+              APPLIED ON {convertDate(applied["date_applied"])}
+            </span>
         </div>
     }
       

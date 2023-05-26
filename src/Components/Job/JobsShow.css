@@ -1,6 +1,6 @@
 .job-show {
     display: grid;
-    grid-template-rows: 1.5fr .25fr 3fr .4fr;
+    grid-template-rows: 1.5fr .25fr max-content .4fr;
     justify-items: left;
     height: 85vh;
     width: 100%;
@@ -105,7 +105,7 @@
     grid-column: 2;
     grid-row: 6;
     justify-self: right;
-    color: black;
+    color: var(--init-blue);
     border: 1px solid var(--init-gold);
     background-color: var(--init-gold);
     padding: 2px;
@@ -127,7 +127,9 @@
 .job-show-details {
     display: grid;
     grid-template-rows: auto;
+    row-gap: 10px;
     width: 94%;
+    height: 44vh;
     overflow-y: auto;
     overflow-x:hidden;
     justify-items: left;
@@ -156,7 +158,7 @@
 
 .job-show-label {
     font-weight: 700;
-    font-size: 19px;
+    font-size: 20px;
     border-bottom: var(--init-blue) 1px solid;
     margin-bottom: 5px;
     grid-row: 1;
@@ -198,11 +200,61 @@
     grid-column: 2;
     font-size: 22px;
     font-weight: 500;  
+    color: var(--init-blue);
 }
 
 
 /* DARK MODE UPDATES */
 
 .dark .job-show-details, .dark .job-show-applied {
-    color: black;
+    color: white;
+}
+
+.dark .job-show-label, .dark .job-show-details {
+    border-bottom: var(--init-mint) 2px solid;
+}
+.dark .job-show-label {
+    color: var(--init-gold);
+}
+.dark .job-show-details {
+    border-top: var(--init-mint) 2px solid ;
+}
+.dark .job-show-applied svg {
+    fill: var(--init-mint);
+}
+.dark .job-show-applied span:first-of-type {
+    color: var(--init-blue);
+    background-color: var(--init-mint);
+    padding: 5px;
+}
+.dark .job-show-header {
+    background-color: var(--init-gold);
+}
+.dark .job-show-company svg {
+    stroke: var(--init-mint);
+}
+.dark .job-show-location svg {
+    fill: var(--init-mint);
+}
+.dark .job-show-header hr {
+    border: var(--init-mint) 1px solid;
+}
+.dark .job-show-header-applied {
+    background-color: var(--init-mint);
+}
+.dark .job-show .skills-component {
+    background-color: var(--init-background);
+    width: 90%;
+    margin: 6px 0px;
+    align-self: center;
+    justify-self: center;
+    border-radius: 20px;
+    border: var(--init-mint) 2px solid;
+}
+.dark .job-show-apply {
+    background-color: var(--init-gold);
+    border: var(--init-mint) 2px solid;
+}
+.dark .job-show-header-apply {
+    color: var(--init-blue);
 }
