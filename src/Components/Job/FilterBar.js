@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useJobProvider } from "../../Providers/JobProvider.js";
+import TestSkills from "./TestSkills.js";
 import SkillsComponent from "./SkillsComponent";
 import { handleSearchBar } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
@@ -12,12 +13,31 @@ function FilterBar({searchOptions, setSearchOptions}) {
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
-   const [skillNames, setSkillNames] = useState([])
+   const [skillData, setSkillData] = useState([])
    const [skillView, setSkillView] = useState(false)
+
+//    create state to hold id value of skill if selected
+const [selectedSkill, setSelectedSkill] = useState([])
+
+    function handleSkillSelection(e) {
+        const id = +e.target.id
+        if(!selectedSkill.includes(id) && selectedSkill.length < 4){
+            setSelectedSkill([...selectedSkill, id])
+        }
+        else {
+            const remove = selectedSkill.filter(el => el !== id)
+            setSelectedSkill(remove)
+        }
+    }
+
+    function skillIcon(e) {
+        const id = e.target.id
+        console.log("icon",id)
+    }
 
    useEffect(() => {
     axios.get(`${API}/skills`)
-    .then (({data}) => setSkillNames(data))
+    .then (({data}) => setSkillData(data))
     .catch(err => console.log(err))
    }, [])
 
@@ -93,9 +113,14 @@ function FilterBar({searchOptions, setSearchOptions}) {
                 <SkillsComponent
                 key={uuidv4()}
                 skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
-                <SkillsComponent 
-                skillsArr={skillNames}
-                checkbox={true}/>
+                <TestSkills
+                skillsArr={skillData}
+                checkbox={true}
+                checkedArr={selectedSkill}
+                checkBoxHandle={handleSkillSelection}/>
+                // <SkillsComponent 
+                // skillsArr={skillNames}
+                // checkbox={true}/>
                }
                </div>
               <hr/>
