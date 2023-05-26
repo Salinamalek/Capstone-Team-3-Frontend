@@ -165,7 +165,7 @@ font-size: 18px;
     align-items: center;
     position: relative;
     /* bottom: .7vh; */
-    /* left: 2vw; */
+    left: 4vw;
     
 }
 .filter-bar-skills .skills-checkboxes label {

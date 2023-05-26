@@ -2,49 +2,24 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useJobProvider } from "../../Providers/JobProvider.js";
 import SkillsComponent from "./SkillsComponent";
+import { handleSearchBar } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
 import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
 
-function FilterBar() {
-    const { API, axios, jobs, setJobs, searchResult, setSearchResult } = useJobProvider()
+function FilterBar({searchOptions, setSearchOptions}) {
+    const { API, axios} = useJobProvider()
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
    const [skillNames, setSkillNames] = useState([])
    const [skillView, setSkillView] = useState(false)
 
-    //will need get all skills call to map for names for checkbox toggle -> skills provider or add to jobsProvider
-   function filterBarSlide(e) {
-       setFilterOptions(!filterOptions)
-   }
-
-
-   function cityFilter (e) {
-    setCityDropdown(e.target.value)
-    // if based on state better can display multiple city in that state, the values would be abbreviated states to search by
-    const state = e.target.value
-    console.log(state)
-   }
-
-
-   function remoteFilter (e) {
-        setRemoteSearch(!remoteSearch)
-        if(e.target.checked){
-            const remoteJobs = jobs.filter(({full_remote}) => full_remote === true)
-            setJobs(remoteJobs)
-        }
-        else {
-            setJobs(searchResult)
-        } 
-   }
-
    useEffect(() => {
     axios.get(`${API}/skills`)
     .then (({data}) => setSkillNames(data))
     .catch(err => console.log(err))
    }, [])
-//    [{id: 1, skill_name: "JavaScript"}]
 
    return (
        <div className="filter-bar">
@@ -53,28 +28,29 @@ function FilterBar() {
                {
                    !filterOptions ?
                    <BsCaretDownFill
-                   onClick={(event) => filterBarSlide(event)}
+                   onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#41CDBC"}
                    size = {"25px"}
                     /> :
                    <BsCaretUpFill
-                   onClick={(event) => filterBarSlide(event)}
+                   onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#0914AE"}
                    size = {"25px"}
                     />
                }
                 <span 
                 className={filterOptions ? "filter-span expand-text" : "expand-text"}
-                onClick={(event) => filterBarSlide(event)}>
+                onClick={() => setFilterOptions(!filterOptions)}>
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
                 <label htmlFor="remote-checkbox" >
                     <input
                     className={filterOptions ? "filter-remote remote-checkbox" : "remote-checkbox"}
+                    id = "isRemote"
                     type="checkbox"
                     value={remoteSearch}
                     checked = {remoteSearch}
-                    onChange={(event) => remoteFilter(event)}
+                    onChange={(event) => handleSearchBar(event, remoteSearch, setRemoteSearch, searchOptions, setSearchOptions)}
                     />
                     <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                 </label>
@@ -84,21 +60,21 @@ function FilterBar() {
            <section
            className={filterOptions ? "filter-bar-expanded slide-down" : "filter-bar-expanded slide-up"}>
                <select
-               onChange={(event) => cityFilter(event)}
-               value={cityDropdown}>
+               id = "city"
+               value={cityDropdown}
+               onChange={(event) => handleSearchBar(event, cityDropdown, setCityDropdown, searchOptions, setSearchOptions)}>
                    <option value = {""}>Select City</option>
-                   <option value={"NY"}>New York City, NY</option>
-                   <option value={"TX"}>Austin, TX</option>
-                   <option value={"CA"}>San Francisco, CA</option>
-                   <option value={"FL"}>Miami, FL</option>
-                   <option value={"IL"}>Chicago, IL</option>
-                   <option value={"NJ"}>Jersey City, NJ</option>
-                   <option value={"GA"}>Atlanta, GA</option>
-                   <option value={"CO"}>Denver, CO</option>
-                   <option value={"WA"}>Seattle, WA</option>
+                   <option value={"New York City"}>New York City, NY</option>
+                   <option value={"Austin"}>Austin, TX</option>
+                   <option value={"San Francisco"}>San Francisco, CA</option>
+                   <option value={"Miami"}>Miami, FL</option>
+                   <option value={"Chicago"}>Chicago, IL</option>
+                   <option value={"Jersey City"}>Jersey City, NJ</option>
+                   <option value={"Atlanta"}>Atlanta, GA</option>
+                   <option value={"Denver"}>Denver, CO</option>
+                   <option value={"Seattle"}>Seattle, WA</option>
                </select>
                {/* skills search options */}
-               {/* need to toggle checkboxes and icons? */}
                <span className="filter-bar-toggle">
                 <MdChangeCircle 
                 size={"25px"}
@@ -121,8 +97,6 @@ function FilterBar() {
                 checkbox={true}/>
                }
                </div>
-
-              
               <hr/>
              
            </section>

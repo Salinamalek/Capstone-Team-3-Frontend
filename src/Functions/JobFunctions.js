@@ -16,6 +16,6 @@ function convertDate(str){
 
 
 
-module.exports = {
+export {
     convertDate,
 }
