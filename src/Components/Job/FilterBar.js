@@ -21,6 +21,7 @@ const [selectedSkill, setSelectedSkill] = useState([])
 
     function handleSkillSelection(e) {
         const id = +e.target.id
+        console.log(id)
         if(!selectedSkill.includes(id) && selectedSkill.length < 4){
             setSelectedSkill([...selectedSkill, id])
         }
@@ -30,10 +31,6 @@ const [selectedSkill, setSelectedSkill] = useState([])
         }
     }
 
-    function skillIcon(e) {
-        const id = e.target.id
-        console.log("icon",id)
-    }
 
    useEffect(() => {
     axios.get(`${API}/skills`)
@@ -110,10 +107,19 @@ const [selectedSkill, setSelectedSkill] = useState([])
                <div className="filter-bar-skills">
                {
                 !skillView ? 
-                <SkillsComponent
-                key={uuidv4()}
-                skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
+                // <SkillsComponent
+                // key={uuidv4()}
+                // skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
                 <TestSkills
+                key={uuidv4()}
+                skillsArr={skillData.map(({id}) => id)}
+                checkedArr={selectedSkill}
+                stateVar={selectedSkill}
+                setFunction={setSelectedSkill}
+
+                /> :
+                <TestSkills
+                key={uuidv4()}
                 skillsArr={skillData}
                 checkbox={true}
                 checkedArr={selectedSkill}
