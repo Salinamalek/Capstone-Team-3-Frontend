@@ -28,11 +28,13 @@ function FilterBar({searchOptions, setSearchOptions}) {
                {
                    !filterOptions ?
                    <BsCaretDownFill
+                   className="filter-arrow-up"
                    onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#41CDBC"}
                    size = {"25px"}
                     /> :
                    <BsCaretUpFill
+                   className="filter-arrow-up"
                    onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#0914AE"}
                    size = {"25px"}

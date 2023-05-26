@@ -166,3 +166,15 @@ font-size: 18px;
 .dark .filter-bar-arrow .expand-text{
     background-color: var(--init-mint);
 }
+.dark .filter-arrow-up {
+    fill: var(--init-gold);
+}
+.dark .remote-checkbox {
+    accent-color: var(--init-gold)
+}
+.dark .filter-bar-arrow .expand-text {
+    background-color: var(--init-background);
+}
+.dark .filter-bar-arrow .expand-text, .dark .filter-bar-skills .skills-checkboxes label span{
+    color: var(--init-blue);
+}
