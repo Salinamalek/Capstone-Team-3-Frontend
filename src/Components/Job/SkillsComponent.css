@@ -1,9 +1,8 @@
 .skills-component {
-    /* grid-column: span 2; */
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    row-gap: 5px;
+    row-gap: 10px;
 }
 
 .skills-component span svg {
@@ -15,11 +14,7 @@
     z-index: 5;
     height: fit-content;
 }
-.skills-select {
-    color: #FFDE59;
-}
 
 .skill-icon svg {
-    fill: #0914AE;
-    /* fill: black; */
+    fill: var(--init-blue);
 }

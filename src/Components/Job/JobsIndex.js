@@ -13,7 +13,7 @@ function JobsIndex() {
 
    return (
        <div className="jobsIndex">
-           <h2>Jobs Waiting For You</h2>
+           <h2></h2>
            <SearchBar />
            {
                jobs.map(obj =>

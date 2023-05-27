@@ -1,50 +1,43 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useJobProvider } from "../../Providers/JobProvider.js";
+import TestSkills from "./TestSkills.js";
 import SkillsComponent from "./SkillsComponent";
+import Dropdown from "./Dropdown.js";
+import { dropdownCities } from "./Data/Cities.js";
+import { handleSearchBar, handleSkillSelection } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
 import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
 
-function FilterBar() {
-    const { API, axios, jobs, setJobs, searchResult, setSearchResult } = useJobProvider()
+function FilterBar({searchOptions, setSearchOptions}) {
+    const { API, axios} = useJobProvider()
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
-   const [skillNames, setSkillNames] = useState([])
    const [skillView, setSkillView] = useState(false)
 
-    //will need get all skills call to map for names for checkbox toggle -> skills provider or add to jobsProvider
-   function filterBarSlide(e) {
-       setFilterOptions(!filterOptions)
-   }
+//    will replace with  new skill provider/ no use effect needed
+const [skillData, setSkillData] = useState([])
 
+    // function handleSkillSelection(e) {
+    //     const id = +e.target.id
+    //     const select = searchOptions.skills
+    //     if(!select.includes(id) && select.length < 4){
+    //         setSearchOptions({...searchOptions, skills :[...select, id]}) 
+    //     }
+    //     else {
+    //         const remove = select.filter(el => el !== id)
+    //         setSearchOptions({...searchOptions, skills :remove})
+    //     }
+    // }
 
-   function cityFilter (e) {
-    setCityDropdown(e.target.value)
-    // if based on state better can display multiple city in that state, the values would be abbreviated states to search by
-    const state = e.target.value
-    console.log(state)
-   }
-
-
-   function remoteFilter (e) {
-        setRemoteSearch(!remoteSearch)
-        if(e.target.checked){
-            const remoteJobs = jobs.filter(({full_remote}) => full_remote === true)
-            setJobs(remoteJobs)
-        }
-        else {
-            setJobs(searchResult)
-        } 
-   }
 
    useEffect(() => {
     axios.get(`${API}/skills`)
-    .then (({data}) => setSkillNames(data))
+    .then (({data}) => setSkillData(data))
     .catch(err => console.log(err))
    }, [])
-//    [{id: 1, skill_name: "JavaScript"}]
 
    return (
        <div className="filter-bar">
@@ -53,28 +46,31 @@ function FilterBar() {
                {
                    !filterOptions ?
                    <BsCaretDownFill
-                   onClick={(event) => filterBarSlide(event)}
+                   className="filter-arrow-up"
+                   onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#41CDBC"}
                    size = {"25px"}
                     /> :
                    <BsCaretUpFill
-                   onClick={(event) => filterBarSlide(event)}
+                   className="filter-arrow-up"
+                   onClick={() => setFilterOptions(!filterOptions)}
                    color = {"#0914AE"}
                    size = {"25px"}
                     />
                }
                 <span 
                 className={filterOptions ? "filter-span expand-text" : "expand-text"}
-                onClick={(event) => filterBarSlide(event)}>
+                onClick={() => setFilterOptions(!filterOptions)}>
                     {filterOptions ? "Collapse Filter Options" : "Expand Filter Options"}
                 </span>
                 <label htmlFor="remote-checkbox" >
                     <input
                     className={filterOptions ? "filter-remote remote-checkbox" : "remote-checkbox"}
+                    id = "isRemote"
                     type="checkbox"
                     value={remoteSearch}
                     checked = {remoteSearch}
-                    onChange={(event) => remoteFilter(event)}
+                    onChange={(event) => handleSearchBar(event, remoteSearch, setRemoteSearch, searchOptions, setSearchOptions)}
                     />
                     <span className={filterOptions ? "filter-remote-label remote-label" : "remote-label"}>Remote</span>
                 </label>
@@ -83,46 +79,49 @@ function FilterBar() {
            {/* expanded filter bar */}
            <section
            className={filterOptions ? "filter-bar-expanded slide-down" : "filter-bar-expanded slide-up"}>
-               <select
-               onChange={(event) => cityFilter(event)}
-               value={cityDropdown}>
-                   <option value = {""}>Select City</option>
-                   <option value={"NY"}>New York City, NY</option>
-                   <option value={"TX"}>Austin, TX</option>
-                   <option value={"CA"}>San Francisco, CA</option>
-                   <option value={"FL"}>Miami, FL</option>
-                   <option value={"IL"}>Chicago, IL</option>
-                   <option value={"NJ"}>Jersey City, NJ</option>
-                   <option value={"GA"}>Atlanta, GA</option>
-                   <option value={"CO"}>Denver, CO</option>
-                   <option value={"WA"}>Seattle, WA</option>
-               </select>
+                <Dropdown
+                idVal={"city"}
+                stateVar={cityDropdown}
+                optionsArray={dropdownCities} 
+                onChange={(event) => handleSearchBar(event, cityDropdown, setCityDropdown, searchOptions, setSearchOptions)}
+                />
                {/* skills search options */}
-               {/* need to toggle checkboxes and icons? */}
                <span className="filter-bar-toggle">
-                <MdChangeCircle 
-                size={"25px"}
-                color={"#FFDE59"} 
-                //   className="filter-bar-toggle"
-                onClick={() => setSkillView(!skillView)}/>
-                <span
-                onClick={() => setSkillView(!skillView)}
-                >{!skillView ? "Skill Text" : "Skill Icons"}</span>
+                    <MdChangeCircle 
+                    size={"25px"}
+                    color={"#FFDE59"} 
+                    onClick={() => setSkillView(!skillView)}/>
+                    <span
+                    onClick={() => setSkillView(!skillView)}>
+                        {!skillView ? "Skill Text" : "Skill Icons"}
+                    </span>
                </span>
               
                <div className="filter-bar-skills">
                {
                 !skillView ? 
-                <SkillsComponent
+                // <SkillsComponent
+                // key={uuidv4()}
+                // skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
+                <TestSkills
                 key={uuidv4()}
-                skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
-                <SkillsComponent 
-                skillsArr={skillNames}
-                checkbox={true}/>
+                skillsArr={skillData.map(({id}) => id)}
+                checkedArr={searchOptions.skills}
+                stateVar={searchOptions}
+                setFunction={setSearchOptions}
+
+                /> :
+                <TestSkills
+                key={uuidv4()}
+                skillsArr={skillData}
+                checkbox={true}
+                checkedArr={searchOptions.skills}
+                checkBoxHandle={(event) =>handleSkillSelection(event, searchOptions, setSearchOptions)}/>
+                // <SkillsComponent 
+                // skillsArr={skillNames}
+                // checkbox={true}/>
                }
                </div>
-
-              
               <hr/>
              
            </section>

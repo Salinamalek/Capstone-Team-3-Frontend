@@ -162,7 +162,7 @@ function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle, checke
                 checked={checkedArr.includes(obj.id)}
                 onChange={(event) => checkBoxHandle(event)}
               />
-              {obj["skill_name"]}
+              <span>{obj["skill_name"]}</span>
             </label>
           </>
         ))}

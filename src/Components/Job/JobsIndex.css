@@ -5,7 +5,9 @@
   row-gap: 15px;
   justify-items: center;
   overflow-y: scroll;
-  height: 82vh;
+  overflow-x:hidden;
+  height: 85vh;
+  /* padding-bottom: 5vh; */
 }
 
 .jobsIndex h2 {
@@ -16,5 +18,4 @@
 .jobsIndex a {
   width: 90%;
   color: black;
-  /* color: unset; */
 }
