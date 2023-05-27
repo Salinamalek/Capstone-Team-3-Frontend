@@ -20,19 +20,6 @@ function FilterBar({searchOptions, setSearchOptions}) {
 //    will replace with  new skill provider/ no use effect needed
 const [skillData, setSkillData] = useState([])
 
-    // function handleSkillSelection(e) {
-    //     const id = +e.target.id
-    //     const select = searchOptions.skills
-    //     if(!select.includes(id) && select.length < 4){
-    //         setSearchOptions({...searchOptions, skills :[...select, id]}) 
-    //     }
-    //     else {
-    //         const remove = select.filter(el => el !== id)
-    //         setSearchOptions({...searchOptions, skills :remove})
-    //     }
-    // }
-
-
    useEffect(() => {
     axios.get(`${API}/skills`)
     .then (({data}) => setSkillData(data))
@@ -100,26 +87,18 @@ const [skillData, setSkillData] = useState([])
                <div className="filter-bar-skills">
                {
                 !skillView ? 
-                // <SkillsComponent
-                // key={uuidv4()}
-                // skillsArr={[1,2,3,4,5,6,7,8,9,10,11,12]}/> :
-                <TestSkills
+                <SkillsComponent
                 key={uuidv4()}
-                skillsArr={skillData.map(({id}) => id)}
                 checkedArr={searchOptions.skills}
                 stateVar={searchOptions}
                 setFunction={setSearchOptions}
-
                 /> :
-                <TestSkills
+                <SkillsComponent
                 key={uuidv4()}
-                skillsArr={skillData}
                 checkbox={true}
                 checkedArr={searchOptions.skills}
-                checkBoxHandle={(event) =>handleSkillSelection(event, searchOptions, setSearchOptions)}/>
-                // <SkillsComponent 
-                // skillsArr={skillNames}
-                // checkbox={true}/>
+                checkBoxHandle={(event) =>handleSkillSelection(event, searchOptions, setSearchOptions)}
+                />
                }
                </div>
               <hr/>
