@@ -46,8 +46,6 @@ function skillClick(val, stateVar1, setFunction1, stateVar2, setFunction2) {
   }
 
 
-
-
 export {
     handleSearchBar,
     handleSkillSelection,

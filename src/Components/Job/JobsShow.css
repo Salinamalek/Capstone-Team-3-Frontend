@@ -228,7 +228,6 @@
 .dark .job-show-applied span:first-of-type {
     color: var(--init-blue);
     background-color: var(--init-mint);
-    border-radius: 6px;
     padding: 5px;
 }
 .dark .job-show-header {
@@ -245,7 +244,6 @@
 }
 .dark .job-show-header-applied {
     background-color: var(--init-mint);
-    border-radius: 6px;
 }
 .dark .job-show .skills-component {
     background-color: var(--init-background);

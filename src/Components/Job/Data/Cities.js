@@ -43,5 +43,4 @@ const dropdownCities = [
 
    export {
     dropdownCities,
-    
    }
