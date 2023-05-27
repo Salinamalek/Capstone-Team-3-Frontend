@@ -15,6 +15,19 @@ function handleSearchBar(event, stateVar1, setFunction1, stateVar2, setFunction2
     }
 }
 
+// skill checkboxes filter bar
+function handleSkillSelection(e, stateVar, setFunction) {
+    const id = +e.target.id
+    const select = stateVar.skills
+    if(!select.includes(id) && select.length < 4){
+        setFunction({...stateVar, skills :[...select, id]}) 
+    }
+    else {
+        const remove = select.filter(el => el !== id)
+        setFunction({...stateVar, skills :remove})
+    }
+}
+
 const dropdownCities = [
     {
         val:"" ,
@@ -62,4 +75,5 @@ const dropdownCities = [
 export {
     handleSearchBar,
     dropdownCities,
+    handleSkillSelection,
 }

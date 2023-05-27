@@ -4,7 +4,7 @@ import { useJobProvider } from "../../Providers/JobProvider.js";
 import TestSkills from "./TestSkills.js";
 import SkillsComponent from "./SkillsComponent";
 import Dropdown from "./Dropdown.js";
-import { dropdownCities, handleSearchBar } from "../../Functions/SearchBarFunctions.js";
+import { dropdownCities, handleSearchBar, handleSkillSelection } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
 import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
@@ -19,17 +19,17 @@ function FilterBar({searchOptions, setSearchOptions}) {
 //    will replace with  new skill provider/ no use effect needed
 const [skillData, setSkillData] = useState([])
 
-    function handleSkillSelection(e) {
-        const id = +e.target.id
-        const select = searchOptions.skills
-        if(!select.includes(id) && select.length < 4){
-            setSearchOptions({...searchOptions, skills :[...select, id]}) 
-        }
-        else {
-            const remove = select.filter(el => el !== id)
-            setSearchOptions({...searchOptions, skills :remove})
-        }
-    }
+    // function handleSkillSelection(e) {
+    //     const id = +e.target.id
+    //     const select = searchOptions.skills
+    //     if(!select.includes(id) && select.length < 4){
+    //         setSearchOptions({...searchOptions, skills :[...select, id]}) 
+    //     }
+    //     else {
+    //         const remove = select.filter(el => el !== id)
+    //         setSearchOptions({...searchOptions, skills :remove})
+    //     }
+    // }
 
 
    useEffect(() => {
@@ -115,7 +115,7 @@ const [skillData, setSkillData] = useState([])
                 skillsArr={skillData}
                 checkbox={true}
                 checkedArr={searchOptions.skills}
-                checkBoxHandle={handleSkillSelection}/>
+                checkBoxHandle={(event) =>handleSkillSelection(event, searchOptions, setSearchOptions)}/>
                 // <SkillsComponent 
                 // skillsArr={skillNames}
                 // checkbox={true}/>

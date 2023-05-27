@@ -121,7 +121,8 @@ function TestSkills({ skillsArr, justList, checkbox, checkBoxHandle, checkedArr,
                         type="checkbox"
                         id={obj.id}
                         checked={checkedArr.includes(obj.id)}
-                        onChange={(event) => checkBoxHandle(event)}
+                        // for Dan may need to update
+                        onChange={checkBoxHandle}
                       />
                       {obj["skill_name"]}
                     </label>
