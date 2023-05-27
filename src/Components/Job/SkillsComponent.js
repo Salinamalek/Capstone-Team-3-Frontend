@@ -154,17 +154,15 @@ function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle, checke
     return (
       <div className="skills-checkboxes">
         {allSkills.map((obj) => (
-          <>
             <label key={uuidv4()} htmlFor={obj.id}>
               <input
                 type="checkbox"
                 id={obj.id}
                 checked={checkedArr.includes(obj.id)}
-                onChange={(event) => checkBoxHandle(event)}
+                onChange={checkBoxHandle}
               />
               <span>{obj["skill_name"]}</span>
             </label>
-          </>
         ))}
       </div>
     );
