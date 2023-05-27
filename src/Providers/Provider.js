@@ -16,7 +16,7 @@ function Provider({ children }) {
   const [userID, setUserID] = useState(1);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NTAzMjM2OSwiZXhwIjoxNjg1MTE4NzY5fQ.MKx7unRd_eGT7b7AyPjyMICTOlurBljGBZSRMp1J5sI"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NTE1NDgxOCwiZXhwIjoxNjg3NzQ2ODE4fQ.fgv3Vnmg9ZsC3Gt4Do3njOxNH9RRmXJpvbuQWBV0SZM"
   );
 
   // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NDc3NDAwNCwiZXhwIjoxNjg0ODYwNDA0fQ.dhbFdrc7AoY50sECP0AUfj17Q8TPs9JuMGvqxfzAiTQ"
