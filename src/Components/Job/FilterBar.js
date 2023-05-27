@@ -4,7 +4,8 @@ import { useJobProvider } from "../../Providers/JobProvider.js";
 import TestSkills from "./TestSkills.js";
 import SkillsComponent from "./SkillsComponent";
 import Dropdown from "./Dropdown.js";
-import { dropdownCities, handleSearchBar, handleSkillSelection } from "../../Functions/SearchBarFunctions.js";
+import { dropdownCities } from "./Data/Cities.js";
+import { handleSearchBar, handleSkillSelection } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
 import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
