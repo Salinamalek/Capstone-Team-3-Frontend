@@ -28,6 +28,23 @@ function handleSkillSelection(e, stateVar, setFunction) {
     }
 }
 
+// icon click filter bar
+function skillClick(val, stateVar1, setFunction1, stateVar2, setFunction2) {
+    const currentValArr = [...stateVar1[val]];
+    currentValArr[1] = !currentValArr[1];
+    setFunction1({ ...stateVar1, [val]: currentValArr });
+    
+    const select = stateVar2.skills
+    if(!select.includes(val) && select.length < 4){
+        setFunction2({...stateVar2, skills :[...select, val]})
+        
+    }
+    else {
+        const remove = select.filter(el => el !== val)
+        setFunction2({...stateVar2, skills :remove})
+    }
+  }
+
 const dropdownCities = [
     {
         val:"" ,
@@ -76,4 +93,5 @@ export {
     handleSearchBar,
     dropdownCities,
     handleSkillSelection,
+    skillClick,
 }

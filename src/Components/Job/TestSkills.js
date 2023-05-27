@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { skillClick } from "../../Functions/SearchBarFunctions";
 import {
   SiNodedotjs,
   SiJavascript,
@@ -84,21 +85,21 @@ function TestSkills({ skillsArr, justList, checkbox, checkBoxHandle, checkedArr,
         12: false,
       })
 
-      function skillClick(val) {
-        const currentValArr = [...skillsObj[val]];
-        currentValArr[1] = !currentValArr[1];
-        setSkillsObj({ ...skillsObj, [val]: currentValArr });
+      // function skillClick(val) {
+      //   const currentValArr = [...skillsObj[val]];
+      //   currentValArr[1] = !currentValArr[1];
+      //   setSkillsObj({ ...skillsObj, [val]: currentValArr });
         
-        const select = stateVar.skills
-        if(!select.includes(val) && select.length < 4){
-            setFunction({...stateVar, skills :[...select, val]})
+      //   const select = stateVar.skills
+      //   if(!select.includes(val) && select.length < 4){
+      //       setFunction({...stateVar, skills :[...select, val]})
             
-        }
-        else {
-            const remove = select.filter(el => el !== val)
-            setFunction({...stateVar, skills :remove})
-        }
-      }
+      //   }
+      //   else {
+      //       const remove = select.filter(el => el !== val)
+      //       setFunction({...stateVar, skills :remove})
+      //   }
+      // }
 
       useEffect(() => {
         if(!checkbox && !justList){
@@ -138,7 +139,7 @@ else {
              <span
              key={uuidv4()}
              className={checkedArr.includes(skill)? "skill-icon" : null}
-             onClick={() => skillClick(skill)}
+             onClick={() => skillClick(skill, skillsObj, setSkillsObj, stateVar, setFunction)}
            >
              {skillsObj[skill]}
            </span>
