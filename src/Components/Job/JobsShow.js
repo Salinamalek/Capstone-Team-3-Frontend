@@ -7,7 +7,7 @@ import { convertDate } from "../../Functions/JobFunctions";
 import { TfiAngleLeft } from "react-icons/tfi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { GoLocation } from "react-icons/go";
-import { BsClipboardCheck } from "react-icons/bs"
+import { BsClipboardCheck } from "react-icons/bs";
 import "./JobsShow.css";
 
 function JobsShow() {
@@ -15,27 +15,29 @@ function JobsShow() {
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
-  const [reload, setReload] = useState(false)
-  const [applied, setApplied] = useState(false)
+  const [reload, setReload] = useState(false);
+  const [applied, setApplied] = useState(false);
 
-  function applyToJob(){
+  function applyToJob() {
     const obj = {
-        user_id: userID,
-        job_id: jobID
-    }
-    axios.post(`${API}/user-jobs`, obj)
-    .then(() => setReload(!reload))
-    .catch(err => console.log(err))
-}
+      user_id: userID,
+      job_id: jobID,
+    };
+    axios
+      .post(`${API}/user-jobs`, obj)
+      .then(() => setReload(!reload))
+      .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
-     //   check if user-jobs table already has pairing
-     axios.get(`${API}/user-jobs/${userID}`)
-     .then(({data}) => {
-        const match = data.find(({id}) => id === +jobID) 
-        setApplied(match)
-     })
-     .catch(err => console.log(data))
+    //   check if user-jobs table already has pairing
+    axios
+      .get(`${API}/user-jobs/${userID}`)
+      .then(({ data }) => {
+        const match = data.find(({ id }) => id === +jobID);
+        setApplied(match);
+      })
+      .catch((err) => console.log(data));
 
     axios
       .get(`${API}/jobs/${jobID}`)
@@ -46,7 +48,6 @@ function JobsShow() {
       })
       .catch((err) => console.log(err));
   }, [reload, jobID]);
-
 
   return (
     <div className="job-show">
@@ -75,15 +76,16 @@ function JobsShow() {
           </span>
         )}
         <button
-        onClick={ !applied ? () => applyToJob() : () => navigate("/user")} 
-        className={!applied? "job-show-header-apply" : "job-show-header-applied"}>
-            {!applied ? "APPLY" : "APPLIED"}
+          onClick={!applied ? () => applyToJob() : () => navigate("/user")}
+          className={
+            !applied ? "job-show-header-apply" : "job-show-header-applied"
+          }
+        >
+          {!applied ? "APPLY" : "APPLIED"}
         </button>
       </section>
 
-      <SkillsComponent 
-      skillsArr={skillIdArr} 
-      justList={true} />
+      <SkillsComponent skillsArr={skillIdArr} justList={true} />
 
       <section className="job-show-details">
         <div className="job-show-description">
@@ -108,21 +110,18 @@ function JobsShow() {
         </div>
       </section>
 
-    {
-        !applied ?
-        <button
-        onClick={() => applyToJob()}  
-        className="job-show-apply">Apply
-        </button> :
+      {!applied ? (
+        <button onClick={() => applyToJob()} className="job-show-apply">
+          Apply
+        </button>
+      ) : (
         <div className="job-show-applied">
-            <BsClipboardCheck color={"black"} size={"40px"}/>
-            <span
-            onClick={() => navigate("/user")}>
-              APPLIED ON {convertDate(applied["date_applied"])}
-            </span>
+          <BsClipboardCheck color={"black"} size={"40px"} />
+          <span onClick={() => navigate("/user")}>
+            APPLIED ON {convertDate(applied["date_applied"])}
+          </span>
         </div>
-    }
-      
+      )}
     </div>
   );
 }

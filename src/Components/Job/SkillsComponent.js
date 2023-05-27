@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { useSkillProvider } from "../../Providers/SkillProvider.js"
+import { useSkillProvider } from "../../Providers/SkillProvider.js";
 import { v4 as uuidv4 } from "uuid";
 import { skillClick } from "../../Functions/SearchBarFunctions";
 import { skillsColorObject, skillsObject } from "./Data/Skills";
-
 import "./SkillsComponent.css";
 
 function SkillsComponent({
@@ -18,7 +17,7 @@ function SkillsComponent({
   const { allSkills } = useSkillProvider();
   const [skillsObj, setSkillsObj] = useState(skillsObject);
   const [skillsWithColor, setSkillsWithColor] = useState(skillsColorObject);
-  const iconArr = allSkills.map(({id}) => id)
+  const iconArr = allSkills.map(({ id }) => id);
 
   useEffect(() => {
     if (!checkbox && !justList) {
@@ -33,34 +32,30 @@ function SkillsComponent({
   if (justList) {
     return (
       <div className="skills-component">
-        {
-        skillsArr.map(skill => skillsWithColor[skill])
-        }
+        {skillsArr.map((skill) => skillsWithColor[skill])}
       </div>
     );
   }
   if (checkbox) {
     return (
       <div className="skills-checkboxes">
-        {
-        allSkills.map(obj => 
-            <label key={uuidv4()} htmlFor={obj.id}>
-              <input
-                type="checkbox"
-                id={obj.id}
-                checked={checkedArr.includes(obj.id)}
-                onChange={checkBoxHandle}
-              />
-              <span>{obj["skill_name"]}</span>
-            </label>
-        )}
+        {allSkills.map((obj) => (
+          <label key={uuidv4()} htmlFor={obj.id}>
+            <input
+              type="checkbox"
+              id={obj.id}
+              checked={checkedArr.includes(obj.id)}
+              onChange={checkBoxHandle}
+            />
+            <span>{obj["skill_name"]}</span>
+          </label>
+        ))}
       </div>
     );
-  }  else {
+  } else {
     return (
       <div className="skills-component">
-        {
-        iconArr.map((skill) => (
+        {iconArr.map((skill) => (
           <span
             key={uuidv4()}
             className={checkedArr.includes(skill) ? "skill-icon" : null}
