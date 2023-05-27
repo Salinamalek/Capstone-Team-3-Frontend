@@ -7,7 +7,7 @@ import "./SearchBar.css"
 
 function SearchBar() {
     const {jobs, setJobs, searchResult, setSearchResult} = useJobProvider()
-    const[search, setSearch] = useState("")
+    const [search, setSearch] = useState("")
     const [searchOptions, setSearchOptions] = useState({
         searchbar: "",
         isRemote: false,
@@ -21,13 +21,21 @@ function SearchBar() {
         } 
         let filterSearch = searchResult
         if(searchOptions.searchbar){
-            const textFilter = filterSearch.filter(({title, company, details}) =>{
+            const textFilter = filterSearch.filter(obj =>{
+                const {title, company, details, job_id} = obj
                 const joinSearch = search.replaceAll(" ", "")
-                const regex = new RegExp(joinSearch,"gis")
+                const regex = new RegExp(joinSearch,"gi")
                 let joinText = [title.replaceAll(" ", ""), company.replaceAll(" ", ""), details.replaceAll(" ", "")]
+
+                const matchExp = []
+                const trackJobID = []
                 for (let i = 0; i <joinText.length; i++){
-                    return joinText[i].match(regex)  
-                }  
+                    if(joinText[i].match(regex) && !trackJobID.includes(job_id)){
+                        trackJobID.push(job_id)
+                        matchExp.push(obj)
+                    }
+                }
+                return matchExp.length > 0
             })
             filterSearch= textFilter
         }
