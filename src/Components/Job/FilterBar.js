@@ -16,8 +16,6 @@ function FilterBar({searchOptions, setSearchOptions}) {
    const [skillData, setSkillData] = useState([])
    const [skillView, setSkillView] = useState(false)
 
-//    create state to hold id value of skill if selected
-const [selectedSkill, setSelectedSkill] = useState([])
 
     function handleSkillSelection(e) {
         const id = +e.target.id

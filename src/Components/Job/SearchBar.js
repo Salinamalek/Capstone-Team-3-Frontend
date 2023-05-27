@@ -39,12 +39,27 @@ function SearchBar() {
             const cityFilter = filterSearch.filter(({city}) => city.split(",")[0] === searchOptions.city)
             filterSearch = cityFilter
         }
+        if(searchOptions.skills.length > 0){
+           const skillFilter = filterSearch.filter(obj => {
+            let includesAll = true
+            for(let i=0; i< searchOptions.skills.length; i++){
+                if(!obj["skill_id"].includes(searchOptions.skills[i])){
+                   includesAll = false
+                   break; 
+                }
+            }
+            if(includesAll){
+                return obj
+            }
+           })
+          filterSearch = skillFilter  
+        }
         setJobs(filterSearch)
     }
 
     useEffect(() => {
         handleSearch()
-    }, [searchOptions.searchbar, searchOptions.city, searchOptions.isRemote])
+    }, [searchOptions.searchbar, searchOptions.city, searchOptions.isRemote, searchOptions.skills.length])
   
 
     return (
