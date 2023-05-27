@@ -89,12 +89,21 @@ function TestSkills({ skillsArr, justList, checkbox, checkBoxHandle, checkedArr,
         currentValArr[1] = !currentValArr[1];
         setSkillsObj({ ...skillsObj, [val]: currentValArr });
         
-        if(!stateVar.includes(val) && stateVar.length < 4){
-            setFunction([...stateVar, val])
+        // if(!stateVar.includes(val) && stateVar.length < 4){
+        //     setFunction([...stateVar, val])
+        // }
+        // else {
+        //     const remove = stateVar.filter(el => el !== val)
+        //     setFunction(remove)
+        // }
+        const select = stateVar.skills
+        if(!select.includes(val) && select.length < 4){
+            setFunction({...stateVar, skills :[...select, val]})
+            
         }
         else {
-            const remove = stateVar.filter(el => el !== val)
-            setFunction(remove)
+            const remove = select.filter(el => el !== val)
+            setFunction({...stateVar, skills :remove})
         }
       }
 

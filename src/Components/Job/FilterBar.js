@@ -21,13 +21,22 @@ const [selectedSkill, setSelectedSkill] = useState([])
 
     function handleSkillSelection(e) {
         const id = +e.target.id
-        console.log(id)
-        if(!selectedSkill.includes(id) && selectedSkill.length < 4){
-            setSelectedSkill([...selectedSkill, id])
+        // if(!selectedSkill.includes(id) && selectedSkill.length < 4){
+        //     setSelectedSkill([...selectedSkill, id])
+
+        // }
+        // else {
+        //     const remove = selectedSkill.filter(el => el !== id)
+        //     setSelectedSkill(remove)
+        // }
+        const select = searchOptions.skills
+        if(!select.includes(id) && select.length < 4){
+            setSearchOptions({...searchOptions, skills :[...select, id]})
+            
         }
         else {
-            const remove = selectedSkill.filter(el => el !== id)
-            setSelectedSkill(remove)
+            const remove = select.filter(el => el !== id)
+            setSearchOptions({...searchOptions, skills :remove})
         }
     }
 
@@ -113,16 +122,16 @@ const [selectedSkill, setSelectedSkill] = useState([])
                 <TestSkills
                 key={uuidv4()}
                 skillsArr={skillData.map(({id}) => id)}
-                checkedArr={selectedSkill}
-                stateVar={selectedSkill}
-                setFunction={setSelectedSkill}
+                checkedArr={searchOptions.skills}
+                stateVar={searchOptions}
+                setFunction={setSearchOptions}
 
                 /> :
                 <TestSkills
                 key={uuidv4()}
                 skillsArr={skillData}
                 checkbox={true}
-                checkedArr={selectedSkill}
+                checkedArr={searchOptions.skills}
                 checkBoxHandle={handleSkillSelection}/>
                 // <SkillsComponent 
                 // skillsArr={skillNames}

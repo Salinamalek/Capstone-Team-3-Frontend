@@ -12,6 +12,7 @@ function SearchBar() {
         searchbar: "",
         isRemote: false,
         city: "",
+        skills: []
     })
     
     function handleSearch() {
