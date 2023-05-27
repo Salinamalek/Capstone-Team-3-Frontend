@@ -85,7 +85,7 @@
     height: 14vh;
 }
 .slide-down {
-    height: 17vh;
+    height: 19vh;
     visibility: visible;
     margin-top: 1vh;
 }
@@ -106,7 +106,7 @@
     grid-column: 1;
     grid-row: 1;
     width: 80%;
-    height: 95%;
+    height: 35px;
     margin-left: 10px;
     border-radius: 20px;
     border: 1.5px solid var(--init-blue);
@@ -125,6 +125,7 @@ position: relative;
 bottom: .5vh;
 left: 1.5vw;
 font-size: 18px;
+color: var(--init-blue);
 }
 .filter-bar-skills {
     grid-column: span 2;
@@ -133,14 +134,16 @@ font-size: 18px;
 .filter-bar-skills .skills-component {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 3px;
     justify-items: center;
-    height: 100%;
+    height: 115px;
+    position: relative;
+    bottom: .2vh;
 }
 .filter-bar-skills .skills-component svg {
-    height: 2em;
-    width: 2em;
-    
+    height: 1.9em;
+    width: 1.9em;  
 }
 
 .filter-bar-skills .skills-checkboxes {
@@ -148,6 +151,7 @@ font-size: 18px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    row-gap: 1px;
     align-items: center;
     position: relative;
     left: 4vw;
@@ -158,12 +162,12 @@ font-size: 18px;
 }
 .filter-bar-skills .skills-checkboxes label input {
     margin-right: 1.2vw;
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
 }
 .filter-bar-skills .skills-checkboxes label span {
     position: relative;
-    bottom: .4vh;
+    bottom: .45vh;
     font-size: 16px;
 }
 
