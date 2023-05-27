@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useJobProvider } from "../../Providers/JobProvider.js";
 import TestSkills from "./TestSkills.js";
 import SkillsComponent from "./SkillsComponent";
-import { handleSearchBar } from "../../Functions/SearchBarFunctions.js";
+import Dropdown from "./Dropdown.js";
+import { dropdownCities, handleSearchBar } from "../../Functions/SearchBarFunctions.js";
 import { BsCaretDownFill, BsCaretUpFill } from "react-icons/bs"
 import { MdChangeCircle } from "react-icons/md"
 import "./FilterBar.css"
@@ -13,24 +14,16 @@ function FilterBar({searchOptions, setSearchOptions}) {
    const [filterOptions, setFilterOptions] = useState(false)
    const [cityDropdown, setCityDropdown] = useState("")
    const [remoteSearch, setRemoteSearch] = useState(false)
-   const [skillData, setSkillData] = useState([])
    const [skillView, setSkillView] = useState(false)
 
+//    will replace with  new skill provider/ no use effect needed
+const [skillData, setSkillData] = useState([])
 
     function handleSkillSelection(e) {
         const id = +e.target.id
-        // if(!selectedSkill.includes(id) && selectedSkill.length < 4){
-        //     setSelectedSkill([...selectedSkill, id])
-
-        // }
-        // else {
-        //     const remove = selectedSkill.filter(el => el !== id)
-        //     setSelectedSkill(remove)
-        // }
         const select = searchOptions.skills
         if(!select.includes(id) && select.length < 4){
-            setSearchOptions({...searchOptions, skills :[...select, id]})
-            
+            setSearchOptions({...searchOptions, skills :[...select, id]}) 
         }
         else {
             const remove = select.filter(el => el !== id)
@@ -85,30 +78,22 @@ function FilterBar({searchOptions, setSearchOptions}) {
            {/* expanded filter bar */}
            <section
            className={filterOptions ? "filter-bar-expanded slide-down" : "filter-bar-expanded slide-up"}>
-               <select
-               id = "city"
-               value={cityDropdown}
-               onChange={(event) => handleSearchBar(event, cityDropdown, setCityDropdown, searchOptions, setSearchOptions)}>
-                   <option value = {""}>Select City</option>
-                   <option value={"New York City"}>New York City, NY</option>
-                   <option value={"Austin"}>Austin, TX</option>
-                   <option value={"San Francisco"}>San Francisco, CA</option>
-                   <option value={"Miami"}>Miami, FL</option>
-                   <option value={"Chicago"}>Chicago, IL</option>
-                   <option value={"Jersey City"}>Jersey City, NJ</option>
-                   <option value={"Atlanta"}>Atlanta, GA</option>
-                   <option value={"Denver"}>Denver, CO</option>
-                   <option value={"Seattle"}>Seattle, WA</option>
-               </select>
+                <Dropdown
+                idVal={"city"}
+                stateVar={cityDropdown}
+                optionsArray={dropdownCities} 
+                onChange={(event) => handleSearchBar(event, cityDropdown, setCityDropdown, searchOptions, setSearchOptions)}
+                />
                {/* skills search options */}
                <span className="filter-bar-toggle">
-                <MdChangeCircle 
-                size={"25px"}
-                color={"#FFDE59"} 
-                onClick={() => setSkillView(!skillView)}/>
-                <span
-                onClick={() => setSkillView(!skillView)}
-                >{!skillView ? "Skill Text" : "Skill Icons"}</span>
+                    <MdChangeCircle 
+                    size={"25px"}
+                    color={"#FFDE59"} 
+                    onClick={() => setSkillView(!skillView)}/>
+                    <span
+                    onClick={() => setSkillView(!skillView)}>
+                        {!skillView ? "Skill Text" : "Skill Icons"}
+                    </span>
                </span>
               
                <div className="filter-bar-skills">
