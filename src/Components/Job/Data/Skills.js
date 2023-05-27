@@ -65,6 +65,64 @@ import {
          />, false],
   }
 
+  const skillsColorObject = {
+    1: (
+      <SiJavascript
+        color={"#f0db4f"}
+        style={{ backgroundColor: "black" }}
+        key={uuidv4()}
+      />
+    ),
+    2: <SiNodedotjs color={"#3c873a"} key={uuidv4()} />,
+    3: [
+      <SiReact
+        color={"#61DBFB"}
+        style={{ backgroundColor: "black" }}
+        key={uuidv4()}
+      />,
+    ],
+    4: [
+      <SiPython
+        color={"#306998"}
+        style={{ backgroundColor: "#FFE873" }}
+        key={uuidv4()}
+      />,
+    ],
+    5: [
+      <FaJava
+        color={"white"}
+        style={{ backgroundColor: "#5382a1" }}
+        key={uuidv4()}
+      />,
+    ],
+    6: [<SiCplusplus color={"#044F88"} key={uuidv4()} />],
+    7: [<SiRuby color={"#CC0000"} key={uuidv4()} />],
+    8: [
+      <SiMysql
+        color={"#00758F"}
+        style={{ backgroundColor: "#F29111" }}
+        key={uuidv4()}
+      />,
+    ],
+    9: [<SiSwift color={"#F05138"} key={uuidv4()} />],
+    10: [<SiGo color={"#29BEB0"} key={uuidv4()} />],
+    11: [
+      <SiTypescript
+        color={"#007acc"}
+        style={{ backgroundColor: "white" }}
+        key={uuidv4()}
+      />,
+    ],
+    12: [
+      <SiPhp
+        color={"#787CB5"}
+        style={{ backgroundColor: "black" }}
+        key={uuidv4()}
+      />,
+    ],
+  }
+
   export {
     skillsObject,
+    skillsColorObject,
   }

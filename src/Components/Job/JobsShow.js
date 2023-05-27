@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
+import TestSkills from "./TestSkills";
 import { convertDate } from "../../Functions/JobFunctions";
 import { TfiAngleLeft } from "react-icons/tfi";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
@@ -80,8 +81,10 @@ function JobsShow() {
             {!applied ? "APPLY" : "APPLIED"}
         </button>
       </section>
-
-      <SkillsComponent skillsArr={skillIdArr} justList={true} />
+          <TestSkills 
+          skillsArr={skillIdArr}
+          justList={true}/>
+      {/* <SkillsComponent skillsArr={skillIdArr} justList={true} /> */}
 
       <section className="job-show-details">
         <div className="job-show-description">

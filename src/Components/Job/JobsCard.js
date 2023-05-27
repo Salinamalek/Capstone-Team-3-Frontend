@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SkillsComponent from "./SkillsComponent";
+import TestSkills from "./TestSkills";
 import "./JobsCard.css";
 
 function JobsCard({ jobObj }) {
@@ -23,7 +24,10 @@ function JobsCard({ jobObj }) {
         <span className="job-card-city">{city}</span>
         <span className="job-card-divider"></span>
         <section className="job-card-skills">
-          <SkillsComponent skillsArr={combineSkills} justList={true} />
+          <TestSkills 
+          skillsArr={combineSkills}
+          justList={true}/>
+          {/* <SkillsComponent skillsArr={combineSkills} justList={true} /> */}
         </section>
       </div>
     </Link>
