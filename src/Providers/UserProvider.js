@@ -12,6 +12,7 @@ function UserProvider({ children }) {
   const { userID, API, axios, isSignedIn, setIsSignedIn } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
   const [editForm, setEditForm] = useState({});
+  const [userSkills, setUserSkills] = useState([]);
   const [userJobs, setUserJobs] = useState([]);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ function UserProvider({ children }) {
         .then(({ data }) => {
           setUserProfile(data);
           setEditForm(data);
+          setUserSkills(data.skills["skill_ids"])
         })
         .catch((error) => {
           console.log(error);
@@ -46,7 +48,9 @@ function UserProvider({ children }) {
         editForm,
         setEditForm,
         isSignedIn,
-        setIsSignedIn
+        setIsSignedIn,
+        userSkills,
+        setUserSkills
       }}
     >
       {children}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSkillProvider } from "../../Providers/SkillProvider.js"
 // import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -17,8 +18,10 @@ import {
 import { FaJava } from "react-icons/fa";
 import "./SkillsComponent.css";
 
-function SkillsComponent({ skillsArr, justList, checkbox }) {
+function SkillsComponent({ skillsArr, justList, checkbox, checkBoxHandle, checkedArr }) {
   // const {searchResults, setSearchResults, jobs, setJobs} = useJobProvider()
+
+  const { allSkills } = useSkillProvider();
 
   const [skillsObj, setSkillsObj] = useState({
     1: [<SiJavascript key={uuidv4()} />, false],
@@ -150,14 +153,14 @@ function SkillsComponent({ skillsArr, justList, checkbox }) {
   if (checkbox) {
     return (
       <div className="skills-checkboxes">
-        {skillsArr.map((obj) => (
+        {allSkills.map((obj) => (
           <>
             <label key={uuidv4()} htmlFor={obj.id}>
               <input
                 type="checkbox"
                 id={obj.id}
-                checked={checkboxObj[obj.id]}
-                onChange={(event) => handleSkillCheckbox(event)}
+                checked={checkedArr.includes(obj.id)}
+                onChange={(event) => checkBoxHandle(event)}
               />
               {obj["skill_name"]}
             </label>
