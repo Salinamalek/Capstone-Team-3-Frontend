@@ -22,10 +22,10 @@ function SearchBar() {
         let filterSearch = searchResult
         if(searchOptions.searchbar){
             const textFilter = filterSearch.filter(obj =>{
-                const {title, company, details, job_id} = obj
+                const {title, company, details, job_id, city} = obj
                 const joinSearch = search.replaceAll(" ", "")
                 const regex = new RegExp(joinSearch,"gi")
-                let joinText = [title.replaceAll(" ", ""), company.replaceAll(" ", ""), details.replaceAll(" ", "")]
+                let joinText = [title.replaceAll(" ", ""), company.replaceAll(" ", ""), details.replaceAll(" ", ""), city.replaceAll(" ","")]
 
                 const matchExp = []
                 const trackJobID = []
