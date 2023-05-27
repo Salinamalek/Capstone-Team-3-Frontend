@@ -4,10 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
 import { convertDate } from "../../Functions/JobFunctions";
+import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
 import { TfiAngleLeft } from "react-icons/tfi";
-import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
-import { GoLocation } from "react-icons/go";
-import { BsClipboardCheck } from "react-icons/bs";
 import "./JobsShow.css";
 
 function JobsShow() {
@@ -30,7 +28,6 @@ function JobsShow() {
   }
 
   useEffect(() => {
-    //   check if user-jobs table already has pairing
     axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
@@ -60,15 +57,14 @@ function JobsShow() {
         <h1>{jobDetails.title}</h1>
         <div className="job-show-header-details">
           <span className="job-show-company">
-            <HiOutlineBuildingOffice2 size={"20px"} color={"#FFDE59"} />
+            {jobCompany}
             <span>{jobDetails.company}</span>
           </span>
           <span className="job-show-location">
-            <GoLocation size={"20px"} color={"#FFDE59"} />
+            {jobLocation}
             <span>{jobDetails.city}</span>
           </span>
         </div>
-
         <hr />
         {jobDetails.full_remote && (
           <span className="job-show-remote">
@@ -116,7 +112,7 @@ function JobsShow() {
         </button>
       ) : (
         <div className="job-show-applied">
-          <BsClipboardCheck color={"black"} size={"40px"} />
+          {jobApplied}
           <span onClick={() => navigate("/user")}>
             APPLIED ON {convertDate(applied["date_applied"])}
           </span>

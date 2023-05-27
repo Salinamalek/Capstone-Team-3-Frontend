@@ -80,7 +80,7 @@
     position: relative;
     left: 3vw;
 }
-/* slide */
+
 .filter-bar-expanded:target{
     height: 14vh;
 }
@@ -121,11 +121,11 @@
     width: 100%;
 }
 .filter-bar-toggle span {
-position: relative;
-bottom: .5vh;
-left: 1.5vw;
-font-size: 18px;
-color: var(--init-blue);
+    position: relative;
+    bottom: .5vh;
+    left: 1.5vw;
+    font-size: 18px;
+    color: var(--init-blue);
 }
 .filter-bar-skills {
     grid-column: span 2;
@@ -135,15 +135,15 @@ color: var(--init-blue);
     grid-column: span 2;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    row-gap: 3px;
+    row-gap: 5px;
     justify-items: center;
     height: 115px;
     position: relative;
     bottom: .2vh;
 }
 .filter-bar-skills .skills-component svg {
-    height: 1.9em;
-    width: 1.9em;  
+    height: 1.8em;
+    width: 1.8em;  
 }
 
 .filter-bar-skills .skills-checkboxes {
