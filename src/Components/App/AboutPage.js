@@ -5,6 +5,8 @@ import { IoMdMail } from "react-icons/io";
 import { AiFillLinkedin } from "react-icons/ai";
 import { team } from "../../Functions/AboutData";
 import userIcon from "../../Assets/USER.png";
+import DMphoto from "../../Assets/DMphoto.jpeg";
+import JPphoto from "../../Assets/JPphoto.jpg";
 
 function AboutPage(props) {
   const [profileCard, setProfileCard] = useState(team["6"]);
@@ -33,7 +35,7 @@ function AboutPage(props) {
           <img
             id="2"
             className="devicon"
-            src="https://avatars.githubusercontent.com/u/107490157?v=4"
+            src={DMphoto}
             onClick={(event) => aboutCard(event)}
           ></img>
           <img
@@ -51,7 +53,7 @@ function AboutPage(props) {
           <img
             id="5"
             className="devicon"
-            src="https://avatars.githubusercontent.com/u/105683843?v=4"
+            src={JPphoto}
             onClick={(event) => aboutCard(event)}
           ></img>
         </div>

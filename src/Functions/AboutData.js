@@ -1,4 +1,6 @@
 import userIcon from "../Assets/USER.png";
+import DMphoto from "../Assets/DMphoto.jpeg";
+import JPphoto from "../Assets/JPphoto.jpg";
 
 export const team = {
   1: {
@@ -15,7 +17,7 @@ export const team = {
   2: {
     id: 2,
     name: "Dan Mazzilli",
-    img: userIcon,
+    img: DMphoto,
     bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
     links: [
       "https://github.com/Daniel-Mazzilli",
@@ -48,7 +50,7 @@ export const team = {
   5: {
     id: 5,
     name: "Jahaad Petty",
-    img: userIcon,
+    img: JPphoto,
     bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
     links: [
       "https://github.com/PESolut",
