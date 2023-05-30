@@ -3,12 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
-import pencil from "../../Assets/pencil.png";
+import pencilBlack from "../../Assets/pencil-black.png";
+import pencilGrey from "../../Assets/pencil-grey.png"
 import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn } =
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme } =
     useUserProvider();
   const [limit, setLimit] = useState(true);
 
@@ -68,7 +69,7 @@ export default function UserProfile() {
                 onClick={() => navigate(`/user/edit`)}
                 className="profile-button"
               >
-                EDIT <img src={pencil} alt="pencil" />
+                EDIT <img src={theme === "light" ? pencilBlack : pencilGrey} alt="pencil" />
               </button>
             </div>
           </div>
