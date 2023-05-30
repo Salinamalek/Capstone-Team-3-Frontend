@@ -6,8 +6,9 @@ export const team = {
   1: {
     id: 1,
     name: "Destiny Joyner",
-    img: userIcon,
-    bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
+    pronoun: "She/Her",
+    img: "https://avatars.githubusercontent.com/u/107226235?v=4",
+    bio: "Born and raised in New York City, I've always had a flare for solving math and logic puzzles. I want to continue expanding my coding knowledge in order to create immersive worlds inside of the virtual universe. In my spare time, when I'm not coordinating my hats with my clothing, I enjoy tinkering with international recipes, watching foreign films, and gaming.",
     links: [
       "https://github.com/DestinyJoyner",
       "https://www.linkedin.com/in/destinyjoyner/",
@@ -17,6 +18,7 @@ export const team = {
   2: {
     id: 2,
     name: "Dan Mazzilli",
+    pronoun: "He/Him",
     img: DMphoto,
     bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
     links: [
@@ -28,8 +30,9 @@ export const team = {
   3: {
     id: 3,
     name: "Salina Malek",
-    img: userIcon,
-    bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
+    pronoun: "She/Her",
+    img: "https://avatars.githubusercontent.com/u/105737474?v=4",
+    bio: "Salina is a Full Stack Web Development Student at Pursuit, a Google-funded 12-month intensive coding program that provides experience with JavaScript, CSS, HTML, Node, and React. She aspires to be a software engineer that positively impacts the world.",
     links: [
       "https://github.com/Salinamalek",
       "https://www.linkedin.com/in/salina-malek/",
@@ -39,7 +42,8 @@ export const team = {
   4: {
     id: 4,
     name: "Ron Johnson",
-    img: userIcon,
+    pronoun: "He/Him",
+    img: "https://avatars.githubusercontent.com/u/105737822?v=4",
     bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
     links: [
       "https://github.com/ronJohnPursuit",
