@@ -1,6 +1,7 @@
 import userIcon from "../Assets/USER.png";
 import DMphoto from "../Assets/DMphoto.jpeg";
 import JPphoto from "../Assets/JPphoto.jpg";
+import group from "../Assets/group.png";
 
 export const team = {
   1: {
@@ -8,7 +9,7 @@ export const team = {
     name: "Destiny Joyner",
     pronoun: "She/Her",
     img: "https://avatars.githubusercontent.com/u/107226235?v=4",
-    bio: "Born and raised in New York City, I've always had a flare for solving math and logic puzzles. I want to continue expanding my coding knowledge in order to create immersive worlds inside of the virtual universe. In my spare time, when I'm not coordinating my hats with my clothing, I enjoy tinkering with international recipes, watching foreign films, and gaming.",
+    bio: "Born and raised in New York City, Destiny always had a flare for solving math and logic puzzles. She wants to continue expanding her coding knowledge in order to create immersive worlds inside of the virtual universe. In her spare time, when she's not coordinating her hats with her clothing, she enjoys tinkering with international recipes, watching foreign films, and gaming.",
     links: [
       "https://github.com/DestinyJoyner",
       "https://www.linkedin.com/in/destinyjoyner/",
@@ -62,5 +63,11 @@ export const team = {
       "mailto:jahaadpetty@pursuit.org",
     ],
   },
-  6: { id: 6, name: "Select a Team Member", img: userIcon, bio: "", links: [] },
+  6: {
+    id: 6,
+    name: "Select a Team Member",
+    img: group,
+    bio: "Click on a team member's icon to view more about them!",
+    links: [],
+  },
 };

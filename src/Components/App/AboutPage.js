@@ -60,11 +60,7 @@ function AboutPage(props) {
         <div className="indiv-card">
           <h2>{profileCard.name}</h2>
           <h4 className="devPronoun">{profileCard.pronoun}</h4>
-          <img
-            className="devicon2"
-            src={profileCard.img}
-            height={"100px"}
-          ></img>
+          <img className="devicon2" src={profileCard.img}></img>
           <p>{profileCard.bio}</p>
           <hr className="socials-line"></hr>
           <div className="dev-socials">
