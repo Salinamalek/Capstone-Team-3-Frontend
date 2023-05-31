@@ -1,79 +1,170 @@
 .App {
+  height: 100%;
+}
+
+.register-form {
+  display: flexß;
+  padding-top: 30px 
+}
+
+.register_card {
+    width: 85%;
     height: 100%;
-   }
-   .register_card {
-      width: 85%;
-      height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      /* background-color: #b6c6d0e6; */
-      padding: 16px;
-   }
-   
-   
-   /* DESTINY
-   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL HR ELEMENTS THROUGHOUT APP */
-    /* hr {
-      border: 1px solid #deeff9d0;
-      margin-top: 25px;
-      margin-bottom: 25px;
-    } */
-   
-   
-    /* DESTINY
-   USE CLASS NAMES OR SPECIFIC PATH TO ELEMENT WILL EFFECT ALL INPUT ELEMENTS THROUGHOUT APP */
-   
-    /* input[type=text], input[type=password], input[type=email], input[type=textarea] {
-      width: 90%;
-      height: 5px;
-      padding: 15px;
-      border-radius: 20px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #b6c6d0e6;
-    }
-     input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=textarea]:focus  {
-      background-color: #ffde59ae;
-      outline: none;
-    }
-   
-   
-    input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
-   } */
-   
-   
-   .registerbutton {
-      background-color: #41CDBC;
-      border: none;
-      border-radius: 20px;
-      margin: 8px 0;
-      padding: 16px 10px;
-      font-size: 16px;
-      width: 30%;
-      color:#0914AE ;
-      cursor: pointer;
-      width: 90%;
-      opacity: 0.9
-    }
-   
-   
-    .registerbutton:hover {
-      opacity: 1;
-    }
-   
-   
-    a {
-      color: dodgerblue;
-    }
-   
-   
-    .signin {
-      background-color: #b6c6d0e6;
-      text-align: center;
-      padding-bottom: 25px;
-      padding-top: 20px;
-      margin-bottom: 30px;
-    }
-   
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #b6c6d0e6; */
+    /* padding: 16px; */
+}
+
+  .register_card hr {
+    border: 1px solid #deeff9d0;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+
+  .register_card input[type=text], input[type=password], input[type=email], input[type=textarea] {
+    width: 90%;
+    height: 5px;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #b6c6d0e6;
+  }
+  
+  .register_card input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=textarea]:focus  {
+    background-color: #ffde59ae;
+    outline: none;
+  }
+
+  .register_card input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
+}
+
+.register_card h1{
+  padding-top: 10px;
+  /* padding-bottom: 20px; */
+}
+
+.registerbutton {
+    background-color: #41CDBC;
+    border: none;
+    border-radius: 20px;
+    margin: 8px 0;
+    padding: 16px 10px;
+    font-size: 16px;
+    width: 30%;
+    color:#0914AE ;
+    cursor: pointer;
+    width: 90%;
+    opacity: 0.9;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    margin-left:20px
+  }
+
+  .registerbutton:hover {
+    opacity: 1;
+  }
+
+  .register_card a {
+    color: dodgerblue;
+  }
+
+  .signin {
+    background-color: #b6c6d0e6;
+    text-align: center;
+    padding-bottom: 25px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .email-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .email-field label {
+    margin-right: 50px; /* Adjust as needed */
+  }
+  
+  .email-field input[type="email"] {
+    flex: 1;
+  }
+
+  .email-label {
+    padding-bottom: 15px;
+  }
+
+  .password-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-field label {
+    margin-right: 20px; /* Adjust as needed */
+  }
+  
+  .password-field input[type="password"] {
+    flex: 1;
+  }
+
+  .password-label {
+    padding-bottom: 15px;
+  }
+
+  .first_name-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .first_name-field label {
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .first_name-field input[type="text"] {
+    flex: 1;
+  }
+
+  .first_name-label {
+    padding-bottom: 10px;
+  }
+
+  .last_name-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .last_name-field label {
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .last_name-field input[type="text"] {
+    flex: 1;
+  }
+
+  .last_name-label {
+    padding-bottom: 10px;
+  }
+
+  .school-field {
+    display: flex;
+    align-items: center;
+  }
+  
+  .school-field label {
+    margin-right: 38px; /* Adjust as needed */
+  }
+  
+  .school-field input[type="text"] {
+    flex: 1;
+  }
+
+  .school-label {
+    padding-bottom: 10px;
+  }
+
+
+  
