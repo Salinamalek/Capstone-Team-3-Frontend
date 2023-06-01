@@ -37,7 +37,7 @@ const RegisterComponent = () => {
     const [userSkills, setUserSkills] = useState([]);
     const [skillOptions, setSkillOptions] = useState([]);
     const API = process.env.REACT_APP_API_URL
-    const { hasUserSubmitted, setHasUserSubmitted, userSubmitInfo, setUserSubmitInfo } = useLoginProvider();  
+    const { hasUserSubmitted, setHasUserSubmitted, userSubmitInfo, setUserSubmitInfo, setAuthToken, authToken } = useLoginProvider();  
 
 
     const handleUserDetailsChange = (event) => {
@@ -88,7 +88,7 @@ const RegisterComponent = () => {
     };
     
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         // Perform registration logic here
         // Here lies axios call to register
@@ -104,10 +104,9 @@ const RegisterComponent = () => {
             skills: userSkills
         }
 
-        axios.post(`${API}users`, loginObject)
+        await axios.post(`${API}users`, loginObject)
         .then(response => {
             console.log('response:', response)
-
         })
         .catch(error => {
             console.error('Error:', error);
@@ -119,6 +118,27 @@ const RegisterComponent = () => {
                 console.log(errorMessages)
             }
         })
+        setUserSubmitInfo(loginObject)
+        const loginObject2 = {
+            email: loginObject.login.email,
+            password: loginObject.login.password
+          };
+        axios
+          .post(`${API}logins`, loginObject2)
+          .then((response) => {
+            console.log('response:', response);
+            console.log(response.data.token);
+            const USER_ID = response.data.user_id;
+
+            setAuthToken(response.data.token);
+            setUserID(USER_ID);
+            setIsSignedIn(true)
+            setError('');
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+            setError('An error occurred during login.');
+          });
 
         // NOTE / ! \ need to implement error casing for when user has not registered and gotten a good response from the server
 

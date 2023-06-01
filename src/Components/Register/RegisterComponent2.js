@@ -24,33 +24,33 @@ const RegisterComponent2 = () => {
   const { API } = useContextProvider();
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    if (hasUserSubmitted) {
-      setTimeout(() => {
-        const loginObject = {
-          email: userSubmitInfo.login.email,
-          password: userSubmitInfo.login.password
-        };
+//   useEffect(() => {
+//     if (hasUserSubmitted) {
+//       setTimeout(() => {
+//         const loginObject = {
+//           email: userSubmitInfo.login.email,
+//           password: userSubmitInfo.login.password
+//         };
 
-        axios
-          .post(`${API}logins`, loginObject)
-          .then((response) => {
-            console.log('response:', response);
-            console.log(response.data.token);
-            const USER_ID = response.data.user_id;
+//         axios
+//           .post(`${API}logins`, loginObject)
+//           .then((response) => {
+//             console.log('response:', response);
+//             console.log(response.data.token);
+//             const USER_ID = response.data.user_id;
 
-            setAuthToken(response.data.token);
-            setUserID(USER_ID);
-            setIsSignedIn(true)
-            setError('');
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            setError('An error occurred during login.');
-          });
-      }, 100); // Delay of 2 second (2000 milliseconds)
-    }
-  }, [hasUserSubmitted, userSubmitInfo, API, setAuthToken, setUserID]);
+//             setAuthToken(response.data.token);
+//             setUserID(USER_ID);
+//             setIsSignedIn(true)
+//             setError('');
+//           })
+//           .catch((error) => {
+//             console.error('Error:', error);
+//             setError('An error occurred during login.');
+//           });
+//       }, 100); // Delay of 2 second (2000 milliseconds)
+//     }
+//   }, [hasUserSubmitted, userSubmitInfo, API, setAuthToken, setUserID]);
 
   const toggleSignOn = () => {
     setHasUserSubmitted(false);
