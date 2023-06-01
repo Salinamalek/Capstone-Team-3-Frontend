@@ -40,6 +40,8 @@
   /* color: #0914ae; */
   /* padding-bottom: 5px; */
   font-size: 20px;
+  position: relative;
+  top: 1%;
 }
 .dev-cards p {
   width: 90%;
@@ -58,7 +60,7 @@
   /* border: 2px solid #0914ae; */
   margin-top: 10px;
   padding: 20px;
-  height: 54%;
+  /* height: 54%; */
   width: 80%;
   /* margin-left: 15px; */
   /* background-color: #0914ae; */
@@ -68,14 +70,14 @@
 }
 
 .dev-socials a {
-  padding: 10px 30px 10px 30px;
+  padding: 10px 30px 0px 30px;
   font-size: x-large;
   color: #ffde59;
 }
 
 .socials-line {
   width: 90%;
-  margin: 10px;
+  margin: 15px;
   height: 1px;
   /* background-color: #0914ae; */
 }
