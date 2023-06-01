@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-// Destiny moved the scrolldown gif into assets folder, will import it here now
 import scrollDown from "../../Assets/scrolldown.gif";
 import scrollUp from "../../Assets/scrollup.gif";
 import logoWhite from "./images/LOGO-WHITE.png";
