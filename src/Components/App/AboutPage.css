@@ -32,17 +32,20 @@
   margin-top: 10px;
   margin-bottom: 10px;
   /* color: var(--init-mint); */
-  font-size: 26px;
+  font-size: 23px;
   position: relative;
   left: 2%;
 }
 .dev-cards h2 {
   /* color: #0914ae; */
-  padding-bottom: 5px;
+  /* padding-bottom: 5px; */
   font-size: 20px;
 }
 .dev-cards p {
-  width: 100%;
+  width: 90%;
+  font-size: 15px;
+  position: relative;
+  left: 5%;
   /* border: 2px solid yellow; */
   /* padding: 10px; */
   /* color: #41cdbc; */
@@ -55,7 +58,7 @@
   /* border: 2px solid #0914ae; */
   margin-top: 10px;
   padding: 20px;
-  /* height: 55%; */
+  height: 54%;
   width: 80%;
   /* margin-left: 15px; */
   /* background-color: #0914ae; */
@@ -65,14 +68,14 @@
 }
 
 .dev-socials a {
-  padding: 30px;
+  padding: 10px 30px 10px 30px;
   font-size: x-large;
   color: #ffde59;
 }
 
 .socials-line {
   width: 90%;
-  margin: 15px;
+  margin: 10px;
   height: 1px;
   /* background-color: #0914ae; */
 }
