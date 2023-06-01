@@ -19,11 +19,18 @@ function LoginProvider({ children }) {
     setAuthToken,
   } = useContextProvider();
 
+  const [hasUserSubmitted, setHasUserSubmitted] = useState(false);
+  const [userSubmitInfo, setUserSubmitInfo] = useState({})
+
   return (
     <LoginContextData.Provider
       value={{
         API,
         axios,
+        hasUserSubmitted,
+        setHasUserSubmitted,
+        userSubmitInfo,
+        setUserSubmitInfo,
         isSignedIn,
         setIsSignedIn,
         userID,
