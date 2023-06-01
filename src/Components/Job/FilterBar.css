@@ -17,9 +17,8 @@
     bottom: 5px;
 }
 .filter-bar-arrow span{
-    background-color: #deeff9;
-    border: #41CDBC 1px solid;
-    /* padding: 2px; */
+    background-color: var(--init-background);
+    border: var(--init-mint) 1px solid;
     font-size: 14px;
     height: 2vh;
     border-radius: 20px;
@@ -33,6 +32,10 @@
     bottom: .5vh;
 }
 
+.expand-text {
+    color: var(--init-blue);
+}
+
 .filter-bar-arrow .remote-label {
     border: unset;
     background-color: unset;
@@ -42,10 +45,10 @@
     left: 5vw;
 }
 .remote-checkbox {
-    accent-color: #0914AE;
+    accent-color: var(--init-blue);
     width: 20px;
     height: 20px;
-    background-color: #deeff9;
+    background-color: var(--init-background);
     position: relative;
     bottom: .3vh;
     left: 5vw;
@@ -59,16 +62,14 @@
     background-color: unset;
 }
 
-
-
 .filter-bar-expanded {
-    width: 84vw;
-    background-color: #41CDBC;
-    border: 2px solid #0914AE;
+    width: 86vw;
+    background-color: var(--init-mint);
+    border: 2px solid var(--init-blue);
     border-radius: 20px;
     display: grid;
     grid-template-columns: 1.7fr 1fr;
-    grid-template-rows: 2fr .1fr 1.5fr;
+    grid-template-rows: 1fr .1fr 2fr;
     row-gap: 8px;
     align-items: center;
     padding: 5px;
@@ -77,14 +78,14 @@
     height: 0;
     transition: all .4s ease-in-out;
     position: relative;
-    left: 5vw;
+    left: 3vw;
 }
-/* slide */
+
 .filter-bar-expanded:target{
     height: 14vh;
 }
 .slide-down {
-    height: 15vh;
+    height: 19vh;
     visibility: visible;
     margin-top: 1vh;
 }
@@ -92,64 +93,57 @@
 .filter-bar-expanded hr {
     grid-row: 2;
     grid-column: span 2;
-    border: #0914AE 1px solid;
+    border: var(--init-blue) 1px solid;
     width: 80%;
     justify-self: center;
 }
 
 .filter-bar-expanded svg {
-    color: #deeff9;
+    color: var(--init-background);
 }
 
 .filter-bar-expanded select {
     grid-column: 1;
     grid-row: 1;
     width: 80%;
-    height: 95%;
+    height: 35px;
     margin-left: 10px;
     border-radius: 20px;
-    border: 1.5px solid #0914AE;
+    border: 1.5px solid var(--init-blue);
     font-size: 16px;
     text-align: center;
-    background-color: #deeff9; 
+    background-color: var(--init-background); 
 }
-
-/* .remote-label {
-    font-size: 18px;
-    height: fit-content;
-    align-self: center;
-}
-.remote-label span {
-    position: relative;
-    bottom: .8vh;
-} */
 
 .filter-bar-toggle {
     grid-column:2;
     grid-row: 1;
     width: 100%;
-    /* position: relative;
-    bottom: 2.5vh;
-    left: 78vw; */ 
 }
 .filter-bar-toggle span {
-position: relative;
-bottom: .5vh;
-left: 1.5vw;
-font-size: 18px;
+    position: relative;
+    bottom: .5vh;
+    left: 1.5vw;
+    font-size: 18px;
+    color: var(--init-blue);
 }
 .filter-bar-skills {
     grid-column: span 2;
-    height: 8vh;
+    height: 100%;
 }
 .filter-bar-skills .skills-component {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 5px;
     justify-items: center;
-    height: 100%;
-    /* position: relative;
-    bottom: 2.8vh; */
+    height: 115px;
+    position: relative;
+    bottom: .2vh;
+}
+.filter-bar-skills .skills-component svg {
+    height: 1.8em;
+    width: 1.8em;  
 }
 
 .filter-bar-skills .skills-checkboxes {
@@ -157,20 +151,39 @@ font-size: 18px;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    row-gap: 1px;
     align-items: center;
     position: relative;
-    bottom: .7vh;
-    left: 2vw;
+    left: 4vw;
 }
 .filter-bar-skills .skills-checkboxes label {
-    margin-left: 2vw;
+    margin-left: 1vw;
+    height: 3vh;
 }
 .filter-bar-skills .skills-checkboxes label input {
     margin-right: 1.2vw;
+    height: 20px;
+    width: 20px;
 }
-
+.filter-bar-skills .skills-checkboxes label span {
+    position: relative;
+    bottom: .45vh;
+    font-size: 16px;
+}
 
 /* DARK MODE UPDATES */
 .dark .filter-bar-arrow .expand-text{
-    background-color: #41CDBC;
+    background-color: var(--init-mint);
+}
+.dark .filter-arrow-up {
+    fill: var(--init-gold);
+}
+.dark .remote-checkbox {
+    accent-color: var(--init-gold)
+}
+.dark .filter-bar-arrow .expand-text {
+    background-color: var(--init-background);
+}
+.dark .filter-bar-arrow .expand-text, .dark .filter-bar-skills .skills-checkboxes label span{
+    color: var(--init-blue);
 }

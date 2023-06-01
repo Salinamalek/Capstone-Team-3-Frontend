@@ -5,22 +5,14 @@
 }
 
 .search-component .search-bar-icon {
-
-    /* float: right;
-        margin-right: 6px;
-        margin-top: -20px;
-        position: relative;
-        z-index: 2;
-        color: red; */
     position: relative;
     left: 6vw;
     top: .7vh;
     z-index: 1;
-    /* bottom: 8vh; */
 }
 
 .searchbar {
-    border: 2px solid #41CDBC;
+    border: 2px solid var(--init-mint);
     width: 85vw;
     height: 4vh;
     border-radius: 20px;

@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { useUserProvider } from "../../Providers/UserProvider.js";
+// import { useSkillProvider } from "../../Providers/SkillProvider.js";
+import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import "./UserEdit.css";
 
@@ -14,10 +17,23 @@ export default function UserEdit(props) {
     setEditForm,
     isSignedIn,
     setIsSignedIn,
+    userSkills,
+    setUserSkills,
   } = useUserProvider();
+
+  // const { allSkills } = useSkillProvider();
 
   const handleChange = (event) => {
     setEditForm({ ...editForm, [event.target.id]: event.target.value });
+  };
+
+  const skillsEdit = (event) => {
+    let selectedSkills = [...userSkills];
+    selectedSkills =
+      !selectedSkills.includes(+event.target.id) && selectedSkills.length < 4
+        ? [...selectedSkills, +event.target.id]
+        : selectedSkills.filter((e) => e !== +event.target.id);
+    setUserSkills(selectedSkills);
   };
 
   const handleSubmit = (event) => {
@@ -33,15 +49,25 @@ export default function UserEdit(props) {
       }
     }
 
+    const currentSkills = editForm.skills["skill_ids"];
+
+    if (
+      currentSkills.length !== userSkills.length ||
+      !currentSkills.every((e) => userSkills.includes(e))
+    ) {
+      edited = true;
+    }
+
     edited
       ? axios
           .put(`${API}/users/${userID}`, {
             profile: editForm,
-            skills: editForm.skills,
+            // skills: [1, 2, 3, 4],
+            skills: userSkills,
           })
           .then(() => {
             navigate("/user");
-            console.log(edited);
+            // console.log(edited);
           })
           .catch((error) => console.log(error))
       : navigate("/user");
@@ -93,8 +119,6 @@ export default function UserEdit(props) {
                   required
                 />
               </div>
-              <br />
-              <p className="skills">Skills and Technologies</p>
               <div />
             </div>
             <div className="icon-edit">
@@ -106,6 +130,16 @@ export default function UserEdit(props) {
                 CANCEL
               </button>
             </div>
+          </div>
+          <p className="skills-edit">Skills & Technologies
+          <br/><span>select up to 4</span></p>
+          <div className="skill-icons-edit">
+            <SkillsComponent
+              key={uuidv4()}
+              checkBoxHandle={skillsEdit}
+              checkedArr={userSkills}
+              checkbox={true}
+            />
           </div>
           <br />
           <div>
@@ -138,6 +172,7 @@ export default function UserEdit(props) {
             <p>About me</p>
             <textarea
               id="bio"
+              maxLength={160}
               className="input-profile input-bio"
               placeholder="add a short bio"
               value={editForm.bio || ""}
