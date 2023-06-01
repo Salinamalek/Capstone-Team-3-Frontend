@@ -104,7 +104,7 @@ const RegisterComponent = () => {
             skills: userSkills
         }
 
-        await axios.post(`${API}users`, loginObject)
+        await axios.post(`${API}/users`, loginObject)
         .then(response => {
             console.log('response:', response)
         })
@@ -124,7 +124,7 @@ const RegisterComponent = () => {
             password: loginObject.login.password
           };
         axios
-          .post(`${API}logins`, loginObject2)
+          .post(`${API}/logins`, loginObject2)
           .then((response) => {
             console.log('response:', response);
             console.log(response.data.token);
@@ -174,16 +174,16 @@ const RegisterComponent = () => {
 
     // update our loginProvider state
 
-    useEffect(() => {
-        axios.get(`${API}skills`)
-            .then(response => {
-                setSkillOptions(response.data);
-                // console.log(response.data)
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`${API}/skills`)
+    //         .then(response => {
+    //             setSkillOptions(response.data);
+    //             // console.log(response.data)
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    // }, []);
     
     return (
         <>
@@ -197,7 +197,7 @@ const RegisterComponent = () => {
             
             <form className="register-form" onSubmit={handleSubmit}>
             {error && 
-            <div className="error"><p>{error}</p><p>{errorMessage}</p></div>} 
+            <div className="error-login"><p>{error}</p><p>{errorMessage}</p></div>} 
             {/* Render the error message */}
 
                 <div className='email-field'>

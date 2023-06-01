@@ -3,7 +3,7 @@ import "../App/AboutPage.css";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 import { AiFillLinkedin } from "react-icons/ai";
-import { team } from "../../Functions/AboutData";
+import { team } from "./AboutData";
 import userIcon from "../../Assets/USER.png";
 import DMphoto from "../../Assets/DMphoto.jpeg";
 import JPphoto from "../../Assets/JPphoto.jpg";

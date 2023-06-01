@@ -22,7 +22,7 @@ login comp.css
     }
   
   
-    input[type=text], input[type=password], input[type=email], input[type=textarea] {
+    .login input[type=text],   .login input[type=password],   .login input[type=email], .login input[type=textarea] {
       width: 90%;
       height: 5px;
       padding: 15px;
@@ -33,7 +33,7 @@ login comp.css
       background: #b6c6d0e6;
     }
     
-    input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=textarea]:focus  {
+    .login input[type=text]:focus,   .login input[type=password]:focus,   .login input[type=email]:focus, .login input[type=textarea]:focus  {
       background-color: #ffde59ae;
       outline: none;
     }
@@ -73,7 +73,7 @@ login comp.css
       margin-bottom: 30px;
     }
 
-    .error {
+    .error-login {
       background-color: salmon;
       width: 100%
     }

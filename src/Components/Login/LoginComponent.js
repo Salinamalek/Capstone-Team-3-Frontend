@@ -30,7 +30,7 @@ const LoginComponent = () => {
     };
 
     axios
-      .post(`${API}logins`, loginObject)
+      .post(`${API}/logins`, loginObject)
       .then((response) => {
         setLoginResponse(response)
         console.log('response:', loginResponse);
@@ -67,7 +67,7 @@ const LoginComponent = () => {
       <p>Please enter your login details below to login.</p>
       <hr/>
       {error && 
-      <div className="error"><p>{error}</p><p>{errorMessage}</p><hr/></div>} 
+      <div className="error-login"><p>{error}</p><p>{errorMessage}</p><hr/></div>} 
       {/* Render the error message */}
       <form onSubmit={handleSubmit}>
         <div>

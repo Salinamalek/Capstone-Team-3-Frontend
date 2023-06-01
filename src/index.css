@@ -13,7 +13,7 @@
   --init-dark: #050525;
 }
 
-/* nav, footer, app -> background */
+/* theme */
 .light {
   background-color: var(--init-background);
   color: #000000;
@@ -27,6 +27,4 @@
 a {
   text-decoration: none;
 }
-/* a:hover {
-  color: var(--init-blue);
-} */
+

@@ -1,7 +1,7 @@
-import userIcon from "../Assets/USER.png";
-import DMphoto from "../Assets/DMphoto.jpeg";
-import JPphoto from "../Assets/JPphoto.jpg";
-import group from "../Assets/group.png";
+import userIcon from "../../Assets/USER.png";
+import DMphoto from "../../Assets/DMphoto.jpeg";
+import JPphoto from "../../Assets/JPphoto.jpg";
+import group from "../../Assets/group.png";
 
 export const team = {
   1: {

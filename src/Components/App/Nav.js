@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import { useContextProvider } from "../../Providers/Provider";
-
 import { Link, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-// Destiny added icon for testing temp. links in nav bar
-
 import { BiInfoCircle, BiCopyright, BiPlusCircle } from "react-icons/bi";
 import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
@@ -63,7 +60,6 @@ export default function Nav() {
   function logoutClick() {
     setIsSignedIn(false);
     navbarClick();
-    navigate("/");
   }
 
   function profileClick() {
@@ -133,7 +129,7 @@ export default function Nav() {
           <span>Meet the Team</span>
         </Link>
         {isSignedIn && (
-          <Link className="logoutBtn" onClick={() => logoutClick()}>
+          <Link className="logoutBtn" to="/" onClick={() => logoutClick()}>
             {<FiLogOut size={"30px"} color={"#41cdbc"} />} <span>Logout</span>
           </Link>
         )}

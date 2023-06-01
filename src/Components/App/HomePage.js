@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Destiny moved the scrolldown gif into assets folder, will import it here now
 import scrollDown from "../../Assets/scrolldown.gif";
 import scrollUp from "../../Assets/scrollup.gif";
-import logoWhite from "../../Assets/LOGO WHITE.png";
+import logoWhite from "./images/LOGO-WHITE.png";
 import jobsDemo1 from "../App/images/jobsDemo1.png";
 import jobApply from "../App/images/jobApply.png";
 import BackEndEngineer from "../App/images/BackEndEngineer.png";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useJobProvider } from "../../Providers/JobProvider";
 import FilterBar from "./FilterBar";
-import { handleSearchBar } from "../../Functions/SearchBarFunctions";
+import { handleSearchBar } from "./Functions/SearchBarFunctions";
 import { searchIcon } from "./Data/Icons";
 import "./SearchBar.css";
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
-import { convertDate } from "../../Functions/JobFunctions";
+import { convertDate } from "./Functions/JobFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
