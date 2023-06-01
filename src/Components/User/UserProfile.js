@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
-import SkillsComponent from "../Job/SkillsComponent.js"
+import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
-import pencil from "../../Assets/pencil.png";
+import pencilBlack from "../../Assets/pencil-black.png";
+import pencilGrey from "../../Assets/pencil-grey.png"
 import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn } = useUserProvider();
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme } =
+    useUserProvider();
   const [limit, setLimit] = useState(true);
 
   const dateFormat = (date) => {
@@ -54,16 +56,12 @@ export default function UserProfile() {
               <p>Education</p>
               <p className="bold label-spacing">{userProfile.education}</p>
               <br />
-              <p>Skills and Technologies</p>
-              {/* <SkillsComponent /> */}
-              <ul>
-                {userProfile.skills &&
-                  userProfile.skills.map((e, i) => (
-                    <li key={i} className="bold">
-                      {e}
-                    </li>
-                  ))}
-              </ul>
+              <p>Skills & Technologies</p>
+              <SkillsComponent
+              // sorting ascending for skill ids
+                skillsArr={userProfile.skills["skill_ids"].sort((a, b) => a - b)}
+                justList={true}
+              />
             </div>
             <div className="icon-edit">
               <img id="icon-user" src={userIcon} alt="user icon" />
@@ -71,7 +69,7 @@ export default function UserProfile() {
                 onClick={() => navigate(`/user/edit`)}
                 className="profile-button"
               >
-                EDIT <img src={pencil} alt="pencil" />
+                EDIT <img src={theme === "light" ? pencilBlack : pencilGrey} alt="pencil" />
               </button>
             </div>
           </div>
@@ -81,7 +79,7 @@ export default function UserProfile() {
             <li className="bold label-spacing">
               {userProfile["project_one"] ? (
                 <a href={userProfile["project_one"]} target="_blank">
-                  LINK 1
+                  Project one
                 </a>
               ) : (
                 "add link"
@@ -90,7 +88,7 @@ export default function UserProfile() {
             <li className="bold">
               {userProfile["project_two"] ? (
                 <a href={userProfile["project_two"]} target="_blank">
-                  LINK 2
+                  Project two
                 </a>
               ) : (
                 "add link"

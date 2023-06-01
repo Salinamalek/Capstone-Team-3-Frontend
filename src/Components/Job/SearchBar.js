@@ -1,45 +1,119 @@
-import { useState } from 'react'
-import { useJobProvider } from '../../Providers/JobProvider'
-import FilterBar from './FilterBar'
-import {CiSearch} from  "react-icons/ci"
-import "./SearchBar.css"
+import { useState, useEffect } from "react";
+import { useJobProvider } from "../../Providers/JobProvider";
+import FilterBar from "./FilterBar";
+import { handleSearchBar } from "../../Functions/SearchBarFunctions";
+import { searchIcon } from "./Data/Icons";
+import "./SearchBar.css";
 
 function SearchBar() {
-    const {jobs, setJobs, searchResult, setSearchResult} = useJobProvider()
-    const[search, setSearch] = useState("")
-    
-    function handleSearchBar(e) {
-        const value = e.target.value
-        setSearch(value)
-        if(value === ""){
-            setJobs(searchResult)
-        }
-        else {
-            const filt = searchResult.filter(({title}) =>{
-                const joinSearch = search.replaceAll(" ", "")
-                const regex = new RegExp(joinSearch,"gi")
-                let joinTitle = title.replaceAll(" ", "")
-                return joinTitle.match(regex)
-            } )
-            setJobs(filt)
-        }    
-    }
+  const { setJobs, searchResult } = useJobProvider();
+  const [search, setSearch] = useState("");
+  const [searchOptions, setSearchOptions] = useState({
+    searchbar: "",
+    isRemote: false,
+    city: "",
+    skills: [],
+  });
 
-    return (
-        <section className="search-component" >
-            <label htmlFor={search}>
-                 <CiSearch size ={"28px"} color={"#41CDBC"} className="search-bar-icon" />
-            <input
-            className="searchbar"
-            type= "text"
-            value={search}
-            placeholder="Search Jobs..."
-            onChange={(event) => handleSearchBar(event)}
-            />
-            </label>
-            <FilterBar />
-        </section>
-    );
+  function handleSearch() {
+    if (
+      searchOptions.search === "" &&
+      !searchOptions.isRemote &&
+      searchOptions.dropdown === ""
+    ) {
+      setJobs(searchResult);
+    }
+    let filterSearch = searchResult;
+    if (searchOptions.searchbar) {
+      const textFilter = filterSearch.filter((obj) => {
+        const { title, company, details, job_id, city } = obj;
+        const joinSearch = search.replaceAll(" ", "");
+        const regex = new RegExp(joinSearch, "gi");
+        let joinText = [
+          title.replaceAll(" ", ""),
+          company.replaceAll(" ", ""),
+          details.replaceAll(" ", ""),
+          city.replaceAll(" ", ""),
+        ];
+
+        const matchExp = [];
+        const trackJobID = [];
+        for (let i = 0; i < joinText.length; i++) {
+          if (joinText[i].match(regex) && !trackJobID.includes(job_id)) {
+            trackJobID.push(job_id);
+            matchExp.push(obj);
+          }
+        }
+        return matchExp.length > 0;
+      });
+      filterSearch = textFilter;
+    }
+    if (searchOptions.isRemote) {
+      const remoteFilter = filterSearch.filter(
+        ({ full_remote }) => full_remote === true
+      );
+      filterSearch = remoteFilter;
+    }
+    if (searchOptions.city) {
+      const cityFilter = filterSearch.filter(
+        ({ city }) => city.split(",")[0] === searchOptions.city
+      );
+      filterSearch = cityFilter;
+    }
+    if (searchOptions.skills.length > 0) {
+      const skillFilter = filterSearch.filter((obj) => {
+        let includesAll = true;
+        for (let i = 0; i < searchOptions.skills.length; i++) {
+          if (!obj["skill_id"].includes(searchOptions.skills[i])) {
+            includesAll = false;
+            break;
+          }
+        }
+        if (includesAll) {
+          return obj;
+        }
+      });
+      filterSearch = skillFilter;
+    }
+    setJobs(filterSearch);
+  }
+
+  useEffect(() => {
+    handleSearch();
+  }, [
+    searchOptions.searchbar,
+    searchOptions.city,
+    searchOptions.isRemote,
+    searchOptions.skills.length,
+  ]);
+
+  return (
+    <section className="search-component">
+      <label htmlFor={search}>
+        {searchIcon}
+        <input
+          className="searchbar"
+          type="text"
+          id="searchbar"
+          value={search}
+          placeholder="Search Jobs..."
+          onChange={(event) =>
+            handleSearchBar(
+              event,
+              search,
+              setSearch,
+              searchOptions,
+              setSearchOptions
+            )
+          }
+        />
+      </label>
+      <FilterBar
+        searchOptions={searchOptions}
+        setSearchOptions={setSearchOptions}
+      />
+    </section>
+  );
 }
 
 export default SearchBar;
