@@ -55,8 +55,9 @@ export const team = {
   5: {
     id: 5,
     name: "Jahaad Petty",
+    pronoun: "He/Him",
     img: JPphoto,
-    bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
+    bio: "Jahaad is a New York City native with a love for technology.",
     links: [
       "https://github.com/PESolut",
       "https://www.linkedin.com/in/jahaad-petty-321066249/",

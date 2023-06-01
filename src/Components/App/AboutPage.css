@@ -1,10 +1,11 @@
 .dev-section {
   /* display: flex; */
-  /* display: grid; */
-  /* grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
   /* border: 2px solid #ffffff; */
   text-align: center;
+  justify-content: center;
 
   /* padding-bottom: 20px; */
 }
@@ -14,17 +15,17 @@
   /* width: 20%; */
   border-radius: 100px;
   border: 5px solid #ffde59;
-  margin: 20px 0px 0px 0px;
+  /* margin: 20px 0px 0px 0px; */
 }
 
 .dev-cards {
-  padding-left: 10px;
+  /* padding-left: 10px; */
   width: 95%;
   /* border: 2px solid rgb(0, 21, 255); */
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .dev-cards h1 {
@@ -32,6 +33,8 @@
   margin-bottom: 10px;
   /* color: var(--init-mint); */
   font-size: 26px;
+  position: relative;
+  left: 2%;
 }
 .dev-cards h2 {
   /* color: #0914ae; */
@@ -44,6 +47,7 @@
   /* padding: 10px; */
   /* color: #41cdbc; */
   /* color: #0914ae; */
+  /* justify-content: center; */
 }
 
 .indiv-card {
@@ -51,10 +55,13 @@
   /* border: 2px solid #0914ae; */
   margin-top: 10px;
   padding: 20px;
-  height: 85%;
-  /* margin-left: 17px; */
+  /* height: 55%; */
+  width: 80%;
+  /* margin-left: 15px; */
   /* background-color: #0914ae; */
   background-color: #41cdbc;
+  position: relative;
+  left: 7%;
 }
 
 .dev-socials a {
@@ -65,7 +72,7 @@
 
 .socials-line {
   width: 90%;
-  margin: 10px;
+  margin: 15px;
   height: 1px;
   /* background-color: #0914ae; */
 }
@@ -81,6 +88,8 @@
   border: 5px solid #ffde59;
   border-radius: 100px;
   margin: 4px;
+  position: relative;
+  left: 10px;
 }
 
 .devicon2 {
@@ -88,6 +97,7 @@
   /* border: 5px solid #ffde59; */
   border-radius: 100px;
   /* margin: 1px; */
+  /* justify-content: center; */
 }
 
 .devPronoun {
