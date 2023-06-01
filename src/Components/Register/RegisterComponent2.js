@@ -21,10 +21,7 @@ const RegisterComponent2 = () => {
   const [error, setError] = useState('');
   const [skillsArr, setSkillsArr] = useState([])
   const [userDetails, setUserDetails] = useState({
-    first_name: '',
-    last_name: '',
-    education: '',
-    bio: '',
+    biography: '',
     project_one: 'http://projectone.com',
     project_two: 'http://projecttwo.com'
   });
@@ -39,6 +36,21 @@ const RegisterComponent2 = () => {
       setSkillsArr(skillsArr.filter((skill) => skill !== skillId))
     }
   };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    const updateObject = {
+      profile: userDetails,
+      skills: skillsArr
+    }
+
+    console.log(updateObject)
+    // gather data from form,
+    // gather data from skills state
+    // set up the put axios call
+    // url of axios call needs userID from localstorage
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,9 +69,9 @@ const RegisterComponent2 = () => {
       {hasUserSubmitted && (
         <div className='user_details_form'>
           <h1>User Details</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label>Biography:</label>
-            <textarea rows={"5"} cols={40}/>
+            <textarea id='biography' name='biography' value={userDetails.biography} onChange={handleInputChange} rows={"5"} cols={40}/>
             {/* <label htmlFor='bio'>Biography:</label> */}
             {/* <input type='text' id='biography' name='biography' value={userDetails.project_two} onChange={handleInputChange}/> */}
 
@@ -69,6 +81,7 @@ const RegisterComponent2 = () => {
             <label htmlFor='project_two'>Project Two:</label>
             <input type='text' id='project_two' name='project_two' value={userDetails.project_two} onChange={handleInputChange} />
             <SkillsComponent checkbox={true} checkedArr={skillsArr} checkBoxHandle={handleSkills} />
+            <button type="submit" className='registerbutton'>Submit</button>
           </form>
         </div>
       )}

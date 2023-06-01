@@ -37,7 +37,7 @@ const RegisterComponent = () => {
     const [userSkills, setUserSkills] = useState([]);
     const [skillOptions, setSkillOptions] = useState([]);
     const API = process.env.REACT_APP_API_URL
-    const { hasUserSubmitted, setHasUserSubmitted, userSubmitInfo, setUserSubmitInfo, setAuthToken, authToken } = useLoginProvider();  
+    const { hasUserSubmitted, setHasUserSubmitted, userSubmitInfo, setUserSubmitInfo, setAuthToken, authToken, setUserID, userID } = useLoginProvider();  
 
 
     const handleUserDetailsChange = (event) => {
@@ -123,7 +123,7 @@ const RegisterComponent = () => {
             email: loginObject.login.email,
             password: loginObject.login.password
           };
-        axios
+        await axios
           .post(`${API}/logins`, loginObject2)
           .then((response) => {
             console.log('response:', response);
