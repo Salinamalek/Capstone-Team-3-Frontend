@@ -5,6 +5,8 @@ import { IoMdMail } from "react-icons/io";
 import { AiFillLinkedin } from "react-icons/ai";
 import { team } from "../../Functions/AboutData";
 import userIcon from "../../Assets/USER.png";
+import DMphoto from "../../Assets/DMphoto.jpeg";
+import JPphoto from "../../Assets/JPphoto.jpg";
 
 function AboutPage(props) {
   const [profileCard, setProfileCard] = useState(team["6"]);
@@ -33,7 +35,7 @@ function AboutPage(props) {
           <img
             id="2"
             className="devicon"
-            src="https://avatars.githubusercontent.com/u/107490157?v=4"
+            src={DMphoto}
             onClick={(event) => aboutCard(event)}
           ></img>
           <img
@@ -45,144 +47,31 @@ function AboutPage(props) {
           <img
             id="4"
             className="devicon"
-            src="https://avatars.githubusercontent.com/u/105683843?v=4"
+            src="https://avatars.githubusercontent.com/u/105737822?v=4"
             onClick={(event) => aboutCard(event)}
           ></img>
           <img
             id="5"
             className="devicon"
-            src="https://avatars.githubusercontent.com/u/105737822?v=4"
+            src={JPphoto}
             onClick={(event) => aboutCard(event)}
           ></img>
         </div>
         <div className="indiv-card">
           <h2>{profileCard.name}</h2>
-          <img src={profileCard.img} height={"100px"}></img>
+          <h4 className="devPronoun">{profileCard.pronoun}</h4>
+          <img className="devicon2" src={profileCard.img}></img>
           <p>{profileCard.bio}</p>
           <hr className="socials-line"></hr>
           <div className="dev-socials">
             {profileCard.links.length > 0 &&
               profileCard.links.map((el, i) => (
                 <a href={el} target="_blank">
-                  {iconArr[i]}{" "}
+                  {iconArr[i]}
                 </a>
               ))}
           </div>
         </div>
-
-        {/* <div className="indiv-card">
-          <h2>Dan Mazzilli</h2>
-          <img
-            className="dev-img"
-            src="https://avatars.githubusercontent.com/u/107490157?v=4"
-          ></img>
-          <p>
-            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
-            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
-            magnam ut provident laborum et officiis asperiores ea animi
-            dignissimos aut autem reprehenderit ut quidem architecto At amet
-            nulla.
-          </p>
-          <hr className="socials-line"></hr>
-          <div className="dev-socials">
-            <a
-              href="https://www.linkedin.com/in/mazzilli-daniel/"
-              target="_blank"
-            >
-              <AiFillLinkedin />
-            </a>
-            <a href="https://github.com/Daniel-Mazzilli" target="_blank">
-              <BsGithub />
-            </a>
-            <a href="mailto:danmazzilli@pursuit.org">
-              <IoMdMail />
-            </a>
-          </div>
-        </div>
-        <div className="indiv-card">
-          <h2>Salina Malek</h2>
-          <img
-            className="dev-img"
-            src="https://avatars.githubusercontent.com/u/105737474?v=4"
-          ></img>
-          <p>
-            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
-            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
-            magnam ut provident laborum et officiis asperiores ea animi
-            dignissimos aut autem reprehenderit ut quidem architecto At amet
-            nulla.
-          </p>
-          <hr className="socials-line"></hr>
-          <div className="dev-socials">
-            <a href="https://www.linkedin.com/in/salina-malek/" target="_blank">
-              <AiFillLinkedin />
-            </a>
-            <a href="https://github.com/Salinamalek" target="_blank">
-              <BsGithub />
-            </a>
-            <a href="mailto:salinamalek@pursuit.org">
-              <IoMdMail />
-            </a>
-          </div>
-        </div>
-        <div className="indiv-card">
-          <h2>Jahaad Petty</h2>
-          <img
-            className="dev-img"
-            src="https://avatars.githubusercontent.com/u/105683843?v=4"
-          ></img>
-          <p>
-            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
-            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
-            magnam ut provident laborum et officiis asperiores ea animi
-            dignissimos aut autem reprehenderit ut quidem architecto At amet
-            nulla.
-          </p>
-          <hr className="socials-line"></hr>
-          <div className="dev-socials">
-            <a
-              href="https://www.linkedin.com/in/jahaad-petty-321066249/"
-              target="_blank"
-            >
-              <AiFillLinkedin />
-            </a>
-            <a href="https://github.com/PESolut" target="_blank">
-              <BsGithub />
-            </a>
-            <a href="mailto:jahaadpetty@pursuit.org">
-              <IoMdMail />
-            </a>
-          </div>
-        </div>
-        <div className="indiv-card">
-          <h2>Ron Johnson</h2>
-          <img
-            className="dev-img"
-            src="https://avatars.githubusercontent.com/u/105737822?v=4"
-          ></img>
-          <p>
-            Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisum
-            eum dolores molestiae qui tempora vitae sed dolor galisum. Et earum
-            magnam ut provident laborum et officiis asperiores ea animi
-            dignissimos aut autem reprehenderit ut quidem architecto At amet
-            nulla.
-          </p>
-          <hr className="socials-line"></hr>
-          <div className="dev-socials">
-            <a
-              href="https://www.linkedin.com/in/ronald-johnson-97b22830/"
-              target="_blank"
-            >
-              <AiFillLinkedin />
-            </a>
-            <a href="https://github.com/ronJohnPursuit" target="_blank">
-              <BsGithub />
-            </a>
-            <a href="mailto:ronjohnson@pursuit.org">
-              <IoMdMail />
-            </a>
-          </div>
-        </div> */}
       </div>
     </div>
   );

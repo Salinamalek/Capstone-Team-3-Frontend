@@ -6,10 +6,10 @@
 * {
   margin: 0;
   font-family: "Work Sans", Poppins, Cabin, Ysabeau;
-  --init-mint: #41CDBC;
-  --init-gold: #FFDE59;
-  --init-blue: #0914AE;
-  --init-background: #DEEFF9;
+  --init-mint: #41cdbc;
+  --init-gold: #ffde59;
+  --init-blue: #0914ae;
+  --init-background: #deeff9;
   --init-dark: #050525;
 }
 
@@ -27,6 +27,6 @@
 a {
   text-decoration: none;
 }
-a:hover {
+/* a:hover {
   color: var(--init-blue);
-}
+} */

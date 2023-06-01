@@ -15,24 +15,24 @@ import "./Nav.css";
 
 export default function Nav() {
   const { theme, setTheme, isSignedIn, setIsSignedIn, API, axios, userID } =
-  useContextProvider();
+    useContextProvider();
 
   const [openNav, setOpenNav] = useState(false);
-  const [isChecked, setIsChecked] = useState(localStorage.getItem("theme") === "dark" ? true : false )
+  const [isChecked, setIsChecked] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false
+  );
   const navigate = useNavigate();
- 
 
   const toggleTheme = (e) => {
-    const checkbox = e.target.checked
-    if(checkbox){
-      setTheme("dark")
-      setIsChecked(true)
+    const checkbox = e.target.checked;
+    if (checkbox) {
+      setTheme("dark");
+      setIsChecked(true);
+    } else {
+      setTheme("light");
+      setIsChecked(false);
     }
-    else {
-      setTheme("light")
-      setIsChecked(false)
-    }
-  
+    navbarClick();
   };
   useEffect(() => {
     const handleScroll = () => {
@@ -99,7 +99,7 @@ export default function Nav() {
         <p>
           <br />
 
-          <span className="slogan">"Your first tech opportunity awaits!"</span>
+          <span className="slogan">Your first tech opportunity awaits</span>
         </p>
         {!isSignedIn && (
           <Link to="/user" onClick={() => loginClick()}>
@@ -132,18 +132,23 @@ export default function Nav() {
           <BiInfoCircle size={"30px"} color={"#41cdbc"} />
           <span>Meet the Team</span>
         </Link>
-        <label className="switch">
-          <input 
-          type="checkbox" 
-          checked={isChecked}
-          onChange={(event) => toggleTheme(event)} />
-          <span className="slider round"></span>
-        </label>
         {isSignedIn && (
-          <button className="logoutBtn" onClick={() => logoutClick()}>
-            {<FiLogOut />} Logout
-          </button>
+          <Link className="logoutBtn" onClick={() => logoutClick()}>
+            {<FiLogOut size={"30px"} color={"#41cdbc"} />} <span>Logout</span>
+          </Link>
         )}
+        <hr className="navHR"></hr>
+        <label className="switch">
+          <div>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={(event) => toggleTheme(event)}
+            />
+            <span className="slider round"></span>
+          </div>
+        </label>
+        <span className="toggleBtn">Dark Mode</span>
       </aside>
     </nav>
   );
