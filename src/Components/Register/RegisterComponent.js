@@ -34,6 +34,7 @@ const RegisterComponent = () => {
         password: ""
     })
     const [passwordHints, setPasswordHints] = useState([]);
+    const [isGoodUserResponse, setIsGoodUserResponse] = useState(false)
     const [userSkills, setUserSkills] = useState([]);
     const [skillOptions, setSkillOptions] = useState([]);
     const API = process.env.REACT_APP_API_URL
@@ -107,6 +108,7 @@ const RegisterComponent = () => {
         await axios.post(`${API}/users`, loginObject)
         .then(response => {
             console.log('response:', response)
+            setIsGoodUserResponse(true)
         })
         .catch(error => {
             console.error('Error:', error);
@@ -119,26 +121,8 @@ const RegisterComponent = () => {
             }
         })
         setUserSubmitInfo(loginObject)
-        const loginObject2 = {
-            email: loginObject.login.email,
-            password: loginObject.login.password
-          };
-        await axios
-          .post(`${API}/logins`, loginObject2)
-          .then((response) => {
-            console.log('response:', response);
-            console.log(response.data.token);
-            const USER_ID = response.data.user_id;
-
-            setAuthToken(response.data.token);
-            setUserID(USER_ID);
-            setIsSignedIn(true)
-            setError('');
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-            setError('An error occurred during login.');
-          });
+        
+     
 
         // NOTE / ! \ need to implement error casing for when user has not registered and gotten a good response from the server
 
@@ -171,6 +155,41 @@ const RegisterComponent = () => {
         setUserSkills([]);
 
     };
+
+    useEffect(() => {
+
+        // const loginObject = {
+        //     profile: userDetails,
+        //     login: loginDetails,
+        //     skills: userSkills
+        // }
+        
+        // const loginObject2 = {
+        //     email: loginDetails.login.email,
+        //     password: loginObject.login.password
+        //   };
+        console.log(userSubmitInfo.login)
+
+        if(isGoodUserResponse){
+            axios
+            .post(`${API}/logins`, userSubmitInfo.login)
+            .then((response) => {
+              console.log('response:', response);
+              console.log(response.data.token);
+              const USER_ID = response.data.user_id;
+  
+              setAuthToken(response.data.token);
+              setUserID(USER_ID);
+              setIsSignedIn(true)
+              setError('');
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              setError('An error occurred during login.');
+            });
+        }
+
+    },[isGoodUserResponse])
 
     // update our loginProvider state
 
