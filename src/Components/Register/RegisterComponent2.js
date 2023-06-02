@@ -40,12 +40,29 @@ const RegisterComponent2 = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    
+
     const updateObject = {
-      profile: userDetails,
+      profile: {
+        first_name: userSubmitInfo.profile.first_name,
+        last_name: userSubmitInfo.profile.last_name,
+        education: userSubmitInfo.profile.education,
+        bio: userDetails.biography,
+        project_one: userDetails.project_one,
+        project_two: userDetails.project_two
+      },
       skills: skillsArr
     }
 
     console.log(updateObject)
+
+    axios.put(`${API}/users/${userID}`, updateObject)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.error("Error:", error)
+    })
     // gather data from form,
     // gather data from skills state
     // set up the put axios call
