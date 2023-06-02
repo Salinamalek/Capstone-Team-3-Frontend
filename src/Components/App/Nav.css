@@ -20,7 +20,7 @@ nav img {
 }
 
 nav a {
-  color: #41cdbc;
+  color: #0914ae;
   font-size: 20px;
 }
 .nav-sign {
@@ -34,8 +34,10 @@ nav a {
 .slide-nav {
   /* border: 1px solid #FFDE59; */
   /* background-color: rgb(1, 1, 103); */
-  background-color: #0914ae;
-  color: #41cdbc;
+  /* background-color: #0914ae; */
+  /* color: #41cdbc; */
+  background-color: #0cbdbd; /*darker mint
+  /* color: #0914ae; */
   display: grid;
   grid-template-rows: 0.7fr repeat(5, 0.5fr) 0.3fr 0.3fr;
   /* justify-items: center; */
@@ -74,7 +76,8 @@ nav a {
   color: var(--init-gold);
 }
 .slide-nav a {
-  color: #41cdbc;
+  /* color: #41cdbc; */
+  color: var(--init-blue);
   width: 70%;
 }
 
