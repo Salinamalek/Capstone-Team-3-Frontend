@@ -4,7 +4,8 @@ import "./JobsCard.css";
 
 function JobsCard({ jobObj }) {
   const { title, company, skill_id, full_remote, city, job_id } = jobObj;
-  const combineSkills = skill_id.map((el) => el);
+  const skills = typeof skill_id === "number" ? [skill_id] : skill_id;
+  const combineSkills = skills.map((el) => el);
 
   return (
     <Link to={`/jobs/${job_id}`}>
