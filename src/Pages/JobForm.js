@@ -1,3 +1,5 @@
+import NewEditJobForm from "../Components/Recruiter/NewEditJobForm.js"
+
 export default function JobForm() {
-    return <>JobForm</>;
+    return <NewEditJobForm />;
   }
