@@ -1,0 +1,70 @@
+.job-form-page {
+    display:grid;
+    grid-template-rows: 5vh 75vh;
+    height: 84vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.job-form {
+    display: grid;
+    grid-template-rows: repeat(2, 10vh) 10vh 13vh 10vh 15vh;
+    row-gap: .5vh;
+    height: 100%;
+    width: 95%; 
+    justify-items: left;
+    align-items: center;
+    margin-top: 3vh;
+    /* border-left: 1px solid #1d262b;
+    border-right: 1px solid #1d262b;; */
+}
+
+.job-form label {
+    display: grid;
+    justify-items: left;
+    height: 10vh;
+    width: 85%;
+    row-gap: 1vh;
+    margin-left: 3vw;
+}
+
+.job-form-label {
+   font-size: 14px;
+}
+.job-form input[type="text"]{
+    grid-row: 1;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: var(--init-background);
+    width: 100%;
+    /* position: relative;
+    right: 11vw; */
+    padding-bottom: 2px;
+    font-size: 18px;
+    
+}
+
+.job-form-location {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 8vh;
+    width: 100%;
+    align-items: center;
+}
+
+.job-form select {
+    height: 4vh;
+    width: 80%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.job-form input[type="checkbox"] {
+    position: relative;
+    left: 2vw;
+    width: 1.8em;
+    height: 1.8em;
+    accent-color: var(--init-gold);
+    border: 1px solid var(--init-mint);
+}

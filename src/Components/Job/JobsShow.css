@@ -4,12 +4,13 @@
     justify-items: left;
     height: 85vh;
     width: 100%;
+    color: #1d262b ;
 }
 
 .job-show-header {
     width: 100%;
     background-color: var(--init-mint);
-    color: black;
+    /* color: black; */
     display: grid;
     grid-template-columns: .12fr 1fr;
     grid-template-rows: .08fr .3fr .3fr .1fr .1fr .2fr;

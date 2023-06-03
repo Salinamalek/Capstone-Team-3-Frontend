@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import SkillsComponent from "./SkillsComponent";
-import Dropdown from "./Dropdown.js";
+import Dropdown from "./Inputs/Dropdown.js"
 import { dropdownCities } from "./Data/Cities.js";
 import {
   handleSearchBar,
