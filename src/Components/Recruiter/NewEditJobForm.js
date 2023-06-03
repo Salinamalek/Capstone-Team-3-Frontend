@@ -26,7 +26,7 @@ export default function NewEditJobForm() {
         city: "",
         details: "",
         full_remote: false,
-        tasks: "",
+        tasks: [],
         recruiter_id: "",
   });
 
@@ -90,7 +90,7 @@ export default function NewEditJobForm() {
             <div className="job-form-tasks">
                 <div className="task-container">
                 {
-                    taskCount.map(el => 
+                    taskCount.map((el, i) => 
                         <section 
                         className="task-line"
                         key={uuidv4()}>
@@ -100,8 +100,9 @@ export default function NewEditJobForm() {
                             stateVar={taskArr}
                             setFunction={setTaskArr}
                             required={true}
-                            remove={true}
                             placeholder={"List A Job Task"}
+                            index={i}
+                            task={true}
                             />
                             {/* <HiMinusCircle 
                             className="task-remove"
