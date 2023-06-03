@@ -31,6 +31,7 @@ export default function () {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setFailedLogin(false);
     const { isRecruiter } = loginForm;
     const callRoute = isRecruiter ? "recruiters-logins" : "logins";
     axios
