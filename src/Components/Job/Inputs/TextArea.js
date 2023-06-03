@@ -1,6 +1,6 @@
+import { CgAsterisk } from "react-icons/cg"
 
-
-function TextArea({ label, formId, stateVar, setFunction, placeholder }) {
+function TextArea({ label, formId, stateVar, setFunction, placeholder, required }) {
   function handleTextChange(e, stateVar, setFunction) {
     const value = e.target.value;
     setFunction({ ...stateVar, [formId]: value });
@@ -8,7 +8,10 @@ function TextArea({ label, formId, stateVar, setFunction, placeholder }) {
 
   return (
     <label htmlFor={formId}>
-      <span className="job-form-label">{label}</span>
+      <span className="job-form-label job-textarea">
+        {label}
+        {required && <CgAsterisk color={"red"} size={"15px"} />}
+      </span>
 
       <textarea
         className="input-box"

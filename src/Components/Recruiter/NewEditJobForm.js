@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4} from "uuid"
 import { useJobProvider } from "../../Providers/JobProvider";
 import TextInput from "../Job/Inputs/TextInput";
 import TextArea from "../Job/Inputs/TextArea";
@@ -14,6 +15,9 @@ import "./NewEditJobForm.css";
 export default function NewEditJobForm() {
   const { API, axios, jobID } = useJobProvider();
   const navigate = useNavigate();
+  const [jobDropdown, setJobDropdown] = useState("")
+  const [taskCount, setTaskCount] = useState([1])
+  const [taskArr, setTaskArr] = useState([])
   const [jobForm, setJobForm] = useState({
         title: "",
         company: "",
@@ -23,7 +27,12 @@ export default function NewEditJobForm() {
         tasks: "",
         recruiter_id: "",
   });
-  const [jobDropdown, setJobDropdown] = useState("")
+
+  function taskButton(e) {
+    e.preventDefault()
+    setTaskCount([...taskCount, 1])
+  }
+  
 
   
   return (
@@ -49,8 +58,8 @@ export default function NewEditJobForm() {
             placeholder={"Company"}
             />
 
-<section className="job-form-location">
-<Dropdown
+        <section className="job-form-location">
+            <Dropdown
             idVal={"city"}
             stateVar={jobDropdown}
             optionsArray={dropdownCities}
@@ -64,18 +73,41 @@ export default function NewEditJobForm() {
             setFunction={setJobForm}
             />
 
-</section>
+        </section>
            
-
             <TextArea 
             label={"Job Details"}
             formId={"details"}
             stateVar={jobForm}
             setFunction={setJobForm}
+            required={true}
             placeholder={"Enter Job Overview details here"}
             />
 
             {/* Tasks */}
+            <div className="job-form-tasks">
+                <div className="task-container">
+                {
+                    taskCount.map(el => 
+                        <section 
+                        className="task-line"
+                        key={uuidv4()}>
+                             <TextInput 
+                            label={"Job Tasks"}
+                            formId={"tasks"}
+                            stateVar={taskArr}
+                            setFunction={setTaskArr}
+                            required={true}
+                            placeholder={"List A Job Task"}
+                            />
+                        </section>
+                       )
+                }
+                </div>
+              
+                 <button onClick={(event) =>taskButton(event)}>+</button>
+            </div>
+            
 
 
         </form>
