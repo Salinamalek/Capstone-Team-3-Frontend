@@ -8,7 +8,7 @@ function TextArea({ label, formId, stateVar, setFunction, placeholder }) {
 
   return (
     <label htmlFor={formId}>
-      <span>{label}</span>
+      <span className="job-form-label">{label}</span>
 
       <textarea
         className="input-box"
