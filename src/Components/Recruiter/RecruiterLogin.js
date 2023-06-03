@@ -25,13 +25,14 @@ export default function () {
     if (event.target.id === "isRecruiter") {
       setLoginForm({ ...loginForm, isRecruiter: !loginForm.isRecruiter });
     } else {
+        setFailedLogin(false);
       setLoginForm({ ...loginForm, [event.target.id]: event.target.value });
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setFailedLogin(false);
+    // setFailedLogin(false);
     const { isRecruiter } = loginForm;
     const callRoute = isRecruiter ? "recruiters-logins" : "logins";
     axios
@@ -58,7 +59,8 @@ export default function () {
 
   return (
     <div className="recruiter-login">
-      <h1>Login</h1>
+      <h1>Log in</h1>
+      <div className="recruiter-login-error">{failedLogin && "Invalid email, or password"}</div>
       <form className="recruiter-login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -83,8 +85,9 @@ export default function () {
           checked={loginForm.isRecruiter}
           onChange={handleChange}
         />
-        <input id="recruiter-login-submit" type="submit" value="LOGIN" />
+        <input id="recruiter-login-submit" type="submit" value="LOG IN" />
       </form>
+      {/* <div className="recruiter-login-error">{failedLogin && "Invalid email, or password"}</div> */}
       <Link to="/recruiter/register">Create account</Link>
     </div>
   );
