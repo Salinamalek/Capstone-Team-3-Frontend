@@ -1,6 +1,7 @@
 import { CgAsterisk } from "react-icons/cg"
+import { HiMinusCircle } from "react-icons/hi"
 
-function TextInput({label,formId, stateVar, setFunction, required, placeholder}) {
+function TextInput({label,formId, stateVar, setFunction, required, placeholder, remove}) {
       // handleTextChange
       function handleTextChange(e, stateVar, setFunction){
         const value = e.target.value
@@ -13,7 +14,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder})
         htmlFor={formId}>
             <span className="job-form-label">
                 {label}
-                {required && <CgAsterisk color={"red"} size={"15px"} />}
+                {required && <CgAsterisk color={"#cd5f41"} size={"15px"} />}
             </span>
         <input 
             className="input-box"
@@ -23,6 +24,14 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder})
             placeholder={placeholder ? placeholder : ""}
             onChange = {(event) => {handleTextChange(event, stateVar, setFunction)}}
         />
+        {
+            remove && 
+            <HiMinusCircle 
+            className="task-remove"
+            size={"16px"}
+            color={"#cd5f41"}
+            onClick={(e) => delete e.target} />
+        }
         </label>
     );
 }

@@ -9,6 +9,8 @@ import Dropdown from "../Job/Inputs/Dropdown";
 import SkillsComponent from "../Job/SkillsComponent.js"
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
+import { IoMdAddCircle } from "react-icons/io"
+import { HiMinusCircle } from "react-icons/hi"
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
@@ -98,14 +100,25 @@ export default function NewEditJobForm() {
                             stateVar={taskArr}
                             setFunction={setTaskArr}
                             required={true}
+                            remove={true}
                             placeholder={"List A Job Task"}
                             />
+                            {/* <HiMinusCircle 
+                            className="task-remove"
+                            size={"16px"}
+                            color={"#cd5f41"}
+                            onClick={(e) => delete e.target} /> */}
                         </section>
                        )
                 }
                 </div>
-              
-                 <button onClick={(event) =>taskButton(event)}>+</button>
+                <section className="task-header">
+                <span
+                onClick={(event) =>taskButton(event)}>Click to Add A Task</span>
+                <IoMdAddCircle size={"20px"}
+                onClick={(event) =>taskButton(event)} />
+                
+                </section>
             </div>
             
 
