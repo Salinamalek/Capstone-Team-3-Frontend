@@ -1,0 +1,53 @@
+.recruiter-login {
+  margin: 20px 20px;
+  color: rgb(22, 16, 16);
+  font-size: 20px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.recruiter-login h1 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.recruiter-login-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* gap: 10px; */
+}
+
+.recruiter-login-form label {
+  text-align: center;
+}
+
+.recruiter-login-form input {
+  border: none;
+  border-radius: 6px;
+  margin: 10px 35px 30px 35px;
+  height: 28px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#recruiter-login-submit {
+  width: 120px;
+  margin: 0 auto;
+  background-color: var(--init-mint);
+  height: 40px;
+  font-size: 22px;
+  margin-top: 10px;
+  color: var(--init-blue);
+}
+
+.recruiter-login a {
+/* border: 3px solid blue; */
+margin: 80px 0;
+padding: 60px 0;
+color: var(--init-blue);
+border-top: 2px solid var(--init-mint);
+font-weight: 600;
+font-size: 24px;
+}
