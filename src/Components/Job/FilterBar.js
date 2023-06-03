@@ -100,7 +100,7 @@ function FilterBar({ searchOptions, setSearchOptions }) {
         <span className="filter-bar-toggle">
           <MdChangeCircle
             size={"25px"}
-            color={"#FFDE59"}
+            color={"white"}
             onClick={() => setSkillView(!skillView)}
           />
           <span onClick={() => setSkillView(!skillView)}>
