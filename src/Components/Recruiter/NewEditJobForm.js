@@ -73,8 +73,8 @@ export default function NewEditJobForm({edit}) {
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`
 
     if(edit){
-        axios.put(`${API}/jobs/15`, obj)
-        .then(({data}) => navigate(`/jobs/${data.id}`))
+        axios.put(`${API}/jobs/${jobID}`, obj)
+        .then(({data}) => navigate(`/jobs/${jobID}`))
         .catch(err => console.log(err))
     }
     else {
@@ -88,7 +88,7 @@ export default function NewEditJobForm({edit}) {
 //   useEffect for edit
   useEffect(() => {
     if(edit){
-        axios.get(`${API}/jobs/15`)
+        axios.get(`${API}/jobs/${jobID}`)
         .then(({data}) => {
             convertTasks(data.tasks)
             convertSkills(data.skills)
@@ -98,7 +98,7 @@ export default function NewEditJobForm({edit}) {
                 ...data,
                 ["tasks"] : taskArr,
                 ["skills"] : skills,
-                // ["city"] : jobDropdown
+                ["city"] : data.city
             })
             
         })

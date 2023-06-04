@@ -5,6 +5,7 @@ import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
 import { convertDate } from "./Functions/JobFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
+import { GrEdit } from "react-icons/gr"
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
@@ -28,7 +29,12 @@ function JobsShow() {
     navigate(`/jobs/${jobID}/edit`)
   }
 
-  const applyButtonClick = isRecruiter ? () => recruiterView() : !applied ? () => appliedClick() : () => applyClick()
+  const applyButtonClick = isRecruiter ? () => recruiterView() : applied ? () => appliedClick() : () => applyClick()
+
+  const appliedButtonView = isRecruiter ? "EDIT" : !applied ? "APPLY" : "APPLIED"
+
+  const appliedButtonClass = isRecruiter ? "job-show-header-apply job-show-edit" : !applied ? "job-show-header-apply" : "job-show-header-applied"
+
 
   function applyToJob() {
     const obj = {
@@ -87,11 +93,12 @@ function JobsShow() {
         )}
         <button
           onClick={applyButtonClick}
-          className={
-            !applied ? "job-show-header-apply" : "job-show-header-applied"
-          }
+          className={appliedButtonClass}
         >
-          {!applied ? "APPLY" : "APPLIED"}
+          <span>
+            {appliedButtonView}
+            {isRecruiter && <GrEdit size={"25px"} color= {"#ffde59"} />}
+          </span>
         </button>
       </section>
 
@@ -120,14 +127,14 @@ function JobsShow() {
         </div>
       </section>
 
-      {!applied ? (
-        <button onClick={applyButtonClick} className="job-show-apply">
-          Apply
+      {!applied || isRecruiter ? (
+        <button onClick={applyButtonClick} className={"job-show-apply"}>
+          {appliedButtonView}
         </button>
       ) : (
         <div className="job-show-applied">
           {jobApplied}
-          <span onClick={() => navigate("/user")}>
+          <span onClick={applyButtonClick}>
             APPLIED ON {convertDate(applied["date_applied"])}
           </span>
         </div>

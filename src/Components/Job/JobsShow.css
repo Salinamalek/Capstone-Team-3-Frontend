@@ -101,6 +101,7 @@
     right: 6vw;
 }
 
+
 .job-show-header-applied {
     all: unset;
     grid-column: 2;
@@ -112,6 +113,13 @@
     padding: 2px;
     position: relative;
     right: 7vw;
+}
+
+.job-show-edit {
+    
+}
+.job-show-edit svg {
+    margin-left: 2vw;
 }
 
 .job-show .skills-component {
