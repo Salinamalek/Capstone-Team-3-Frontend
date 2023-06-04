@@ -15,8 +15,6 @@ import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
 export default function NewEditJobForm({edit}) {
-    // NEED TO GET RECRUITER ID VARIABLE
-
   const { API, axios, jobID, recruiterID, setRecruiterID, access, setAccess, isRecruiter } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
@@ -101,24 +99,23 @@ export default function NewEditJobForm({edit}) {
             }
             else {
                 setAccess(false)
+                navigate("/not-found")
             }
             
             
         })
         .catch(err => console.log(err))
     }
+    else if(isRecruiter){
+        setAccess(true)
+    }
+    else if(!isRecruiter){
+            navigate("/not-found")
+          }
+    
   },[jobID])
   
 
-  if(!access){
-    return (
-        <h2>Not Your Job Posting</h2>
-    )
-  }
-  if(!isRecruiter){
-    navigate("/not-found")
-  }
-  else{
   return (
     <div className="job-form-page">
         <section className="job-form-header">
@@ -229,4 +226,4 @@ export default function NewEditJobForm({edit}) {
     </div>)
   ;
 }
-}
+
