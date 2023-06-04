@@ -212,7 +212,7 @@ export default function NewEditJobForm({edit}) {
 
             <input 
             className="job-form-submit"
-            type="submit" value="Post Job" />
+            type="submit" value={edit ? "Update Post": "Post Job"} />
 
         </form>
     </div>)

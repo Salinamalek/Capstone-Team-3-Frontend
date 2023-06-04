@@ -16,6 +16,20 @@ function JobsShow() {
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
 
+  const isRecruiter = true
+
+  function applyClick() {
+    applyToJob()
+  }
+  function appliedClick() {
+    navigate("/user")
+  }
+  function recruiterView () {
+    navigate(`/jobs/${jobID}/edit`)
+  }
+
+  const applyButtonClick = isRecruiter ? () => recruiterView() : !applied ? () => appliedClick() : () => applyClick()
+
   function applyToJob() {
     const obj = {
       user_id: userID,
@@ -72,7 +86,7 @@ function JobsShow() {
           </span>
         )}
         <button
-          onClick={!applied ? () => applyToJob() : () => navigate("/user")}
+          onClick={applyButtonClick}
           className={
             !applied ? "job-show-header-apply" : "job-show-header-applied"
           }
@@ -107,7 +121,7 @@ function JobsShow() {
       </section>
 
       {!applied ? (
-        <button onClick={() => applyToJob()} className="job-show-apply">
+        <button onClick={applyButtonClick} className="job-show-apply">
           Apply
         </button>
       ) : (
