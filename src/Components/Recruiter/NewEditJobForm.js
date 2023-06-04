@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4} from "uuid"
 import { useJobProvider } from "../../Providers/JobProvider";
@@ -19,7 +19,7 @@ export default function NewEditJobForm() {
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
   const [taskCount, setTaskCount] = useState([1])
-  const [taskArr, setTaskArr] = useState([])
+  const [taskArr, setTaskArr] = useState([""])
   const [jobForm, setJobForm] = useState({
         title: "",
         company: "",
@@ -32,8 +32,15 @@ export default function NewEditJobForm() {
 
   function taskButton(e) {
     e.preventDefault()
-    setTaskCount([...taskCount, 1])
+    setTaskArr([...taskArr, ""])
   }
+
+  function handleTasks(e, stateVar, setFunction, index){
+    const value = e.target.value
+    const copyArr = [...stateVar]
+    copyArr[index] = value
+    setFunction(copyArr)
+}
   
 
   
@@ -90,11 +97,12 @@ export default function NewEditJobForm() {
             <div className="job-form-tasks">
                 <div className="task-container">
                 {
-                    taskCount.map((el, i) => 
+                    taskArr.map((el, i) => 
                         <section 
                         className="task-line"
                         key={uuidv4()}>
                              <TextInput 
+                             key={uuidv4()}
                             label={"Job Tasks"}
                             formId={"tasks"}
                             stateVar={taskArr}
@@ -103,6 +111,7 @@ export default function NewEditJobForm() {
                             placeholder={"List A Job Task"}
                             index={i}
                             task={true}
+                            onChange= {(event) => handleTasks(event, taskArr, setTaskArr, i)}
                             />
                             {/* <HiMinusCircle 
                             className="task-remove"

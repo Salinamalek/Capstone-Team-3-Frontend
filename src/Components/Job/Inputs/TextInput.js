@@ -1,7 +1,8 @@
 import { CgAsterisk } from "react-icons/cg"
 import { HiMinusCircle } from "react-icons/hi"
 
-function TextInput({label,formId, stateVar, setFunction, required, placeholder, index, task}) {
+function TextInput({label,formId, stateVar, setFunction, required, placeholder, index, task }) {
+    
       // handleTextChange
       function handleTextChange(e, stateVar, setFunction){
         const value = e.target.value
@@ -34,7 +35,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
             value={task ? stateVar[index]: stateVar.formId}
             id = {formId}
             placeholder={placeholder ? placeholder : ""}
-            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event, stateVar, setFunction) }}
+            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event, stateVar, setFunction)}}
         />
         {
             task && 
