@@ -32,7 +32,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
         <input 
             className="input-box"
             type="text"
-            value={task ? stateVar[index]: stateVar.formId}
+            value={task ? stateVar[index]: stateVar[formId]}
             id = {formId}
             placeholder={placeholder ? placeholder : ""}
             onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event, stateVar, setFunction)}}

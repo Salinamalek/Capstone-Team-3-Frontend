@@ -29,9 +29,11 @@ export default function NewEditJobForm({edit}) {
         city: "",
         details: "",
         full_remote: false,
-        tasks: taskArr,
+        tasks: [],
         recruiter_id: 1,
   });
+
+  const [editForm, setEditForm] = useState({})
 
   function handleSkills (e) {
     const id = +e.target.id
@@ -52,6 +54,13 @@ export default function NewEditJobForm({edit}) {
   function convertTasks(str) {
     const arr = str.split("__TASKBREAK__")
     setTaskArr(arr)
+    setJobForm({...jobForm, ["tasks"] : arr})
+  }
+
+  function convertSkills(arr) {
+    const newArr = arr.map(obj => +Object.keys(obj)[0])
+    setSkills(newArr)
+    setJobForm({...jobForm, ["skills"]: newArr})
   }
 
   function handleSubmit(e) {
@@ -67,6 +76,26 @@ export default function NewEditJobForm({edit}) {
     .catch(err => console.log(err))
   }
 
+//   useEffect for edit
+  useEffect(() => {
+    if(edit){
+        axios.get(`${API}/jobs/15`)
+        .then(({data}) => {
+            convertTasks(data.tasks)
+            convertSkills(data.skills)
+            setJobDropdown(data.city)
+            
+            setJobForm({
+                ...data,
+                ["tasks"] : taskArr,
+                ["skills"] : skills,
+                ["city"] : jobDropdown
+            })
+            
+        })
+        .catch(err => console.log(err))
+    }
+  },[jobID])
   
 
   

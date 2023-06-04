@@ -4,7 +4,7 @@ import JobProvider from "../Providers/JobProvider.js";
 export default function JobForm() {
   return (
     <JobProvider>
-      <NewEditJobForm />
+      <NewEditJobForm edit={true} />
     </JobProvider>
   );
 }

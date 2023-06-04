@@ -15,7 +15,7 @@ function TextArea({ label, formId, stateVar, setFunction, placeholder, required 
 
       <textarea
         className="input-box"
-        value={stateVar.formId}
+        value={stateVar[formId]}
         placeholder={placeholder}
         onChange={(event) => handleTextChange(event, stateVar, setFunction)}
       />

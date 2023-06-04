@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Checkbox({label, formId, stateVar, setFunction}) {
-    const [checkbox, setCheckbox] = useState(false)
+    const [checkbox, setCheckbox] = useState(stateVar["full_remote"])
 
     // handleCheckbox
     function handleCheckBox(e, var1, setFunc){
@@ -17,7 +17,7 @@ function Checkbox({label, formId, stateVar, setFunction}) {
             <input
             type="checkbox"
             value={formId} 
-            checked={checkbox}
+            checked={stateVar[formId]}
             onChange={(event) => handleCheckBox(event, stateVar, setFunction)}
             />
         </label>
