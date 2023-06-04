@@ -71,9 +71,18 @@ export default function NewEditJobForm({edit}) {
     }
     obj.jobDetails.tasks = taskArr
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`
-    axios.post(`${API}/jobs`, obj)
-    .then(({data}) => navigate(`/jobs/${data.id}`))
-    .catch(err => console.log(err))
+
+    if(edit){
+        axios.put(`${API}/jobs/15`, obj)
+        .then(({data}) => navigate(`/jobs/${data.id}`))
+        .catch(err => console.log(err))
+    }
+    else {
+        axios.post(`${API}/jobs`, obj)
+        .then(({data}) => navigate(`/jobs/${data.id}`))
+        .catch(err => console.log(err))
+    }
+    
   }
 
 //   useEffect for edit
@@ -89,7 +98,7 @@ export default function NewEditJobForm({edit}) {
                 ...data,
                 ["tasks"] : taskArr,
                 ["skills"] : skills,
-                ["city"] : jobDropdown
+                // ["city"] : jobDropdown
             })
             
         })
@@ -105,7 +114,7 @@ export default function NewEditJobForm({edit}) {
             <TfiAngleLeft 
             onClick={() => navigate(-1)}
             size={"30px"} />
-            <h2>
+            <h2 className={edit? "edit-header" : ""}>
                 {edit? "Edit Post" : "Post a New Opportunity!"}
             </h2>
         </section>
