@@ -15,6 +15,7 @@ function JobProvider({ children }) {
   const [recruiterID, setRecruiterID] = useState(1)
   const [access, setAccess] = useState(false)
   const [isRecruiter, setIsRecruiter] = useState(true)
+  const [recruiterJobs, setRecruiterJobs] = useState([])
 
   useEffect(() => {
     axios
@@ -25,7 +26,13 @@ function JobProvider({ children }) {
       }
       )
       .catch((error) => console.log(error));
-  }, []);
+
+      if(recruiterID){
+        axios.get(`${API}/recruiters/${recruiterID}`)
+        .then(({data}) => setRecruiterJobs(data["jobs_posted"]))
+        .catch(err => console.log(err))
+      }
+  }, [recruiterID, jobID]);
 
   return (
     <JobContextData.Provider
@@ -44,6 +51,7 @@ function JobProvider({ children }) {
         setAccess,
         isRecruiter,
         setIsRecruiter,
+        recruiterJobs
       }}
     >
       {children}
