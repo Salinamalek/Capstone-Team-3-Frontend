@@ -17,7 +17,7 @@ export default function NewEditJobForm() {
   const { API, axios, jobID } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
-  const [taskArr, setTaskArr] = useState([""])
+  const [taskArr, setTaskArr] = useState(["",""])
   const [skills, setSkills] = useState([])
   const [jobForm, setJobForm] = useState({
         title: "",
@@ -134,6 +134,10 @@ export default function NewEditJobForm() {
             checkedArr={skills}
             checkBoxHandle={(event) => handleSkills(event)}
             />
+
+            <input 
+            className="job-form-submit"
+            type="submit" value="Post Job" />
             
 
 
