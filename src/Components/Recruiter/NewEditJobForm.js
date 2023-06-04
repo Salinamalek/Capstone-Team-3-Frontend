@@ -14,7 +14,7 @@ import { CgAsterisk } from "react-icons/cg"
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
-export default function NewEditJobForm() {
+export default function NewEditJobForm({edit}) {
     // NEED TO GET RECRUITER ID VARIABLE
 
 
@@ -72,7 +72,14 @@ export default function NewEditJobForm() {
   
   return (
     <div className="job-form-page">
-        <h2>Post a New Opportunity!</h2>
+        <section className="job-form-header">
+            <TfiAngleLeft 
+            onClick={() => navigate(-1)}
+            size={"30px"} />
+            <h2>
+                {edit? "Edit Post" : "Post a New Opportunity!"}
+            </h2>
+        </section>
 
         <form className="job-form"
         onSubmit={(event) => handleSubmit(event)}>
