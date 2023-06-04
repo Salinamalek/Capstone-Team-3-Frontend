@@ -1,21 +1,35 @@
 import { CgAsterisk } from "react-icons/cg"
 import { HiMinusCircle } from "react-icons/hi"
+import { useState } from "react"
 
 function TextInput({label,formId, stateVar, setFunction, required, placeholder, index, task }) {
-    
+    const [taskTest, setTaskTest] = useState(stateVar)
       // handleTextChange
       function handleTextChange(e, stateVar, setFunction){
         const value = e.target.value
         const id = e.target.id
         setFunction({...stateVar, [id]: value})
     }
-
-    function handleTasks(e, stateVar, setFunction){
+    
+    function handleTasks(e){
         const value = e.target.value
-        const copyArr = [...stateVar]
+        const copyArr = [...taskTest]
         copyArr[index] = value
-        setFunction(copyArr)
+        setTaskTest(copyArr)   
     }
+    function handleTaskBlur() {
+        // const value = taskTest
+        // const copyArr = [...stateVar]
+        // copyArr[index] = value
+        setFunction(taskTest)
+    }
+    // function handleTasks(e, stateVar, setFunction){
+        // handleTasks(event, stateVar, setFunction)}
+    //     const value = e.target.value
+    //     const copyArr = [...stateVar]
+    //     copyArr[index] = value
+    //     setFunction(copyArr)
+    // }
 
     function removeTask() {
         const remove = [...stateVar].filter((el,i) => i !== index)
@@ -32,10 +46,11 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
         <input 
             className="input-box"
             type="text"
-            value={task ? stateVar[index]: stateVar[formId]}
+            value={task ? taskTest[index]: stateVar[formId]}
             id = {formId}
             placeholder={placeholder ? placeholder : ""}
-            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event, stateVar, setFunction)}}
+            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event)}}
+            onBlur={task ? () =>handleTaskBlur() : null}
         />
         {
             task && 

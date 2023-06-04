@@ -18,7 +18,7 @@ export default function NewEditJobForm({edit}) {
     // NEED TO GET RECRUITER ID VARIABLE
 
 
-  const { API, axios, jobID } = useJobProvider();
+  const { API, axios, jobID, } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
   const [taskArr, setTaskArr] = useState(["",""])
@@ -29,7 +29,7 @@ export default function NewEditJobForm({edit}) {
         city: "",
         details: "",
         full_remote: false,
-        tasks: [],
+        tasks: ["", ""],
         recruiter_id: 1,
   });
 
@@ -173,8 +173,8 @@ export default function NewEditJobForm({edit}) {
                         <section 
                         className="task-line"
                         key={uuidv4()}>
-                             <TextInput 
-                             key={uuidv4()}
+                            <TextInput 
+                            key={uuidv4()}
                             label={"Job Tasks"}
                             formId={"tasks"}
                             stateVar={taskArr}

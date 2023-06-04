@@ -13,6 +13,7 @@ function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
 
+
   useEffect(() => {
     axios
       .get(`${API}/jobs`)
