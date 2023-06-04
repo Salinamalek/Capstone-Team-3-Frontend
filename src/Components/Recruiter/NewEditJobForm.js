@@ -33,8 +33,6 @@ export default function NewEditJobForm({edit}) {
         recruiter_id: 1,
   });
 
-  const [editForm, setEditForm] = useState({})
-
   function handleSkills (e) {
     const id = +e.target.id
     if(!skills.includes(id) && skills.length < 4){

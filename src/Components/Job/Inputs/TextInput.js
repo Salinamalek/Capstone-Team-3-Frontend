@@ -18,9 +18,6 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
         setTaskTest(copyArr)   
     }
     function handleTaskBlur() {
-        // const value = taskTest
-        // const copyArr = [...stateVar]
-        // copyArr[index] = value
         setFunction(taskTest)
     }
     // function handleTasks(e, stateVar, setFunction){

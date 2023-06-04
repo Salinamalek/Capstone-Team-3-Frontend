@@ -114,7 +114,7 @@ function JobsShow() {
           <span className="job-show-label">Tasks:</span>
           <span className="job-show-role-list">
             {jobDetails.tasks &&
-              jobDetails.tasks.split(".").map((el) => {
+              jobDetails.tasks.split("__TASKBREAK__").map((el) => {
                 if (el) {
                   return (
                     <li key={uuidv4()}>
