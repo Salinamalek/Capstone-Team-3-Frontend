@@ -84,13 +84,13 @@
     bottom: 1.1vh;
 }
 
-.job-form input[type="checkbox"] {
+.job-form-location input[type="checkbox"] {
     position: relative;
     top: 1.2vh;
     justify-self: center;
     width: 2em;
     height: 2em;
-    accent-color: var(--init-mint);
+    accent-color: var(--init-blue);
 }
 
 .job-form textarea{
@@ -169,4 +169,28 @@
     justify-self: center;
     top: .5vh;
     left: 2vw;
+}
+
+/* skills */
+.job-form .skills-checkboxes{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 95%;
+    height: 10vh;
+    margin-bottom: 3vh;
+    justify-items: left;
+}
+
+.job-form .skills-checkboxes label {
+    display: flex;
+    align-items: center;
+    height: 4vh;
+    font-size: 17px;
+}
+.job-form .skills-checkboxes label span {
+    margin-left: 2vw;
+}
+.job-form .skills-checkboxes label input {
+    width: 1.5em;
+    height: 1.5em;
 }

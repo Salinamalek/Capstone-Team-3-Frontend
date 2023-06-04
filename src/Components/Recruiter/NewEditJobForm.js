@@ -10,7 +10,6 @@ import SkillsComponent from "../Job/SkillsComponent.js"
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { IoMdAddCircle } from "react-icons/io"
-import { HiMinusCircle } from "react-icons/hi"
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
@@ -18,8 +17,8 @@ export default function NewEditJobForm() {
   const { API, axios, jobID } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
-  const [taskCount, setTaskCount] = useState([1])
   const [taskArr, setTaskArr] = useState([""])
+  const [skills, setSkills] = useState([])
   const [jobForm, setJobForm] = useState({
         title: "",
         company: "",
@@ -30,17 +29,22 @@ export default function NewEditJobForm() {
         recruiter_id: "",
   });
 
+  function handleSkills (e) {
+    const id = +e.target.id
+    if(!skills.includes(id) && skills.length < 4){
+        setSkills([...skills, id])
+    }
+    else {
+        const remove = skills.filter(el => el !== id)
+        setSkills(remove)
+    }
+  }
+
   function taskButton(e) {
     e.preventDefault()
     setTaskArr([...taskArr, ""])
   }
 
-  function handleTasks(e, stateVar, setFunction, index){
-    const value = e.target.value
-    const copyArr = [...stateVar]
-    copyArr[index] = value
-    setFunction(copyArr)
-}
   
 
   
@@ -111,13 +115,7 @@ export default function NewEditJobForm() {
                             placeholder={"List A Job Task"}
                             index={i}
                             task={true}
-                            onChange= {(event) => handleTasks(event, taskArr, setTaskArr, i)}
                             />
-                            {/* <HiMinusCircle 
-                            className="task-remove"
-                            size={"16px"}
-                            color={"#cd5f41"}
-                            onClick={(e) => delete e.target} /> */}
                         </section>
                        )
                 }
@@ -130,6 +128,12 @@ export default function NewEditJobForm() {
                 
                 </section>
             </div>
+
+            <SkillsComponent 
+            checkbox={true}
+            checkedArr={skills}
+            checkBoxHandle={(event) => handleSkills(event)}
+            />
             
 
 
