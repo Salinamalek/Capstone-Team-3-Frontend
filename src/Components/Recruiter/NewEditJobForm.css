@@ -8,7 +8,7 @@
 
 .job-form {
     display: grid;
-    grid-template-rows: repeat(2, 7vh) 6vh 15vh 15vh 15vh 7vh;
+    grid-template-rows: repeat(2, 7vh) 4.5vh 15vh 15vh 16vh 7vh;
     row-gap: 1vh;
     height: 100%;
     width: 95%; 
@@ -22,7 +22,7 @@
     justify-items: left;
     height: 10vh;
     width: 85%;
-    row-gap: 1vh;
+    row-gap: .5vh;
     margin-left: 3vw;
 }
 
@@ -42,7 +42,7 @@
 
 
 .job-form-label {
-   font-size: 14px;
+   font-size: 12px;
    grid-row: 2;
 }
 
@@ -65,7 +65,7 @@
 .job-form-location {
     display: grid;
     grid-template-columns: 55% 45%;
-    height: 100%;
+    
     width: 90%;
     align-items: center;
     margin-left: 3vw;
@@ -79,7 +79,7 @@
     text-align: left;
     font-size: 16px;
     position: relative;
-    top: 1vh;
+    top: .5vh;
 }
 
 .job-form-remote {
@@ -105,7 +105,7 @@
     padding-left: 3px;
     font-size: 18px;
     position: relative;
-    bottom: 1vh;
+    bottom: vh;
     right: .8vw;
 }
 
@@ -115,7 +115,7 @@
 
 .job-textarea {
     position: relative;
-    bottom: 1.8vh;
+    bottom: .5vh;
 }
 
 /* Tasks */
@@ -202,12 +202,21 @@
     height: 1.5em;
 }
 
+.job-form-skills span span {
+    position: relative;
+    bottom: .3vw;
+    left: 3vw;
+    margin-right: 3vw;
+    font-size: 12px;
+    font-style: italic;
+}
+
 /* submit button */
 .job-form-submit {
     height: 5vh;
     width: 50%;
     position: relative;
-    top: 1.3vh;
+    top: 1.8vh;
     left: 10vh;
     border-radius: 20px;
     border: 1px solid var(--init-blue);

@@ -10,10 +10,14 @@ import SkillsComponent from "../Job/SkillsComponent.js"
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { IoMdAddCircle } from "react-icons/io"
+import { CgAsterisk } from "react-icons/cg"
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
 export default function NewEditJobForm() {
+    // NEED TO GET RECRUITER ID VARIABLE
+
+
   const { API, axios, jobID } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
@@ -25,8 +29,8 @@ export default function NewEditJobForm() {
         city: "",
         details: "",
         full_remote: false,
-        tasks: [],
-        recruiter_id: "",
+        tasks: taskArr,
+        recruiter_id: 1,
   });
 
   function handleSkills (e) {
@@ -45,6 +49,24 @@ export default function NewEditJobForm() {
     setTaskArr([...taskArr, ""])
   }
 
+  function convertTasks(str) {
+    const arr = str.split("__TASKBREAK__")
+    setTaskArr(arr)
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    const obj = {
+        jobDetails: jobForm,
+        skills : skills
+    }
+    obj.jobDetails.tasks = taskArr
+    obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`
+    axios.post(`${API}/jobs`, obj)
+    .then(({data}) => navigate(`/jobs/${data.id}`))
+    .catch(err => console.log(err))
+  }
+
   
 
   
@@ -52,7 +74,8 @@ export default function NewEditJobForm() {
     <div className="job-form-page">
         <h2>Post a New Opportunity!</h2>
 
-        <form className="job-form">
+        <form className="job-form"
+        onSubmit={(event) => handleSubmit(event)}>
             <TextInput 
             label={"Job Title"}
             formId={"title"}
@@ -112,7 +135,7 @@ export default function NewEditJobForm() {
                             stateVar={taskArr}
                             setFunction={setTaskArr}
                             required={true}
-                            placeholder={"List A Job Task"}
+                            placeholder={`Job Task (${i +1})`}
                             index={i}
                             task={true}
                             />
@@ -129,17 +152,22 @@ export default function NewEditJobForm() {
                 </section>
             </div>
 
+            <section className="job-form-skills">
+                <span>
+                    <span>Min. 1, Max. 4 Skills req.</span>
+                    <CgAsterisk color={"#cd5f41"} size={"15px"} />
+                </span>
             <SkillsComponent 
             checkbox={true}
             checkedArr={skills}
             checkBoxHandle={(event) => handleSkills(event)}
             />
+            </section>
+            
 
             <input 
             className="job-form-submit"
             type="submit" value="Post Job" />
-            
-
 
         </form>
     </div>)
