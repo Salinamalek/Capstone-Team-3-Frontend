@@ -58,17 +58,16 @@ export default function NewEditJobForm({edit}) {
   function convertSkills(arr) {
     const newArr = arr.map(obj => +Object.keys(obj)[0])
     setSkills(newArr)
-    setJobForm({...jobForm, ["skills"]: newArr})
   }
 
   function handleSubmit(e) {
     e.preventDefault()
     const obj = {
         jobDetails: jobForm,
-        skills : skills
     }
     obj.jobDetails.tasks = taskArr
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`
+    obj.skills = skills
 
     if(edit){
         axios.put(`${API}/jobs/${jobID}`, obj)
@@ -94,8 +93,7 @@ export default function NewEditJobForm({edit}) {
             
             setJobForm({
                 ...data,
-                ["tasks"] : taskArr,
-                ["skills"] : skills,
+                ["tasks"] :taskArr,
                 ["city"] : data.city
             })
             
