@@ -249,3 +249,56 @@
 .job-form select {
   border-color: var(--init-mint);
 }
+
+/* dark mode */
+.dark .job-form-header {
+  background-color: var(--init-gold);
+  color: black;
+}
+
+.dark .job-form input[type="text"],
+.dark .job-form textarea,
+.dark .job-form select, .dark .task-container, .dark .task-container input {
+  border-color: var(--init-mint);
+  background-color: var(--init-dark);
+  color: white;
+}
+
+.dark .job-form ::placeholder{
+  color: var(--init-background);
+  opacity: .4;
+}
+
+.dark .job-form input[type="text"]:focus,
+.dark .job-form textarea:focus {
+  background-color: var(--init-dark);
+}
+
+.dark .job-form input[type="checkbox"] {
+  accent-color: var(--init-gold);
+}
+
+.dark .job-form-label {
+  color: var(--init-gold);
+}
+
+.dark .job-form-skills span span {
+  color: var(--init-gold);
+}
+
+.dark .task-header span {
+  color: var(--init-gold);
+}
+
+.dark .job-form svg {
+  fill: var(--init-mint);
+}
+
+.dark .job-form-submit  {
+  background-color: var(--init-gold);
+  color: ;
+
+}
+
+
+
