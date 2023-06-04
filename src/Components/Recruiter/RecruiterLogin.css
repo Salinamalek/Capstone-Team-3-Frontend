@@ -1,5 +1,4 @@
 .recruiter-login {
-  margin: 20px 20px;
   color: rgb(22, 16, 16);
   font-size: 20px;
   text-align: center;
@@ -9,13 +8,15 @@
 
 .recruiter-login h1 {
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background-color: var(--init-mint);
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
 }
 
 .recruiter-login-form {
   display: grid;
   grid-template-columns: 1fr;
+  margin: 20px 20px;
   /* gap: 10px; */
 }
 

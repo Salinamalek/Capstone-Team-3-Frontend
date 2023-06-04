@@ -28,6 +28,11 @@
   font-size: 20px;
 }
 
+.recruiter-register-form label span {
+    color: red;
+    font-size: 16px;
+} 
+
 .recruiter-register-form select {
     text-align: center;
 }
