@@ -1,6 +1,6 @@
+import { useState } from "react"
 import { CgAsterisk } from "react-icons/cg"
 import { HiMinusCircle } from "react-icons/hi"
-import { useState } from "react"
 
 function TextInput({label,formId, stateVar, setFunction, required, placeholder, index, task }) {
     const [taskTest, setTaskTest] = useState(stateVar)

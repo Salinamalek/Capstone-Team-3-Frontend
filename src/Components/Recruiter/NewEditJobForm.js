@@ -17,8 +17,7 @@ import "./NewEditJobForm.css";
 export default function NewEditJobForm({edit}) {
     // NEED TO GET RECRUITER ID VARIABLE
 
-
-  const { API, axios, jobID, } = useJobProvider();
+  const { API, axios, jobID, recruiterID, setRecruiterID, access, setAccess, isRecruiter } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("")
   const [taskArr, setTaskArr] = useState(["",""])
@@ -30,7 +29,7 @@ export default function NewEditJobForm({edit}) {
         details: "",
         full_remote: false,
         tasks: ["", ""],
-        recruiter_id: 1,
+        recruiter_id: recruiterID
   });
 
   function handleSkills (e) {
@@ -87,15 +86,23 @@ export default function NewEditJobForm({edit}) {
     if(edit){
         axios.get(`${API}/jobs/${jobID}`)
         .then(({data}) => {
-            convertTasks(data.tasks)
-            convertSkills(data.skills)
-            setJobDropdown(data.city)
+            setRecruiterID(data["recruiter_id"])
+            console.log(data)
+            if(data["recruiter_id"] === recruiterID){
+                setAccess(true)
+                convertTasks(data.tasks)
+                convertSkills(data.skills)
+                setJobDropdown(data.city)
+                setJobForm({
+                    ...data,
+                    ["tasks"] :taskArr,
+                    ["city"] : data.city
+                })
+            }
+            else {
+                setAccess(false)
+            }
             
-            setJobForm({
-                ...data,
-                ["tasks"] :taskArr,
-                ["city"] : data.city
-            })
             
         })
         .catch(err => console.log(err))
@@ -103,7 +110,15 @@ export default function NewEditJobForm({edit}) {
   },[jobID])
   
 
-  
+  if(!access){
+    return (
+        <h2>Not Your Job Posting</h2>
+    )
+  }
+  if(!isRecruiter){
+    navigate("/not-found")
+  }
+  else{
   return (
     <div className="job-form-page">
         <section className="job-form-header">
@@ -213,4 +228,5 @@ export default function NewEditJobForm({edit}) {
         </form>
     </div>)
   ;
+}
 }

@@ -12,7 +12,9 @@ function JobProvider({ children }) {
   const { jobID } = useParams();
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
-
+  const [recruiterID, setRecruiterID] = useState(1)
+  const [access, setAccess] = useState(false)
+  const [isRecruiter, setIsRecruiter] = useState(true)
 
   useEffect(() => {
     axios
@@ -36,6 +38,12 @@ function JobProvider({ children }) {
         setJobs,
         searchResult,
         setSearchResult,
+        recruiterID,
+        setRecruiterID,
+        access,
+        setAccess,
+        isRecruiter,
+        setIsRecruiter,
       }}
     >
       {children}

@@ -7,6 +7,10 @@
     color: #1d262b ;
 }
 
+.hide {
+    display: none;
+}
+
 .job-show-header {
     width: 100%;
     background-color: var(--init-mint);

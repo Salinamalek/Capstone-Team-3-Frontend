@@ -10,14 +10,13 @@ import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
 function JobsShow() {
-  const { API, axios, jobID, userID } = useJobProvider();
+  const { API, axios, jobID, userID, recruiterID, access, setAccess, isRecruiter } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
 
-  const isRecruiter = true
 
   function applyClick() {
     applyToJob()
@@ -29,11 +28,11 @@ function JobsShow() {
     navigate(`/jobs/${jobID}/edit`)
   }
 
-  const applyButtonClick = isRecruiter ? () => recruiterView() : applied ? () => appliedClick() : () => applyClick()
+  const applyButtonClick = !access && isRecruiter ? null :isRecruiter ? () => recruiterView() : applied ? () => appliedClick() : () => applyClick()
 
-  const appliedButtonView = isRecruiter ? "EDIT" : !applied ? "APPLY" : "APPLIED"
+  const appliedButtonView = !access && isRecruiter ? null :isRecruiter? "EDIT" : !applied ? "APPLY" : "APPLIED"
 
-  const appliedButtonClass = isRecruiter ? "job-show-header-apply job-show-edit" : !applied ? "job-show-header-apply" : "job-show-header-applied"
+  const appliedButtonClass = isRecruiter? "job-show-header-apply job-show-edit" : !applied ? "job-show-header-apply" : "job-show-header-applied"
 
 
   function applyToJob() {
@@ -59,6 +58,12 @@ function JobsShow() {
     axios
       .get(`${API}/jobs/${jobID}`)
       .then(({ data }) => {
+        if(data["recruiter_id"] === recruiterID){
+          setAccess(true)
+        }
+        else {
+          setAccess(false)
+        }
         setJobDetails(data);
         const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
         setSkillIdArr(extractSkills);
@@ -97,7 +102,7 @@ function JobsShow() {
         >
           <span>
             {appliedButtonView}
-            {isRecruiter && <GrEdit size={"25px"} color= {"#ffde59"} />}
+            {isRecruiter && access && <GrEdit size={"25px"} color= {"#ffde59"} />}
           </span>
         </button>
       </section>
@@ -128,7 +133,7 @@ function JobsShow() {
       </section>
 
       {!applied || isRecruiter ? (
-        <button onClick={applyButtonClick} className={"job-show-apply"}>
+        <button onClick={applyButtonClick} className={isRecruiter && !access ? "hide" :"job-show-apply"}>
           {appliedButtonView}
         </button>
       ) : (
