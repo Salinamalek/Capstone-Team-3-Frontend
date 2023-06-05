@@ -36,6 +36,7 @@ export default function NewEditJobForm({ edit }) {
     details: "",
     full_remote: false,
     tasks: ["", ""],
+    skills: [],
     recruiter_id: recruiterID,
   });
 
@@ -43,9 +44,11 @@ export default function NewEditJobForm({ edit }) {
     const id = +e.target.id;
     if (!skills.includes(id) && skills.length < 4) {
       setSkills([...skills, id]);
+      setJobForm({...jobForm, ["skills"] : [...skills, id]})
     } else {
       const remove = skills.filter((el) => el !== id);
       setSkills(remove);
+      setJobForm({...jobForm, ["skills"] : remove})
     }
   }
 
@@ -56,13 +59,12 @@ export default function NewEditJobForm({ edit }) {
 
   function convertTasks(str) {
     const arr = str.split("__TASKBREAK__");
-    setTaskArr(arr);
-    setJobForm({ ...jobForm, ["tasks"]: arr });
+    return arr
   }
 
   function convertSkills(arr) {
     const newArr = arr.map((obj) => +Object.keys(obj)[0]);
-    setSkills(newArr);
+    return newArr
   }
 
   function handleSubmit(e) {
@@ -72,7 +74,7 @@ export default function NewEditJobForm({ edit }) {
     };
     obj.jobDetails.tasks = taskArr;
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
-    obj.skills = skills;
+    obj.skills = jobForm.skills;
 
     if (edit) {
       axios
@@ -94,16 +96,19 @@ export default function NewEditJobForm({ edit }) {
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
           setRecruiterID(data["recruiter_id"]);
-          console.log(data);
           if (data["recruiter_id"] === recruiterID) {
             setAccess(true);
-            convertTasks(data.tasks);
-            convertSkills(data.skills);
+            if(data["full_remote"] === "false"){
+                data["full_remote"] = false
+            }
+            setTaskArr(convertTasks(data.tasks));
+            setSkills(convertSkills(data.skills));
             setJobDropdown(data.city);
             setJobForm({
               ...data,
-              ["tasks"]: taskArr,
+              ["tasks"]: convertTasks(data.tasks),
               ["city"]: data.city,
+              ["skills"] : convertSkills(data.skills)
             });
           } else {
             setAccess(false);
