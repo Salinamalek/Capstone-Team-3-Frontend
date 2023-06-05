@@ -1,34 +1,48 @@
 .job-applicant-page {
     height: 84vh;
     display: grid;
-    grid-template-rows: 15vh 60vh 5vh;
-    row-gap: 2vh;
+    grid-template-rows: 6vh 16vh 58vh 5vh;
 }
 
 .job-applicant-header {
-    background-color: #7cc4f5;
     display: grid;
-    grid-template-columns: .5fr 2fr .7fr;
-    grid-template-rows: 1fr .5fr .5fr;
+    grid-template-columns: 10% 90%;
+    background-color: var(--init-blue);
+    color: white;
     align-items: center;
-    padding-bottom: 1vh;
 }
-.job-applicant-header svg {
-    fill: black;
-    stroke: black;
+.job-applicant-header h2 {
+    margin-left: 17vw;
+    height: fit-content;
 }
+
 .job-applicant-header svg:first-of-type {
     position: relative;
     left: 1vw;
-    grid-row: 1/4;
 }
-.job-applicant-header span svg {
+
+.job-applicant-job-details {
+    background-color: #7cc4f5;
+    display: grid;
+    grid-template-columns: .2fr 2fr .7fr;
+    grid-template-rows: 1fr .5fr .5fr;
+    align-items: center;
+    padding-bottom:1vh;
+    height: 15vh;
+}
+.job-applicant-job-details svg {
+    fill: black;
+    stroke: black;
+}
+
+.job-applicant-job-details span svg {
     position: relative;
     top: .5vh;
     margin-right: 2vw;
 }
 .applicant-title {
     grid-column: 2/4;
+    color: var(--init-blue);
 }
 .applicant-company {
     grid-column: 2;
@@ -48,20 +62,21 @@
 
 .applicant-list {
     display: grid;
-    grid-template-rows: 6vh ;
+    grid-template-rows: 4vh ;
     grid-auto-rows: 10vh;
     row-gap: 2vh;
     justify-items: center;
     overflow-y: scroll;
     max-height: 60vh;
+
+    margin-top: 1vh;
+    padding-top: 2vh;
 }
 
-.applicant-list h2 {
-    font-size: 28px;
+.applicant-list h3 {
+    font-size: 20px;
     width: 90%;
     text-align: center;
-    border-bottom: black 1px solid;
-    margin-bottom: 10px;
 }
 
 .job-applicant-link {

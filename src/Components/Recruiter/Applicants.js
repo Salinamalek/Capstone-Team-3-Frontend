@@ -14,7 +14,6 @@ export default function Applicants() {
   const [applicants, setApplicants] = useState([]);
   const [thisJob, setThisJob] = useState({});
 
-
   useEffect(() => {
     const filter = recruiterJobs.find(({ id }) => id === +jobID);
     if (filter) {
@@ -22,14 +21,20 @@ export default function Applicants() {
     }
     if (filter && filter.users) {
       setApplicants(filter.users);
-    } 
+    }
   }, [jobID, recruiterJobs.length]);
 
   return (
     <div className="job-applicant-page">
       <section className="job-applicant-header">
         <TfiAngleLeft onClick={() => navigate(-1)} size={"30px"} />
-        <h2 className="applicant-title">{thisJob.title}</h2>
+        <h2>Job Applicants</h2>
+      </section>
+
+      <section className="job-applicant-job-details">
+        <Link to={`/jobs/${thisJob.id}`} className="applicant-title">
+          <h2>{thisJob.title}</h2>
+        </Link>
         <span className="applicant-company">
           {jobCompany}
           {thisJob.company}
@@ -44,15 +49,17 @@ export default function Applicants() {
       </section>
 
       <section className="applicant-list">
-        <h2>{!applicants.length && "No "}Job Applicants</h2>
+        <h3>
+          {!applicants.length
+            ? "No Applicants"
+            : `Applicants (${applicants.length})`}
+        </h3>
         {applicants.map((obj) => (
           <ApplicantCard key={uuidv4()} obj={obj} />
         ))}
       </section>
 
-      <Link 
-      className="job-applicant-link" 
-      to={`/jobs/${thisJob.id}`}>
+      <Link className="job-applicant-link" to={`/jobs/${thisJob.id}`}>
         VIEW JOB DETAILS
       </Link>
     </div>
