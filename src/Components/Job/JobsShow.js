@@ -66,6 +66,7 @@ function JobsShow() {
         }
         setJobDetails(data);
         const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
+        console.log(data.skills, extractSkills, "show")
         setSkillIdArr(extractSkills);
       })
       .catch((err) => console.log(err));

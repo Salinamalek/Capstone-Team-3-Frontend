@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import TextInput from "../Job/Inputs/TextInput";
@@ -9,6 +9,8 @@ import Dropdown from "../Job/Inputs/Dropdown";
 import SkillsComponent from "../Job/SkillsComponent.js";
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
+import { convertTasks } from "../Job/Functions/JobFunctions";
+import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { IoMdAddCircle } from "react-icons/io";
 import { CgAsterisk } from "react-icons/cg";
 import { TfiAngleLeft } from "react-icons/tfi";
@@ -26,6 +28,7 @@ export default function NewEditJobForm({ edit }) {
     isRecruiter,
   } = useJobProvider();
   const navigate = useNavigate();
+  const location = useLocation()
   const [jobDropdown, setJobDropdown] = useState("");
   const [taskArr, setTaskArr] = useState(["", ""]);
   const [skills, setSkills] = useState([]);
@@ -36,7 +39,6 @@ export default function NewEditJobForm({ edit }) {
     details: "",
     full_remote: false,
     tasks: ["", ""],
-    skills: [],
     recruiter_id: recruiterID,
   });
 
@@ -57,29 +59,21 @@ export default function NewEditJobForm({ edit }) {
     setTaskArr([...taskArr, ""]);
   }
 
-  function convertTasks(str) {
-    const arr = str.split("__TASKBREAK__");
-    return arr
-  }
-
-  function convertSkills(arr) {
-    const newArr = arr.map((obj) => +Object.keys(obj)[0]);
-    return newArr
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
+    const getSkills = skills
     const obj = {
       jobDetails: jobForm,
+      skills: getSkills
     };
     obj.jobDetails.tasks = taskArr;
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
-    obj.skills = jobForm.skills;
-
+    // obj.skills = skills;
+    console.log(obj.skills, obj,  "skills")
     if (edit) {
-      axios
+        axios
         .put(`${API}/jobs/${jobID}`, obj)
-        .then(({ data }) => navigate(`/jobs/${jobID}`))
+        .then(({ data }) => navigate(`/jobs/${data.id}`))
         .catch((err) => console.log(err));
     } else {
       axios
@@ -101,15 +95,16 @@ export default function NewEditJobForm({ edit }) {
             if(data["full_remote"] === "false"){
                 data["full_remote"] = false
             }
+            const editObj = {
+                ...data,
+                ["tasks"]: convertTasks(data.tasks),
+                ["city"]: data.city,
+                ["skills"] : convertSkills(data.skills)
+              }
+            setJobForm(editObj);
             setTaskArr(convertTasks(data.tasks));
             setSkills(convertSkills(data.skills));
             setJobDropdown(data.city);
-            setJobForm({
-              ...data,
-              ["tasks"]: convertTasks(data.tasks),
-              ["city"]: data.city,
-              ["skills"] : convertSkills(data.skills)
-            });
           } else {
             setAccess(false);
             navigate("/not-found");

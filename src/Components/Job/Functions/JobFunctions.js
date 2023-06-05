@@ -4,8 +4,13 @@ function convertDate(str){
     return arranged
 }
 
+function convertTasks(str) {
+    const arr = str.split("__TASKBREAK__");
+    return arr
+  }
 
 
 export {
     convertDate,
+    convertTasks,
 }
