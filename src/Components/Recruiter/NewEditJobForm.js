@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import TextInput from "../Job/Inputs/TextInput";
@@ -28,7 +28,6 @@ export default function NewEditJobForm({ edit }) {
     isRecruiter,
   } = useJobProvider();
   const navigate = useNavigate();
-  const location = useLocation()
   const [jobDropdown, setJobDropdown] = useState("");
   const [taskArr, setTaskArr] = useState(["", ""]);
   const [skills, setSkills] = useState([]);
@@ -42,15 +41,18 @@ export default function NewEditJobForm({ edit }) {
     recruiter_id: recruiterID,
   });
 
+  //   may need to check if changes were made before sending put that wipes skills etc...
+  const [originalData, setOriginalData] = useState({});
+
   function handleSkills(e) {
     const id = +e.target.id;
     if (!skills.includes(id) && skills.length < 4) {
       setSkills([...skills, id]);
-      setJobForm({...jobForm, ["skills"] : [...skills, id]})
+      setJobForm({ ...jobForm, ["skills"]: [...skills, id] });
     } else {
       const remove = skills.filter((el) => el !== id);
       setSkills(remove);
-      setJobForm({...jobForm, ["skills"] : remove})
+      setJobForm({ ...jobForm, ["skills"]: remove });
     }
   }
 
@@ -59,22 +61,53 @@ export default function NewEditJobForm({ edit }) {
     setTaskArr([...taskArr, ""]);
   }
 
+  function checkForm(obj, stateVar) {
+    const { jobDetails } = obj;
+    // key values
+    const originalForm = Object.values(stateVar);
+    const updatedForm = Object.values(jobDetails);
+
+    for (let i = 0; i < updatedForm.length; i++) {
+      if (i === 8 && originalForm[i].length !== updatedForm[i].length) {
+        return true;
+      }
+      if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
+        return true;
+      }
+    }
+    const originalSkills = originalForm[8];
+    const updatedSkills = updatedForm[8];
+    const changedSkills = updatedSkills.every((el) =>
+      originalSkills.includes(el)
+    );
+    if (!changedSkills) {
+      console.log("changed skills");
+      return true;
+    }
+    return false;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    const getSkills = skills
     const obj = {
       jobDetails: jobForm,
-      skills: getSkills
     };
     obj.jobDetails.tasks = taskArr;
+    obj.skills = skills;
+    // check for updates
+    const changes = checkForm(obj, originalData);
+    // remote boolean to string
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
-    // obj.skills = skills;
-    console.log(obj.skills, obj,  "skills")
-    if (edit) {
-        axios
+    console.log(obj.skills, "edit")
+
+    if (edit && changes) {
+      console.log("change");
+      axios
         .put(`${API}/jobs/${jobID}`, obj)
         .then(({ data }) => navigate(`/jobs/${data.id}`))
         .catch((err) => console.log(err));
+    } else if (edit && !changes) {
+      navigate(`/jobs/${jobID}`);
     } else {
       axios
         .post(`${API}/jobs`, obj)
@@ -82,7 +115,6 @@ export default function NewEditJobForm({ edit }) {
         .catch((err) => console.log(err));
     }
   }
-
   //   useEffect for edit
   useEffect(() => {
     if (edit) {
@@ -92,16 +124,20 @@ export default function NewEditJobForm({ edit }) {
           setRecruiterID(data["recruiter_id"]);
           if (data["recruiter_id"] === recruiterID) {
             setAccess(true);
-            if(data["full_remote"] === "false"){
-                data["full_remote"] = false
+            if (data["full_remote"] === "false") {
+              data["full_remote"] = false;
             }
-            const editObj = {
-                ...data,
-                ["tasks"]: convertTasks(data.tasks),
-                ["city"]: data.city,
-                ["skills"] : convertSkills(data.skills)
-              }
-            setJobForm(editObj);
+            if (data["full_remote"] === "true") {
+              data["full_remote"] = true;
+            }
+            const form = {
+              ...data,
+              ["tasks"]: convertTasks(data.tasks),
+              ["city"]: data.city,
+              ["skills"]: convertSkills(data.skills),
+            };
+            setOriginalData(form);
+            setJobForm(form);
             setTaskArr(convertTasks(data.tasks));
             setSkills(convertSkills(data.skills));
             setJobDropdown(data.city);

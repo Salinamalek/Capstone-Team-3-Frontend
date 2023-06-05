@@ -55,21 +55,23 @@ function JobsShow() {
       })
       .catch((err) => console.log(data));
 
-    axios
-      .get(`${API}/jobs/${jobID}`)
-      .then(({ data }) => {
-        if(data["recruiter_id"] === recruiterID){
-          setAccess(true)
-        }
-        else {
-          setAccess(false)
-        }
-        setJobDetails(data);
-        const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
-        console.log(data.skills, extractSkills, "show")
-        setSkillIdArr(extractSkills);
-      })
-      .catch((err) => console.log(err));
+      setTimeout(() => {
+        axios
+        .get(`${API}/jobs/${jobID}`)
+        .then(({ data }) => {
+          if(data["recruiter_id"] === recruiterID){
+            setAccess(true)
+          }
+          else {
+            setAccess(false)
+          }
+          setJobDetails(data);
+          const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
+          console.log(data.skills, extractSkills, "show")
+          setSkillIdArr(extractSkills);
+        })
+        .catch((err) => console.log(err));
+      }, 2000)
   }, [reload, jobID]);
 
   return (

@@ -17,7 +17,7 @@ function Checkbox({label, formId, stateVar, setFunction}) {
             <input
             type="checkbox"
             value={formId} 
-            checked={stateVar[formId]}
+            checked={stateVar[formId]=== "true" || stateVar[formId] === true ? true : false }
             onChange={(event) => handleCheckBox(event, stateVar, setFunction)}
             />
         </label>
