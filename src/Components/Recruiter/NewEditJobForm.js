@@ -36,6 +36,7 @@ export default function NewEditJobForm({ edit }) {
     details: "",
     full_remote: false,
     tasks: ["", ""],
+    skills: skills,
     recruiter_id: recruiterID,
   });
 
@@ -43,10 +44,13 @@ export default function NewEditJobForm({ edit }) {
     const id = +e.target.id;
     if (!skills.includes(id) && skills.length < 4) {
       setSkills([...skills, id]);
+      setJobForm({...jobForm, ["skills"] : [...skills, id]})
     } else {
       const remove = skills.filter((el) => el !== id);
       setSkills(remove);
+      setJobForm({...jobForm, ["skills"] : remove})
     }
+    console.log(jobForm.skills, "skill change")
   }
 
   function taskButton(e) {
@@ -63,17 +67,19 @@ export default function NewEditJobForm({ edit }) {
   function convertSkills(arr) {
     const newArr = arr.map((obj) => +Object.keys(obj)[0]);
     setSkills(newArr);
+    return newArr
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const obj = {
       jobDetails: jobForm,
+      skills : jobForm.skills
     };
     obj.jobDetails.tasks = taskArr;
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
-    obj.skills = skills;
-
+    obj.skills = skills
+    console.log(obj.skills)
     if (edit) {
       axios
         .put(`${API}/jobs/${jobID}`, obj)
@@ -94,16 +100,17 @@ export default function NewEditJobForm({ edit }) {
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
           setRecruiterID(data["recruiter_id"]);
-          console.log(data);
+        //   console.log(data);
           if (data["recruiter_id"] === recruiterID) {
             setAccess(true);
             convertTasks(data.tasks);
-            convertSkills(data.skills);
+            // convertSkills(data.skills);
             setJobDropdown(data.city);
             setJobForm({
               ...data,
               ["tasks"]: taskArr,
               ["city"]: data.city,
+              ["skills"]: convertSkills(data.skills),
             });
           } else {
             setAccess(false);
