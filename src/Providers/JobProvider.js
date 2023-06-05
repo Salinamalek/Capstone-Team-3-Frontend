@@ -17,7 +17,8 @@ function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
   const [recruiterID, setRecruiterID] = useState(1)
-  const [editJobForm, setEditJobForm] = useState({
+  const [editJobForm, setEditJobForm] = useState({})
+/*   {
     jobDetails : {
       title: "",
       company: "",
@@ -28,7 +29,7 @@ function JobProvider({ children }) {
       recruiter_id: recruiterID
     },
     skills : []
-  })
+  } */
   
   const [access, setAccess] = useState(false)
   const [isRecruiter, setIsRecruiter] = useState(true)
@@ -66,6 +67,10 @@ function JobProvider({ children }) {
             },
             skills : convertSkills(skills)
           })
+
+          if(recruiter_id === recruiterID){
+            setAccess(true)
+          }
         } )
       }
     

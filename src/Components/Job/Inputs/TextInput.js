@@ -8,7 +8,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
       function handleTextChange(e, stateVar, setFunction){
         const value = e.target.value
         const id = e.target.id
-        setFunction({...stateVar, [id]: value})
+        setFunction({...stateVar.jobDetails, [id]: value})
     }
     
     function handleTasks(e){
@@ -43,7 +43,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
         <input 
             className="input-box"
             type="text"
-            value={task ? taskTest[index]: stateVar[formId]}
+            value={task ? taskTest[index] : stateVar.jobDetails[formId]}
             id = {formId}
             placeholder={placeholder ? placeholder : ""}
             onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event)}}
