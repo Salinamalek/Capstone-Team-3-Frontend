@@ -1,7 +1,7 @@
 .job-applicant-page {
     height: 84vh;
     display: grid;
-    grid-template-rows: 15vh 60vh;
+    grid-template-rows: 15vh 60vh 5vh;
     row-gap: 2vh;
 }
 
@@ -33,6 +33,7 @@
 .applicant-company {
     grid-column: 2;
     grid-row: 2;
+    font-size: 18px;
 }
 .applicant-city {
     grid-column: 2;
@@ -52,6 +53,7 @@
     row-gap: 2vh;
     justify-items: center;
     overflow-y: scroll;
+    max-height: 60vh;
 }
 
 .applicant-list h2 {
@@ -67,4 +69,17 @@
     font-size: 22px;
     justify-self: center;
     align-self: center;
+}
+
+/* dark mode */
+.dark .job-applicant-header {
+    background-color: var(--init-gold);
+    color: #1d262b ;
+    /* color: var(--init-blue); */
+}
+.dark .job-applicant-link {
+    color: var(--init-gold);
+}
+.dark .applicant-list h2 {
+    color: var(--init-mint);
 }

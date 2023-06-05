@@ -4,7 +4,7 @@
     grid-template-columns: 30% 70% ;
     grid-template-rows: 55% 10% 35%;
     height: 10vh;
-    width: 80%;
+    width: 90%;
     column-gap: 2vw;
     align-items: center;
     justify-self: center;
@@ -42,4 +42,18 @@
 
 .applicant-email {
     color: rgb(79, 77, 77);;
+}
+
+/* dark mode */
+.dark .applicant-name {
+    color: var(--init-gold);
+}
+.dark .applicant-card hr {
+    border-color: var(--init-gold);
+}
+.dark .applicant-email {
+    color: var(--init-mint);
+}
+.dark .applicant-icon {
+    background-color: var(--init-mint);
 }
