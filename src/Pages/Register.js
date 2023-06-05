@@ -3,6 +3,7 @@ import RegisterComponent2 from "../Components/Register/RegisterComponent2.js";
 import LoginProvider from "../Providers/LoginProvider.js";
 
 function Register(props) {
+
  
 
   return (

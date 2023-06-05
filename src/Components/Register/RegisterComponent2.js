@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useContextProvider } from "../../Providers/Provider.js";
 import { useLoginProvider } from "../../Providers/LoginProvider.js";
+import { useNavigate } from 'react-router-dom';
 import SkillsComponent from '../Job/SkillsComponent.js';
 import './RegisterComponent2.css'
 
@@ -25,6 +26,7 @@ const RegisterComponent2 = () => {
     project_one: 'http://projectone.com',
     project_two: 'http://projecttwo.com'
   });
+  const navigate = useNavigate()
 
   const handleSkills = (e) => {
     const skillId = +e.target.id;
@@ -63,6 +65,9 @@ const RegisterComponent2 = () => {
     .catch(error => {
       console.error("Error:", error)
     })
+    navigate(`/users/${userID}`)
+
+
     // gather data from form,
     // gather data from skills state
     // set up the put axios call
@@ -82,8 +87,10 @@ const RegisterComponent2 = () => {
   };
 
   return (
-    <div className='login'>
+    
+    <>
       {hasUserSubmitted && (
+        <div className='login'>
         <div className='user_details_form'>
           <h1>User Details</h1>
           <form onSubmit={handleSubmit}>
@@ -101,13 +108,17 @@ const RegisterComponent2 = () => {
             <button type="submit" className='registerbutton'>Submit</button>
           </form>
         </div>
+        </div>
       )}
-      {hasUserSubmitted && <>{authToken}</>}
+
+
+
+      {/* {hasUserSubmitted && <>{authToken}</>}
       {hasUserSubmitted && <>{userID}</>}
       {hasUserSubmitted && <>{userSubmitInfo.login.password}</>}
       {hasUserSubmitted && <>{userSubmitInfo.login.email}</>}
-      {hasUserSubmitted && <button onClick={toggleSignOn}>RESET REGISTRATION</button>}
-    </div>
+      {hasUserSubmitted && <button onClick={toggleSignOn}>RESET REGISTRATION</button>} */}
+          </>
   );
 };
 
