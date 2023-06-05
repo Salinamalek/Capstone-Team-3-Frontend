@@ -100,10 +100,10 @@ export default function NewEditJobForm({ edit }) {
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
 
     if (edit && changes) {
-      console.log("change");
+      console.log("edit", obj.skills);
       axios
         .put(`${API}/jobs/${jobID}`, obj)
-        .then(({ data }) => setTimeout(() => navigate(`/jobs/${data.id}`), 2000 ) )
+        .then(({ data }) => navigate(`/jobs/${data.id}`))
         .catch((err) => console.log(err));
     } else if (edit && !changes) {
       navigate(`/jobs/${jobID}`);

@@ -89,10 +89,11 @@ function JobsShow() {
           : setAccess(false);
 
         setJobDetails(data);
+        console.log(data.skills, "get")
         setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
-  }, [reload, jobID]);
+  }, [reload, jobID, skillIdArr.length]);
 
   return (
     <div className="job-show">
