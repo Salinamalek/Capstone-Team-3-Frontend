@@ -51,7 +51,7 @@ function JobProvider({ children }) {
         setAccess,
         isRecruiter,
         setIsRecruiter,
-        recruiterJobs
+        recruiterJobs,
       }}
     >
       {children}

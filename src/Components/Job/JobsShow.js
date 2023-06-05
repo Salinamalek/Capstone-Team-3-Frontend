@@ -4,36 +4,62 @@ import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
 import { convertDate } from "./Functions/JobFunctions";
+import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
-import { GrEdit } from "react-icons/gr"
+import { GrEdit } from "react-icons/gr";
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
 function JobsShow() {
-  const { API, axios, jobID, userID, recruiterID, access, setAccess, isRecruiter } = useJobProvider();
+  const {
+    API,
+    axios,
+    jobID,
+    userID,
+    recruiterID,
+    access,
+    setAccess,
+    isRecruiter,
+  } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
 
-
   function applyClick() {
-    applyToJob()
+    applyToJob();
   }
   function appliedClick() {
-    navigate("/user")
+    navigate("/user");
   }
-  function recruiterView () {
-    navigate(`/jobs/${jobID}/edit`)
+  function recruiterView() {
+    navigate(`/jobs/${jobID}/edit`);
   }
 
-  const applyButtonClick = !access && isRecruiter ? null :isRecruiter ? () => recruiterView() : applied ? () => appliedClick() : () => applyClick()
+  const applyButtonClick =
+    !access && isRecruiter
+      ? null
+      : isRecruiter
+      ? () => recruiterView()
+      : applied
+      ? () => appliedClick()
+      : () => applyClick();
 
-  const appliedButtonView = !access && isRecruiter ? null :isRecruiter? "EDIT" : !applied ? "APPLY" : "APPLIED"
+  const appliedButtonView =
+    !access && isRecruiter
+      ? null
+      : isRecruiter
+      ? "EDIT"
+      : !applied
+      ? "APPLY"
+      : "APPLIED";
 
-  const appliedButtonClass = isRecruiter? "job-show-header-apply job-show-edit" : !applied ? "job-show-header-apply" : "job-show-header-applied"
-
+  const appliedButtonClass = isRecruiter
+    ? "job-show-header-apply job-show-edit"
+    : !applied
+    ? "job-show-header-apply"
+    : "job-show-header-applied";
 
   function applyToJob() {
     const obj = {
@@ -55,23 +81,17 @@ function JobsShow() {
       })
       .catch((err) => console.log(data));
 
-      setTimeout(() => {
-        axios
-        .get(`${API}/jobs/${jobID}`)
-        .then(({ data }) => {
-          if(data["recruiter_id"] === recruiterID){
-            setAccess(true)
-          }
-          else {
-            setAccess(false)
-          }
-          setJobDetails(data);
-          const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
-          console.log(data.skills, extractSkills, "show")
-          setSkillIdArr(extractSkills);
-        })
-        .catch((err) => console.log(err));
-      }, 2000)
+    axios
+      .get(`${API}/jobs/${jobID}`)
+      .then(({ data }) => {
+        data["recruiter_id"] === recruiterID
+          ? setAccess(true)
+          : setAccess(false);
+
+        setJobDetails(data);
+        setSkillIdArr(convertSkills(data.skills));
+      })
+      .catch((err) => console.log(err));
   }, [reload, jobID]);
 
   return (
@@ -99,13 +119,12 @@ function JobsShow() {
             <span>REMOTE</span>
           </span>
         )}
-        <button
-          onClick={applyButtonClick}
-          className={appliedButtonClass}
-        >
+        <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
-            {isRecruiter && access && <GrEdit size={"25px"} color= {"#ffde59"} />}
+            {isRecruiter && access && (
+              <GrEdit size={"25px"} color={"#ffde59"} />
+            )}
           </span>
         </button>
       </section>
@@ -136,7 +155,10 @@ function JobsShow() {
       </section>
 
       {!applied || isRecruiter ? (
-        <button onClick={applyButtonClick} className={isRecruiter && !access ? "hide" :"job-show-apply"}>
+        <button
+          onClick={applyButtonClick}
+          className={isRecruiter && !access ? "hide" : "job-show-apply"}
+        >
           {appliedButtonView}
         </button>
       ) : (
