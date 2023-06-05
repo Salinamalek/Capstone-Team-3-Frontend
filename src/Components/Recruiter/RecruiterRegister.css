@@ -1,55 +1,85 @@
 .recruiter-register {
   color: rgb(22, 16, 16);
+  text-align: center;
 }
 
 .recruiter-register h1 {
   background-color: var(--init-mint);
   text-align: center;
+  font-size: 36px;
+  padding: 4px 0;
+  margin-bottom: 20px;
+}
+
+.recruiter-register a {
+  font-size: 20px;
+  color: var(--init-blue);
+  font-weight: 600;
+}
+
+.start-form {
+    /* border: 3px solid red; */
+    display: grid;
+    margin: 20px;
+}
+
+.start-form select {
+    text-align: center;
+}
+
+.start-form h2 {
+    font-size: 25px;
+    padding-top: 10px;
 }
 
 .recruiter-register-form {
   margin: 20px;
   display: grid;
-  grid-template-columns: 1fr;
-  text-align: center;
+  /* grid-template-columns: 1fr; */
+  grid-template-columns: 104px auto;
+  row-gap: 10px;
+  column-gap: 12px;
+  text-align: left;
   font-size: 20px;
+  align-items: center;
 }
 
 .recruiter-register-form label {
-    margin-top: 30px;
+  margin-top: 20px;
+  /* font-size: 18px; */
 }
 
-.recruiter-register-form input, .recruiter-register-form select {
+.recruiter-register-form input,
+.recruiter-register select {
   border: none;
   border-radius: 6px;
-  margin: 10px 35px 2px 35px;
-  height: 28px;
+  /* margin: 10px 35px 2px 35px; */
+  height: 32px;
+  margin-top: 20px;
   font-weight: 600;
   font-size: 20px;
 }
 
-.recruiter-register-form label span {
-    color: red;
-    font-size: 16px;
-} 
-
-.recruiter-register-form select {
-    text-align: center;
+.recruiter-register-form label span, .red-span {
+  color: red;
+  font-size: 16px;
 }
 
 .register-helper-text {
-    font-size: 12px;
-    margin: 0 35px 20px 35px;
-    text-align: left;
-    color: rgb(52, 47, 47);
+  grid-column: 2/3;
+  font-size: 12px;
+  /* margin: 0 35px 20px 35px; */
+  text-align: left;
+  color: rgb(52, 47, 47);
 }
 
 #recruiter-register-submit {
-    width: 120px;
-    margin: 0 auto;
-    background-color: var(--init-mint);
-    height: 40px;
-    font-size: 22px;
-    margin-top: 10px;
-    color: var(--init-blue);
+  grid-column: 1/3;
+  width: 120px;
+  margin: 0 auto;
+  background-color: var(--init-mint);
+  height: 40px;
+  font-size: 22px;
+  margin-top: 6px;
+  color: var(--init-blue);
 }

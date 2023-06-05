@@ -9,6 +9,8 @@
 .recruiter-login h1 {
   text-align: center;
   background-color: var(--init-mint);
+  font-size: 36px;
+  padding: 4px 0;
   /* padding-top: 20px;
   padding-bottom: 20px; */
 }
