@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
-import { convertDate } from "./Functions/JobFunctions";
+import { convertDate, convertCities } from "./Functions/JobFunctions";
 import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
 import { GrEdit } from "react-icons/gr";
@@ -89,7 +89,6 @@ function JobsShow() {
           : setAccess(false);
 
         setJobDetails(data);
-        console.log(data.skills, "get")
         setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
@@ -111,7 +110,7 @@ function JobsShow() {
           </span>
           <span className="job-show-location">
             {jobLocation}
-            <span>{jobDetails.city}</span>
+            <span>{convertCities(jobDetails.city)}</span>
           </span>
         </div>
         <hr />

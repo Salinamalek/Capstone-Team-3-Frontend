@@ -6,7 +6,6 @@ function handleSearchBar(event, stateVar1, setFunction1, stateVar2, setFunction2
       setFunction2({...stateVar2, [id] : event.target.checked })  
     }
     if(id === "city"){
-        console.log(id, value)
         setFunction1(value)
         setFunction2({...stateVar2, [id] : value})
     }
