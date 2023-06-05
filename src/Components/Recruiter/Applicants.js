@@ -1,20 +1,32 @@
 import { useState, useEffect } from "react"
+import { Navigate, useNavigate } from "react-router-dom";
 import { useJobProvider } from "../../Providers/JobProvider"
 import {v4 as uuidv4} from "uuid"
 import ApplicantCard from "./ApplicantCard";
 import { jobCompany, jobLocation } from "../Job/Data/Icons";
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./Applicants.css"
+import { Link } from "react-router-dom";
 
 export default function Applicants() {
     const {recruiterJobs, recruiterID, access, jobID} = useJobProvider()
+    const navigate = useNavigate()
     const [applicants, setApplicants] = useState([])
     const [thisJob, setThisJob] = useState({})
+    const [noData, setNoData] = useState(false)
 
     useEffect(() => {
         const filter = recruiterJobs.find(({id}) => id === +jobID )
-        setApplicants(filter.users)
-        setThisJob(filter)
+        if(filter){
+            setThisJob(filter)
+        }
+        if(filter && filter.users){
+            setApplicants(filter.users)
+        }
+        else {
+            setNoData(true)
+        }
+        
     }, [jobID, recruiterJobs.length])
 
     return (
@@ -28,7 +40,7 @@ export default function Applicants() {
             </section>
 
             <section className="applicant-list">
-                <h2>Candidates</h2>
+                <h2>{!applicants.length && "No "}Job Applicants</h2>
                 {
                     applicants.map(obj => 
                         <ApplicantCard 
@@ -37,6 +49,12 @@ export default function Applicants() {
                         />)
                 }
             </section>
+
+            <Link 
+            className="job-applicant-link"
+            to ={`/jobs/${thisJob.id}`}>
+                VIEW JOB DETAILS
+            </Link>
             
         </div>
     )

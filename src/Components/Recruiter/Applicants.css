@@ -8,7 +8,7 @@
 .job-applicant-header {
     background-color: #7cc4f5;
     display: grid;
-    grid-template-columns: .4fr 2fr .7fr;
+    grid-template-columns: .5fr 2fr .7fr;
     grid-template-rows: 1fr .5fr .5fr;
     align-items: center;
     padding-bottom: 1vh;
@@ -18,7 +18,9 @@
     stroke: black;
 }
 .job-applicant-header svg:first-of-type {
-    justify-self: center;
+    position: relative;
+    left: 1vw;
+    grid-row: 1/4;
 }
 .job-applicant-header span svg {
     position: relative;
@@ -39,11 +41,30 @@
 .applicant-remote {
     grid-column: 3 ;
     grid-row: 3;
+    font-weight: 500;
+    font-size: 14px;
 }
 
 .applicant-list {
     display: grid;
-    grid-template-rows: 5vh ;
+    grid-template-rows: 6vh ;
     grid-auto-rows: 10vh;
     row-gap: 2vh;
+    justify-items: center;
+    overflow-y: scroll;
+}
+
+.applicant-list h2 {
+    font-size: 28px;
+    width: 90%;
+    text-align: center;
+    border-bottom: black 1px solid;
+    margin-bottom: 10px;
+}
+
+.job-applicant-link {
+    color: var(--init-blue);
+    font-size: 22px;
+    justify-self: center;
+    align-self: center;
 }

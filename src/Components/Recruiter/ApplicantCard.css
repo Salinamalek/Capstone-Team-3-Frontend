@@ -2,7 +2,7 @@
     border: 1px solid var(--init-mint);
     display: grid;
     grid-template-columns: 30% 70% ;
-    grid-template-rows: 60% 10% 30%;
+    grid-template-rows: 55% 10% 35%;
     height: 10vh;
     width: 80%;
     column-gap: 2vw;
@@ -38,4 +38,8 @@
 .applicant-card hr {
     width: 85%;
     border: 1px solid var(--init-blue);
+}
+
+.applicant-email {
+    color: rgb(79, 77, 77);;
 }
