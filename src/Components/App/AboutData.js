@@ -21,7 +21,7 @@ export const team = {
     name: "Dan Mazzilli",
     pronoun: "He/Him",
     img: DMphoto,
-    bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
+    bio: "Daniel Mazzilli is originally from Italy. He has a passion for problem solving, sustainability, resource optimization, traveling, and analytics. When not coding, he enjoys playing soccer and cooking. He worked on the back-end and front-end components of the inIT application, and is now excited to start a career in tech!",
     links: [
       "https://github.com/Daniel-Mazzilli",
       "https://www.linkedin.com/in/mazzilli-daniel/",

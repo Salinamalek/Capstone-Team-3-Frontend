@@ -3,6 +3,8 @@
 /* color code variables */
 /* background-color: var(--init-mint); */
 
+/* #0cbdbd; darker mint */
+
 * {
   margin: 0;
   font-family: "Work Sans", Poppins, Cabin, Ysabeau;
@@ -27,4 +29,3 @@
 a {
   text-decoration: none;
 }
-
