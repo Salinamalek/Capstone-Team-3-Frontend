@@ -91,7 +91,10 @@ export default function RecruiterRegister() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isEmailUnique && passMatch()) {
-        
+        const loginTable = isRecruiter === "true" ? "recruiters-logins" : "logins";
+        const userType = isRecruiter === "true" ? "recruiters" : "users";
+        console.log("make double post")
+        // axios.post("")
     } else {
       setShowError(true);
     }
