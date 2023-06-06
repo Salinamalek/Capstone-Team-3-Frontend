@@ -110,7 +110,7 @@ function JobsShow() {
           </span>
           <span className="job-show-location">
             {jobLocation}
-            <span>{convertCities(jobDetails.city)}</span>
+            <span>{jobDetails.city && convertCities(jobDetails.city)}</span>
           </span>
         </div>
         <hr />

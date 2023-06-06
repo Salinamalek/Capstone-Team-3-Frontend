@@ -98,3 +98,14 @@
 .dark .applicant-list h2 {
     color: var(--init-mint);
 }
+
+.dark .job-applicant-job-details {
+    background-color: var(--init-mint);
+}
+.dark .job-applicant-job-details svg {
+    fill: var(--init-dark);
+    stroke: var(--init-dark);
+}
+.dark .job-applicant-job-details {
+    color: #1d262b;
+}

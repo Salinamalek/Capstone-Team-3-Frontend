@@ -181,6 +181,12 @@ export default function NewEditJobForm({ edit }) {
         />
 
         <section className="job-form-location">
+          <label htmlFor="city" className="job-form-label-dropdown">
+            <span>
+              City
+              <CgAsterisk color={"#cd5f41"} size={"15px"} />
+            </span>
+          </label>
           <Dropdown
             idVal={"city"}
             stateVar={jobDropdown}

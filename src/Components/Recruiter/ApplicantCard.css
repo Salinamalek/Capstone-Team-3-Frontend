@@ -48,6 +48,7 @@
 /* dark mode */
 .dark .applicant-name {
     color: var(--init-gold);
+    color: white;
 }
 .dark .applicant-card hr {
     border-color: var(--init-gold);
@@ -57,4 +58,7 @@
 }
 .dark .applicant-icon {
     background-color: var(--init-mint);
+}
+.dark .applicant-card {
+    border: 1px solid var(--init-mint);
 }
