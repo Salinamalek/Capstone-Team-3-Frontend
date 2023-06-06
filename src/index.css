@@ -3,8 +3,6 @@
 /* color code variables */
 /* background-color: var(--init-mint); */
 
-/* #0cbdbd; darker mint */
-
 * {
   margin: 0;
   font-family: "Work Sans", Poppins, Cabin, Ysabeau;
@@ -14,19 +12,28 @@
   --init-blue: #0914ae;
   --init-background: #deeff9;
   --init-dark: #050525;
+  --init-rust: rgb(186, 26, 26);
+  --init-charcoal: rgb(22, 16, 16);
 }
 
 /* theme */
+
 .light {
   background-color: var(--init-background);
-  color: #000000;
+  color: var(--init-charcoal);
 }
 .dark {
   background-color: var(--init-dark);
-  color: #ffffff;
+  color: var(--init-background);
 }
 
 /* links */
 a {
   text-decoration: none;
+  color: var(-init-blue);
+  font-weight: 600;
 }
+
+/* .dark a {
+  color: var(--init-gold);
+} */

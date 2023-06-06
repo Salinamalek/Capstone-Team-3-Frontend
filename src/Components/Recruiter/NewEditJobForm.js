@@ -25,7 +25,7 @@ export default function NewEditJobForm({ edit }) {
     setRecruiterID,
     access,
     setAccess,
-    isRecruiter,
+    isRecruiterAcc,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("");
@@ -145,9 +145,9 @@ export default function NewEditJobForm({ edit }) {
           }
         })
         .catch((err) => console.log(err));
-    } else if (isRecruiter) {
+    } else if (isRecruiterAcc) {
       setAccess(true);
-    } else if (!isRecruiter) {
+    } else if (!isRecruiterAcc) {
       navigate("/not-found");
     }
   }, [jobID]);

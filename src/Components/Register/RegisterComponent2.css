@@ -1,6 +1,6 @@
-.App {
+/* .App {
     height: 100%;
-  }
+  } */
   
   .login {
     width: 85%;
@@ -19,7 +19,7 @@
     padding-top: 10px;
   }
   
-  input[type=text],
+  /* input[type=text],
   input[type=password],
   input[type=email]
   {
@@ -31,7 +31,7 @@
     display: inline-block;
     border: none;
     background: #b6c6d0e6;
-  }
+  } */
 
   .login textarea {
     width: 300px;
@@ -44,17 +44,17 @@
     background: #b6c6d0e6;
   }
   
-  input[type=text]:focus,
+  /* input[type=text]:focus,
   input[type=password]:focus,
   input[type=email]:focus,
   .login textarea:focus {
     background-color: #ffde59ae;
     outline: none;
-  }
-  
+  } */
+/*   
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
-  }
+  } */
   
   .loginbutton {
     background-color: #41CDBC;
@@ -75,9 +75,9 @@
     opacity: 1;
   }
   
-  a {
+  /* a {
     color: dodgerblue;
-  }
+  } */
   
   .registeracc {
     background-color: #b6c6d0e6;
@@ -87,10 +87,10 @@
     margin-bottom: 30px;
   }
   
-  .error {
+  /* .error {
     background-color: salmon;
     width: 100%
-  }
+  } */
   
   .login .skills-checkboxes{
     display: grid;

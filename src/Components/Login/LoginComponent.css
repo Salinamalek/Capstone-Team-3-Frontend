@@ -1,7 +1,7 @@
 login comp.css
-.App {
+/* .App {
     height: 100%;
-  }
+  } */
   .login {
       width: 85%;
       height: 100%;
@@ -38,9 +38,9 @@ login comp.css
       outline: none;
     }
   
-    input:-webkit-autofill {
+    /* input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #b6c6d0e6 inset;
-  }
+  } */
   
   .loginbutton {
       background-color: #41CDBC;
@@ -61,10 +61,10 @@ login comp.css
       opacity: 1;
     }
   
-    a {
+    /* a {
       color: dodgerblue;
     }
-  
+   */
     .registeracc {
       background-color: #b6c6d0e6;
       text-align: center;

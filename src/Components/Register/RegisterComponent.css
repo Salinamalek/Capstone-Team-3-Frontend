@@ -1,6 +1,6 @@
-.App {
+/* .App {
   height: 100%;
-}
+} */
 
 .register-form {
   display: flexß;
@@ -69,9 +69,9 @@
     opacity: 1;
   }
 
-  .register_card a {
+  /* .register_card a {
     color: dodgerblue;
-  }
+  } */
 
   .signin {
     background-color: #b6c6d0e6;

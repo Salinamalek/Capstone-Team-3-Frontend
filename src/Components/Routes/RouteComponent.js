@@ -58,7 +58,7 @@ function RouteComponent() {
               }
             />
             <Route path="applicants" element={<JobApplicants />} />
-            <Route path="edit" element={<JobForm />} />
+            <Route path="edit" element={<JobForm edit={true} />} />
           </Route>
         </Route>
         {/* ABOUT ROUTE */}

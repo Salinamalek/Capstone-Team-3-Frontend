@@ -19,7 +19,7 @@ function JobsShow() {
     recruiterID,
     access,
     setAccess,
-    isRecruiter,
+    isRecruiterAcc,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
@@ -38,24 +38,24 @@ function JobsShow() {
   }
 
   const applyButtonClick =
-    !access && isRecruiter
+    !access && isRecruiterAcc
       ? null
-      : isRecruiter
+      : isRecruiterAcc
       ? () => recruiterView()
       : applied
       ? () => appliedClick()
       : () => applyClick();
 
   const appliedButtonView =
-    !access && isRecruiter
+    !access && isRecruiterAcc
       ? null
-      : isRecruiter
+      : isRecruiterAcc
       ? "EDIT"
       : !applied
       ? "APPLY"
       : "APPLIED";
 
-  const appliedButtonClass = isRecruiter
+  const appliedButtonClass = isRecruiterAcc
     ? "job-show-header-apply job-show-edit"
     : !applied
     ? "job-show-header-apply"
@@ -122,7 +122,7 @@ function JobsShow() {
         <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
-            {isRecruiter && access && (
+            {isRecruiterAcc && access && (
               <GrEdit size={"25px"} color={"#ffde59"} />
             )}
           </span>
@@ -154,10 +154,10 @@ function JobsShow() {
         </div>
       </section>
 
-      {!applied || isRecruiter ? (
+      {!applied || isRecruiterAcc ? (
         <button
           onClick={applyButtonClick}
-          className={isRecruiter && !access ? "hide" : "job-show-apply"}
+          className={isRecruiterAcc && !access ? "hide" : "job-show-apply"}
         >
           {appliedButtonView}
         </button>
