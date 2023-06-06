@@ -60,6 +60,11 @@
   font-size: 20px;
 }
 
+.register-checkmark {
+    width: 18px;
+    padding-left: 10px;
+}
+
 .pass-good {
     background-color: rgb(65, 209, 65);
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
+import checkmark from "../../Assets/checkmark.png"
 import "./RecruiterRegister.css";
 
 export default function RecruiterRegister() {
@@ -164,7 +165,7 @@ export default function RecruiterRegister() {
             required
           />
           <label htmlFor="email">
-            Email<span>*</span>{isEmailUnique !== false ? "Y" : ""}
+            Email<span>*</span>{isEmailUnique !== false ? <img className="register-checkmark" src={checkmark} alt="checkmark" /> : ""}
           </label>
           <input
             id="email"
