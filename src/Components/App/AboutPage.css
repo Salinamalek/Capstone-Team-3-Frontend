@@ -28,7 +28,7 @@
 .dev-cards p {
   width: 90%;
   height: 200px;
-  font-size: 15px;
+  font-size: 16px;
   position: relative;
   padding: 10px;
   /* left: 5%; */
@@ -74,8 +74,6 @@
   border: 5px solid #ffde59;
   border-radius: 100px;
   margin: 4px;
-  position: relative;
-  left: 10px;
 }
 
 .devicon2 {
