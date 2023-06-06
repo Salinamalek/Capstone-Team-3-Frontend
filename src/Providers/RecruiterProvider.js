@@ -7,7 +7,8 @@ export function useRecruiterProvider() {
 }
 
 function RecruiterProvider({ children }) {
-  const { API, axios, theme } = useContextProvider();
+  const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID } =
+    useContextProvider();
   const [recruiterID, setRecruiterID] = useState(null);
   const [recruiterData, setRecruiterData] = useState({});
 
@@ -28,6 +29,11 @@ function RecruiterProvider({ children }) {
         API,
         axios,
         theme,
+        setIsSignedIn,
+        setAuthToken,
+        isRecruiterAcc,
+        setIsRecruiterAcc,
+        setUserID
       }}
     >
       {children}
