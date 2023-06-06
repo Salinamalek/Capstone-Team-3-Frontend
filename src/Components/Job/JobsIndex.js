@@ -4,7 +4,6 @@ import JobsCard from "./JobsCard";
 import SearchBar from "./SearchBar.js";
 import "./JobsIndex.css"
 
-
 function JobsIndex() {
    const { jobs } = useJobProvider()
 

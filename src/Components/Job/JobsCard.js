@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { convertCities } from "./Functions/JobFunctions";
 import SkillsComponent from "./SkillsComponent";
 import "./JobsCard.css";
 
@@ -15,7 +16,7 @@ function JobsCard({ jobObj }) {
           <span>{company}</span>
           {full_remote && <span className="job-card-remote">REMOTE</span>}
         </section>
-        <span className="job-card-city">{city}</span>
+        <span className="job-card-city">{convertCities(city)}</span>
         <span className="job-card-divider"></span>
         <section className="job-card-skills">
           <SkillsComponent skillsArr={combineSkills} justList={true} />

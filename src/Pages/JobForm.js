@@ -1,5 +1,10 @@
-import NewEditJobForm from "../Components/Recruiter/NewEditJobForm.js"
-
+import NewEditJobForm from "../Components/Recruiter/NewEditJobForm.js";
+import JobProvider from "../Providers/JobProvider.js";
+// edit={true}
 export default function JobForm() {
-    return <NewEditJobForm />;
-  }
+  return (
+    <JobProvider>
+      <NewEditJobForm edit={true}  />
+    </JobProvider>
+  );
+}
