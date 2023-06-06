@@ -85,7 +85,7 @@
     height: 14vh;
 }
 .slide-down {
-    height: 19vh;
+    height: 20vh;
     visibility: visible;
     margin-top: 1vh;
 }
@@ -94,8 +94,10 @@
     grid-row: 2;
     grid-column: span 2;
     border: var(--init-blue) 1px solid;
-    width: 80%;
+    width: 90%;
     justify-self: center;
+    position: relative;
+    bottom: .5vh;
 }
 
 .filter-bar-expanded svg {
@@ -109,8 +111,8 @@
     height: 35px;
     margin-left: 10px;
     border-radius: 20px;
-    border: 1.5px solid var(--init-blue);
-    font-size: 16px;
+    border: 1px solid var(--init-blue);
+    font-size: 17px;
     text-align: center;
     background-color: var(--init-background); 
 }
@@ -134,16 +136,16 @@
 .filter-bar-skills .skills-component {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4,.5fr);
     row-gap: 5px;
     justify-items: center;
-    height: 115px;
+    height: 110px;
     position: relative;
-    bottom: .2vh;
+    bottom: .6vh;
 }
 .filter-bar-skills .skills-component svg {
-    height: 1.8em;
-    width: 1.8em;  
+    height: 2em;
+    width: 2em;  
 }
 
 .filter-bar-skills .skills-checkboxes {

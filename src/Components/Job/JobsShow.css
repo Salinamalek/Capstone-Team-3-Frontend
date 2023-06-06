@@ -1,18 +1,23 @@
 .job-show {
     display: grid;
-    grid-template-rows: 1.5fr .25fr max-content .4fr;
+    grid-template-rows: 1fr .25fr max-content .4fr;
     justify-items: left;
     height: 85vh;
     width: 100%;
+    color: #1d262b ;
+}
+
+.hide {
+    display: none;
 }
 
 .job-show-header {
     width: 100%;
     background-color: var(--init-mint);
-    color: black;
+    /* color: black; */
     display: grid;
     grid-template-columns: .12fr 1fr;
-    grid-template-rows: .08fr auto .2fr .1fr .1fr .2fr;
+    grid-template-rows: .08fr .3fr .3fr .1fr .1fr .2fr;
     column-gap: 2vw;
     align-items: center;
     justify-items: left;
@@ -37,7 +42,7 @@
 
 .job-show-header-details {
     grid-column: 2;
-    grid-row: 3/5;
+    grid-row: 3/6;
     width: 100%;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
@@ -100,6 +105,7 @@
     right: 6vw;
 }
 
+
 .job-show-header-applied {
     all: unset;
     grid-column: 2;
@@ -111,6 +117,11 @@
     padding: 2px;
     position: relative;
     right: 7vw;
+}
+
+
+.job-show-edit svg {
+    margin-left: 2vw;
 }
 
 .job-show .skills-component {
@@ -170,7 +181,7 @@
 
 .job-show-apply {
     width: 50%;
-    height: 70%;
+    height: 60%;
     background-color: #7cc4f5;
     color: #040a5d;
     font-size: 24px;

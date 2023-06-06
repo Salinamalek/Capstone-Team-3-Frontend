@@ -1,0 +1,107 @@
+.recruiter-register {
+  color: rgb(22, 16, 16);
+  text-align: center;
+}
+
+.recruiter-register h1 {
+  background-color: var(--init-mint);
+  text-align: center;
+  font-size: 36px;
+  padding: 4px 0;
+  margin-bottom: 20px;
+}
+
+.recruiter-register a {
+  font-size: 20px;
+  color: var(--init-blue);
+  font-weight: 600;
+}
+
+.start-form {
+    /* border: 3px solid red; */
+    display: grid;
+    margin: 12px;
+}
+
+.start-form select {
+    text-align: center;
+}
+
+.start-form h2 {
+    font-size: 25px;
+    padding-top: 10px;
+}
+
+.recruiter-register-form {
+  margin: 20px;
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  grid-template-columns: 104px auto;
+  row-gap: 10px;
+  column-gap: 12px;
+  text-align: left;
+  font-size: 20px;
+  align-items: center;
+}
+
+.recruiter-register-form label {
+  margin-top: 12px;
+  /* font-size: 18px; */
+}
+
+.recruiter-register-form input,
+.recruiter-register select {
+  border: none;
+  border-radius: 6px;
+  /* margin: 10px 35px 2px 35px; */
+  height: 32px;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.register-checkmark {
+    width: 18px;
+    padding-left: 10px;
+}
+
+.pass-good {
+    background-color: rgb(65, 209, 65);
+}
+
+.pass-good:focus {
+    outline: 3px solid green;
+}
+
+.recruiter-register-form label span, .red-span {
+  color: red;
+  font-size: 16px;
+}
+
+.register-helper-text {
+  grid-column: 2/3;
+  font-size: 12px;
+  /* margin: 0 35px 20px 35px; */
+  text-align: left;
+  color: rgb(52, 47, 47);
+}
+
+.recruiter-register-error {
+    grid-column: 1/3;
+    margin-top: 6px;
+    height: 24px;
+    color: red;
+    text-align: center;
+    font-weight: 600;
+}
+
+#recruiter-register-submit {
+  grid-column: 1/3;
+  width: 120px;
+  margin: 0 auto;
+  background-color: var(--init-mint);
+  height: 40px;
+  font-size: 22px;
+  margin-top: 6px;
+  color: var(--init-blue);
+}
