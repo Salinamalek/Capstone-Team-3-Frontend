@@ -26,6 +26,7 @@ export default function RecruiterRegister() {
     password_two: "",
     isRecruiter: "",
   });
+  const [isEmailUnique, setIsEmailUnique] = useState(true);
 
   const handleChange = (event, form) => {
     if (event.target.id === "isRecruiter") {
@@ -33,7 +34,7 @@ export default function RecruiterRegister() {
         email: "",
         password: "",
         password_two: "",
-        isRecruiter: event.target.value
+        isRecruiter: event.target.value,
       });
       setNewProfileForm({
         first_name: "",
@@ -54,6 +55,37 @@ export default function RecruiterRegister() {
     }
   };
 
+  const passMatch = () => {
+    const { password, password_two } = newLoginForm;
+    if (password === password_two) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+//   const maySubmit = () => {
+//     const cond1 = newProfileForm.first_name !== "";
+//     const cond2 = newProfileForm.last_name !== "";
+//     const cond3 =
+//       newProfileForm.education !== "" || newProfileForm.organization !== "";
+//     const cond4 = passMatch();
+//     if (cond1 && cond2 && cond3 && cond4 && isEmailUnique) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    if(isEmailUnique && passMatch()){
+        console.log("Good")
+    } else {
+        console.log("no good")
+    }
+  }
+
   return (
     <div className="recruiter-register">
       <h1>Sign up</h1>
@@ -72,7 +104,7 @@ export default function RecruiterRegister() {
         </select>
       </div>
       {newLoginForm.isRecruiter !== "" && (
-        <form className="recruiter-register-form">
+        <form className="recruiter-register-form" onSubmit={handleSubmit}>
           <label htmlFor="first_name">
             First Name<span>*</span>
           </label>
@@ -143,7 +175,7 @@ export default function RecruiterRegister() {
             Confirm Password<span>*</span>
           </label>
           <input
-            className="register-input-pass"
+            className={`register-input-pass ${passMatch() ? "pass-good" : null}`}
             id="password_two"
             type="password"
             onChange={(event) => handleChange(event, "login")}
