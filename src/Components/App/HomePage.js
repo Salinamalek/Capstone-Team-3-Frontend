@@ -6,12 +6,18 @@ import logoWhite from "./images/LOGO-WHITE.png";
 import jobsDemo1 from "../App/images/jobsDemo1.png";
 import jobApply from "../App/images/jobApply.png";
 import BackEndEngineer from "../App/images/BackEndEngineer.png";
-import NavBarImg from "../App/images/NavBarImg.png";
+import yellowboy from "../App/images/yellowboy.webp";
+import womanJob from "../App/images/womanJob.webp";
+import youHiredImg from "../App/images/youHiredImg.webp";
+import KeepTrack from "../App/images/KeepTrack.png";
+
+import regPage from "../App/images/regPage.png";
 import JuniorDev from "../App/images/JuniorDev.png";
 
 import jobsWaiting2 from "../App/images/jobsWaiting2.png";
 import jobsWaiting from "../App/images/jobsWaiting.png";
 import "./HomePage.css";
+import Register from "../../Pages/Register";
 
 // import logo from "../App/scrolldown.gif";
 function HomePage() {
@@ -101,7 +107,7 @@ function HomePage() {
       <div className="container">
         {isInViewport1 && (
           <img
-            className="scrolldown"
+            className={!transition ? "hide" : "show scrolldown"}
             // Destiny will use imported image variable to replace src value here
             src={scrollDown}
             alt="scroll down"
@@ -124,7 +130,7 @@ function HomePage() {
 
           <div className="Home-Mission">
             <span className={!transition ? "hide" : "show missionStatement"}>
-              Discover your path to success in software development with our ...
+              Discover your path to success in software development with our
               innovative app that connects you to the best entry level career
               opportunities.{" "}
             </span>
@@ -145,32 +151,32 @@ function HomePage() {
           </div>
         </section>
         <section className="two" data-num={2}>
+          <div className="guideText" id="guideTexttwo">
+            Here's what our app offers as a solution. you can expect...
+          </div>
           <p className="text1">
-            <img className="jobsDemoPg2" src={NavBarImg} alt="jobs Waiting" />
+            <img className="jobsDemoPg2 " src={yellowboy} alt="jobs Waiting" />
           </p>
-          <div className="guideImg secondImg"></div>
-          <span className="secondImg">navigation thru the app</span>
+          <div className="guideImg secondImg Xflip "></div>
+          <span className="secondImg">
+            Fast-track job searches, securing developers' first job in weeks,
+            not months.
+          </span>
           <p className="text2">
-            <img
-              className="jobsDemoPg2"
-              style={{ height: "75px", width: "150px" }}
-              src={jobsWaiting}
-              alt="jobs Waiting"
-            />
+            <img className="jobsDemoPg2" src={womanJob} alt="jobs Waiting" />
           </p>
-          <div className="guideImg thirdImg Xflip"></div>
-          <span className="thirdImg">Search by your criteria needs</span>
+          <div className="guideImg thirdImg "></div>
+          <span className="thirdImg">
+            Wisely match users with ideal opportunities, eliminating struggles
+            for 40% of graduates.
+          </span>
           <p className="text3">
-            <img
-              className="jobsDemoPg2"
-              style={{ height: "75px", width: "150px" }}
-              src={jobApply}
-              alt="jobs Waiting"
-            />
+            <img className="jobsDemoPg2" src={youHiredImg} alt="jobs Waiting" />
           </p>
-          <div className="guideImg fourthImg"></div>
+          <div className="guideImg fourthImg Xflip"></div>
           <span className="fourthImg">
-            apply & keeptrack of your applications
+            connecting recent graduates with tailored offers by reducing
+            applications in half.
           </span>
           {/* <img
             // Destiny will use imported image variable to replace src value here
@@ -184,15 +190,6 @@ function HomePage() {
             alt="jobsDemo1"
             onClick={() => scrlDown()}
           /> */}
-          <div className="guideText">
-            Discover your path to success in software development with our
-            innovative app that connects you to the best entry level career
-            opportunities. Gain access to a vast network of companies seeking
-            talented developers and browse through job listings tailored to your
-            skills and interests. Our app provides valuable resources, such as
-            coding challenges and interview tips, to help you prepare for your
-            dream job in the ever-evolving field of software development.
-          </div>
 
           {/* <img
               className="jobsDemoPg2"
@@ -208,7 +205,7 @@ function HomePage() {
             /> */}
           {/* {!isInViewport4 && (
             <img
-              className="scrolldown"
+                 className={!transition ? "hide" : "show scrolldown"}
               // Destiny will use imported image variable to replace src value here
               src={scrollDown}
               alt="scroll down"
@@ -216,59 +213,57 @@ function HomePage() {
             />
           )} */}
         </section>
-        <section className="two three" data-num={3}>
+        <section className=" three" data-num={3}>
+          <div className="guideText ">With our app you can ...</div>
           <p className="text1">
             {" "}
             <img
-              className="jobsDemoPg2"
-              style={{ height: "75px", width: "150px" }}
-              src={jobsWaiting}
+              className="jobsDemoPg3"
+              // style={{ height: "75px", width: "150px" }}
+              src={regPage}
               alt="jobs Waiting"
             />
           </p>
-          <div className="guideImg Xflip fifthImg"></div>
-          <span className="fifthImg">Full Stack developers</span>
+          <div className="guideImg Xflip fifthImg"> </div>
+          <span className="fifthImg">
+            {" "}
+            Showcase your self as a person as well as your portfolio.
+          </span>
           <p className="text2">
             {" "}
             <img
-              className="jobsDemoPg2"
-              style={{ height: "75px", width: "150px" }}
+              className="jobsDemoPg3"
+              // style={{ height: "75px", width: "150px" }}
               src={jobsWaiting}
               alt="jobs Waiting"
             />
           </p>
 
           <div className="guideImg sixthImg"></div>
-          <span className="sixthImg">Back-End Dev</span>
+          <span className="sixthImg">
+            {" "}
+            Curate your job search by city jobs skill set and desire to work
+            remote.
+          </span>
 
           <p className="text3">
             {" "}
             <img
-              className="jobsDemoPg2"
-              style={{ height: "75px", width: "150px" }}
-              src={jobsWaiting}
+              className="jobsDemoPg3"
+              // style={{ height: "75px", width: "150px" }}
+              src={KeepTrack}
               alt="jobs Waiting"
             />
           </p>
           <div className="guideImg Xflip seventhImg"></div>
-          <span className="seventhImg">navigation thru the app</span>
+          <span className="seventhImg"> keep track of your job inquiries </span>
 
-          <div className="guideText ">
-            Amzing Jobs Avialable such as ...
-            {/* Stay ahead of the curve and
-            navigate your way to a rewarding career in software development with 
-            our app's comprehensive career guidance. From learning the latest
-            programming languages to mastering essential coding concepts, we
-            offer personalized recommendations and training programs to enhance
-            your technical skills. Take control of your professional journey and
-            unlock endless possibilities in the world of software development. */}
-          </div>
           {/* <img className="jobsDemoPg3" src={BackEndEngineer} alt="pg 3 img" />
-            <img className="jobsDemoPg3" src={NavBarImg} alt="pg 3 img" />
+            <img className="jobsDemoPg3" src={yellowboy} alt="pg 3 img" />
             <img className="jobsDemoPg3" src={JuniorDev} alt="pg 3 img" /> */}
           {!isInViewport4 && (
             <img
-              className="scrolldown"
+              className={!transition ? "hide" : "show scrolldown"}
               // Destiny will use imported image variable to replace src value here
               src={scrollDown}
               alt="scroll down"
@@ -277,20 +272,20 @@ function HomePage() {
           )}
         </section>
         <section className="four" data-num={4} ref={ref4}>
-          <div>
+          <div className="quote">
             "Success is not the key to happiness. Happiness is the key to
             success. If you love what you are doing, you will be successful." -
             Albert Schweitzer
           </div>
-          <Link className="RegisterNow" to="/register">
-            REGISTER NOW
+          <Link className=" RegisterNow" to="/register">
+            NOW LET'S GET INIT <br />& WIN IT
           </Link>
           {isInViewport4 && (
             <img
-              className="scrolldown"
+              className={!transition ? "hide" : "show scrolldown "}
               // Destiny will use imported image variable to replace src value here
               src={scrollUp}
-              alt="scroll down"
+              alt="scroll Up"
               onClick={() => window.scrollTo(0, 0)}
             />
           )}
