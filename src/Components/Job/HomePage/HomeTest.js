@@ -16,9 +16,9 @@ import "./HomeTest.css";
 
 function HomeTest() {
   const [textSwitch, setTextSwitch] = useState(false);
-  const timeout = setInterval(() => {
-    setTextSwitch(true);
-  }, 6000);
+//   const timeout = setInterval(() => {
+//     setTextSwitch(true);
+//   }, 6000);
 
   useEffect(() => {}, [textSwitch]);
 

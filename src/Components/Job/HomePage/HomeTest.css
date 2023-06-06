@@ -1,6 +1,7 @@
 .home {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 84vh;
     width: 95%;
     margin-left: auto;
@@ -24,7 +25,6 @@
     position: fixed;
     right: 10vw;
     bottom: 6.5vh;
-    color: red;
     width: 20vw;
     height: 5vh;
     z-index: 10;
@@ -54,20 +54,20 @@
   }
   .home-landing h2 {
       grid-row: 1;
-      font-size: 55px;
+      font-size: 52px;
       color: white;
       margin-top: 1vh;
   }
   .home-landing span {
     align-self: center;
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
     color: white;
     width: 100%;
   }
   .home-landing hr {
       width: 85%;
-      border: 1px solid var(--init-gold);
+      border: 2px solid var(--init-gold);
       height: 0;
   }
   
