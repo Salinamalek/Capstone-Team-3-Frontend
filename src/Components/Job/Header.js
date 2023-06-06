@@ -11,7 +11,7 @@ function Header({header}) {
         size={"25px"}
         onClick={() => navigate(-1)}
         />
-        <h2>{header}</h2>
+        <h1>{header}</h1>
         </div>
     );
 }

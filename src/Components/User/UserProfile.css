@@ -100,7 +100,7 @@
   font-size: 18px;
   padding-top: 15px;
   padding-bottom: 20px;
-  height: 30vh;
+  height: 28vh;
   overflow-y: scroll;
   border-top: 2px solid var(--init-blue);
 }

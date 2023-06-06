@@ -8,6 +8,8 @@ import userIcon from "../../Assets/USER.png";
 import DMphoto from "../../Assets/DMphoto.jpeg";
 import JPphoto from "../../Assets/JPphoto.jpg";
 
+import Header from "../Job/Header";
+
 function AboutPage(props) {
   const [profileCard, setProfileCard] = useState(team["6"]);
 
@@ -23,7 +25,7 @@ function AboutPage(props) {
 
   return (
     <div className="dev-cards">
-      <h1>Meet the Team!</h1>
+      <Header header={"Meet The Team"} />
       <div className="dev-icons">
         <img
           id="1"

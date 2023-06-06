@@ -12,3 +12,8 @@
 .app-header h2 {
 
 }
+
+.dark .app-header {
+    background-color: var(--init-gold);
+    color: var(--init-charcoal);
+}

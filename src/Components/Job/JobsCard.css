@@ -79,7 +79,7 @@
   height: 90%;
   border-radius: 10px;
   border: 1px solid var(--init-mint);
-  background-color: white;
+  background-color: var(--init-background);
 }
 .job-card-skills .skills-component {
   width: 100%;

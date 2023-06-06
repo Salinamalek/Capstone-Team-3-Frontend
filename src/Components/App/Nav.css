@@ -101,15 +101,10 @@ nav a {
   bottom: 7px;
 }
 .slide-nav .logoutBtn {
-  /* grid-row: 7; */
-  /* background-color: #41cdbc; */
   border: none;
   border-radius: 20px;
-  /* padding: 10px; */
   font-size: 20px;
-  /* width: 30%; */
-  /* color: var(--init-mint); */
-  /* color: #0cbdbd; */
+  font-weight: 600;
 }
 
 .toggleTheme {
