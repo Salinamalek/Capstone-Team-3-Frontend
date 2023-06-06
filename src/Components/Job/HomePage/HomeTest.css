@@ -111,22 +111,24 @@
   .home-sign {
     grid-column: 1/3;
     grid-row: 3;
+    height: fit-content;
   }
   .home-sign {
-    top: 6vh;
+    top: 12vh;
     left: 4vw;
   }
   .home-register {
-    left: 5vw;
-    top: 12vh;
+    left: 4vw;
+    top: 16vh;
   }
   .text-scroll {
     grid-column: 1/4;
     grid-row: 3;
     position: relative;
-    top: 20vh;
+    top: 21vh;
     left: 4vw;
     color: var(--init-gold);
+    height: fit-content;
   }
   
   .mission img {
