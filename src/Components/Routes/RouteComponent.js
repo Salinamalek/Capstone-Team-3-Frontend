@@ -10,6 +10,12 @@ import User from "../../Pages/User.js";
 import Login from "../../Pages/Login.js";
 import Register from "../../Pages/Register.js";
 import JobProvider from "../../Providers/JobProvider.js";
+import RecruiterProvider from "../../Providers/RecruiterProvider.js"
+import Recruiter from "../../Pages/Recruiter.js";
+import RegisterRecruiter from "../../Pages/RegisterRecruiter.js";
+import LoginRecruiter from "../../Pages/LoginRecruiter.js";
+import JobForm from "../../Pages/JobForm.js";
+import JobApplicants from "../../Pages/JobApplicants.js";
 
 function RouteComponent() {
   return (
@@ -25,17 +31,35 @@ function RouteComponent() {
           <Route path="edit" element={<Edit />} />
           <Route path="new" element={<NewForm />} />
         </Route>
+        {/* RECRUITER ROUTES */}
+        <Route path="recruiter">
+          <Route
+            index
+            element={
+              <RecruiterProvider>
+                <Recruiter />
+              </RecruiterProvider>
+            }
+          />
+          <Route path="register" element={<RegisterRecruiter />} />
+          <Route path="login" element={<LoginRecruiter />} />
+        </Route>
         {/* JOBS ROUTES */}
         <Route path="jobs">
           <Route index element={<Jobs />} />
-          <Route
-            path=":jobID"
-            element={
-              <JobProvider>
-                <JobsShow />
-              </JobProvider>
-            }
-          />
+          <Route path="new" element={<JobForm />} />
+          <Route path=":jobID">
+            <Route
+              index
+              element={
+                <JobProvider>
+                  <JobsShow />
+                </JobProvider>
+              }
+            />
+            <Route path="applicants" element={<JobApplicants />} />
+            <Route path="edit" element={<JobForm />} />
+          </Route>
         </Route>
         {/* ABOUT ROUTE */}
         <Route path="about" element={<About />} />

@@ -3,18 +3,63 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
-import { convertDate } from "./Functions/JobFunctions";
+import { convertDate, convertCities } from "./Functions/JobFunctions";
+import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
+import { GrEdit } from "react-icons/gr";
 import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
 function JobsShow() {
-  const { API, axios, jobID, userID } = useJobProvider();
+  const {
+    API,
+    axios,
+    jobID,
+    userID,
+    recruiterID,
+    access,
+    setAccess,
+    isRecruiter,
+  } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
   const [skillIdArr, setSkillIdArr] = useState([]);
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
+
+  function applyClick() {
+    applyToJob();
+  }
+  function appliedClick() {
+    navigate("/user");
+  }
+  function recruiterView() {
+    navigate(`/jobs/${jobID}/edit`);
+  }
+
+  const applyButtonClick =
+    !access && isRecruiter
+      ? null
+      : isRecruiter
+      ? () => recruiterView()
+      : applied
+      ? () => appliedClick()
+      : () => applyClick();
+
+  const appliedButtonView =
+    !access && isRecruiter
+      ? null
+      : isRecruiter
+      ? "EDIT"
+      : !applied
+      ? "APPLY"
+      : "APPLIED";
+
+  const appliedButtonClass = isRecruiter
+    ? "job-show-header-apply job-show-edit"
+    : !applied
+    ? "job-show-header-apply"
+    : "job-show-header-applied";
 
   function applyToJob() {
     const obj = {
@@ -39,12 +84,15 @@ function JobsShow() {
     axios
       .get(`${API}/jobs/${jobID}`)
       .then(({ data }) => {
+        data["recruiter_id"] === recruiterID
+          ? setAccess(true)
+          : setAccess(false);
+
         setJobDetails(data);
-        const extractSkills = data.skills.map((obj) => +Object.keys(obj)[0]);
-        setSkillIdArr(extractSkills);
+        setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
-  }, [reload, jobID]);
+  }, [reload, jobID, skillIdArr.length]);
 
   return (
     <div className="job-show">
@@ -62,7 +110,7 @@ function JobsShow() {
           </span>
           <span className="job-show-location">
             {jobLocation}
-            <span>{jobDetails.city}</span>
+            <span>{jobDetails.city && convertCities(jobDetails.city)}</span>
           </span>
         </div>
         <hr />
@@ -71,13 +119,13 @@ function JobsShow() {
             <span>REMOTE</span>
           </span>
         )}
-        <button
-          onClick={!applied ? () => applyToJob() : () => navigate("/user")}
-          className={
-            !applied ? "job-show-header-apply" : "job-show-header-applied"
-          }
-        >
-          {!applied ? "APPLY" : "APPLIED"}
+        <button onClick={applyButtonClick} className={appliedButtonClass}>
+          <span>
+            {appliedButtonView}
+            {isRecruiter && access && (
+              <GrEdit size={"25px"} color={"#ffde59"} />
+            )}
+          </span>
         </button>
       </section>
 
@@ -93,7 +141,7 @@ function JobsShow() {
           <span className="job-show-label">Tasks:</span>
           <span className="job-show-role-list">
             {jobDetails.tasks &&
-              jobDetails.tasks.split(".").map((el) => {
+              jobDetails.tasks.split("__TASKBREAK__").map((el) => {
                 if (el) {
                   return (
                     <li key={uuidv4()}>
@@ -106,14 +154,17 @@ function JobsShow() {
         </div>
       </section>
 
-      {!applied ? (
-        <button onClick={() => applyToJob()} className="job-show-apply">
-          Apply
+      {!applied || isRecruiter ? (
+        <button
+          onClick={applyButtonClick}
+          className={isRecruiter && !access ? "hide" : "job-show-apply"}
+        >
+          {appliedButtonView}
         </button>
       ) : (
         <div className="job-show-applied">
           {jobApplied}
-          <span onClick={() => navigate("/user")}>
+          <span onClick={applyButtonClick}>
             APPLIED ON {convertDate(applied["date_applied"])}
           </span>
         </div>

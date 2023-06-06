@@ -3,10 +3,13 @@
 /* color code variables */
 /* background-color: var(--init-mint); */
 
+/* #0cbdbd; darker mint */
+
 * {
   margin: 0;
   font-family: "Work Sans", Poppins, Cabin, Ysabeau;
   --init-mint: #41cdbc;
+  --init-darkmint: #0cbdbd;
   --init-gold: #ffde59;
   --init-blue: #0914ae;
   --init-background: #deeff9;
@@ -27,4 +30,3 @@
 a {
   text-decoration: none;
 }
-

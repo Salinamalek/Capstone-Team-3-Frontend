@@ -28,18 +28,19 @@
 }
 
 .jobsDemoPg2 {
-  padding-top: 40px;
-  padding-left: 10px;
-  width: 155px;
-  height: 200px;
+  padding-top: 25px;
+  padding-left: 5px;
+  width: 165px;
   justify-content: left;
   align-items: left;
+  /* height: 165px; */
+  /* background-color: #ffde59; */
+  /* border-radius: 50%; */
 }
 .jobsDemoPg3 {
-  padding-top: 40px;
-  padding-left: 10px;
-  width: 155px;
-  height: 80px;
+  padding-top: 25px;
+  padding-left: 5px;
+  width: 165px;
   justify-content: left;
   align-items: left;
 }
@@ -69,6 +70,7 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
   position: absolute;
   right: 5vw;
   bottom: 40px;
+  z-index: 1;
 }
 .one {
   background: #41cdbc;
@@ -135,6 +137,7 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
 .one pre {
   grid-row: 3;
   font-size: 23px;
+  font-weight: 700;
   justify-self: right;
   margin-right: 1vw;
 }
@@ -147,12 +150,18 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
 }
 .two {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2vh repeat(3, 1fr);
-  background-color: #ffde59;
+  grid-template-rows: 5vh repeat(3, 1fr);
+  background-color: #ffde59f0;
   /* background: linear-gradient(#41cdbc, 10%, #ffde59); */
-  color: black;
+  color: white;
+  background-image: url("../App/images/LogoTransYellow.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 600px;
 }
 .three {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5vh repeat(3, 1fr);
   background-color: unset;
   background-color: #0914ae;
   /* background: linear-gradient(#0914ae, #41cdbc); */
@@ -162,16 +171,16 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
   background-color: #41cdbc;
 }
 .two .text1 {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 2;
   justify-self: right;
 }
 .two .text2 {
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 3;
 }
 .two .text3 {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 4;
   justify-self: right;
 }
@@ -192,36 +201,45 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
 .guideText {
   grid-column: 1/3;
   grid-row: 1;
-  width: 90%;
+  width: 95%;
   overflow: hidden;
-  height: 5vh;
+  height: 8vh;
+  color: #ffde59;
   margin-top: 3vh;
+  justify-self: center;
+  font-family: Ysabeau;
+  font-style: italic;
+  font-size: 23px;
+}
+#guideTexttwo {
+  color: black;
 }
 .guideImg {
-  height: 155px;
-  width: 155px;
+  height: 165px;
+  width: 165px;
   /* rotate: 25deg; */
   background-color: #41cdbc;
   border-radius: 0 80px;
   transform: rotate(25deg);
   z-index: 0;
+  margin-bottom: 10px;
 }
 .Xflip {
   transform: rotate(57deg);
 }
 .secondImg {
   /* transform: rotate(90deg); */
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 2;
   z-index: 1;
 }
 .thirdImg {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 3;
   z-index: 1;
 }
 .fourthImg {
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 4;
   z-index: 1;
 }
@@ -241,13 +259,16 @@ USE CLASSNAMES NOT JUST THE ELEMENT NAME, EFFECTS SECTION TAGS ACROSS ENTIRE APP
   grid-row: 4;
   z-index: 1;
 }
+span.secondImg,
+span.thirdImg,
+span.fourthImg,
 span.fifthImg,
 span.sixthImg,
 span.seventhImg {
-  width: 110px;
-  margin-left: 30px;
+  width: 125px;
+  margin-left: 28px;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
 }
 .two .guideImg {
   color: white;
@@ -256,12 +277,18 @@ span.seventhImg {
 .two .text2,
 .two .text3 {
   width: 180px;
+
+  /* border: red solid 1px; */
 }
 
 .three {
   /* background: linear-gradient(#ffde59, 10%, #0914ae); */
   background: #0914ae;
   /* background-image: url("../../Assets/LOGO WHITE.png"); */
+  background-image: url("../App/images/LogoTrans.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: 600px;
 }
 .four {
   background: #41cdbc;
@@ -270,8 +297,20 @@ span.seventhImg {
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: 600px;
+  grid-template-rows: 2vh repeat(3, 1fr);
 }
-
+.four .RegisterNow {
+  grid-row: 4;
+  font-family: Ysabeau;
+}
+.four .quote {
+  width: 85%;
+  justify-self: center;
+  font-family: Ysabeau;
+  font-style: italic;
+  font-size: 26px;
+  grid-row: 3;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

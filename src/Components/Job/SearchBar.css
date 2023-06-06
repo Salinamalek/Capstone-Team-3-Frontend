@@ -1,7 +1,7 @@
 .search-component {
     display: grid;
     grid-template-rows: 5vh auto;
-    max-height: 29vh;
+    max-height: 30vh;
 }
 
 .search-component .search-bar-icon {

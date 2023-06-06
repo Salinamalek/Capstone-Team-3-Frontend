@@ -1,11 +1,22 @@
+/* dark mode compl color : #1c5079 */
+.etc {
+  color: #89d9e3,;
+  color: #e3a389;
+  color: #2380be;
+  color: #1d262b;
+  color: #81c2eeb4;;
+}
+/* light mode compl. color #89d9e3, #e3a389, #f9e7de */
 .job-card {
   background-color: #f5e967;
   border: 2px solid var(--init-mint);
+  color: #1d262b ;
   border-radius: 14px;
   width: 100%;
   height: 14vh;
+  width: 88vw;
   display: grid;
-  grid-template-rows: 2fr 1fr 0.8fr;
+  grid-template-rows: 1.6fr 1.2fr .9fr;
   grid-template-columns: 2fr 0.1fr 0.8fr;
   align-items: center;
   justify-items: left;
@@ -17,6 +28,7 @@
   grid-row: span 3;
   height: 85%;
   border-left: var(--init-blue) 2px solid;
+  border-left: var(--init-mint) 2px solid;
 }
 
 .job-card-company {
@@ -32,7 +44,7 @@
 }
 
 .job-card-company span:first-of-type {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .job-card-title {
@@ -63,11 +75,11 @@
 .job-card-skills {
   grid-column: 3;
   grid-row: 1/4;
-  width: 92%;
+  width: 95%;
   height: 90%;
   border-radius: 10px;
   border: 1px solid var(--init-mint);
-  background-color: var(--init-background);
+  background-color: white;
 }
 .job-card-skills .skills-component {
   width: 100%;

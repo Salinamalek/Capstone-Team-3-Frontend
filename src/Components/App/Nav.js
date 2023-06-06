@@ -99,38 +99,38 @@ export default function Nav() {
         </p>
         {!isSignedIn && (
           <Link to="/user" onClick={() => loginClick()}>
-            <FiLogIn size={"30px"} color={"#41cdbc"} />
+            <FiLogIn size={"30px"} color={"#0914ae"} />
             <span>Login</span>
           </Link>
         )}
         {isSignedIn && (
           <Link to="/user" onClick={() => navbarClick()}>
-            <CgProfile size={"30px"} color={"#41cdbc"} />
+            <CgProfile size={"30px"} color={"#0914ae"} />
             <span>Profile</span>
           </Link>
         )}
         {!isSignedIn && (
           <Link to="/register" onClick={() => navbarClick()}>
-            <FiUserPlus size={"30px"} color={"#41cdbc"} />
+            <FiUserPlus size={"30px"} color={"#0914ae"} />
             <span>Registration</span>
           </Link>
         )}
 
         <Link to="/" onClick={() => navbarClick()}>
-          <AiOutlineHome size={"30px"} color={"#41cdbc"} />
+          <AiOutlineHome size={"30px"} color={"#0914ae"} />
           <span>Home</span>
         </Link>
         <Link to="/jobs" onClick={() => navbarClick()}>
-          <MdWorkOutline size={"30px"} color={"#41cdbc"} />
+          <MdWorkOutline size={"30px"} color={"#0914ae"} />
           <span>Jobs</span>
         </Link>
         <Link to="/about" onClick={() => navbarClick()}>
-          <BiInfoCircle size={"30px"} color={"#41cdbc"} />
+          <BiInfoCircle size={"30px"} color={"#0914ae"} />
           <span>Meet the Team</span>
         </Link>
         {isSignedIn && (
           <Link className="logoutBtn" to="/" onClick={() => logoutClick()}>
-            {<FiLogOut size={"30px"} color={"#41cdbc"} />} <span>Logout</span>
+            {<FiLogOut size={"30px"} color={"#0914ae"} />} <span>Logout</span>
           </Link>
         )}
         <hr className="navHR"></hr>
