@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
 import "./RecruiterRegister.css";
@@ -26,7 +26,7 @@ export default function RecruiterRegister() {
     password_two: "",
     isRecruiter: "",
   });
-  const [isEmailUnique, setIsEmailUnique] = useState(true);
+  const [isEmailUnique, setIsEmailUnique] = useState(false);
 
   const handleChange = (event, form) => {
     if (event.target.id === "isRecruiter") {
@@ -57,34 +57,51 @@ export default function RecruiterRegister() {
 
   const passMatch = () => {
     const { password, password_two } = newLoginForm;
-    if (password === password_two) {
+    if (password !== "" && password === password_two) {
       return true;
     } else {
       return false;
     }
   };
 
-//   const maySubmit = () => {
-//     const cond1 = newProfileForm.first_name !== "";
-//     const cond2 = newProfileForm.last_name !== "";
-//     const cond3 =
-//       newProfileForm.education !== "" || newProfileForm.organization !== "";
-//     const cond4 = passMatch();
-//     if (cond1 && cond2 && cond3 && cond4 && isEmailUnique) {
-//       return true;
-//     } else {
-//       return false;
-//     }
-//   };
+  useEffect(() => {
+    setIsEmailUnique(false)
+    const { email, isRecruiter } = newLoginForm;
+    const cond1 = email.includes("@");
+    const cond2 = email.includes(".");
+    const cond3 =
+      email.split("").reverse().indexOf("@") >
+      email.split("").reverse().indexOf(".");
+    if (cond1 && cond2 && cond3) {
+      let emailType = isRecruiter === "true" ? "recruiters" : "users";
+      axios
+        .get(`${API}/emails/${emailType}/${email}`)
+        .then(({data}) => setIsEmailUnique(data.isEmailUnique))
+        .catch((err) => console.log(err));
+    }
+  }, [newLoginForm.email]);
+
+  //   const maySubmit = () => {
+  //     const cond1 = newProfileForm.first_name !== "";
+  //     const cond2 = newProfileForm.last_name !== "";
+  //     const cond3 =
+  //       newProfileForm.education !== "" || newProfileForm.organization !== "";
+  //     const cond4 = passMatch();
+  //     if (cond1 && cond2 && cond3 && cond4 && isEmailUnique) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    if(isEmailUnique && passMatch()){
-        console.log("Good")
+    event.preventDefault();
+    if (isEmailUnique && passMatch()) {
+      console.log("Good");
     } else {
-        console.log("no good")
+      console.log("no good");
     }
-  }
+  };
 
   return (
     <div className="recruiter-register">
@@ -147,7 +164,7 @@ export default function RecruiterRegister() {
             required
           />
           <label htmlFor="email">
-            Email<span>*</span>
+            Email<span>*</span>{isEmailUnique !== false ? "Y" : ""}
           </label>
           <input
             id="email"
@@ -175,7 +192,9 @@ export default function RecruiterRegister() {
             Confirm Password<span>*</span>
           </label>
           <input
-            className={`register-input-pass ${passMatch() ? "pass-good" : null}`}
+            className={`register-input-pass ${
+              passMatch() ? "pass-good" : null
+            }`}
             id="password_two"
             type="password"
             onChange={(event) => handleChange(event, "login")}

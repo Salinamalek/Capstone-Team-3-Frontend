@@ -20,7 +20,7 @@
 .start-form {
     /* border: 3px solid red; */
     display: grid;
-    margin: 20px;
+    margin: 12px;
 }
 
 .start-form select {
@@ -45,7 +45,7 @@
 }
 
 .recruiter-register-form label {
-  margin-top: 20px;
+  margin-top: 12px;
   /* font-size: 18px; */
 }
 
@@ -61,7 +61,11 @@
 }
 
 .pass-good {
-    background-color: rgb(168, 236, 168);
+    background-color: rgb(65, 209, 65);
+}
+
+.pass-good:focus {
+    outline: 3px solid green;
 }
 
 .recruiter-register-form label span, .red-span {
@@ -84,6 +88,6 @@
   background-color: var(--init-mint);
   height: 40px;
   font-size: 22px;
-  margin-top: 6px;
+  margin-top: 56px;
   color: var(--init-blue);
 }
