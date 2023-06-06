@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowDownCircleFill } from "react-icons/bs";
+import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai"
+import { GiReturnArrow, GiArrowDunk } from "react-icons/gi"
+import { TiArrowForward, TiArrowForwardOutline  } from "react-icons/ti"
 import logo from "./white-logo.png";
 import scan from "./qr-code.png"
 import blueTree from "./blue-chip-tree.png"
+import goldTree from "./gold-tree-2.png"
 import teamStock from "./team-stock.jpg";
 import stock2 from "./init-stock(2).jpg";
 import stock3 from "./init-stock(3).jpg";
@@ -16,9 +20,9 @@ import "./HomeTest.css";
 
 function HomeTest() {
   const [textSwitch, setTextSwitch] = useState(false);
-//   const timeout = setInterval(() => {
-//     setTextSwitch(true);
-//   }, 6000);
+  const timeout = setInterval(() => {
+    setTextSwitch(true);
+  }, 5000);
 
   useEffect(() => {}, [textSwitch]);
 
@@ -55,7 +59,7 @@ function HomeTest() {
           </div>
 
           <img className="blue-tree" 
-          src={blueTree} alt="blue-tree" />
+          src={goldTree} alt="blue-tree" />
 
           <Link className="home-sign" to="/">
             SIGN IN
@@ -68,8 +72,10 @@ function HomeTest() {
       </section>
       {/* SECOND SLIDE */}
       <section className="home-app-guide">
-        <div className="textbubble1 nav-screen">
-          <span>Easy to use Navigation!</span>
+        <div className="nav-screen">
+          <span>Easy to use Navigation! 
+            <TiArrowForward size={'30px'} />
+          </span>
         </div>
         <img className="navbar-screen" src={navScreen} alt="navbar" />
 
@@ -78,33 +84,41 @@ function HomeTest() {
           src={screen2}
           alt="profile-screen"
         />
-        <div className="textbubble2 profile-screen">
+        <div className="profile-screen">
           <span>
             Easy to Read Profile <i>IS</i> Your Resume!
+            <TiArrowForward className="icon-flip" size={"30px"} />
           </span>
         </div>
 
-        <Link className="home-sign" to="/">
-          SIGN IN
-        </Link>
+        <div className="home-links-div">
         <Link className="home-register" to="/">
           REGISTER NOW
         </Link>
+        <Link className="home-sign" to="/">
+          SIGN IN
+        </Link>
+        </div>
+       
       </section>
       {/* THIRD SLIDE */}
       <section className="home-guide-2">
-        <img className="search-screenshot" src={screen5} alt="searchbar" />
-        <div className="textbubble2 search-screen">
-          <span>Filter Your Job Search By City, Skills, and Remote Work</span>
+        
+        <div className="search-screen">
+          <span>
+          Job Search By City, Skills, and Remote Work
+          <TiArrowForward className="icon-flip-down" size={"30px"} />
+          </span>
         </div>
+        <img className="search-screenshot" src={screen5} alt="searchbar" />
 
-        <div className="textbubble1 applied-screen">
+        <div className="applied-screen">
           <span>Keep Track of Your Job Applications!!</span>
         </div>
         <img className="applied-screenshot" src={screen3} alt="applied" />
 
         <img className="job-screenshot" src={screen4} alt="job-screen" />
-        <div className="textbubble2 job-screen">
+        <div className="job-screen">
           <span> One-Click Apply to Jobs At Your Skill Level!</span>
         </div>
 

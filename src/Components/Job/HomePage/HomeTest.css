@@ -72,7 +72,7 @@
   }
   
   .home .home-logo {
-    animation: fadeIn 6s;
+    animation: fadeIn 5s;
     height: 50vh;
     margin-top: 5vh;
     grid-row: 3;
@@ -99,7 +99,7 @@
     align-self: center;
     text-align: center;
     font-size: 24px;
-    animation: fadeIn 4s;
+    animation: fadeIn 3s;
     position: relative;
     bottom: 3vh;
     right: 0.5vw;
@@ -172,11 +172,11 @@
   }
   
   .blue-tree {
-      height: 150px;
+      height: 165px;
       grid-column: 2/4;
       grid-row: 1;
       position: relative;
-      left: 20vw;
+      left: 16vw;
       bottom: 2vh;
       align-self: center;
   }
@@ -213,9 +213,9 @@
     position: relative;
     width: 180px;
     height: 110px;
-    border-radius: 10px;
-    border: 3px solid var(--init-mint);
-    color: rgb(20, 20, 20);
+    /* border-radius: 10px; */
+    /* border: 3px solid var(--init-mint); */
+    /* color:  #576e7a ; */
     font-size: 22px;
     text-align: center;
     padding-top: 2vh;
@@ -263,11 +263,28 @@
   .home-guide-2 span,
   .home-guide-2 img {
     position: relative;
+    color:  #4c616c ;
   }
   .home-app-guide img,
   .home-guide-2 img {
     box-shadow: 3px 3px 15px black;
     border-radius: 20px;
+  }
+
+  .home-app-guide svg, .home-guide-2 svg {
+    fill: var(--init-mint);
+    width: 2.5em;
+    height: 2.5em;
+    position: relative;
+  }
+  .icon-flip {
+    /* transform: rotate(180deg); */
+    transform: rotateY(180deg);
+  }
+  .icon-flip-down {
+    transform: rotateX(180deg);
+    /* transform: rotate(180deg); */
+    
   }
   
   .nav-screen {
@@ -279,6 +296,10 @@
   .nav-screen span {
     right: 1vw;
   }
+  .nav-screen svg {
+    left: 25vw;
+    top: 1vh;
+  }
   .navbar-screen {
     height: 230px;
     top: 3vh;
@@ -289,7 +310,11 @@
     width: 133px;
   }
   .profile-screen span {
-    bottom: 0.8vh;
+    bottom: 2vh;
+    left: 5vw;
+  }
+  .profile-screen svg {
+    right: 12vw;
   }
   .profile-screenshot {
     border: 1px solid black;
@@ -298,22 +323,20 @@
     bottom: 2vh;
     right: 2vw;
   }
-  
-  .home-app-guide .home-register {
+  .home-app-guide .home-links-div {
     grid-row: 3;
-    grid-column: 1;
-    top: 0;
-    left: 0;
-    right: 1vw;
-    top: 2vh;
+    grid-column: 1/3;
+    height: 50%;
+    width: 95%;
+    display: flex;
+
   }
-  .home-app-guide .home-sign {
-    grid-row: 3;
-    grid-column: 1;
+  .home-app-guide .home-links-div .home-register{
     top: 0;
-    left: 0;
-    margin-right: 20vw;
-    margin-bottom: 5vh;
+  }
+  .home-app-guide .home-links-div .home-sign{
+    left: 15vw;
+    top: 0vh;
   }
   
   /* Third slide */
@@ -338,18 +361,23 @@
   }
   
   .search-screen {
-    width: 100px;
+    width: 110px;
     height: 200px;
-    right: 4vw;
-    top: 2vh;
+    right: 11vw;
+    top: 2vh; 
+    line-height: 30px;
   }
-  .search-screen span {
-    font-size: 22px;
-    bottom: 1vh;
+  .search-screen span  {
+    font-size: 24px;
+  }
+  .search-screen svg {
+    left: 16vw;
+    bottom: 5vh;
   }
   .search-screenshot {
     height: 154px;
-    left: 1.5vw;
+    right: 20vw;
+    top: 1vh;
   }
   
   .applied-screen {
