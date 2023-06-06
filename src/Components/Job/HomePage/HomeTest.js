@@ -4,8 +4,8 @@ import { BsArrowDownCircleFill } from "react-icons/bs";
 import { TiArrowForward, TiArrowForwardOutline } from "react-icons/ti";
 import logo from "./white-logo.png";
 import scan from "./qr-code.png";
-import blueTree from "./blue-chip-tree.png";
 import goldTree from "./gold-tree-2.png";
+import initTree from "./init-tree-gold.png"
 import teamStock from "./team-stock.jpg";
 import stock2 from "./init-stock(2).jpg";
 import stock3 from "./init-stock(3).jpg";
@@ -54,7 +54,7 @@ function HomeTest() {
             <img className="mission-img" src={stock3} alt="home-img" />
           </div>
 
-          <img className="blue-tree" src={goldTree} alt="blue-tree" />
+          <img className="blue-tree" src={initTree} alt="blue-tree" />
 
           <Link className="home-sign" to="/">
             SIGN IN
