@@ -342,7 +342,7 @@
     top: 2vh;
   }
   .search-screen span {
-    font-size: 20px;
+    font-size: 22px;
     bottom: 1vh;
   }
   .search-screenshot {
@@ -369,14 +369,15 @@
   .home-guide-2 .home-register {
     grid-column: 1/3;
     grid-row: 3;
+    position: relative;
     top: 32vh;
-    margin-right: 67vw;
+    left: -29vw;
   }
   .home-guide-2 .home-sign {
     grid-column: 1/3;
     grid-row: 3;
     top: 28vh;
-    margin-right: 85vw;
+    left: -40vw;
   }
   
   /* Last Slide */
@@ -386,8 +387,8 @@
       grid-template-columns: 3fr 1fr 3fr ;
       grid-template-rows: 20vh auto;
       align-items: center;
-      background-image: url(/public/mint-tree-white.jpg);
-      background-image: url(/public/init-back-gold-tree.jpg);
+      /* background-image: url(/public/mint-tree-white.jpg);
+      background-image: url(/public/init-back-gold-tree.jpg); */
       background-position-y: 23vh;
       background-position-x: center;
       background-size: contain;
@@ -403,52 +404,48 @@
       justify-self: center;
   }
   
-  
+
   .home-final a {
       /* background-color: var(--init-background); */
       border-radius: 50px 0px 50px 0px;
       transform: rotate(-45deg);
-      border: 2px solid var(--init-mint);
+      border: 3px solid var(--init-mint);
       box-shadow: 2px 2px 10px black;
-      height: 90px;
-      width: 90px;
+      height: 120px;
+      width: 120px;
       position: relative;
+      
+       background-image: url(/public/init-back-gold-tree.jpg);
+      background-size: cover;
+      display: grid;
+      justify-items: center;
+      align-items: center;
   }
   .home-final a span {
-      position: absolute;
      background-color: var(--init-background);
-      padding: 1px;
-      border-radius: 20px;
-      left: 10vw;
-      font-size: 18px;
+      padding: 2px;
+      font-size: 22px;
       transform: rotate(45deg);
+      text-align: center;
+      /* border: 1px solid var(--init-mint); */
+      border-radius: 20px;
   }
   
   .home-final .home-register{
       left: 2vw;
-      top: 0;
-      top: 10vh;
+      top: 12vh;
    }
-   .home-final .home-register span {
-      top: 3.5vh;
-      left: 1vw;
-   }
+
   .home-final .home-about{
-      bottom: 8vh;
+      bottom: 6vh;
   }
   .home-final .home-about span {
-      width: fit-content;
-      top: 3.5vh;
-      left: 1.8vw;
-      font-size: 17px;
+      color: var(--init-blue);
+
   }
   .home-final .home-sign {
-      left: 69vw;
-      top: -21.7vh;
-  }
-  .home-final .home-sign span {
-      left: 3.8vw;
-      top: 3.5vh;
+      left: 59vw;
+      top: -19.7vh;
   }
   
   .misc4 {
@@ -467,12 +464,12 @@
   }
   
   .qr-code {
-      height: 120px;
-      grid-column: 3;
+      height: 180px;
+      grid-column: 1/3;
       grid-row: 3;
       position: relative;
-      top: 4vh;
-      left: 6.5vw;
+      left: 25vw;
+      top: 3vh;
       border-radius: 20px;
   }
   

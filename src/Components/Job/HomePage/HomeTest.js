@@ -122,7 +122,8 @@ function HomeTest() {
           <img
            src={teamStock} alt="misc" />
           </div>
-          <Link className="home-sign" to="/">
+
+        <Link className="home-sign" to="/">
           <span>SIGN IN</span>
         </Link>
         <Link className="home-register" to="/">
