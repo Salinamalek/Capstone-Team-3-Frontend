@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowDownCircleFill } from "react-icons/bs";
-import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai"
-import { GiReturnArrow, GiArrowDunk } from "react-icons/gi"
-import { TiArrowForward, TiArrowForwardOutline  } from "react-icons/ti"
+import { TiArrowForward, TiArrowForwardOutline } from "react-icons/ti";
 import logo from "./white-logo.png";
-import scan from "./qr-code.png"
-import blueTree from "./blue-chip-tree.png"
-import goldTree from "./gold-tree-2.png"
+import scan from "./qr-code.png";
+import blueTree from "./blue-chip-tree.png";
+import goldTree from "./gold-tree-2.png";
 import teamStock from "./team-stock.jpg";
 import stock2 from "./init-stock(2).jpg";
 import stock3 from "./init-stock(3).jpg";
@@ -35,7 +33,7 @@ function HomeTest() {
       <section>
         <div className={textSwitch ? "hidden" : "show home-landing"}>
           <h2 className="home-italic">Welcome To</h2>
-          <hr/>
+          <hr />
           <img src={logo} alt="logo" className="home-logo" />
           <hr />
           <span className=" home-italic">
@@ -45,8 +43,7 @@ function HomeTest() {
         {/* AFTER FADE SLIDE*/}
         <div className={!textSwitch ? "hidden" : "show home-mission"}>
           <div className="misc1">
-            <img className="mission-img"
-            src={stock2} alt="home-img" />
+            <img className="mission-img" src={stock2} alt="home-img" />
           </div>
           <p className="home-italic">
             "Directly connecting employers specifically looking to fill entry
@@ -54,12 +51,10 @@ function HomeTest() {
             in the field"
           </p>
           <div className="misc2">
-            <img className="mission-img"
-            src={stock3} alt="home-img" />
+            <img className="mission-img" src={stock3} alt="home-img" />
           </div>
 
-          <img className="blue-tree" 
-          src={goldTree} alt="blue-tree" />
+          <img className="blue-tree" src={goldTree} alt="blue-tree" />
 
           <Link className="home-sign" to="/">
             SIGN IN
@@ -73,8 +68,9 @@ function HomeTest() {
       {/* SECOND SLIDE */}
       <section className="home-app-guide">
         <div className="nav-screen">
-          <span>Easy to use Navigation! 
-            <TiArrowForward size={'30px'} />
+          <span>
+            Easy to use Navigation!
+            <TiArrowForward size={"30px"} />
           </span>
         </div>
         <img className="navbar-screen" src={navScreen} alt="navbar" />
@@ -92,64 +88,67 @@ function HomeTest() {
         </div>
 
         <div className="home-links-div">
-        <Link className="home-register" to="/">
-          REGISTER NOW
-        </Link>
-        <Link className="home-sign" to="/">
-          SIGN IN
-        </Link>
+          <Link className="home-register" to="/">
+            REGISTER NOW
+          </Link>
+          <Link className="home-sign" to="/">
+            SIGN IN
+          </Link>
         </div>
-       
       </section>
       {/* THIRD SLIDE */}
       <section className="home-guide-2">
-        
         <div className="search-screen">
           <span>
-          Job Search By City, Skills, and Remote Work
-          <TiArrowForward className="icon-flip-down" size={"30px"} />
+            Job Search By City, Skills, and Remote Work
+            <TiArrowForward className="icon-flip-down" size={"30px"} />
           </span>
         </div>
         <img className="search-screenshot" src={screen5} alt="searchbar" />
 
+        <img className="job-screenshot" src={screen4} alt="job-screen" />
+        <div className="job-screen">
+          <span>
+            One-Click Apply to Jobs At
+            <br /> Your Skill Level!
+          </span>
+          <TiArrowForward className="icon-vertical-flip" size={"30px"} />
+        </div>
+
         <div className="applied-screen">
-          <span>Keep Track of Your Job Applications!!</span>
+          <span>
+            Keep Track of Your Job Applications!!
+            <TiArrowForward size={"30px"} />
+          </span>
         </div>
         <img className="applied-screenshot" src={screen3} alt="applied" />
 
-        <img className="job-screenshot" src={screen4} alt="job-screen" />
-        <div className="job-screen">
-          <span> One-Click Apply to Jobs At Your Skill Level!</span>
+        <div className="home-links-div">
+          <Link className="home-register" to="/">
+            REGISTER NOW
+          </Link>
+          <Link className="home-sign" to="/">
+            SIGN IN
+          </Link>
         </div>
-
-        <Link className="home-sign" to="/">
-          SIGN IN
-        </Link>
-        <Link className="home-register" to="/">
-          REGISTER NOW
-        </Link>
       </section>
       {/* LAST SLIDE */}
       <section className="home-final">
-          <h2 className="home-italic">Begin Your Tech Journey Today!</h2>
-          <div className="misc4">
-          <img
-           src={teamStock} alt="misc" />
-          </div>
+        <h2 className="home-italic">Begin Your Tech Journey Today!</h2>
+        <div className="misc4">
+          <img src={teamStock} alt="misc" />
+        </div>
 
         <Link className="home-sign" to="/">
           <span>SIGN IN</span>
         </Link>
         <Link className="home-register" to="/">
-        <span>REGISTER</span>
+          <span>REGISTER</span>
         </Link>
         <Link className="home-about" to="/about">
-        <span>inIT TEAM</span>
+          <span>inIT TEAM</span>
         </Link>
-        <img 
-        className="qr-code"
-        src={scan} alt="qr-code" />
-          
+        <img className="qr-code" src={scan} alt="qr-code" />
       </section>
     </div>
   );
