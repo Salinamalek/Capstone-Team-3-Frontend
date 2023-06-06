@@ -4,7 +4,7 @@ import { useUserProvider } from "../../Providers/UserProvider.js";
 import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import pencilBlack from "../../Assets/pencil-black.png";
-import pencilGrey from "../../Assets/pencil-grey.png"
+import pencilGrey from "../../Assets/pencil-grey.png";
 import "./UserProfile.css";
 
 export default function UserProfile() {
@@ -58,8 +58,10 @@ export default function UserProfile() {
               <br />
               <p>Skills & Technologies</p>
               <SkillsComponent
-              // sorting ascending for skill ids
-                skillsArr={userProfile.skills["skill_ids"].sort((a, b) => a - b)}
+                // sorting ascending for skill ids
+                skillsArr={userProfile.skills["skill_ids"].sort(
+                  (a, b) => a - b
+                )}
                 justList={true}
               />
             </div>
@@ -69,7 +71,11 @@ export default function UserProfile() {
                 onClick={() => navigate(`/user/edit`)}
                 className="profile-button"
               >
-                EDIT <img src={theme === "light" ? pencilBlack : pencilGrey} alt="pencil" />
+                EDIT{" "}
+                <img
+                  src={theme === "light" ? pencilBlack : pencilGrey}
+                  alt="pencil"
+                />
               </button>
             </div>
           </div>
@@ -104,7 +110,12 @@ export default function UserProfile() {
             <div>
               {userJobs.length > 0 && mapJobs(userJobs)}
               <br />
-              <button id="activity-button" onClick={() => setLimit(!limit)}>
+              <button
+                id="activity-button"
+                onClick={() =>
+                  userJobs.length === 0 ? navigate("/jobs") : setLimit(!limit)
+                }
+              >
                 {userJobs.length > 0
                   ? limit
                     ? "VIEW ALL"
