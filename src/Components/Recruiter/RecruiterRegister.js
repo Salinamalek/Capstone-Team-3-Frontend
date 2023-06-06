@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
-import checkmark from "../../Assets/checkmark.png"
+import checkmark from "../../Assets/checkmark.png";
 import "./RecruiterRegister.css";
 
 export default function RecruiterRegister() {
@@ -28,6 +28,7 @@ export default function RecruiterRegister() {
     isRecruiter: "",
   });
   const [isEmailUnique, setIsEmailUnique] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const handleChange = (event, form) => {
     if (event.target.id === "isRecruiter") {
@@ -43,6 +44,7 @@ export default function RecruiterRegister() {
         education: "",
         organization: "",
       });
+      setShowError(false);
     } else {
       form === "profile"
         ? setNewProfileForm({
@@ -66,7 +68,7 @@ export default function RecruiterRegister() {
   };
 
   useEffect(() => {
-    setIsEmailUnique(false)
+    setIsEmailUnique(false);
     const { email, isRecruiter } = newLoginForm;
     const cond1 = email.includes("@");
     const cond2 = email.includes(".");
@@ -74,33 +76,24 @@ export default function RecruiterRegister() {
       email.split("").reverse().indexOf("@") >
       email.split("").reverse().indexOf(".");
     if (cond1 && cond2 && cond3) {
-      let emailType = isRecruiter === "true" ? "recruiters" : "users";
+      const emailType = isRecruiter === "true" ? "recruiters" : "users";
       axios
         .get(`${API}/emails/${emailType}/${email}`)
-        .then(({data}) => setIsEmailUnique(data.isEmailUnique))
+        .then(({ data }) => setIsEmailUnique(data.isEmailUnique))
         .catch((err) => console.log(err));
     }
   }, [newLoginForm.email]);
 
-  //   const maySubmit = () => {
-  //     const cond1 = newProfileForm.first_name !== "";
-  //     const cond2 = newProfileForm.last_name !== "";
-  //     const cond3 =
-  //       newProfileForm.education !== "" || newProfileForm.organization !== "";
-  //     const cond4 = passMatch();
-  //     if (cond1 && cond2 && cond3 && cond4 && isEmailUnique) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   };
+  useEffect(() => {
+    showError ? setShowError(false) : null;
+  }, [newLoginForm.email, newLoginForm.password_two, newLoginForm.password]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isEmailUnique && passMatch()) {
-      console.log("Good");
+        
     } else {
-      console.log("no good");
+      setShowError(true);
     }
   };
 
@@ -165,7 +158,16 @@ export default function RecruiterRegister() {
             required
           />
           <label htmlFor="email">
-            Email<span>*</span>{isEmailUnique !== false ? <img className="register-checkmark" src={checkmark} alt="checkmark" /> : ""}
+            Email<span>*</span>
+            {isEmailUnique !== false ? (
+              <img
+                className="register-checkmark"
+                src={checkmark}
+                alt="checkmark"
+              />
+            ) : (
+              ""
+            )}
           </label>
           <input
             id="email"
@@ -202,6 +204,13 @@ export default function RecruiterRegister() {
             value={newLoginForm["password_two"]}
             required
           />
+          <p className="recruiter-register-error">
+            {showError && !isEmailUnique
+              ? "Email is linked to another account"
+              : showError && !passMatch()
+              ? "Password inputs do not match"
+              : ""}
+          </p>
           <input id="recruiter-register-submit" type="submit" value="SUBMIT" />
         </form>
       )}
