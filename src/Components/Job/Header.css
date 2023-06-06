@@ -1,0 +1,14 @@
+.app-header {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    align-items: center;
+    background-color: var(--init-mint);
+    height: 5vh;
+    width: 100%;
+}
+.app-header svg {
+    margin-left: 3vw;
+}
+.app-header h2 {
+
+}

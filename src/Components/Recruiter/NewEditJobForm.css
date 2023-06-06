@@ -32,7 +32,7 @@
   grid-template-rows: repeat(2, 6.5vh) 4.5vh 16vh 15vh 16vh 7vh;
   row-gap: 1.1vh;
   height: 100%;
-  width: 95%;
+  width: 96%;
   justify-items: left;
   align-items: center;
   margin-top: 1vh;
