@@ -1,32 +1,14 @@
 import { useState } from "react"
-import { CgAsterisk } from "react-icons/cg"
+import { handleTextChange, handleTasks  } from "../Functions/JobFormFunctions.js"
+import { asterisk } from "../Data/Icons.js"
 import { HiMinusCircle } from "react-icons/hi"
 
 function TextInput({label,formId, stateVar, setFunction, required, placeholder, index, task }) {
     const [taskTest, setTaskTest] = useState(stateVar)
-      // handleTextChange
-      function handleTextChange(e, stateVar, setFunction){
-        const value = e.target.value
-        const id = e.target.id
-        setFunction({...stateVar, [id]: value})
-    }
     
-    function handleTasks(e){
-        const value = e.target.value
-        const copyArr = [...taskTest]
-        copyArr[index] = value
-        setTaskTest(copyArr)   
-    }
     function handleTaskBlur() {
         setFunction(taskTest)
     }
-    // function handleTasks(e, stateVar, setFunction){
-        // handleTasks(event, stateVar, setFunction)}
-    //     const value = e.target.value
-    //     const copyArr = [...stateVar]
-    //     copyArr[index] = value
-    //     setFunction(copyArr)
-    // }
 
     function removeTask() {
         const remove = [...stateVar].filter((el,i) => i !== index)
@@ -38,7 +20,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
         htmlFor={formId}>
             <span className="job-form-label">
                 {label}
-                {required && <CgAsterisk color={"#cd5f41"} size={"15px"} />}
+                {required && asterisk}
             </span>
         <input 
             className="input-box"
@@ -46,7 +28,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
             value={task ? taskTest[index]: stateVar[formId]}
             id = {formId}
             placeholder={placeholder ? placeholder : ""}
-            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event)}}
+            onChange = {(event) => { !task ? handleTextChange(event, stateVar, setFunction) : handleTasks(event, taskTest, setTaskTest, index)}}
             onBlur={task ? () =>handleTaskBlur() : null}
         />
         {
@@ -54,7 +36,7 @@ function TextInput({label,formId, stateVar, setFunction, required, placeholder, 
             <HiMinusCircle 
             className="task-remove"
             size={"16px"}
-            color={"#cd5f41"}
+            color={"#BA1A1A"}
             onClick={() => removeTask()} />
         }
         </label>

@@ -10,7 +10,7 @@ function TextArea({ label, formId, stateVar, setFunction, placeholder, required 
     <label htmlFor={formId}>
       <span className="job-form-label job-textarea">
         {label}
-        {required && <CgAsterisk color={"#cd5f41"} size={"15px"} />}
+        {required && <CgAsterisk size={"15px"} />}
       </span>
 
       <textarea
