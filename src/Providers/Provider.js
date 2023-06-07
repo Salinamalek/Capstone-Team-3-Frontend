@@ -17,7 +17,7 @@ function Provider({ children }) {
   const [userID, setUserID] = useState(1);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjA3MTk4OCwiZXhwIjoxNjg4NjYzOTg4fQ.pqjbbGfkPoG1X2CCGw808PtI-EV2loTVN7jp89agHsY"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjE0NzE2NSwiZXhwIjoxNjg4NzM5MTY1fQ.COgsj1XNSTzl8zLUzb2_douEEWxATpRig9XMfjt2WLA"
   );
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
