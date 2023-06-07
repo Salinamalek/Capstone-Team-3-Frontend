@@ -3,16 +3,10 @@
   text-align: center;
 }
 
-.recruiter-register h1 {
-  background-color: var(--init-mint);
-  text-align: center;
-  font-size: 36px;
-  padding: 4px 0;
-  margin-bottom: 20px;
-}
-
 .recruiter-register a {
   font-size: 20px;
+  position: relative;
+  top: 2vh;
   color: var(--init-blue);
   font-weight: 600;
 }
@@ -29,7 +23,7 @@
 
 .start-form h2 {
     font-size: 25px;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
 .recruiter-register-form {
@@ -74,7 +68,7 @@
 }
 
 .recruiter-register-form label span, .red-span {
-  color: red;
+  color: var(--init-rust);
   font-size: 16px;
 }
 
@@ -88,9 +82,9 @@
 
 .recruiter-register-error {
     grid-column: 1/3;
-    margin-top: 6px;
+    margin: 16px 0;
     height: 24px;
-    color: red;
+    color: var(--init-rust);
     text-align: center;
     font-weight: 600;
 }
@@ -104,4 +98,24 @@
   font-size: 22px;
   margin-top: 6px;
   color: var(--init-blue);
+}
+
+.dark .recruiter-register a {
+  color: var(--init-gold)
+}
+
+.dark .recruiter-register h2 {
+  color: var(--init-background)
+}
+
+.dark .recruiter-register-form label {
+  color: var(--init-background)
+}
+
+.dark .register-helper-text {
+  color: rgb(220, 200, 200)
+}
+
+.dark #recruiter-register-submit {
+  background-color: var(--init-gold);
 }

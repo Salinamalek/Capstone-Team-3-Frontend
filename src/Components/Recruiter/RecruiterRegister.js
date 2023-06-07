@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
 import checkmark from "../../Assets/checkmark.png";
+import Header from "../Job/Header.js"
 import "./RecruiterRegister.css";
 
 export default function RecruiterRegister() {
@@ -102,7 +103,7 @@ export default function RecruiterRegister() {
 
   return (
     <div className="recruiter-register">
-      <h1>Sign up</h1>
+      <Header header={"Register"} />
       <Link to="/recruiter/login">Already have an account? Log in</Link>
       <div className="start-form">
         {newLoginForm.isRecruiter === "" && (
@@ -209,7 +210,7 @@ export default function RecruiterRegister() {
           />
           <p className="recruiter-register-error">
             {showError && !isEmailUnique
-              ? "Email is linked to another account"
+              ? "Email is invalid or unavailable"
               : showError && !passMatch()
               ? "Password inputs do not match"
               : ""}

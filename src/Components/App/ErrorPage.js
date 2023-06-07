@@ -5,11 +5,11 @@ import { TfiBackLeft } from "react-icons/tfi";
 function ErrorPage() {
   return (
     <div className="error">
-      <img id="error" src={error} alt="error"></img>
+      <img id="error-img" src={error} alt="error"></img>
       <br />
       <Link className="backHome" to="/">
-        <TfiBackLeft size={"35px"} />
-        Back to Home
+        {/* <TfiBackLeft size={"35px"} /> */}
+        HOME
       </Link>
     </div>
   );

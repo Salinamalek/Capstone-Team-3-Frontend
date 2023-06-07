@@ -226,7 +226,7 @@
 /* submit button */
 .job-form-submit {
   height: 5vh;
-  width: 50%;
+  width: 40%;
   position: relative;
   top: 1.3vh;
   left: 10vh;
@@ -234,7 +234,7 @@
   border: 1px solid var(--init-blue);
   background-color: var(--init-mint);
   color: var(--init-blue);
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .job-form input,

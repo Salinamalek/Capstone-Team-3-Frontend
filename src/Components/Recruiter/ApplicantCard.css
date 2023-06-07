@@ -2,7 +2,7 @@
     border: 1px solid var(--init-mint);
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 30% 70% ;
+    grid-template-columns: 20% 80% ;
     grid-template-rows: 55% 10% 35%;
     height: 10vh;
     width: 90%;
@@ -37,7 +37,7 @@
 }
 
 .applicant-card hr {
-    width: 85%;
+    width: 90%;
     border: 1px solid var(--init-blue);
 }
 

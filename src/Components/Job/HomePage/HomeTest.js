@@ -62,7 +62,7 @@ function HomeTest() {
           <Link className="home-register" to="/">
             REGISTER NOW
           </Link>
-          <span className="text-scroll">LEARN MORE ABOUT inIT!!</span>
+          <span className="text-scroll">LEARN MORE ABOUT inIT</span>
         </div>
       </section>
       {/* SECOND SLIDE */}
@@ -83,7 +83,7 @@ function HomeTest() {
         <div className="profile-screen">
           <span>
             Easy to Read Profile <i>IS</i> Your Resume!
-            <TiArrowForward className="icon-flip" size={"30px"} />
+            <TiArrowForward className="icon-vertical-flip" size={"30px"} />
           </span>
         </div>
 
@@ -117,7 +117,7 @@ function HomeTest() {
 
         <div className="applied-screen">
           <span>
-            Keep Track of Your Job Applications!!
+            Keep Track of Your Job Applications!
             <TiArrowForward size={"30px"} />
           </span>
         </div>
@@ -148,7 +148,8 @@ function HomeTest() {
         <Link className="home-about" to="/about">
           <span>inIT TEAM</span>
         </Link>
-        <img className="qr-code" src={scan} alt="qr-code" />
+        {/* update qr code! */}
+        {/* <img className="qr-code" src={scan} alt="qr-code" /> */}
       </section>
     </div>
   );

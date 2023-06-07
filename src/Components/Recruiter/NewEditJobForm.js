@@ -157,7 +157,7 @@ export default function NewEditJobForm({ edit }) {
 
   return (
     <div className="job-form-page">
-      <Header header={ edit ? "Edit Post": "Post a New Opportunity!" } />
+      <Header header={ edit ? "Edit Post": "New Job" } />
 
       <form className="job-form" onSubmit={(event) => handleSubmit(event)}>
         <TextInput
@@ -260,7 +260,7 @@ export default function NewEditJobForm({ edit }) {
         <input
           className="job-form-submit"
           type="submit"
-          value={edit ? "Update Post" : "Post Job"}
+          value={edit ? "SAVE" : "SUBMIT"}
         />
       </form>
     </div>

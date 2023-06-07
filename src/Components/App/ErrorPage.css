@@ -1,12 +1,23 @@
 .error {
   text-align: center;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 2fr 3fr;
+  justify-items: center;
 }
-#error {
-  height: 380px;
+
+#error-img {
+  /* height: 100%; */
+  grid-row: 2;
   width: 380px;
 }
 
 .backHome {
   font-size: x-large;
-  color: #41cdbc;
+  color: var(--init-blue);
+  font-size: 42px;
+}
+
+.dark .backHome {
+  color: var(--init-gold)
 }

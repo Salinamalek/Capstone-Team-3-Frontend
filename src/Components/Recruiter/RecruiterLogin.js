@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider.js";
 import { Link, useNavigate } from "react-router-dom";
+import Header from "../Job/Header.js"
 import "./RecruiterLogin.css";
 
 export default function () {
@@ -59,7 +60,8 @@ export default function () {
 
   return (
     <div className="recruiter-login">
-      <h1>Log in</h1>
+      {/* <h1>Log in</h1> */}
+      <Header header={"Log In"} />
       <div className="recruiter-login-error">{failedLogin && "Invalid email, or password"}</div>
       <form className="recruiter-login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
