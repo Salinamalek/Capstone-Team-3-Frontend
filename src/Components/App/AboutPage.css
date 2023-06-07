@@ -14,7 +14,7 @@
 }
 .dev-cards h1 {
   font-size: 25px;
-  background-color: #0cbdbd;
+  /* background-color: #0cbdbd; */
   height: fit-content;
   align-self: center;
   padding: 5px;
