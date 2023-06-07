@@ -283,12 +283,12 @@
   color: var(--init-gold);
 }
 
-.dark .job-form svg {
-  fill: var(--init-mint);
-}
-
 .dark .job-form-submit  {
   background-color: var(--init-gold);
+}
+
+.dark .task-remove {
+  color: var(--init-rust);
 }
 
 

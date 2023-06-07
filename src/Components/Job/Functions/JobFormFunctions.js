@@ -12,7 +12,13 @@ function handleTasks(e, stateVar, setFunction, index){
     setFunction(copyArr)   
 }
 
+function removeTask(stateVar, setFunction, index) {
+    const remove = [...stateVar].filter((el,i) => i !== index)
+    setFunction(remove)
+}
+
 export {
     handleTextChange,
     handleTasks,
+    removeTask,
 }
