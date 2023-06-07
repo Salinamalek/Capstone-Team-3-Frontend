@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
+import Header from "../Job/Header.js"
 import TextInput from "../Job/Inputs/TextInput";
 import TextArea from "../Job/Inputs/TextArea";
 import Checkbox from "../Job/Inputs/Checkbox";
@@ -11,9 +12,8 @@ import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { convertTasks } from "../Job/Functions/JobFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
+import { asterisk } from "../Job/Data/Icons.js"
 import { IoMdAddCircle } from "react-icons/io";
-import { CgAsterisk } from "react-icons/cg";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
 export default function NewEditJobForm({ edit }) {
@@ -145,21 +145,19 @@ export default function NewEditJobForm({ edit }) {
           }
         })
         .catch((err) => console.log(err));
-    } else if (isRecruiterAcc) {
-      setAccess(true);
-    } else if (!isRecruiterAcc) {
-      navigate("/not-found");
-    }
+    } 
+    // else if (isRecruiterAcc) {
+    //   setAccess(true);
+    // } 
+    // else if (!isRecruiterAcc) {
+    //   navigate("/not-found");
+    // }
+    console.log(edit)
   }, [jobID]);
 
   return (
     <div className="job-form-page">
-      <section className="job-form-header">
-        <TfiAngleLeft onClick={() => navigate(-1)} size={"30px"} />
-        <h2 className={edit ? "edit-header" : ""}>
-          {edit ? "Edit Post" : "Post a New Opportunity!"}
-        </h2>
-      </section>
+      <Header header={ edit ? "Edit Post": "Post a New Opportunity!" } />
 
       <form className="job-form" onSubmit={(event) => handleSubmit(event)}>
         <TextInput
@@ -182,10 +180,7 @@ export default function NewEditJobForm({ edit }) {
 
         <section className="job-form-location">
           <label htmlFor="city" className="job-form-label-dropdown">
-            <span>
-              City
-              <CgAsterisk color={"#cd5f41"} size={"15px"} />
-            </span>
+            <span>City{asterisk}</span>
           </label>
           <Dropdown
             idVal={"city"}
@@ -244,6 +239,7 @@ export default function NewEditJobForm({ edit }) {
             </span>
             <IoMdAddCircle
               size={"20px"}
+              color ={"#41cdbc"}
               onClick={(event) => taskButton(event)}
             />
           </section>
@@ -252,7 +248,7 @@ export default function NewEditJobForm({ edit }) {
         <section className="job-form-skills">
           <span>
             <span>Min. 1, Max. 4 Skills req.</span>
-            <CgAsterisk color={"#cd5f41"} size={"15px"} />
+            {asterisk}
           </span>
           <SkillsComponent
             checkbox={true}
