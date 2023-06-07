@@ -6,27 +6,6 @@
   align-items: center;
 }
 
-.job-form-header {
-    display: grid;
-    grid-template-columns: 10% 90%;
-    align-items: center;
-    background-color: var(--init-mint);
-    width: 100%;
-    height: 100%;
-    color:white;
-}
-.job-form-header svg {
-    margin-left: 3vw;
-}
-.job-form-header h2 {
-    justify-self: center;
-    font-weight: 500;
-}
-.edit-header {
-    position: relative;
-    right: 10vw;
-}
-
 .job-form {
   display: grid;
   grid-template-rows: repeat(2, 6.5vh) 4.5vh 16vh 15vh 16vh 7vh;
@@ -249,7 +228,7 @@
   height: 5vh;
   width: 50%;
   position: relative;
-  top: 1.8vh;
+  top: 1.3vh;
   left: 10vh;
   border-radius: 20px;
   border: 1px solid var(--init-blue);
@@ -304,12 +283,12 @@
   color: var(--init-gold);
 }
 
-.dark .job-form svg {
-  fill: var(--init-mint);
-}
-
 .dark .job-form-submit  {
   background-color: var(--init-gold);
+}
+
+.dark .task-remove {
+  color: var(--init-rust);
 }
 
 
