@@ -14,7 +14,6 @@ import { convertTasks } from "../Job/Functions/JobFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { asterisk } from "../Job/Data/Icons.js"
 import { IoMdAddCircle } from "react-icons/io";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./NewEditJobForm.css";
 
 export default function NewEditJobForm({ edit }) {
