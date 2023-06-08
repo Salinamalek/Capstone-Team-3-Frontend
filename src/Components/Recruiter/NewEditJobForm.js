@@ -40,9 +40,7 @@ export default function NewEditJobForm({ edit }) {
     tasks: ["", ""],
     recruiter_id: recruiterID,
   });
-
-  //   may need to check if changes were made before sending put that wipes skills etc...
-  const [originalData, setOriginalData] = useState({});
+  let originalData = {}
 
   function handleSkills(e) {
     const id = +e.target.id;
@@ -61,31 +59,32 @@ export default function NewEditJobForm({ edit }) {
     setTaskArr([...taskArr, ""]);
   }
 
-  function checkForm(obj, stateVar) {
-    const { jobDetails } = obj;
-    // key values
-    const originalForm = Object.values(stateVar);
-    const updatedForm = Object.values(jobDetails);
+  // function checkForm(obj, stateVar) {
+  //   const { jobDetails } = obj;
+  //   // key values
+  //   const originalForm = Object.values(stateVar);
+  //   const updatedForm = Object.values(jobDetails);
 
-    for (let i = 0; i < updatedForm.length; i++) {
-      if (i === 8 && originalForm[i].length !== updatedForm[i].length) {
-        return true;
-      }
-      if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
-        return true;
-      }
-    }
-    const originalSkills = originalForm[8];
-    const updatedSkills = updatedForm[8];
-    const changedSkills = updatedSkills.every((el) =>
-      originalSkills.includes(el)
-    );
-    if (!changedSkills) {
-      console.log("changed skills");
-      return true;
-    }
-    return false;
-  }
+  //   for (let i = 0; i < updatedForm.length; i++) {
+  //     if ((i === 8 || i === 6) && originalForm[i].length !== updatedForm[i].length) {
+  //       return true;
+  //     }
+  //     if(i === 6 || i === 8){
+  //       const originalArr = originalForm[i];
+  //       const updatedArr = updatedForm[i];
+  //       const changedArr = updatedArr.every((el) =>
+  //       originalArr.includes(el)
+  //       );
+  //       if (!changedArr) {
+  //       return true;
+  //       }
+  //     }
+  //     if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -134,7 +133,7 @@ export default function NewEditJobForm({ edit }) {
               ["city"]: data.city,
               ["skills"]: convertSkills(data.skills),
             };
-            setOriginalData(form);
+            originalData = {...form}
             setJobForm(form);
             setTaskArr(convertTasks(data.tasks));
             setSkills(convertSkills(data.skills));
@@ -152,7 +151,6 @@ export default function NewEditJobForm({ edit }) {
     // else if (!isRecruiterAcc) {
     //   navigate("/not-found");
     // }
-    console.log(edit)
   }, [jobID]);
 
   return (

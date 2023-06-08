@@ -14,7 +14,6 @@ function JobProvider({ children }) {
   const [searchResult, setSearchResult] = useState([])
   const [recruiterID, setRecruiterID] = useState(1)
   const [access, setAccess] = useState(false)
-  // const [isRecruiter, setIsRecruiter] = useState(true)
   const [recruiterJobs, setRecruiterJobs] = useState([])
 
   useEffect(() => {

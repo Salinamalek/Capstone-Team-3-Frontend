@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import Header from "../Job/Header.js";
 import ApplicantCard from "./ApplicantCard";
 import { jobCompany, jobLocation } from "../Job/Data/Icons";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./Applicants.css";
 import { Link } from "react-router-dom";
 
