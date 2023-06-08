@@ -7,9 +7,8 @@ export function useRecruiterProvider() {
 }
 
 function RecruiterProvider({ children }) {
-  const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID } =
+  const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID, recruiterID, setRecruiterID } =
     useContextProvider();
-  const [recruiterID, setRecruiterID] = useState(null);
   const [recruiterData, setRecruiterData] = useState({});
 
   useEffect(() => {
