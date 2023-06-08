@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { BsArrowDownCircleFill } from "react-icons/bs";
 import { TiArrowForward, TiArrowForwardOutline } from "react-icons/ti";
@@ -17,18 +17,27 @@ import screen5 from "./filter-screen.png";
 import "./HomeTest.css";
 
 function HomeTest() {
+  const refElement = useRef()
   const [textSwitch, setTextSwitch] = useState(false);
   const timeout = setInterval(() => {
     setTextSwitch(true);
   }, 5000);
 
+  function homeScroll(index) {
+    refElement.current.children[index].scrollIntoView()
+  }
+
   useEffect(() => {}, [textSwitch]);
 
   return (
-    <div className="home">
-      {/* <span className={textSwitch ? "scroll-arrow" : "hide"}>
+    <div 
+    ref={refElement}
+    className="home">
+      <span 
+      onClick={()=>homeScroll(3)}
+      className={textSwitch ? "scroll-arrow" : "hide"}>
         <BsArrowDownCircleFill color={"#0914AE"} size={"40px"} />
-      </span> */}
+      </span>
 
       <section>
         <div className={textSwitch ? "hidden" : "show home-landing"}>

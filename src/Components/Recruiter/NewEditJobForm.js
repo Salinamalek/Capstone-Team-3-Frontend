@@ -88,7 +88,7 @@ export default function NewEditJobForm({ edit }) {
   }
   //   useEffect for edit
   useEffect(() => {
-    if (edit && isRecruiterAcc) {
+    if (edit) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
@@ -119,7 +119,8 @@ export default function NewEditJobForm({ edit }) {
         })
         .catch((err) => console.log(err));
     } 
-    // if (!isRecruiterAcc) {
+    // if (!access) {
+    //   console.log(isRecruiterAcc, access)
     //   navigate("/not-found");
     // }
   }, [jobID]);

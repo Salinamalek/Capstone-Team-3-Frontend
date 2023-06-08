@@ -17,6 +17,7 @@ function JobsShow() {
     jobID,
     userID,
     recruiterID,
+    TASK,
     access,
     setAccess,
     isRecruiterAcc,
@@ -75,8 +76,6 @@ function JobsShow() {
   }
 
   useEffect(() => {
-    // setIsRecruiterAcc(true)
-
     axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
@@ -96,7 +95,7 @@ function JobsShow() {
         setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
-  }, [reload, jobID, skillIdArr.length]);
+  }, [reload, jobID]);
 
   return (
     <div className="job-show">
@@ -150,7 +149,7 @@ function JobsShow() {
           <span className="job-show-label">Tasks:</span>
           <span className="job-show-role-list">
             {jobDetails.tasks &&
-              jobDetails.tasks.split("__TASKBREAK__").map((el) => {
+              jobDetails.tasks.split(`${TASK}`).map((el) => {
                 if (el) {
                   return (
                     <li key={uuidv4()}>

@@ -6,6 +6,7 @@ export const JobContextData = createContext();
 export function useJobProvider() {
   return useContext(JobContextData);
 }
+const TASK = process.env.REACT_APP_TASK_BREAK
 
 function JobProvider({ children }) {
   const { API, axios, userID, isRecruiterAcc, isSignedIn, setIsRecruiterAcc } = useContextProvider();
@@ -46,6 +47,7 @@ function JobProvider({ children }) {
         setJobs,
         searchResult,
         setSearchResult,
+        TASK,
         recruiterID,
         setRecruiterID,
         access,
