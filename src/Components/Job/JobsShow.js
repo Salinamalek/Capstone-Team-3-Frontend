@@ -20,6 +20,8 @@ function JobsShow() {
     access,
     setAccess,
     isRecruiterAcc,
+    isSignedIn,
+    setIsRecruiterAcc,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
@@ -38,7 +40,7 @@ function JobsShow() {
   }
 
   const applyButtonClick =
-    !access && isRecruiterAcc
+    !isSignedIn 
       ? null
       : isRecruiterAcc
       ? () => recruiterView()
@@ -47,15 +49,15 @@ function JobsShow() {
       : () => applyClick();
 
   const appliedButtonView =
-    !access && isRecruiterAcc
+    !isSignedIn && !isRecruiterAcc
       ? null
-      : isRecruiterAcc
+      : isRecruiterAcc && !isSignedIn
       ? "EDIT"
       : !applied
       ? "APPLY"
       : "APPLIED";
 
-  const appliedButtonClass = isRecruiterAcc
+  const appliedButtonClass = isRecruiterAcc && !isSignedIn
     ? "job-show-header-apply job-show-edit"
     : !applied
     ? "job-show-header-apply"
@@ -73,6 +75,8 @@ function JobsShow() {
   }
 
   useEffect(() => {
+    // setIsRecruiterAcc(true)
+
     axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
@@ -119,7 +123,9 @@ function JobsShow() {
             <span>REMOTE</span>
           </span>
         )}
-        <button onClick={applyButtonClick} className={appliedButtonClass}>
+        {
+          isSignedIn  || (isRecruiterAcc && access) ?
+          <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
             {isRecruiterAcc && access && (
@@ -127,6 +133,9 @@ function JobsShow() {
             )}
           </span>
         </button>
+        :
+        null
+        }
       </section>
 
       <SkillsComponent skillsArr={skillIdArr} justList={true} />
@@ -154,21 +163,26 @@ function JobsShow() {
         </div>
       </section>
 
-      {!applied || isRecruiterAcc ? (
+      {
+       !applied || isRecruiterAcc ? (
         <button
           onClick={applyButtonClick}
-          className={isRecruiterAcc && !access ? "hide" : "job-show-apply"}
+          className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
         >
           {appliedButtonView}
         </button>
-      ) : (
-        <div className="job-show-applied">
-          {jobApplied}
-          <span onClick={applyButtonClick}>
-            APPLIED ON {convertDate(applied["date_applied"])}
-          </span>
-        </div>
-      )}
+      ) : 
+        isSignedIn && applied ?
+        (
+          <div className="job-show-applied">
+            {jobApplied}
+            <span onClick={applyButtonClick}>
+              APPLIED ON {convertDate(applied["date_applied"])}
+            </span>
+          </div>
+        ) :
+          null
+      }
     </div>
   );
 }

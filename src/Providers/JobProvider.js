@@ -8,7 +8,7 @@ export function useJobProvider() {
 }
 
 function JobProvider({ children }) {
-  const { API, axios, userID, isRecruiterAcc } = useContextProvider();
+  const { API, axios, userID, isRecruiterAcc, isSignedIn, setIsRecruiterAcc } = useContextProvider();
   const { jobID } = useParams();
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
@@ -49,8 +49,10 @@ function JobProvider({ children }) {
         setRecruiterID,
         access,
         setAccess,
-       isRecruiterAcc,
+        isRecruiterAcc,
         recruiterJobs,
+        isSignedIn,
+        setIsRecruiterAcc
       }}
     >
       {children}
