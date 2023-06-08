@@ -14,6 +14,10 @@
   color: var(--init-background);
 }
 
+.home-scroll-up, .home-scroll-down {
+  color: var(--init-blue);
+}
+
 .home-register,
 .home-sign {
   font-size: 22px;
@@ -21,13 +25,29 @@
   position: relative;
 }
 
-.scroll-arrow {
-  position: fixed;
-  right: 10vw;
-  bottom: 6.5vh;
-  width: 20vw;
-  height: 5vh;
-  z-index: 10;
+.home-mission .home-scroll-down {
+  position: relative;
+  left: 70vw;
+  bottom: 1vh;
+}
+
+.home-scroll-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2vh;
+  position:fixed;
+  right: 4vw;
+  top: 32vh;
+  z-index: 30;
+  background-color: #00000069;
+  padding: 7px 3px;
+  border-radius: 20px;
+}
+.home-scroll-container svg {
+  height: 1.3em;
+  width: 1.3em;
+  color: var(--init-blue);
+  /* color: var(--init-background); */
 }
 
 .hidden {

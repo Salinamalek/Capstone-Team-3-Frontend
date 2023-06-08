@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { BsArrowDownCircleFill } from "react-icons/bs";
-import { TiArrowForward, TiArrowForwardOutline } from "react-icons/ti";
+import ScrollArrow from "./ScrollArrow";
+import { TiArrowForward } from "react-icons/ti";
 import logo from "./white-logo.png";
 import scan from "./qr-code.png";
 import goldTree from "./gold-tree-2.png";
@@ -23,22 +23,12 @@ function HomeTest() {
     setTextSwitch(true);
   }, 5000);
 
-  function homeScroll(index) {
-    refElement.current.children[index].scrollIntoView()
-  }
-
   useEffect(() => {}, [textSwitch]);
 
   return (
     <div 
     ref={refElement}
     className="home">
-      <span 
-      onClick={()=>homeScroll(3)}
-      className={textSwitch ? "scroll-arrow" : "hide"}>
-        <BsArrowDownCircleFill color={"#0914AE"} size={"40px"} />
-      </span>
-
       <section>
         <div className={textSwitch ? "hidden" : "show home-landing"}>
           <h2 className="home-italic">Welcome To</h2>
@@ -72,6 +62,10 @@ function HomeTest() {
             REGISTER NOW
           </Link>
           <span className="text-scroll">LEARN MORE ABOUT inIT</span>
+
+          <ScrollArrow 
+          element={refElement}
+          />
         </div>
       </section>
       {/* SECOND SLIDE */}
@@ -104,6 +98,7 @@ function HomeTest() {
             SIGN IN
           </Link>
         </div>
+        
       </section>
       {/* THIRD SLIDE */}
       <section className="home-guide-2">
@@ -140,6 +135,7 @@ function HomeTest() {
             SIGN IN
           </Link>
         </div>
+
       </section>
       {/* LAST SLIDE */}
       <section className="home-final">
