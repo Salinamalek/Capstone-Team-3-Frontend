@@ -17,15 +17,15 @@ export default function RecruiterRegister() {
     setUserID,
   } = useRecruiterProvider();
   const [newProfileForm, setNewProfileForm] = useState({
-    first_name: "",
-    last_name: "",
+    ["first_name"]: "",
+    ["last_name"]: "",
     education: "",
     organization: "",
   });
   const [newLoginForm, setNewLoginForm] = useState({
     email: "",
     password: "",
-    password_two: "",
+    ["password_two"]: "",
     isRecruiter: "",
   });
   const [isEmailUnique, setIsEmailUnique] = useState(false);
@@ -36,12 +36,12 @@ export default function RecruiterRegister() {
       setNewLoginForm({
         email: "",
         password: "",
-        password_two: "",
+        ["password_two"]: "",
         isRecruiter: event.target.value,
       });
       setNewProfileForm({
-        first_name: "",
-        last_name: "",
+        ["first_name"]: "",
+        ["last_name"]: "",
         education: "",
         organization: "",
       });
@@ -104,9 +104,16 @@ export default function RecruiterRegister() {
     if (isEmailUnique && passMatch() && checkPassReq(newLoginForm.password)) {
       const loginTable =
         isRecruiter === "true" ? "recruiters-logins" : "logins";
-      const userType = isRecruiter === "true" ? "recruiters" : "users";
-      console.log("make double post");
-      // axios.post("")
+      const userType = isRecruiter ? "recruiters" : "users";
+
+      axios
+        .post(`${API}/${userType}`, {
+          profile: { ...newProfileForm, bio: "add a bio" },
+          login: { ...newLoginForm },
+          skills: [],
+        })
+        .then(({ data }) => console.log(data))
+        .catch((err) => console.log(err));
     } else {
       console.log(checkPassReq(newLoginForm.password));
       setShowError(true);
