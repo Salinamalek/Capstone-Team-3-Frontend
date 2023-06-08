@@ -103,8 +103,12 @@ export default function RecruiterRegister() {
     event.preventDefault();
     const { isRecruiter } = newLoginForm;
     if (isEmailUnique && passMatch() && checkPassReq(newLoginForm.password)) {
-      const userType =
-        isRecruiter === true || isRecruiter === "true" ? "recruiters" : "users";
+      const userTypeCond = isRecruiter === "true";
+      const loginTable = userTypeCond ? "recruiters-logins" : "logins";
+      const userType = userTypeCond ? "recruiters" : "users";
+      const loginObj = userTypeCond
+        ? { ...newLoginForm }
+        : { email: newLoginForm.email, password: newLoginForm.password };
 
       axios
         .post(`${API}/${userType}`, {
@@ -113,21 +117,29 @@ export default function RecruiterRegister() {
           skills: [],
         })
         .then(({ data }) => {
-          setAuthToken(data.token);
-          if (isRecruiter === true || isRecruiter === "true") {
+          if (userTypeCond) {
             setRecruiterID(data.id);
             setIsSignedIn(false);
             setIsRecruiterAcc(true);
             setUserID(null);
-            navigate("/jobs/new");
           }
-          if (isRecruiter === false || isRecruiter === "false") {
+          if (!userTypeCond) {
             setRecruiterID(null);
             setIsSignedIn(true);
             setIsRecruiterAcc(false);
             setUserID(data.id);
-            navigate("/recruiter/register2");
           }
+        })
+        .then(() => {
+          axios.post(`${API}/${loginTable}`, loginObj).then(({data}) => {
+            setAuthToken(data.token);
+            if (userTypeCond) {
+              navigate("/jobs/new");
+            }
+            if (!userTypeCond) {
+              navigate("/recruiter/register2");
+            }
+          });
         })
         .catch((err) => console.log(err));
     } else {
