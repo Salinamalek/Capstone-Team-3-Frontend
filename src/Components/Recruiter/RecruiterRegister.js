@@ -113,7 +113,7 @@ export default function RecruiterRegister() {
       axios
         .post(`${API}/${userType}`, {
           profile: { ...newProfileForm, bio: "add a bio" },
-          login: { ...newLoginForm },
+          login: loginObj,
           skills: [],
         })
         .then(({ data }) => {
