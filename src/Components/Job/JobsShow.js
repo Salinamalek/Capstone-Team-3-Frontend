@@ -40,7 +40,7 @@ function JobsShow() {
   }
 
   const applyButtonClick =
-    !isSignedIn 
+    !isSignedIn && !isRecruiterAcc
       ? null
       : isRecruiterAcc
       ? () => recruiterView()

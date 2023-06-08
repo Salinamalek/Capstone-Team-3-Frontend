@@ -11,6 +11,7 @@ import SkillsComponent from "../Job/SkillsComponent.js";
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { convertTasks } from "../Job/Functions/JobFunctions";
+import { checkForm } from "../Job/Functions/JobFormFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { asterisk } from "../Job/Data/Icons.js"
 import { IoMdAddCircle } from "react-icons/io";
@@ -59,33 +60,6 @@ export default function NewEditJobForm({ edit }) {
     setTaskArr([...taskArr, ""]);
   }
 
-  // function checkForm(obj, stateVar) {
-  //   const { jobDetails } = obj;
-  //   // key values
-  //   const originalForm = Object.values(stateVar);
-  //   const updatedForm = Object.values(jobDetails);
-
-  //   for (let i = 0; i < updatedForm.length; i++) {
-  //     if ((i === 8 || i === 6) && originalForm[i].length !== updatedForm[i].length) {
-  //       return true;
-  //     }
-  //     if(i === 6 || i === 8){
-  //       const originalArr = originalForm[i];
-  //       const updatedArr = updatedForm[i];
-  //       const changedArr = updatedArr.every((el) =>
-  //       originalArr.includes(el)
-  //       );
-  //       if (!changedArr) {
-  //       return true;
-  //       }
-  //     }
-  //     if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
-
   function handleSubmit(e) {
     e.preventDefault();
     const obj = {
@@ -114,7 +88,7 @@ export default function NewEditJobForm({ edit }) {
   }
   //   useEffect for edit
   useEffect(() => {
-    if (edit) {
+    if (edit && isRecruiterAcc) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
@@ -145,10 +119,7 @@ export default function NewEditJobForm({ edit }) {
         })
         .catch((err) => console.log(err));
     } 
-    // else if (isRecruiterAcc) {
-    //   setAccess(true);
-    // } 
-    // else if (!isRecruiterAcc) {
+    // if (!isRecruiterAcc) {
     //   navigate("/not-found");
     // }
   }, [jobID]);
