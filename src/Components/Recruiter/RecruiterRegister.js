@@ -17,15 +17,15 @@ export default function RecruiterRegister() {
     setUserID,
   } = useRecruiterProvider();
   const [newProfileForm, setNewProfileForm] = useState({
-    ["first_name"]: "",
-    ["last_name"]: "",
+    first_name: "",
+    last_name: "",
     education: "",
     organization: "",
   });
   const [newLoginForm, setNewLoginForm] = useState({
     email: "",
     password: "",
-    ["password_two"]: "",
+    password_two: "",
     isRecruiter: "",
   });
   const [isEmailUnique, setIsEmailUnique] = useState(false);
@@ -36,12 +36,12 @@ export default function RecruiterRegister() {
       setNewLoginForm({
         email: "",
         password: "",
-        ["password_two"]: "",
+        password_two: "",
         isRecruiter: event.target.value,
       });
       setNewProfileForm({
-        ["first_name"]: "",
-        ["last_name"]: "",
+        first_name: "",
+        last_name: "",
         education: "",
         organization: "",
       });
@@ -101,10 +101,10 @@ export default function RecruiterRegister() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const { isRecruiter } = newLoginForm;
     if (isEmailUnique && passMatch() && checkPassReq(newLoginForm.password)) {
-      const loginTable =
-        isRecruiter === "true" ? "recruiters-logins" : "logins";
-      const userType = isRecruiter ? "recruiters" : "users";
+      const userType =
+        isRecruiter === true || isRecruiter === "true" ? "recruiters" : "users";
 
       axios
         .post(`${API}/${userType}`, {
@@ -112,10 +112,26 @@ export default function RecruiterRegister() {
           login: { ...newLoginForm },
           skills: [],
         })
-        .then(({ data }) => console.log(data))
+        .then(({ data }) => {
+          setAuthToken(data.token);
+          if (isRecruiter === true || isRecruiter === "true") {
+            setRecruiterID(data.id);
+            setIsSignedIn(false);
+            setIsRecruiterAcc(true);
+            setUserID(null);
+            navigate("/jobs/new");
+          }
+          if (isRecruiter === false || isRecruiter === "false") {
+            setRecruiterID(null);
+            setIsSignedIn(true);
+            setIsRecruiterAcc(false);
+            setUserID(data.id);
+            navigate("/recruiter/register2");
+          }
+        })
         .catch((err) => console.log(err));
     } else {
-      console.log(checkPassReq(newLoginForm.password));
+      // console.log(checkPassReq(newLoginForm.password));
       setShowError(true);
     }
   };

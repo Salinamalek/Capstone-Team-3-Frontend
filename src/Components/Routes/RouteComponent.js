@@ -13,6 +13,7 @@ import JobProvider from "../../Providers/JobProvider.js";
 import RecruiterProvider from "../../Providers/RecruiterProvider.js"
 import Recruiter from "../../Pages/Recruiter.js";
 import RegisterRecruiter from "../../Pages/RegisterRecruiter.js";
+import RegisterRecruiter2 from "../../Pages/RegisterRecruiter2.js"
 import LoginRecruiter from "../../Pages/LoginRecruiter.js";
 import JobForm from "../../Pages/JobForm.js";
 import JobApplicants from "../../Pages/JobApplicants.js";
@@ -42,6 +43,7 @@ function RouteComponent() {
             }
           />
           <Route path="register" element={<RegisterRecruiter />} />
+          <Route path="register2" element={<RegisterRecruiter2 />} />
           <Route path="login" element={<LoginRecruiter />} />
         </Route>
         {/* JOBS ROUTES */}
