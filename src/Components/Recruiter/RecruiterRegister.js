@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
 import checkmark from "../../Assets/checkmark.png";
-import Header from "../Job/Header.js"
+import Header from "../Job/Header.js";
 import "./RecruiterRegister.css";
 
 export default function RecruiterRegister() {
@@ -68,6 +68,16 @@ export default function RecruiterRegister() {
     }
   };
 
+  // regex check for password
+  const checkPassReq = (newPass) => {
+    const cond1 = newPass.length >= 5;
+    const cond2 =
+      /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^\&*\)\(+=._-])/g.test(
+        newPass
+      );
+    return cond1 && cond2;
+  };
+
   useEffect(() => {
     setIsEmailUnique(false);
     const { email, isRecruiter } = newLoginForm;
@@ -91,12 +101,14 @@ export default function RecruiterRegister() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (isEmailUnique && passMatch()) {
-        const loginTable = isRecruiter === "true" ? "recruiters-logins" : "logins";
-        const userType = isRecruiter === "true" ? "recruiters" : "users";
-        console.log("make double post")
-        // axios.post("")
+    if (isEmailUnique && passMatch() && checkPassReq(newLoginForm.password)) {
+      const loginTable =
+        isRecruiter === "true" ? "recruiters-logins" : "logins";
+      const userType = isRecruiter === "true" ? "recruiters" : "users";
+      console.log("make double post");
+      // axios.post("")
     } else {
+      console.log(checkPassReq(newLoginForm.password));
       setShowError(true);
     }
   };
@@ -213,6 +225,8 @@ export default function RecruiterRegister() {
               ? "Email is invalid or unavailable"
               : showError && !passMatch()
               ? "Password inputs do not match"
+              : showError && !checkPassReq(newLoginForm.password)
+              ? "Password requirements not met"
               : ""}
           </p>
           <input id="recruiter-register-submit" type="submit" value="SUBMIT" />
