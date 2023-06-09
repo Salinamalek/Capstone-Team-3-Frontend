@@ -14,7 +14,7 @@ function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
   const [recruiterID, setRecruiterID] = useState(1)
-  const [access, setAccess] = useState(false)
+  const [access, setAccess] = useState(!isSignedIn)
   const [recruiterJobs, setRecruiterJobs] = useState([])
 
   useEffect(() => {

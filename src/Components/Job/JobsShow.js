@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
+import { v4 as uuidv4 } from "uuid";
 import SkillsComponent from "./SkillsComponent";
 import Header from "./Header";
 import { convertDate, convertCities } from "./Functions/JobFunctions";
 import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
 import { GrEdit } from "react-icons/gr";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
 function JobsShow() {
@@ -22,8 +21,8 @@ function JobsShow() {
     access,
     setAccess,
     isRecruiterAcc,
-    isSignedIn,
     setIsRecruiterAcc,
+    isSignedIn,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
@@ -31,24 +30,14 @@ function JobsShow() {
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
 
-  function applyClick() {
-    applyToJob();
-  }
-  function appliedClick() {
-    navigate("/user");
-  }
-  function recruiterView() {
-    navigate(`/jobs/${jobID}/edit`);
-  }
-
   const applyButtonClick =
     !isSignedIn && !isRecruiterAcc
       ? null
       : isRecruiterAcc
-      ? () => recruiterView()
+      ? () => navigate(`/jobs/${jobID}/edit`)
       : applied
-      ? () => appliedClick()
-      : () => applyClick();
+      ? () =>  navigate("/user")
+      : () =>  applyToJob();
 
   const appliedButtonView =
     !isSignedIn && !isRecruiterAcc
@@ -77,6 +66,7 @@ function JobsShow() {
   }
 
   useEffect(() => {
+    setIsRecruiterAcc(false)
     axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
@@ -102,12 +92,6 @@ function JobsShow() {
     <div className="job-show">
       <section className="job-show-header">
         <Header header={jobDetails.title} />
-        {/* <TfiAngleLeft
-          className="job-show-back"
-          size={"25px"}
-          onClick={() => navigate(-1)}
-        />
-        <h1>{jobDetails.title}</h1> */}
         <div className="job-show-header-details">
           <span className="job-show-company">
             {jobCompany}
@@ -129,7 +113,7 @@ function JobsShow() {
           <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
-            {isRecruiterAcc && access && (
+            {!isSignedIn && isRecruiterAcc && access && (
               <GrEdit size={"25px"} color={"#ffde59"} />
             )}
           </span>
@@ -165,7 +149,7 @@ function JobsShow() {
       </section>
 
       {
-       !applied || isRecruiterAcc ? (
+       isRecruiterAcc || !applied ? (
         <button
           onClick={applyButtonClick}
           className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}

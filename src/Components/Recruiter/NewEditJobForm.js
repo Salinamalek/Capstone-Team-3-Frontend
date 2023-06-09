@@ -27,6 +27,7 @@ export default function NewEditJobForm({ edit }) {
     access,
     setAccess,
     isRecruiterAcc,
+    isSignedIn,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDropdown, setJobDropdown] = useState("");
@@ -92,7 +93,7 @@ export default function NewEditJobForm({ edit }) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
-          setRecruiterID(data["recruiter_id"]);
+          // setRecruiterID(data["recruiter_id"]);
           if (data["recruiter_id"] === recruiterID) {
             setAccess(true);
             if (data["full_remote"] === "false") {
@@ -119,10 +120,9 @@ export default function NewEditJobForm({ edit }) {
         })
         .catch((err) => console.log(err));
     } 
-    // if (!access) {
-    //   console.log(isRecruiterAcc, access)
-    //   navigate("/not-found");
-    // }
+    // if(!isRecruiterAcc){
+    //   navigate("/not-found")
+    //  }
   }, [jobID]);
 
   return (
