@@ -9,11 +9,29 @@ export function useUserProvider() {
 
 function UserProvider({ children }) {
   const navigate = useNavigate();
-  const { userID, API, axios, isSignedIn, setIsSignedIn, theme, accessRegTwo, setAccessRegTwo } = useContextProvider();
+  const {
+    userID,
+    API,
+    axios,
+    isSignedIn,
+    setIsSignedIn,
+    theme,
+    accessRegTwo,
+    setAccessRegTwo,
+    isRecruiterAcc,
+  } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
   const [editForm, setEditForm] = useState({});
   const [userSkills, setUserSkills] = useState([]);
   const [userJobs, setUserJobs] = useState([]);
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`${API}/logins/${userID}`)
+      .then(({ data }) => setEmail(data.email))
+      .catch((error) => console.log(error));
+  }, [userID]);
 
   useEffect(() => {
     if (isSignedIn) {
@@ -22,7 +40,7 @@ function UserProvider({ children }) {
         .then(({ data }) => {
           setUserProfile(data);
           setEditForm(data);
-          setUserSkills(data.skills["skill_ids"])
+          setUserSkills(data.skills["skill_ids"]);
         })
         .catch((error) => {
           console.log(error);
@@ -53,7 +71,9 @@ function UserProvider({ children }) {
         setUserSkills,
         theme,
         accessRegTwo,
-        setAccessRegTwo
+        setAccessRegTwo,
+        isRecruiterAcc,
+        email
       }}
     >
       {children}
