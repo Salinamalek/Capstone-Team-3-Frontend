@@ -35,7 +35,7 @@ function JobsShow() {
       ? null
       : isRecruiterAcc
       ? () => navigate(`/jobs/${jobID}/edit`)
-      : applied
+      : applied 
       ? () =>  navigate("/user")
       : () =>  applyToJob();
 
@@ -44,13 +44,13 @@ function JobsShow() {
       ? null
       : isRecruiterAcc && !isSignedIn
       ? "EDIT"
-      : !applied
+      : !applied && isSignedIn
       ? "APPLY"
       : "APPLIED";
 
   const appliedButtonClass = isRecruiterAcc && !isSignedIn
     ? "job-show-header-apply job-show-edit"
-    : !applied
+    : !applied && isSignedIn
     ? "job-show-header-apply"
     : "job-show-header-applied";
 
@@ -86,7 +86,7 @@ function JobsShow() {
         setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
-  }, [reload, jobID]);
+  }, [reload, jobID, applied]);
 
   return (
     <div className="job-show">
@@ -149,7 +149,7 @@ function JobsShow() {
       </section>
 
       {
-       isRecruiterAcc || !applied ? (
+       isRecruiterAcc || (isSignedIn && !applied )? (
         <button
           onClick={applyButtonClick}
           className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}

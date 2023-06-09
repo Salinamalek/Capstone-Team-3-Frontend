@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider.js";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../Job/Header.js";
-import "./RecruiterLogin.css";
+import "./Login.css";
 
-export default function () {
+export default function Login () {
   const navigate = useNavigate();
   const {
     axios,

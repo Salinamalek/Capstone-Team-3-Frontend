@@ -1,6 +1,6 @@
 import { BsFillCircleFill } from "react-icons/bs"
 
-function ScrollArrow({ direction, child, element }) {
+function ScrollArrow({ element }) {
   function homeScroll(index) {
     element.current.children[index].scrollIntoView();
   }

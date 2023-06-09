@@ -123,6 +123,7 @@ export default function Nav() {
 
           <span className="slogan">Your first tech opportunity awaits</span>
         </p>
+        
         {/* DEMO LOGIN */}
         {
           !isSignedIn && !isRecruiterAcc &&<div className="demo-login">

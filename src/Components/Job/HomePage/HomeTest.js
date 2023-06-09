@@ -20,7 +20,7 @@ function HomeTest() {
   const [textSwitch, setTextSwitch] = useState(false);
   const timeout = setInterval(() => {
     setTextSwitch(true);
-  }, 5000);
+  }, 3000);
 
   useEffect(() => {}, [textSwitch]);
 
@@ -54,10 +54,10 @@ function HomeTest() {
 
           <img className="blue-tree" src={initTree} alt="blue-tree" />
 
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
           <span className="text-scroll">LEARN MORE ABOUT inIT</span>
@@ -90,10 +90,10 @@ function HomeTest() {
         </div>
 
         <div className="home-links-div">
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
         </div>
@@ -128,10 +128,10 @@ function HomeTest() {
         <img className="search-screenshot" src={screen5} alt="searchbar" />
 
         <div className="home-links-div">
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
         </div>
@@ -144,10 +144,10 @@ function HomeTest() {
           <img src={teamStock} alt="misc" />
         </div>
 
-        <Link className="home-sign" to="/">
+        <Link className="home-sign" to="/login">
           <span>SIGN IN</span>
         </Link>
-        <Link className="home-register" to="/">
+        <Link className="home-register" to="/register">
           <span>REGISTER</span>
         </Link>
         <Link className="home-about" to="/about">

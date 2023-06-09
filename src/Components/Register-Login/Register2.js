@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useUserProvider } from "../../Providers/UserProvider.js";
 import Header from "../Job/Header.js";
 import SkillsComponent from "../Job/SkillsComponent.js";
-import "./RecruiterRegister2.css";
+import "./Register2.css";
 
-export default function RecruiterRegister2() {
+export default function Register2() {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const [updateSkills, setUpdateSkills] = useState([]);
@@ -15,7 +15,7 @@ export default function RecruiterRegister2() {
 
   useEffect(() => {
     if (!accessRegTwo) {
-      navigate("/recruiter/register");
+      navigate("/register");
     }
   }, [accessRegTwo]);
 

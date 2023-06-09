@@ -3,9 +3,9 @@ import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
 import checkmark from "../../Assets/checkmark.png";
 import Header from "../Job/Header.js";
-import "./RecruiterRegister.css";
+import "./Register.css";
 
-export default function RecruiterRegister() {
+export default function Register() {
   const navigate = useNavigate();
   const {
     API,
@@ -144,7 +144,7 @@ export default function RecruiterRegister() {
               navigate("/jobs/new");
             }
             if (!userTypeCond) {
-              navigate("/recruiter/register2");
+              navigate("/register-continue");
             }
           });
         })

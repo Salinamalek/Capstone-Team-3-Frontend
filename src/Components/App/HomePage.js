@@ -17,7 +17,7 @@ import JuniorDev from "../App/images/JuniorDev.png";
 import jobsWaiting2 from "../App/images/jobsWaiting2.png";
 import jobsWaiting from "../App/images/jobsWaiting.png";
 import "./HomePage.css";
-import Register from "../../Pages/Register";
+
 
 // import logo from "../App/scrolldown.gif";
 function HomePage() {
