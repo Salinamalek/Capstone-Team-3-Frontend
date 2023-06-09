@@ -15,6 +15,7 @@ export default function RecruiterRegister() {
     setAuthToken,
     setIsRecruiterAcc,
     setUserID,
+    setAccessRegTwo,
   } = useRecruiterProvider();
   const [newProfileForm, setNewProfileForm] = useState({
     first_name: "",
@@ -116,7 +117,13 @@ export default function RecruiterRegister() {
           login: loginObj,
           skills: [],
         })
-        .then(({ data }) => {
+        .then(({data}) => {
+          if (!userTypeCond) {
+            setAccessRegTwo(true);
+          }
+          return data
+        })
+        .then((data) => {
           if (userTypeCond) {
             setRecruiterID(data.id);
             setIsSignedIn(false);
@@ -131,7 +138,7 @@ export default function RecruiterRegister() {
           }
         })
         .then(() => {
-          axios.post(`${API}/${loginTable}`, loginObj).then(({data}) => {
+          axios.post(`${API}/${loginTable}`, loginObj).then(({ data }) => {
             setAuthToken(data.token);
             if (userTypeCond) {
               navigate("/jobs/new");

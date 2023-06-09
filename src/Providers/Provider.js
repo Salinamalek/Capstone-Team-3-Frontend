@@ -20,6 +20,7 @@ function Provider({ children }) {
   const [authToken, setAuthToken] = useState(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjE0NzE2NSwiZXhwIjoxNjg4NzM5MTY1fQ.COgsj1XNSTzl8zLUzb2_douEEWxATpRig9XMfjt2WLA"
   );
+  const [accessRegTwo, setAccessRegTwo] = useState(false)
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -45,7 +46,9 @@ function Provider({ children }) {
           isRecruiterAcc,
           setIsRecruiterAcc,
           recruiterID,
-          setRecruiterID
+          setRecruiterID,
+          accessRegTwo,
+          setAccessRegTwo
         }}
       >
         <Nav />

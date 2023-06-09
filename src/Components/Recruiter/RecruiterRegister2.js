@@ -10,7 +10,14 @@ export default function RecruiterRegister2() {
   const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({});
   const [updateSkills, setUpdateSkills] = useState([]);
-  const { API, axios, userID } = useUserProvider();
+  const { API, axios, userID, accessRegTwo, setAccessRegTwo } =
+    useUserProvider();
+
+  useEffect(() => {
+    if (!accessRegTwo) {
+      navigate("/recruiter/register");
+    }
+  }, [accessRegTwo]);
 
   useEffect(() => {
     axios
@@ -32,53 +39,69 @@ export default function RecruiterRegister2() {
     setUpdateSkills(selectedSkills);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .put(`${API}/users/${userID}`, {
+        profile: userDetails,
+        skills: updateSkills,
+      })
+      .then(() => {
+        setAccessRegTwo(false);
+        navigate("/user");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="registration-two">
-      <Header header={"Add more account details"} noBack={true} />
-      <form className="form-register-two">
-        <label htmlFor="bio">About me</label>
-        <textarea
-          id="bio"
-          maxLength={160}
-          placeholder="add a short bio"
-          onChange={handleChange}
-          value={userDetails.bio || ""}
-        />
-        <div className="register-projects">
-          <p>Portfolio Projects</p>
-          <input
-            id="project_one"
-            type="url"
-            placeholder="https://example.com"
+    accessRegTwo && (
+      <div className="registration-two">
+        <Header header={"Add more account details"} noBack={true} />
+        <form className="form-register-two" onSubmit={handleSubmit}>
+          <label htmlFor="bio">About me</label>
+          <textarea
+            id="bio"
+            maxLength={160}
+            placeholder="add a short bio"
             onChange={handleChange}
-            value={userDetails.project_one || ""}
+            value={userDetails.bio || ""}
           />
-          <input
-            id="project_two"
-            type="url"
-            placeholder="https://example.com"
-            onChange={handleChange}
-            value={userDetails.project_two || ""}
-          />
-        </div>
-        <div className="register-two-skills">
-          <p>
-            Skills & Technologies
-            <br />
-            <span>select up to 4</span>
-          </p>
-          <div className="register-skill-icons">
-            <SkillsComponent
-              key={uuidv4()}
-              checkBoxHandle={skillsHandle}
-              checkedArr={updateSkills}
-              checkbox={true}
+          <div className="register-projects">
+            <p>Portfolio Projects</p>
+            <input
+              id="project_one"
+              type="url"
+              placeholder="https://example.com"
+              onChange={handleChange}
+              value={userDetails.project_one || ""}
+            />
+            <input
+              id="project_two"
+              type="url"
+              placeholder="https://example.com"
+              onChange={handleChange}
+              value={userDetails.project_two || ""}
             />
           </div>
-        </div>
-        <input type="submit" value="SUBMIT" />
-      </form>
-      <Link to="/jobs">Skip for now</Link>
-    </div>
+          <div className="register-two-skills">
+            <p>
+              Skills & Technologies
+              <br />
+              <span>select up to 4</span>
+            </p>
+            <div className="register-skill-icons">
+              <SkillsComponent
+                key={uuidv4()}
+                checkBoxHandle={skillsHandle}
+                checkedArr={updateSkills}
+                checkbox={true}
+              />
+            </div>
+          </div>
+          <input type="submit" value="SUBMIT" />
+        </form>
+        <Link to="/jobs">skip for now</Link>
+      </div>
+    )
   );
 }

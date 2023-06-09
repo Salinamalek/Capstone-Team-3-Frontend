@@ -7,7 +7,7 @@ export function useRecruiterProvider() {
 }
 
 function RecruiterProvider({ children }) {
-  const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID, recruiterID, setRecruiterID } =
+  const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID, recruiterID, setRecruiterID, setAccessRegTwo } =
     useContextProvider();
   const [recruiterData, setRecruiterData] = useState({});
 
@@ -32,7 +32,8 @@ function RecruiterProvider({ children }) {
         setAuthToken,
         isRecruiterAcc,
         setIsRecruiterAcc,
-        setUserID
+        setUserID,
+        setAccessRegTwo
       }}
     >
       {children}

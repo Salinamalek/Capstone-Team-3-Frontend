@@ -9,7 +9,7 @@ export function useUserProvider() {
 
 function UserProvider({ children }) {
   const navigate = useNavigate();
-  const { userID, API, axios, isSignedIn, setIsSignedIn, theme } = useContextProvider();
+  const { userID, API, axios, isSignedIn, setIsSignedIn, theme, accessRegTwo, setAccessRegTwo } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
   const [editForm, setEditForm] = useState({});
   const [userSkills, setUserSkills] = useState([]);
@@ -51,7 +51,9 @@ function UserProvider({ children }) {
         setIsSignedIn,
         userSkills,
         setUserSkills,
-        theme
+        theme,
+        accessRegTwo,
+        setAccessRegTwo
       }}
     >
       {children}
