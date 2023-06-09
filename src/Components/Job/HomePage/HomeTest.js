@@ -102,13 +102,22 @@ function HomeTest() {
       </section>
       {/* THIRD SLIDE */}
       <section className="home-guide-2">
-        <div className="search-screen">
+
+      <div className="applied-screen">
+          <span>
+            Keep Track of Your Job Applications!
+            <TiArrowForward size={"30px"} />
+          </span>
+        </div>
+        <img className="applied-screenshot" src={screen3} alt="applied" />
+
+        {/* <div className="search-screen">
           <span>
             Job Search By City, Skills, and Remote Work
             <TiArrowForward className="icon-flip-down" size={"30px"} />
           </span>
         </div>
-        <img className="search-screenshot" src={screen5} alt="searchbar" />
+        <img className="search-screenshot" src={screen5} alt="searchbar" /> */}
 
         <img className="job-screenshot" src={screen4} alt="job-screen" />
         <div className="job-screen">
@@ -119,13 +128,21 @@ function HomeTest() {
           <TiArrowForward className="icon-vertical-flip" size={"30px"} />
         </div>
 
-        <div className="applied-screen">
+        <div className="search-screen">
+          <span>
+            Job Search By City, Skills, and Remote Work
+            <TiArrowForward className="icon-flip-down" size={"30px"} />
+          </span>
+        </div>
+        <img className="search-screenshot" src={screen5} alt="searchbar" />
+
+        {/* <div className="applied-screen">
           <span>
             Keep Track of Your Job Applications!
             <TiArrowForward size={"30px"} />
           </span>
         </div>
-        <img className="applied-screenshot" src={screen3} alt="applied" />
+        <img className="applied-screenshot" src={screen3} alt="applied" /> */}
 
         <div className="home-links-div">
           <Link className="home-register" to="/">

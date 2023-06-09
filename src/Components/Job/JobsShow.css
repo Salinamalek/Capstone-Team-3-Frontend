@@ -267,8 +267,7 @@
     border: var(--init-mint) 2px solid;
 }
 .dark .job-show-apply {
-    background-color: var(--init-gold);
-    border: var(--init-mint) 2px solid;
+   color: var(--init-gold);
 }
 .dark .job-show-header-apply {
     color: var(--init-blue);
