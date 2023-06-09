@@ -1,6 +1,6 @@
 .job-show {
     display: grid;
-    grid-template-rows: .8fr .25fr max-content .3fr;
+    grid-template-rows: 22vh 7vh 50vh 6vh;
     justify-items: left;
     height: 85vh;
     width: 100%;
@@ -17,13 +17,22 @@
     /* color: black; */
     display: grid;
     grid-template-columns: .12fr 1fr;
-    grid-template-rows: .2fr .2fr .2fr .1fr .1fr .2fr;
+    grid-template-rows: 2fr 1fr .5fr .5fr .5fr;
     column-gap: 2vw;
     align-items: center;
     justify-items: left;
 }
 
-.job-show-back  {
+.job-show .app-header {
+    grid-column: span 2;
+    height: 100%;
+}
+.job-show .app-header h1 {
+    font-size: 30px;
+    justify-self: left;
+    margin-left: 4vw;
+}
+/* .job-show-back  {
     grid-column: 1;
     grid-row: 1/5;
     position: relative;
@@ -38,11 +47,11 @@
     align-self: center;
     height: fit-content;
     width: 100%;
-}
+} */
 
 .job-show-header-details {
     grid-column: 2;
-    grid-row: 3/6;
+    grid-row: 2;
     width: 100%;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
@@ -77,7 +86,7 @@
     border: var(--init-gold) 1px solid;
     width: 95%;
     grid-column: 2;
-    grid-row: 5;
+    grid-row: 3;
     justify-self: center;
     margin-top: 3px;
 }
@@ -85,7 +94,7 @@
 .job-show-remote {
     color: black;
     grid-column: 2;
-    grid-row: 6;
+    grid-row: 4;
     font-size: 15px;
     font-weight: 500;
 }
@@ -96,7 +105,7 @@
 .job-show-header-apply {
     all: unset;
     grid-column: 2;
-    grid-row: 6;
+    grid-row: 4/6;
     justify-self: right;
     color: var(--init-gold);
     font-weight: 500;
@@ -140,13 +149,13 @@
     grid-template-rows: auto;
     row-gap: 10px;
     width: 94%;
-    height: 44vh;
+    height: 48vh;
     overflow-y: auto;
     overflow-x:hidden;
     justify-items: left;
     text-align: left;
     margin: 0 2vw;
-    padding: 2vh 0;
+    padding: 1vh 0;
     border-bottom: var(--init-blue) 2px solid;
     border-top: var(--init-blue) 2px solid;
 }
@@ -180,15 +189,22 @@
 }
 
 .job-show-apply {
-    width: 50%;
-    height: 60%;
-    background-color: #7cc4f5;
+    all: unset;
+    /* background-color: #7cc4f5;
     color: #040a5d;
-    font-size: 24px;
+    border: var(--init-blue) 2px solid;
     border-radius: 20px;
     justify-self: center;
-    border: var(--init-blue) 2px solid;
+    align-self: center; */
+
+    /* width: 50%;
+    height: 60%; */
     align-self: center;
+    justify-self: center;
+    font-size: 34px;
+    font-size: 600;
+    color: var(--init-blue);
+    margin-right: 2vh;
 }
 
 .job-show-apply:hover {

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
 import SkillsComponent from "./SkillsComponent";
+import Header from "./Header";
 import { convertDate, convertCities } from "./Functions/JobFunctions";
 import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
@@ -100,12 +101,13 @@ function JobsShow() {
   return (
     <div className="job-show">
       <section className="job-show-header">
-        <TfiAngleLeft
+        <Header header={jobDetails.title} />
+        {/* <TfiAngleLeft
           className="job-show-back"
           size={"25px"}
           onClick={() => navigate(-1)}
         />
-        <h1>{jobDetails.title}</h1>
+        <h1>{jobDetails.title}</h1> */}
         <div className="job-show-header-details">
           <span className="job-show-company">
             {jobCompany}
