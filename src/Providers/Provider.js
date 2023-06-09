@@ -18,7 +18,7 @@ function Provider({ children }) {
   const [recruiterID, setRecruiterID] = useState(null);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjI4ODg3MywiZXhwIjoxNjg4ODgwODczfQ.KHdqmJzmJlkPRY36hdBcJkaVbEfGyq8D9TF-XJNCAqo"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjMyOTYwMCwiZXhwIjoxNjg4OTIxNjAwfQ.xbvOYV9eWX97WghUE5YSrZRKIjJsfF6T19CWKBDfIqU"
   );
   const [accessRegTwo, setAccessRegTwo] = useState(false)
 

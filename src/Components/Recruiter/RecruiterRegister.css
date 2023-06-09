@@ -82,7 +82,7 @@
 
 .recruiter-register-error {
     grid-column: 1/3;
-    margin: 16px 0;
+    margin: 12px 0;
     height: 24px;
     color: var(--init-rust);
     text-align: center;
@@ -96,7 +96,7 @@
   background-color: var(--init-mint);
   height: 40px;
   font-size: 22px;
-  margin-top: 6px;
+  margin-top: 3px;
   color: var(--init-blue);
 }
 

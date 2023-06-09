@@ -3,7 +3,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.7fr 0.8fr auto;
+  grid-template-rows: 0.2fr 0.5fr auto;
   text-align: center;
   justify-content: center;
 }
@@ -34,10 +34,10 @@
   border-radius: 30px;
   margin-top: 10px;
   padding: 15px;
-  height: 400px;
+  height: 470px;
   width: 80%;
   background-color: #0cbdbd;
-  position: relative;
+  align-self: center;
 }
 
 .dev-socials a {
@@ -93,7 +93,7 @@
 }
 
 .dev-icons {
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 /* dark mode */

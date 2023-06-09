@@ -214,3 +214,17 @@ input:checked + .slider:before {
 .navHR {
   width: 90%;
 }
+
+
+/* DEMO CSS */
+
+.demo-login span {
+  font-size: 20px;
+  color: var(--init-background);
+}
+.demo-login .demo-label {
+  padding-left: 20px;
+  padding-right: 10px;
+  font-weight: 600;
+}
+
