@@ -14,6 +14,10 @@
   color: var(--init-background);
 }
 
+.home-scroll-up, .home-scroll-down {
+  color: var(--init-blue);
+}
+
 .home-register,
 .home-sign {
   font-size: 22px;
@@ -21,13 +25,31 @@
   position: relative;
 }
 
-.scroll-arrow {
-  position: fixed;
-  right: 10vw;
-  bottom: 6.5vh;
-  width: 20vw;
-  height: 5vh;
-  z-index: 10;
+.home-mission .home-scroll-down {
+  position: relative;
+  left: 70vw;
+  bottom: 1vh;
+}
+
+.home-scroll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4vh;
+  position:fixed;
+  right: 2vw;
+  top: 13vh;
+  z-index: 30;
+  background-color: rgba(22, 16, 16, 0.292);
+  padding: 7px 4px;
+  border-radius: 20px;
+  width: 4vw;
+  height: 17vh;
+}
+.home-scroll-container svg {
+  height: 2em;
+  width: 2em;
+  color: var(--init-blue);
 }
 
 .hidden {
@@ -266,6 +288,7 @@
 .navbar-screen {
   height: 230px;
   top: 3vh;
+  right: 4vw;
 }
 
 .profile-screen {
@@ -332,16 +355,16 @@
 .search-screen {
   width: 110px;
   height: 200px;
-  right: 2vw;
-  top: 2vh;
+  right: 3vw;
+  top: 5vh;
   line-height: 30px;
 }
 .search-screen span {
   font-size: 24px;
 }
 .search-screen svg {
-  left: 16vw;
-  bottom: 5vh;
+  left: 19vw;
+  bottom: 9vh;
 }
 .search-screenshot {
   height: 154px;
@@ -354,18 +377,18 @@
 }
 .applied-screen span {
   font-size: 25px;
-  top: 6vh;
-  left: 2vw;
+  top: 4vh;
+  left: 1vw;
 }
 .applied-screen svg {
-  left: 29vw;
-  bottom: 10vh;
+  left: 22vw;
+  bottom: 9vh;
 }
 .applied-screenshot {
   height: 130px;
   padding: 3px;
-  left: 3vw;
-  bottom: 1vh;
+  right: 4vw;
+  top: 3vh;
 }
 
 .home-guide-2 .home-links-div {
@@ -385,6 +408,7 @@
 /* Last Slide */
 
 .home-final {
+  padding-top: 1vh;
   display: grid;
   grid-template-columns: 3fr 1fr 3fr;
   grid-template-rows: 20vh auto;
@@ -414,7 +438,6 @@
   width: 120px;
   position: relative;
   background-image: url(/public/init-back-gold-tree.jpg);
-  /* background-image: url(/public/init-leaf-circuit.png); */
   background-size: cover;
   display: grid;
   justify-items: center;
@@ -426,7 +449,6 @@
   font-size: 22px;
   transform: rotate(45deg);
   text-align: center;
-  /* border: 1px solid var(--init-mint); */
   border-radius: 20px;
 }
 
