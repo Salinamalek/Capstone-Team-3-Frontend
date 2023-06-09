@@ -8,7 +8,7 @@ function ApplicantCard({obj}) {
     const { user_id, first_name, last_name, email} = obj
     
     function applicantClick() {
-        
+        setUserId(user_id)
     }
 
     return (

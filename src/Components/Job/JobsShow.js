@@ -149,7 +149,7 @@ function JobsShow() {
       </section>
 
       {
-       isRecruiterAcc || (isSignedIn && !applied )? (
+       isRecruiterAcc || (isSignedIn && !applied ) ? (
         <button
           onClick={applyButtonClick}
           className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}

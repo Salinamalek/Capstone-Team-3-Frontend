@@ -5,7 +5,6 @@
     background-color: var(--init-mint);
     height: 5vh;
     width: 100%;
-    /* color: white; */
 }
 .app-header svg {
     margin-left: 3vw;

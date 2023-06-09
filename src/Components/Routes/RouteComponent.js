@@ -5,7 +5,6 @@ import Error from "../../Pages/Error.js";
 import Home from "../../Pages/Home.js";
 import Jobs from "../../Pages/Jobs.js";
 import JobsShow from "../Job/JobsShow.js";
-import NewForm from "../../Pages/NewForm.js";
 import User from "../../Pages/User.js";
 import JobProvider from "../../Providers/JobProvider.js";
 import RecruiterProvider from "../../Providers/RecruiterProvider.js"
@@ -29,7 +28,6 @@ function RouteComponent() {
         <Route path="user">
           <Route index element={<User />} />
           <Route path="edit" element={<Edit />} />
-          <Route path="new" element={<NewForm />} />
         </Route>
         {/* RECRUITER ROUTES */}
         <Route path="recruiter">

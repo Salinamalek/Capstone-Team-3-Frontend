@@ -4,7 +4,7 @@ import logo from "../../Assets/footer-logo.png"
 import "./Footer.css";
 
 export default function Footer() {
-  const { theme, setTheme } = useContextProvider();
+  const { theme } = useContextProvider();
   return (
     <footer className={`${theme}`}>
       <Link to="/about">

@@ -1,5 +1,4 @@
 .applicant-card {
-    border: 1px solid var(--init-mint);
     border: 1px solid black;
     display: grid;
     grid-template-columns: 20% 80% ;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../App/AboutPage.css";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 import { team } from "./AboutData";
@@ -7,8 +6,8 @@ import DMphoto from "../../Assets/DMphoto.jpeg";
 import RJphoto from "../../Assets/RJphoto.png";
 import SMphoto from "../../Assets/SMphoto.jpg";
 import DJphoto from "../../Assets/DJphoto.jpg";
-
 import Header from "../Job/Header";
+import "../App/AboutPage.css";
 
 function AboutPage(props) {
   const [profileCard, setProfileCard] = useState(team["6"]);
