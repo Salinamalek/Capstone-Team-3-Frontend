@@ -6,7 +6,7 @@ import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-import { BiInfoCircle, BiCopyright, BiPlusCircle } from "react-icons/bi";
+import { BiInfoCircle} from "react-icons/bi";
 import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 
@@ -88,10 +88,6 @@ export default function Nav() {
     navbarClick()
   }
 
- 
-
-
-
   return (
     <nav>
       {!openNav ? (
@@ -145,12 +141,14 @@ export default function Nav() {
       
 
         {/* Login  */}
-        {/* {!isSignedIn && (
-          <Link to="/user" onClick={() => loginClick()}>
+        {/* {(!isSignedIn && !isRecruiterAcc) && (
+          <Link to="/login" onClick={() => navbarClick()}>
             <FiLogIn size={"30px"} color={"#0914ae"} />
             <span>Login</span>
           </Link>
         )} */}
+
+          {/* Profile */}
         {(isSignedIn || isRecruiterAcc) && (
           <Link 
           to={ isSignedIn ? "/user" : "/recruiter"} 
@@ -159,6 +157,7 @@ export default function Nav() {
             <span>Profile</span>
           </Link>
         )}
+
         {(!isSignedIn && !isRecruiterAcc) && (
           <Link to="/register" onClick={() => navbarClick()}>
             <FiUserPlus size={"30px"} color={"#0914ae"} />

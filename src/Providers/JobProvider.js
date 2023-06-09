@@ -18,7 +18,7 @@ function JobProvider({ children }) {
   const [recruiterJobs, setRecruiterJobs] = useState([])
 
   useEffect(() => {
-    setIsRecruiterAcc(true)
+    // setIsRecruiterAcc(true)
     axios
       .get(`${API}/jobs`)
       .then(({ data }) => {

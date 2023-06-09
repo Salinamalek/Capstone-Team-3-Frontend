@@ -48,7 +48,9 @@ function UserProvider({ children }) {
         });
       axios
         .get(`${API}/user-jobs/${userID}`)
-        .then(({ data }) => setUserJobs(data.reverse()))
+        .then(({ data }) => {
+          const jobsSorted = data.sort((a,b) => new Date(b.date_applied) - new Date(a.date_applied))
+          setUserJobs(jobsSorted)})
         .catch((error) => console.log(error));
     }
   }, [isSignedIn, userID]);
