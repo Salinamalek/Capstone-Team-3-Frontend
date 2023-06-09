@@ -11,8 +11,7 @@ import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 
 export default function Nav() {
-  const { theme, setTheme, isSignedIn, setIsSignedIn, API, axios, userID } =
-    useContextProvider();
+  const { setTheme, isSignedIn, setIsSignedIn } = useContextProvider();
 
   const [openNav, setOpenNav] = useState(false);
   const [isChecked, setIsChecked] = useState(

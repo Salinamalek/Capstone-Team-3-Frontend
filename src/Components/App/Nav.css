@@ -5,9 +5,7 @@ nav {
   justify-items: center;
   height: 10vh;
   width: 100%;
-  /* border-bottom: solid 2px #41cdbc; */
   border-bottom: solid 2px #0cbdbd;
-  /* darker mint^ */
 }
 
 .burger {
@@ -33,8 +31,7 @@ nav a {
 
 /* sliding nav link https://www.kirupa.com/react/smooth_sliding_menu_react_motion.htm */
 .slide-nav {
-  background-color: #0cbdbd; 
-  /* dark mint */
+  background-color: #0cbdbd;
   display: grid;
   grid-template-rows: 0.7fr repeat(5, 0.5fr) 0.3fr 0.3fr;
   align-items: center;
@@ -71,7 +68,6 @@ nav a {
   color: var(--init-gold);
 }
 .slide-nav a {
-  /* color: #41cdbc; */
   color: var(--init-blue);
   width: 70%;
 }
@@ -218,4 +214,3 @@ input:checked + .slider:before {
 .navHR {
   width: 90%;
 }
-
