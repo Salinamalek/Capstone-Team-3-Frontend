@@ -103,7 +103,7 @@ export default function UserProfile() {
           </ul>
           <br />
           <p>About me</p>
-          <p className="bio-section bold label-spacing">{userProfile.bio}</p>
+          <p className="bio-section bold label-spacing">{userProfile.bio || "add a short bio"}</p>
           <br />
           <div className="applications">
             <p className="bold">My Applications</p>
