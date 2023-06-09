@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider";
 import { Link, useNavigate } from "react-router-dom";
 import checkmark from "../../Assets/checkmark.png";
-import Header from "../Job/Header.js"
+import Header from "../Job/Header.js";
 import "./RecruiterRegister.css";
 
 export default function RecruiterRegister() {
@@ -15,6 +15,7 @@ export default function RecruiterRegister() {
     setAuthToken,
     setIsRecruiterAcc,
     setUserID,
+    setAccessRegTwo,
   } = useRecruiterProvider();
   const [newProfileForm, setNewProfileForm] = useState({
     first_name: "",
@@ -68,6 +69,16 @@ export default function RecruiterRegister() {
     }
   };
 
+  // regex check for password
+  const checkPassReq = (newPass) => {
+    const cond1 = newPass.length >= 5;
+    const cond2 =
+      /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^\&*\)\(+=._-])/g.test(
+        newPass
+      );
+    return cond1 && cond2;
+  };
+
   useEffect(() => {
     setIsEmailUnique(false);
     const { email, isRecruiter } = newLoginForm;
@@ -91,12 +102,55 @@ export default function RecruiterRegister() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (isEmailUnique && passMatch()) {
-        const loginTable = isRecruiter === "true" ? "recruiters-logins" : "logins";
-        const userType = isRecruiter === "true" ? "recruiters" : "users";
-        console.log("make double post")
-        // axios.post("")
+    const { isRecruiter } = newLoginForm;
+    if (isEmailUnique && passMatch() && checkPassReq(newLoginForm.password)) {
+      const userTypeCond = isRecruiter === "true";
+      const loginTable = userTypeCond ? "recruiters-logins" : "logins";
+      const userType = userTypeCond ? "recruiters" : "users";
+      const loginObj = userTypeCond
+        ? { ...newLoginForm }
+        : { email: newLoginForm.email, password: newLoginForm.password };
+
+      axios
+        .post(`${API}/${userType}`, {
+          profile: { ...newProfileForm },
+          login: loginObj,
+          skills: [],
+        })
+        .then(({data}) => {
+          if (!userTypeCond) {
+            setAccessRegTwo(true);
+          }
+          return data
+        })
+        .then((data) => {
+          if (userTypeCond) {
+            setRecruiterID(data.id);
+            setIsSignedIn(false);
+            setIsRecruiterAcc(true);
+            setUserID(null);
+          }
+          if (!userTypeCond) {
+            setRecruiterID(null);
+            setIsSignedIn(true);
+            setIsRecruiterAcc(false);
+            setUserID(data.id);
+          }
+        })
+        .then(() => {
+          axios.post(`${API}/${loginTable}`, loginObj).then(({ data }) => {
+            setAuthToken(data.token);
+            if (userTypeCond) {
+              navigate("/jobs/new");
+            }
+            if (!userTypeCond) {
+              navigate("/recruiter/register2");
+            }
+          });
+        })
+        .catch((err) => console.log(err));
     } else {
+      // console.log(checkPassReq(newLoginForm.password));
       setShowError(true);
     }
   };
@@ -213,6 +267,8 @@ export default function RecruiterRegister() {
               ? "Email is invalid or unavailable"
               : showError && !passMatch()
               ? "Password inputs do not match"
+              : showError && !checkPassReq(newLoginForm.password)
+              ? "Password requirements not met"
               : ""}
           </p>
           <input id="recruiter-register-submit" type="submit" value="SUBMIT" />

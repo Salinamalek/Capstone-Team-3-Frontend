@@ -9,7 +9,7 @@ import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme } =
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme, isRecruiterAcc, email } =
     useUserProvider();
   const [limit, setLimit] = useState(true);
 
@@ -67,7 +67,7 @@ export default function UserProfile() {
             </div>
             <div className="icon-edit">
               <img id="icon-user" src={userIcon} alt="user icon" />
-              <button
+              {!isRecruiterAcc && <button
                 onClick={() => navigate(`/user/edit`)}
                 className="profile-button"
               >
@@ -76,7 +76,7 @@ export default function UserProfile() {
                   src={theme === "light" ? pencilBlack : pencilGrey}
                   alt="pencil"
                 />
-              </button>
+              </button>}
             </div>
           </div>
           <br />
@@ -103,9 +103,13 @@ export default function UserProfile() {
           </ul>
           <br />
           <p>About me</p>
-          <p className="bio-section bold label-spacing">{userProfile.bio}</p>
+          <p className="bio-section bold label-spacing">{userProfile.bio || "add a short bio"}</p>
           <br />
-          <div className="applications">
+          {isRecruiterAcc && <div className="user-email">
+            Contact me here
+            <p>{email}</p>
+            </div>}
+          {!isRecruiterAcc && <div className="applications">
             <p className="bold">My Applications</p>
             <div>
               {userJobs.length > 0 && mapJobs(userJobs)}
@@ -123,7 +127,7 @@ export default function UserProfile() {
                   : "FIND JOBS"}
               </button>
             </div>
-          </div>
+          </div>}
         </div>
       )}
     </div>
