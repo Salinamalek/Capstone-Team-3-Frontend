@@ -2,11 +2,11 @@ import { useState } from "react";
 import "../App/AboutPage.css";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
-import { AiFillLinkedin } from "react-icons/ai";
 import { team } from "./AboutData";
-import userIcon from "../../Assets/USER.png";
 import DMphoto from "../../Assets/DMphoto.jpeg";
-import JPphoto from "../../Assets/JPphoto.jpg";
+import RJphoto from "../../Assets/RJphoto.png";
+import SMphoto from "../../Assets/SMphoto.jpg";
+import DJphoto from "../../Assets/DJphoto.jpg";
 
 import Header from "../Job/Header";
 
@@ -30,7 +30,7 @@ function AboutPage(props) {
         <img
           id="1"
           className="devicon"
-          src="https://avatars.githubusercontent.com/u/107226235?v=4"
+          src={DJphoto}
           onClick={(event) => aboutCard(event)}
         ></img>
         <img
@@ -42,19 +42,13 @@ function AboutPage(props) {
         <img
           id="3"
           className="devicon"
-          src="https://avatars.githubusercontent.com/u/105737474?v=4"
+          src={SMphoto}
           onClick={(event) => aboutCard(event)}
         ></img>
         <img
           id="4"
           className="devicon"
-          src="https://avatars.githubusercontent.com/u/105737822?v=4"
-          onClick={(event) => aboutCard(event)}
-        ></img>
-        <img
-          id="5"
-          className="devicon"
-          src={JPphoto}
+          src={RJphoto}
           onClick={(event) => aboutCard(event)}
         ></img>
       </div>
