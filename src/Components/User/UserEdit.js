@@ -76,7 +76,7 @@ export default function UserEdit(props) {
       {!isSignedIn ? (
         <div className="user-login-prompt">
           <h2>Login to access your user profile!</h2>
-          <button className="login-button" onClick={() => setIsSignedIn(true)}>
+          <button className="login-button" onClick={() => navigate("/login")}>
             LOGIN
           </button>
         </div>

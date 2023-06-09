@@ -40,7 +40,7 @@
   right: 2vw;
   top: 13vh;
   z-index: 30;
-  background-color: rgba(22, 16, 16, 0.292);
+  background-color: rgba(22, 16, 16, 0.497);
   padding: 7px 4px;
   border-radius: 20px;
   width: 4vw;
@@ -49,7 +49,8 @@
 .home-scroll-container svg {
   height: 2em;
   width: 2em;
-  color: var(--init-blue);
+  /* color: var(--init-blue); */
+  color: var(--init-charcoal);
 }
 
 .hidden {

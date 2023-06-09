@@ -80,7 +80,7 @@ export default function Nav() {
   }
 
   function recruiterDemo() {
-    setRecruiterID(3)
+    setRecruiterID(1)
     setIsRecruiterAcc(true)
     setIsSignedIn(false)
     setUserID(null)

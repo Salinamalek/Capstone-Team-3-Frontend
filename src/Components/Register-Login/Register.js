@@ -247,7 +247,7 @@ export default function Register() {
           />
           <p className="register-helper-text">
             Include a lowercase, uppercase, number, and special symbol. 5 char
-            lenght min
+            length min
           </p>
           <label htmlFor="password_two">
             Confirm Password<span>*</span>
