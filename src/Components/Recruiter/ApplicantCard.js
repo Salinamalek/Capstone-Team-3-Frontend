@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import { useContextProvider } from "../../Providers/Provider";
 import user from "../../Assets/USER.png"
 import "./ApplicantCard.css"
 
 function ApplicantCard({obj}) {
+    const { setUserId } = useContextProvider()
     const { user_id, first_name, last_name, email} = obj
-
+    
+    function applicantClick() {
+        
+    }
 
     return (
         <div className="applicant-card">

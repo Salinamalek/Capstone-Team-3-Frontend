@@ -2,18 +2,17 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ScrollArrow from "./ScrollArrow";
 import { TiArrowForward } from "react-icons/ti";
-import logo from "./white-logo.png";
-import scan from "./qr-code.png";
-import goldTree from "./gold-tree-2.png";
-import initTree from "./init-tree-gold.png"
-import teamStock from "./team-stock.jpg";
-import stock2 from "./init-stock(2).jpg";
-import stock3 from "./init-stock(3).jpg";
-import navScreen from "./nav-screen-3.png";
-import screen2 from "./profile-screen-copy.png";
-import screen3 from "./applied-screen.png";
-import screen4 from "./job-screen-full.png";
-import screen5 from "./filter-screen.png";
+import logo from "./Images/white-logo.png";
+import scan from "./Images/qr-code.png";
+import initTree from "./Images/init-tree-gold.png"
+import teamStock from "./Images/team-stock.jpg";
+import stock2 from "./Images/init-stock(2).jpg";
+import stock3 from "./Images/init-stock(3).jpg";
+import navScreen from "./Images/nav-screen-3.png";
+import screen2 from "./Images/profile-screen-copy.png";
+import screen3 from "./Images/applied-screen.png";
+import screen4 from "./Images/job-screen-full.png";
+import screen5 from "./Images/filter-screen.png";
 import "./HomeTest.css";
 
 function HomeTest() {
@@ -111,14 +110,6 @@ function HomeTest() {
         </div>
         <img className="applied-screenshot" src={screen3} alt="applied" />
 
-        {/* <div className="search-screen">
-          <span>
-            Job Search By City, Skills, and Remote Work
-            <TiArrowForward className="icon-flip-down" size={"30px"} />
-          </span>
-        </div>
-        <img className="search-screenshot" src={screen5} alt="searchbar" /> */}
-
         <img className="job-screenshot" src={screen4} alt="job-screen" />
         <div className="job-screen">
           <span>
@@ -135,14 +126,6 @@ function HomeTest() {
           </span>
         </div>
         <img className="search-screenshot" src={screen5} alt="searchbar" />
-
-        {/* <div className="applied-screen">
-          <span>
-            Keep Track of Your Job Applications!
-            <TiArrowForward size={"30px"} />
-          </span>
-        </div>
-        <img className="applied-screenshot" src={screen3} alt="applied" /> */}
 
         <div className="home-links-div">
           <Link className="home-register" to="/">

@@ -40,17 +40,16 @@
   right: 2vw;
   top: 13vh;
   z-index: 30;
-  background-color: #00000069;
-  padding: 7px 3px;
+  background-color: rgba(22, 16, 16, 0.292);
+  padding: 7px 4px;
   border-radius: 20px;
-  width: 3vw;
+  width: 4vw;
   height: 17vh;
 }
 .home-scroll-container svg {
   height: 2em;
   width: 2em;
   color: var(--init-blue);
-  /* color: var(--init-background); */
 }
 
 .hidden {
@@ -439,7 +438,6 @@
   width: 120px;
   position: relative;
   background-image: url(/public/init-back-gold-tree.jpg);
-  /* background-image: url(/public/init-leaf-circuit.png); */
   background-size: cover;
   display: grid;
   justify-items: center;
@@ -451,7 +449,6 @@
   font-size: 22px;
   transform: rotate(45deg);
   text-align: center;
-  /* border: 1px solid var(--init-mint); */
   border-radius: 20px;
 }
 
