@@ -27,10 +27,12 @@ function UserProvider({ children }) {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`${API}/logins/${userID}`)
-      .then(({ data }) => setEmail(data.email))
-      .catch((error) => console.log(error));
+    userID
+      ? axios
+          .get(`${API}/logins/${userID}`)
+          .then(({ data }) => setEmail(data.email))
+          .catch((error) => console.log(error))
+      : null;
   }, [userID]);
 
   useEffect(() => {
@@ -49,8 +51,11 @@ function UserProvider({ children }) {
       axios
         .get(`${API}/user-jobs/${userID}`)
         .then(({ data }) => {
-          const jobsSorted = data.sort((a,b) => new Date(b.date_applied) - new Date(a.date_applied))
-          setUserJobs(jobsSorted)})
+          const jobsSorted = data.sort(
+            (a, b) => new Date(b.date_applied) - new Date(a.date_applied)
+          );
+          setUserJobs(jobsSorted);
+        })
         .catch((error) => console.log(error));
     }
   }, [isSignedIn, userID]);
@@ -75,7 +80,7 @@ function UserProvider({ children }) {
         accessRegTwo,
         setAccessRegTwo,
         isRecruiterAcc,
-        email
+        email,
       }}
     >
       {children}

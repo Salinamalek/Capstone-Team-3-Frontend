@@ -8,7 +8,7 @@ export default function RecruiterJob ({object}) {
         <div className="recruiter-job">
             <Link to={`/jobs/${id}`} className="recruiter-job-title">{title}</Link>
             <p>{company}</p>
-            <Link className="recruiter-job-applicants" to={`/jobs/${id}/applicants`}>Applicants({users.length})</Link>
+            <Link className="recruiter-job-applicants" to={`/jobs/${id}/applicants`}>Applicants({users ? users.length : "0"})</Link>
         </div>
     )
 }

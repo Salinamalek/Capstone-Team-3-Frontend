@@ -12,23 +12,28 @@ import "./RecruiterProfile.css";
 
 export default function RecruiterProfile() {
   const navigate = useNavigate();
-  const { recruiterID, axios, API, theme, isRecruiterAcc } = useRecruiterProvider();
+  const { recruiterID, axios, API, theme, isRecruiterAcc } =
+    useRecruiterProvider();
   const [recruiterDetails, setRecruiterDetails] = useState({});
 
   useEffect(() => {
-    axios
-      .get(`${API}/recruiters/${recruiterID}`)
-      .then(({ data }) => setRecruiterDetails(data));
+    recruiterID
+      ? axios
+          .get(`${API}/recruiters/${recruiterID}`)
+          .then(({ data }) => setRecruiterDetails(data))
+          .catch((error) => console.log(error))
+      : null;
   }, [recruiterID]);
-  if(!isRecruiterAcc){
+  if (!isRecruiterAcc) {
     return (
-        <div className="user-login-prompt">
-          <h2>Login to access your recruiter profile!</h2>
-          <button className="login-button" onClick={() => navigate("/login")}>
-            LOGIN
-          </button>
-        </div>
-      )}
+      <div className="user-login-prompt">
+        <h2>Login to access your recruiter profile!</h2>
+        <button className="login-button" onClick={() => navigate("/login")}>
+          LOGIN
+        </button>
+      </div>
+    );
+  }
   return (
     recruiterDetails.id && (
       <div className="recruiter-profile">
@@ -47,7 +52,11 @@ export default function RecruiterProfile() {
         </div>
         <div className="jobs-posted-header">
           <h2>Jobs Posted</h2>
-          <img src={theme === "light" ? PlusBlue : PlusGold} alt="plus icon" onClick={() => navigate("/jobs/new")} />
+          <img
+            src={theme === "light" ? PlusBlue : PlusGold}
+            alt="plus icon"
+            onClick={() => navigate("/jobs/new")}
+          />
         </div>
         <div className="recruiter-jobs">
           {recruiterDetails.jobs_posted.length > 0 &&
@@ -55,7 +64,9 @@ export default function RecruiterProfile() {
               <RecruiterJob object={e} key={uuidv4()} />
             ))}
         </div>
-        <Link className="recruiter-profile-new-job" to="/jobs/new">POST A JOB</Link>
+        <Link className="recruiter-profile-new-job" to="/jobs/new">
+          POST A JOB
+        </Link>
       </div>
     )
   );
