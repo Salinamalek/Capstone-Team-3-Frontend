@@ -66,13 +66,17 @@ function JobsShow() {
   }
 
   useEffect(() => {
-    axios
+    if(userID){
+      axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
+        console.log(data)
         const match = data.find(({ id }) => id === +jobID);
         setApplied(match);
       })
-      .catch((err) => console.log(data));
+      .catch((err) => console.log(err));
+    }
+    
 
     axios
       .get(`${API}/jobs/${jobID}`)

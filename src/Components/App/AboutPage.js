@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid"
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 import { team } from "./AboutData";
@@ -68,7 +69,10 @@ function AboutPage(props) {
           <div className="dev-socials">
             {profileCard.links.length > 0 &&
               profileCard.links.map((el, i) => (
-                <a href={el} target="_blank">
+                <a 
+                key={uuidv4()}
+                href={el} 
+                target="_blank">
                   {iconArr[i]}
                 </a>
               ))}
