@@ -66,7 +66,6 @@ function JobsShow() {
   }
 
   useEffect(() => {
-    setIsRecruiterAcc(false)
     axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
