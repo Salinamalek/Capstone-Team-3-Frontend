@@ -22,26 +22,33 @@ function checkForm(obj, stateVar) {
     // key values
     const originalForm = Object.values(stateVar);
     const updatedForm = Object.values(jobDetails);
-
+  console.log(updatedForm, originalForm )
     for (let i = 0; i < updatedForm.length; i++) {
-      if ((i === 8 || i === 6) && originalForm[i].length !== updatedForm[i].length) {
-        return true;
+      if((i === 8) && (updatedForm[i].length < 1 || updatedForm[i].length > 5 )){
+        return false
       }
-      if(i === 6 || i === 8){
+      if( i=== 6 && updatedForm[i].length < 1){
+        return false
+      }
+      // if ((i === 8 || i === 6) && updatedForm[i].length < 1) {
+      //   return true;
+      // }
+    
+      if((i === 6 || i === 8) && (originalForm[i].length === updatedForm[i].length)){
         const originalArr = originalForm[i];
         const updatedArr = updatedForm[i];
         const changedArr = updatedArr.every((el) =>
         originalArr.includes(el)
         );
-        if (!changedArr) {
-        return true;
+        if (changedArr) {
+        return false;
         }
       }
-      if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
-        return true;
-      }
+      // if (i !== 6 && i !== 8 && updatedForm[i] !== originalForm[i]) {
+      //   return true;
+      // }
     }
-    return false;
+    return true;
   }
 
 export {

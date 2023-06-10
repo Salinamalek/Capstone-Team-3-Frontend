@@ -16,6 +16,7 @@ function TextArea({ label, formId, stateVar, setFunction, placeholder, required 
         value={stateVar[formId]}
         placeholder={placeholder}
         onChange={(event) => handleTextChange(event, stateVar, setFunction)}
+        required
       />
     </label>
   );

@@ -69,23 +69,28 @@ export default function NewEditJobForm({ edit }) {
     obj.jobDetails.tasks = taskArr;
     obj.skills = skills;
     // check for updates
+    // console.log(obj)
     const changes = checkForm(obj, originalData);
     // remote boolean to string
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
 
-    if (edit && changes) {
-      axios
-        .put(`${API}/jobs/${jobID}`, obj)
-        .then(({ data }) => navigate(`/jobs/${data.id}`))
-        .catch((err) => console.log(err));
-    } else if (edit && !changes) {
-      navigate(`/jobs/${jobID}`);
-    } else {
-      axios
-        .post(`${API}/jobs`, obj)
-        .then(({ data }) => navigate(`/jobs/${data.id}`))
-        .catch((err) => console.log(err));
+    if(changes){
+      if (edit) {
+        axios
+          .put(`${API}/jobs/${jobID}`, obj)
+          .then(({ data }) => navigate(`/jobs/${data.id}`))
+          .catch((err) => console.log(err));
+      } else if (edit && !changes) {
+        navigate(`/jobs/${jobID}`);
+      } else {
+        axios
+          .post(`${API}/jobs`, obj)
+          .then(({ data }) => navigate(`/jobs/${data.id}`))
+          .catch((err) => console.log(err));
+      }
+
     }
+   
   }
   //   useEffect for edit
   useEffect(() => {

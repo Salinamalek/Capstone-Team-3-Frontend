@@ -41,6 +41,7 @@ function TextInput({
             : handleTasks(event, taskTest, setTaskTest, index);
         }}
         onBlur={task ? () => handleTaskBlur() : null}
+        required = {!task ? true : false}
       />
       {task && (
         <HiMinusCircle
