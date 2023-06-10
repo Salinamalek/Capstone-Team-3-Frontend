@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
+import Header from "../Job/Header.js"
 import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import pencilBlack from "../../Assets/pencil-black.png";
@@ -35,7 +36,7 @@ export default function UserProfile() {
   };
 
   return (
-    <div>
+    <div className="full-user-profile">
       {userID === null && (
         <div className="user-login-prompt">
           <h2>Login to access your user profile!</h2>
@@ -44,6 +45,7 @@ export default function UserProfile() {
           </button>
         </div>
       )}
+      {isRecruiterAcc && <Header header={"Applicant Profile"} />}
       {userProfile.id && (
         <div className="profile">
           <div className="top-profile">

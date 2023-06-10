@@ -172,7 +172,7 @@ export default function Register() {
   return (
     <div className="recruiter-register">
       <Header header={"Register"} />
-      <Link to="/recruiter/login">Already have an account? Log in</Link>
+      <Link to="/login">Already have an account? Log in</Link>
       <div className="start-form">
         {newLoginForm.isRecruiter === "" && (
           <h2>Select account type to start</h2>

@@ -6,14 +6,25 @@ import { AiOutlineHome, AiOutlineClose } from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
-import { BiInfoCircle} from "react-icons/bi";
+import { BiInfoCircle } from "react-icons/bi";
 import logo from "../../Assets/LOGO.png";
 import "./Nav.css";
 
 export default function Nav() {
-  const { setTheme, isSignedIn, setIsSignedIn, setRecruiterID, setIsRecruiterAcc, setUserID, isRecruiterAcc } = useContextProvider();
+  const {
+    setTheme,
+    isSignedIn,
+    setIsSignedIn,
+    setRecruiterID,
+    setIsRecruiterAcc,
+    setUserID,
+    isRecruiterAcc,
+    navbarClick,
+    openNav,
+    setOpenNav
+  } = useContextProvider();
 
-  const [openNav, setOpenNav] = useState(false);
+  // const [openNav, setOpenNav] = useState(false);
   const [isChecked, setIsChecked] = useState(
     localStorage.getItem("theme") === "dark" ? true : false
   );
@@ -46,9 +57,9 @@ export default function Nav() {
     };
   }, [openNav]);
 
-  function navbarClick() {
-    setOpenNav(!openNav);
-  }
+  // function navbarClick() {
+  //   setOpenNav(!openNav);
+  // }
 
   function loginClick() {
     setIsSignedIn(true);
@@ -58,34 +69,32 @@ export default function Nav() {
 
   function logoutClick() {
     setIsSignedIn(false);
-    setIsRecruiterAcc(false)
+    setIsRecruiterAcc(false);
     navbarClick();
   }
 
   function profileClick() {
-    isSignedIn ?
-    navigate("/user") :
-    navigate("/recruiter")
+    isSignedIn ? navigate("/user") : navigate("/recruiter");
   }
 
   // Demo functions
 
-  function userDemo () {
-    setUserID(30)
-    setIsSignedIn(true)
-    setIsRecruiterAcc(false)
-    setRecruiterID(null)
-    navigate("/user")
-    navbarClick()
+  function userDemo() {
+    setUserID(30);
+    setIsSignedIn(true);
+    setIsRecruiterAcc(false);
+    setRecruiterID(null);
+    navigate("/user");
+    navbarClick();
   }
 
   function recruiterDemo() {
-    setRecruiterID(1)
-    setIsRecruiterAcc(true)
-    setIsSignedIn(false)
-    setUserID(null)
-    navigate("/recruiter")
-    navbarClick()
+    setRecruiterID(1);
+    setIsRecruiterAcc(true);
+    setIsSignedIn(false);
+    setUserID(null);
+    navigate("/recruiter");
+    navbarClick();
   }
 
   return (
@@ -108,7 +117,14 @@ export default function Nav() {
         />
       )}
 
-      <img src={logo} alt="logo" onClick={() => navigate("/")}/>
+      <img
+        src={logo}
+        alt="logo"
+        onClick={() => {
+          navigate("/");
+          setOpenNav(false);
+        }}
+      />
 
       {/* sliding nav bar section */}
       <aside
@@ -119,26 +135,23 @@ export default function Nav() {
 
           <span className="slogan">Your first tech opportunity awaits</span>
         </p>
-        
+
         {/* DEMO LOGIN */}
-        {
-          !isSignedIn && !isRecruiterAcc &&<div className="demo-login">
-        <FiLogIn size={"30px"} color={"#0914ae"} />
-        <span className="demo-label">
-          Login:
-        </span>
-        <Link 
-        to="/user"
-        onClick={() => userDemo() }> User
-        </Link>
-        <span>{" | "}</span>
-        <Link 
-        to ="/recruiter"
-        onClick={() => recruiterDemo() } 
-        > Recruiter
-        </Link>
-        </div>}
-      
+        {!isSignedIn && !isRecruiterAcc && (
+          <div className="demo-login">
+            <FiLogIn size={"30px"} color={"#0914ae"} />
+            <span className="demo-label">Login:</span>
+            <Link to="/user" onClick={() => userDemo()}>
+              {" "}
+              User
+            </Link>
+            <span>{" | "}</span>
+            <Link to="/recruiter" onClick={() => recruiterDemo()}>
+              {" "}
+              Recruiter
+            </Link>
+          </div>
+        )}
 
         {/* Login  */}
         {/* {(!isSignedIn && !isRecruiterAcc) && (
@@ -148,17 +161,18 @@ export default function Nav() {
           </Link>
         )} */}
 
-          {/* Profile */}
+        {/* Profile */}
         {(isSignedIn || isRecruiterAcc) && (
-          <Link 
-          to={ isSignedIn ? "/user" : "/recruiter"} 
-          onClick={() => navbarClick()}>
+          <Link
+            to={isSignedIn ? "/user" : "/recruiter"}
+            onClick={() => navbarClick()}
+          >
             <CgProfile size={"30px"} color={"#0914ae"} />
             <span>Profile</span>
           </Link>
         )}
 
-        {(!isSignedIn && !isRecruiterAcc) && (
+        {!isSignedIn && !isRecruiterAcc && (
           <Link to="/register" onClick={() => navbarClick()}>
             <FiUserPlus size={"30px"} color={"#0914ae"} />
             <span>Register</span>

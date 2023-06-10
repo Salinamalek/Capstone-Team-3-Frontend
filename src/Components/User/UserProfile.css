@@ -1,3 +1,7 @@
+.full-user-profile .app-header h1 {
+  font-size: 30px;
+}
+
 .user-login-prompt {
   text-align: center;
   padding: 80px 20px;

@@ -20,9 +20,14 @@ function Provider({ children }) {
   const [authToken, setAuthToken] = useState(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjMyOTYwMCwiZXhwIjoxNjg4OTIxNjAwfQ.xbvOYV9eWX97WghUE5YSrZRKIjJsfF6T19CWKBDfIqU"
   );
+  const [openNav, setOpenNav] = useState(false);
   const [accessRegTwo, setAccessRegTwo] = useState(false)
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  function navbarClick() {
+    setOpenNav(!openNav);
+  }
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -48,7 +53,10 @@ function Provider({ children }) {
           recruiterID,
           setRecruiterID,
           accessRegTwo,
-          setAccessRegTwo
+          setAccessRegTwo,
+          navbarClick,
+          openNav,
+          setOpenNav
         }}
       >
         <Nav />

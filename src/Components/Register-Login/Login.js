@@ -95,7 +95,7 @@ export default function Login () {
         <input id="recruiter-login-submit" type="submit" value="LOG IN" />
       </form>
       {/* <div className="recruiter-login-error">{failedLogin && "Invalid email, or password"}</div> */}
-      <Link to="/recruiter/register">Create account</Link>
+      <Link to="/register">Create account</Link>
     </div>
   );
 }
