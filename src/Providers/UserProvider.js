@@ -34,7 +34,7 @@ function UserProvider({ children }) {
   }, [userID]);
 
   useEffect(() => {
-    if (isSignedIn) {
+    if (userID !== null) {
       axios
         .get(`${API}/users/${userID}`)
         .then(({ data }) => {

@@ -108,7 +108,7 @@ export default function Nav() {
         />
       )}
 
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="logo" onClick={() => navigate("/")}/>
 
       {/* sliding nav bar section */}
       <aside
@@ -161,7 +161,7 @@ export default function Nav() {
         {(!isSignedIn && !isRecruiterAcc) && (
           <Link to="/register" onClick={() => navbarClick()}>
             <FiUserPlus size={"30px"} color={"#0914ae"} />
-            <span>Registration</span>
+            <span>Register</span>
           </Link>
         )}
 

@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContextProvider } from "../../Providers/Provider";
 import user from "../../Assets/USER.png"
 import "./ApplicantCard.css"
 
 function ApplicantCard({obj}) {
-    const { setUserId } = useContextProvider()
+    const navigate = useNavigate()
+    const { setUserID } = useContextProvider()
     const { user_id, first_name, last_name, email} = obj
     
     function applicantClick() {
-        setUserId(user_id)
+        setUserID(user_id)
+        navigate("/user")
     }
 
     return (
-        <div className="applicant-card">
+        <div className="applicant-card" onClick={()=> applicantClick()}>
             <div className="applicant-icon">
             <img src={user} alt="user-icon" />
             </div>

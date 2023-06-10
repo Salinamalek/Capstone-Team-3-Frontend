@@ -9,7 +9,7 @@ import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme, isRecruiterAcc, email } =
+  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme, isRecruiterAcc, email, userID } =
     useUserProvider();
   const [limit, setLimit] = useState(true);
 
@@ -36,7 +36,7 @@ export default function UserProfile() {
 
   return (
     <div>
-      {!isSignedIn && (
+      {userID === null && (
         <div className="user-login-prompt">
           <h2>Login to access your user profile!</h2>
           <button className="login-button" onClick={() => navigate("/login")}>

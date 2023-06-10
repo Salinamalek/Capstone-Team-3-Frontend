@@ -10,6 +10,7 @@ function RecruiterProvider({ children }) {
   const { API, axios, theme, setIsSignedIn, setAuthToken, isRecruiterAcc, setIsRecruiterAcc, setUserID, recruiterID, setRecruiterID, setAccessRegTwo } =
     useContextProvider();
   const [recruiterData, setRecruiterData] = useState({});
+  const [unlockRec, setUnlockRec] = useState(false)
 
   useEffect(() => {
     recruiterID
@@ -33,7 +34,9 @@ function RecruiterProvider({ children }) {
         isRecruiterAcc,
         setIsRecruiterAcc,
         setUserID,
-        setAccessRegTwo
+        setAccessRegTwo,
+        setUnlockRec,
+        unlockRec,
       }}
     >
       {children}

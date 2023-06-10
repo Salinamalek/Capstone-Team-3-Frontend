@@ -14,7 +14,7 @@ function Provider({ children }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isRecruiterAcc, setIsRecruiterAcc] = useState(false);
   // for the time being we will assign a fixed userID when clicking login
-  const [userID, setUserID] = useState(1);
+  const [userID, setUserID] = useState(null);
   const [recruiterID, setRecruiterID] = useState(null);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(

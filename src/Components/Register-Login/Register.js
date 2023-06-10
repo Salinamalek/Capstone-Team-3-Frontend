@@ -7,6 +7,8 @@ import "./Register.css";
 
 export default function Register() {
   const navigate = useNavigate();
+  const recCode = process.env.REACT_APP_REC_CODE;
+  const [codeInput, setCodeInput] = useState("");
   const {
     API,
     axios,
@@ -16,6 +18,8 @@ export default function Register() {
     setIsRecruiterAcc,
     setUserID,
     setAccessRegTwo,
+    setUnlockRec,
+    unlockRec,
   } = useRecruiterProvider();
   const [newProfileForm, setNewProfileForm] = useState({
     first_name: "",
@@ -31,6 +35,7 @@ export default function Register() {
   });
   const [isEmailUnique, setIsEmailUnique] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [codeError, setCodeError] = useState(false);
 
   const handleChange = (event, form) => {
     if (event.target.id === "isRecruiter") {
@@ -117,11 +122,11 @@ export default function Register() {
           login: loginObj,
           skills: [],
         })
-        .then(({data}) => {
+        .then(({ data }) => {
           if (!userTypeCond) {
             setAccessRegTwo(true);
           }
-          return data
+          return data;
         })
         .then((data) => {
           if (userTypeCond) {
@@ -155,6 +160,15 @@ export default function Register() {
     }
   };
 
+  const handleCodeSubmit = (event) => {
+    event.preventDefault();
+    if (codeInput === recCode) {
+      setUnlockRec(true);
+    } else {
+      setCodeError(true);
+    }
+  };
+
   return (
     <div className="recruiter-register">
       <Header header={"Register"} />
@@ -172,7 +186,8 @@ export default function Register() {
           <option value={true}>Recruiter</option>
         </select>
       </div>
-      {newLoginForm.isRecruiter !== "" && (
+      {(newLoginForm.isRecruiter === "false" ||
+        (newLoginForm.isRecruiter === "true" && unlockRec)) && (
         <form className="recruiter-register-form" onSubmit={handleSubmit}>
           <label htmlFor="first_name">
             First Name<span>*</span>
@@ -272,6 +287,22 @@ export default function Register() {
               : ""}
           </p>
           <input id="recruiter-register-submit" type="submit" value="SUBMIT" />
+        </form>
+      )}
+      {newLoginForm.isRecruiter === "true" && !unlockRec && (
+        <form className="recruiter-locked" onSubmit={handleCodeSubmit}>
+          <input
+            type="text"
+            placeholder="enter code"
+            value={codeInput}
+            onChange={(e) => {
+              setCodeInput(e.target.value);
+              setCodeError(false);
+            }}
+            required
+          />
+          <input type="submit" value="UNLOCK" />
+          {codeError && <p className="recruiter-code-error">ACCESS DENIED</p>}
         </form>
       )}
     </div>
