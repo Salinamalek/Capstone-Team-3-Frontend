@@ -55,7 +55,7 @@ export default function RecruiterProfile() {
               <RecruiterJob object={e} key={uuidv4()} />
             ))}
         </div>
-        <Link to="/jobs/new">POST A JOB</Link>
+        <Link className="recruiter-profile-new-job" to="/jobs/new">POST A JOB</Link>
       </div>
     )
   );

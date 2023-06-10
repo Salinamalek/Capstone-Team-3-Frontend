@@ -1,7 +1,3 @@
-.recruiter-profile {
-    font-size: 20px;
-}
-
 .recruiter-profile .app-header h1 {
     font-size: 28px;
 }
@@ -42,7 +38,7 @@
 .recruiter-jobs {
     margin: 20px 30px;
     display: grid;
-    grid-auto-rows: 64px ;
+    grid-auto-rows: 70px ;
     row-gap: 10px;
     overflow-y: scroll;
     height: 48vh;
@@ -65,7 +61,7 @@
     margin-bottom: 4px;
 }
 
-.recruiter-profile a {
+.recruiter-profile-new-job {
     justify-content: center;
     width: 100%;
     display: flex;
@@ -81,6 +77,6 @@ stroke: var(--init-background);
     border-color: var(--init-background);
 }
 
-.dark .recruiter-profile a {
+.dark .recruiter-profile-new-job {
     color: var(--init-gold);
 }
