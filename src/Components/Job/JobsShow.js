@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import { useJobProvider } from "../../Providers/JobProvider";
+import { v4 as uuidv4 } from "uuid";
 import SkillsComponent from "./SkillsComponent";
+import Header from "./Header";
 import { convertDate, convertCities } from "./Functions/JobFunctions";
 import { convertSkills } from "./Functions/SkillsFunctions";
 import { jobCompany, jobLocation, jobApplied } from "./Data/Icons";
 import { GrEdit } from "react-icons/gr";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./JobsShow.css";
 
 function JobsShow() {
@@ -17,9 +17,12 @@ function JobsShow() {
     jobID,
     userID,
     recruiterID,
+    TASK,
     access,
     setAccess,
     isRecruiterAcc,
+    setIsRecruiterAcc,
+    isSignedIn,
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
@@ -27,37 +30,27 @@ function JobsShow() {
   const [reload, setReload] = useState(false);
   const [applied, setApplied] = useState(false);
 
-  function applyClick() {
-    applyToJob();
-  }
-  function appliedClick() {
-    navigate("/user");
-  }
-  function recruiterView() {
-    navigate(`/jobs/${jobID}/edit`);
-  }
-
   const applyButtonClick =
-    !access && isRecruiterAcc
+    !isSignedIn && !isRecruiterAcc
       ? null
       : isRecruiterAcc
-      ? () => recruiterView()
-      : applied
-      ? () => appliedClick()
-      : () => applyClick();
+      ? () => navigate(`/jobs/${jobID}/edit`)
+      : applied 
+      ? () =>  navigate("/user")
+      : () =>  applyToJob();
 
   const appliedButtonView =
-    !access && isRecruiterAcc
+    !isSignedIn && !isRecruiterAcc
       ? null
-      : isRecruiterAcc
+      : isRecruiterAcc && !isSignedIn
       ? "EDIT"
-      : !applied
+      : !applied && isSignedIn
       ? "APPLY"
       : "APPLIED";
 
-  const appliedButtonClass = isRecruiterAcc
+  const appliedButtonClass = isRecruiterAcc && !isSignedIn
     ? "job-show-header-apply job-show-edit"
-    : !applied
+    : !applied && isSignedIn
     ? "job-show-header-apply"
     : "job-show-header-applied";
 
@@ -92,17 +85,12 @@ function JobsShow() {
         setSkillIdArr(convertSkills(data.skills));
       })
       .catch((err) => console.log(err));
-  }, [reload, jobID, skillIdArr.length]);
+  }, [reload, jobID, applied]);
 
   return (
     <div className="job-show">
       <section className="job-show-header">
-        <TfiAngleLeft
-          className="job-show-back"
-          size={"25px"}
-          onClick={() => navigate(-1)}
-        />
-        <h1>{jobDetails.title}</h1>
+        <Header header={jobDetails.title} />
         <div className="job-show-header-details">
           <span className="job-show-company">
             {jobCompany}
@@ -119,14 +107,19 @@ function JobsShow() {
             <span>REMOTE</span>
           </span>
         )}
-        <button onClick={applyButtonClick} className={appliedButtonClass}>
+        {
+          isSignedIn  || (isRecruiterAcc && access) ?
+          <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
-            {isRecruiterAcc && access && (
+            {!isSignedIn && isRecruiterAcc && access && (
               <GrEdit size={"25px"} color={"#ffde59"} />
             )}
           </span>
         </button>
+        :
+        null
+        }
       </section>
 
       <SkillsComponent skillsArr={skillIdArr} justList={true} />
@@ -141,7 +134,7 @@ function JobsShow() {
           <span className="job-show-label">Tasks:</span>
           <span className="job-show-role-list">
             {jobDetails.tasks &&
-              jobDetails.tasks.split("__TASKBREAK__").map((el) => {
+              jobDetails.tasks.split(`${TASK}`).map((el) => {
                 if (el) {
                   return (
                     <li key={uuidv4()}>
@@ -154,21 +147,26 @@ function JobsShow() {
         </div>
       </section>
 
-      {!applied || isRecruiterAcc ? (
+      {
+       isRecruiterAcc || (isSignedIn && !applied ) ? (
         <button
           onClick={applyButtonClick}
-          className={isRecruiterAcc && !access ? "hide" : "job-show-apply"}
+          className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
         >
           {appliedButtonView}
         </button>
-      ) : (
-        <div className="job-show-applied">
-          {jobApplied}
-          <span onClick={applyButtonClick}>
-            APPLIED ON {convertDate(applied["date_applied"])}
-          </span>
-        </div>
-      )}
+      ) : 
+        isSignedIn && applied ?
+        (
+          <div className="job-show-applied">
+            {jobApplied}
+            <span onClick={applyButtonClick}>
+              APPLIED ON {convertDate(applied["date_applied"])}
+            </span>
+          </div>
+        ) :
+          null
+      }
     </div>
   );
 }

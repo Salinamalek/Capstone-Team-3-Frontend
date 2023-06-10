@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
-import Header from "../Job/Header.js"
+import Header from "../Job/Header.js";
 import ApplicantCard from "./ApplicantCard";
 import { jobCompany, jobLocation } from "../Job/Data/Icons";
-import { TfiAngleLeft } from "react-icons/tfi";
 import "./Applicants.css";
 import { Link } from "react-router-dom";
 
@@ -27,10 +26,6 @@ export default function Applicants() {
 
   return (
     <div className="job-applicant-page">
-      {/* <section className="job-applicant-header">
-        <TfiAngleLeft onClick={() => navigate(-1)} size={"30px"} />
-        <h2>Job Applicants</h2>
-      </section> */}
       <Header header={"Job Applicants"} />
       <section className="job-applicant-job-details">
         <Link to={`/jobs/${thisJob.id}`} className="applicant-title">

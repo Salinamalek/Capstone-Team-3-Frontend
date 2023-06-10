@@ -1,6 +1,7 @@
-import userIcon from "../../Assets/USER.png";
 import DMphoto from "../../Assets/DMphoto.jpeg";
-import JPphoto from "../../Assets/JPphoto.jpg";
+import RJPhoto from "../../Assets/RJphoto.png";
+import SMPhoto from "../../Assets/SMphoto.jpg";
+import DJphoto from "../../Assets/DJphoto.jpg";
 import group from "../../Assets/group.png";
 
 export const team = {
@@ -8,8 +9,8 @@ export const team = {
     id: 1,
     name: "Destiny Joyner",
     pronoun: "She/Her",
-    img: "https://avatars.githubusercontent.com/u/107226235?v=4",
-    bio: "Born and raised in New York City, Destiny always had a flare for solving math and logic puzzles. She wants to continue expanding her coding knowledge in order to create immersive worlds inside of the virtual universe.",
+    img: DJphoto,
+    bio: "Born and raised in New York City, Destiny always had a flare for solving math and logic puzzles. She wants to continue expanding her coding knowledge in order to create immersive worlds inside of the virtual universe. Destiny worked on the back end and front end development of inIT",
     links: [
       "https://github.com/DestinyJoyner",
       "https://www.linkedin.com/in/destinyjoyner/",
@@ -32,8 +33,8 @@ export const team = {
     id: 3,
     name: "Salina Malek",
     pronoun: "She/Her",
-    img: "https://avatars.githubusercontent.com/u/105737474?v=4",
-    bio: "Salina is a Full Stack Web Development Student at Pursuit, a Google-funded 12-month intensive coding program that provides experience with JavaScript, CSS, HTML, Node, and React. She aspires to be a software engineer that positively impacts the world.",
+    img: SMPhoto,
+    bio: "Born and raised in Brooklyn, Salina is a passionate full stack web developer with a deep love for technology. With her technical skills and knowledge in full stack development, she aspires to make a positive impact on the world. She is driven by the belief that technology can be a catalyst for change and strives to use her expertise to contribute to a brighter and more inclusive future. Outside of coding, Salina loves to be immersed in the world of gaming and has a weakness to sweets.",
     links: [
       "https://github.com/Salinamalek",
       "https://www.linkedin.com/in/salina-malek/",
@@ -44,24 +45,12 @@ export const team = {
     id: 4,
     name: "Ron Johnson",
     pronoun: "He/Him",
-    img: "https://avatars.githubusercontent.com/u/105737822?v=4",
-    bio: "Lorem ipsum dolor sit amet. Rem provident illo ut reiciendis galisumeum dolores molestiae qui tempora vitae sed dolor galisum. Et earummagnam ut provident laborum et officiis asperiores ea animidignissimos aut autem reprehenderit ut quidem architecto At ametnulla.",
+    img: RJPhoto,
+    bio: "Ron John is a curious and driven full stack developer from Brooklyn with a deep love for tinkering and understanding how things work. With expertise in both front-end and back-end technologies, Ron enjoys creating seamless digital experiences and solving complex problems. Learning is his constant motivation, and he finds great fulfillment in using his skills to help others and make a positive impact in the world.",
     links: [
       "https://github.com/ronJohnPursuit",
       "https://www.linkedin.com/in/ronald-johnson-97b22830/",
       "mailto:ronjohnson@pursuit.org",
-    ],
-  },
-  5: {
-    id: 5,
-    name: "Jahaad Petty",
-    pronoun: "He/Him",
-    img: JPphoto,
-    bio: "Jahaad is a New York City native with a love for technology.",
-    links: [
-      "https://github.com/PESolut",
-      "https://www.linkedin.com/in/jahaad-petty-321066249/",
-      "mailto:jahaadpetty@pursuit.org",
     ],
   },
   6: {

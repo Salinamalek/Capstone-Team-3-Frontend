@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useRecruiterProvider } from "../../Providers/RecruiterProvider.js";
 import { Link, useNavigate } from "react-router-dom";
-import Header from "../Job/Header.js"
-import "./RecruiterLogin.css";
+import Header from "../Job/Header.js";
+import "./Login.css";
 
-export default function () {
+export default function Login () {
   const navigate = useNavigate();
   const {
     axios,
@@ -26,7 +26,7 @@ export default function () {
     if (event.target.id === "isRecruiter") {
       setLoginForm({ ...loginForm, isRecruiter: !loginForm.isRecruiter });
     } else {
-        setFailedLogin(false);
+      setFailedLogin(false);
       setLoginForm({ ...loginForm, [event.target.id]: event.target.value });
     }
   };
@@ -39,15 +39,18 @@ export default function () {
     axios
       .post(`${API}/${callRoute}`, loginForm)
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         setAuthToken(data.token);
-        setIsSignedIn(true);
         if (isRecruiter) {
           setRecruiterID(data.recruiter_id);
+          setIsSignedIn(false);
           setIsRecruiterAcc(true);
+          setUserID(null);
           navigate("/recruiter");
         } else {
           setUserID(data.user_id);
+          setRecruiterID(null);
+          setIsSignedIn(true);
           setIsRecruiterAcc(false);
           navigate("/user");
         }
@@ -62,7 +65,9 @@ export default function () {
     <div className="recruiter-login">
       {/* <h1>Log in</h1> */}
       <Header header={"Log In"} />
-      <div className="recruiter-login-error">{failedLogin && "Invalid email, or password"}</div>
+      <div className="recruiter-login-error">
+        {failedLogin && "Invalid email, or password"}
+      </div>
       <form className="recruiter-login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input

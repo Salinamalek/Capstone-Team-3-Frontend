@@ -6,15 +6,14 @@ export const JobContextData = createContext();
 export function useJobProvider() {
   return useContext(JobContextData);
 }
+const TASK = process.env.REACT_APP_TASK_BREAK
 
 function JobProvider({ children }) {
-  const { API, axios, userID, isRecruiterAcc } = useContextProvider();
+  const { API, axios, userID, isRecruiterAcc, isSignedIn, setIsRecruiterAcc, recruiterID, setRecruiterID } = useContextProvider();
   const { jobID } = useParams();
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([])
-  const [recruiterID, setRecruiterID] = useState(1)
-  const [access, setAccess] = useState(false)
-  // const [isRecruiter, setIsRecruiter] = useState(true)
+  const [access, setAccess] = useState(!isSignedIn)
   const [recruiterJobs, setRecruiterJobs] = useState([])
 
   useEffect(() => {
@@ -27,12 +26,17 @@ function JobProvider({ children }) {
       )
       .catch((error) => console.log(error));
 
-      if(recruiterID){
-        axios.get(`${API}/recruiters/${recruiterID}`)
-        .then(({data}) => setRecruiterJobs(data["jobs_posted"]))
-        .catch(err => console.log(err))
-      }
-  }, [recruiterID, jobID]);
+  }, []);
+
+  useEffect(() => {
+    if(recruiterID){
+      axios.get(`${API}/recruiters/${recruiterID}`)
+      .then(({data}) => {
+        setRecruiterJobs(data["jobs_posted"])})
+      .catch(err => console.log(err))
+    }
+  }, [recruiterID])
+
 
   return (
     <JobContextData.Provider
@@ -45,12 +49,15 @@ function JobProvider({ children }) {
         setJobs,
         searchResult,
         setSearchResult,
+        TASK,
         recruiterID,
         setRecruiterID,
         access,
         setAccess,
-       isRecruiterAcc,
+        isRecruiterAcc,
         recruiterJobs,
+        isSignedIn,
+        setIsRecruiterAcc
       }}
     >
       {children}

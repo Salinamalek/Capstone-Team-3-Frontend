@@ -5,15 +5,13 @@ import Error from "../../Pages/Error.js";
 import Home from "../../Pages/Home.js";
 import Jobs from "../../Pages/Jobs.js";
 import JobsShow from "../Job/JobsShow.js";
-import NewForm from "../../Pages/NewForm.js";
 import User from "../../Pages/User.js";
-import Login from "../../Pages/Login.js";
-import Register from "../../Pages/Register.js";
 import JobProvider from "../../Providers/JobProvider.js";
 import RecruiterProvider from "../../Providers/RecruiterProvider.js"
 import Recruiter from "../../Pages/Recruiter.js";
-import RegisterRecruiter from "../../Pages/RegisterRecruiter.js";
-import LoginRecruiter from "../../Pages/LoginRecruiter.js";
+import RegisterComponent from "../../Pages/RegisterComponent.js";
+import RegisterComponent2 from "../../Pages/RegisterComponent2.js"
+import LoginComponent from "../../Pages/LoginComponent.js";
 import JobForm from "../../Pages/JobForm.js";
 import JobApplicants from "../../Pages/JobApplicants.js";
 
@@ -23,13 +21,13 @@ function RouteComponent() {
       <Route path="/">
         <Route index element={<Home />} />
         {/* LOGIN ROUTES */}
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="login" element={<LoginComponent />} />
+        <Route path="register" element={<RegisterComponent />} />
+        <Route path="register-continue" element={<RegisterComponent2 />} />
         {/* USER ROUTES */}
         <Route path="user">
           <Route index element={<User />} />
           <Route path="edit" element={<Edit />} />
-          <Route path="new" element={<NewForm />} />
         </Route>
         {/* RECRUITER ROUTES */}
         <Route path="recruiter">
@@ -41,8 +39,6 @@ function RouteComponent() {
               </RecruiterProvider>
             }
           />
-          <Route path="register" element={<RegisterRecruiter />} />
-          <Route path="login" element={<LoginRecruiter />} />
         </Route>
         {/* JOBS ROUTES */}
         <Route path="jobs">

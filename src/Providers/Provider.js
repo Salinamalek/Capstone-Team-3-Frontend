@@ -14,11 +14,13 @@ function Provider({ children }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isRecruiterAcc, setIsRecruiterAcc] = useState(false);
   // for the time being we will assign a fixed userID when clicking login
-  const [userID, setUserID] = useState(1);
+  const [userID, setUserID] = useState(null);
+  const [recruiterID, setRecruiterID] = useState(null);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjE0NzE2NSwiZXhwIjoxNjg4NzM5MTY1fQ.COgsj1XNSTzl8zLUzb2_douEEWxATpRig9XMfjt2WLA"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjMyOTYwMCwiZXhwIjoxNjg4OTIxNjAwfQ.xbvOYV9eWX97WghUE5YSrZRKIjJsfF6T19CWKBDfIqU"
   );
+  const [accessRegTwo, setAccessRegTwo] = useState(false)
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -43,6 +45,10 @@ function Provider({ children }) {
           setTheme,
           isRecruiterAcc,
           setIsRecruiterAcc,
+          recruiterID,
+          setRecruiterID,
+          accessRegTwo,
+          setAccessRegTwo
         }}
       >
         <Nav />

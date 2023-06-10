@@ -94,6 +94,12 @@
   overflow-y: scroll;
 }
 
+.user-email p {
+  font-weight: 600 ;
+  padding-top: 3px;
+  font-size: 20px;
+}
+
 .applications {
   text-align: left;
   border-style: none;

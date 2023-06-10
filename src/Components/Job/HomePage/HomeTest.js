@@ -1,35 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { BsArrowDownCircleFill } from "react-icons/bs";
-import { TiArrowForward, TiArrowForwardOutline } from "react-icons/ti";
-import logo from "./white-logo.png";
-import scan from "./qr-code.png";
-import goldTree from "./gold-tree-2.png";
-import initTree from "./init-tree-gold.png"
-import teamStock from "./team-stock.jpg";
-import stock2 from "./init-stock(2).jpg";
-import stock3 from "./init-stock(3).jpg";
-import navScreen from "./nav-screen-3.png";
-import screen2 from "./profile-screen-copy.png";
-import screen3 from "./applied-screen.png";
-import screen4 from "./job-screen-full.png";
-import screen5 from "./filter-screen.png";
+import ScrollArrow from "./ScrollArrow";
+import { TiArrowForward } from "react-icons/ti";
+import logo from "./Images/white-logo.png";
+import scan from "./Images/qr-code.png";
+import initTree from "./Images/init-tree-gold.png"
+import teamStock from "./Images/team-stock.jpg";
+import stock2 from "./Images/init-stock(2).jpg";
+import stock3 from "./Images/init-stock(3).jpg";
+import navScreen from "./Images/nav-screen-3.png";
+import screen2 from "./Images/profile-screen-copy.png";
+import screen3 from "./Images/applied-screen.png";
+import screen4 from "./Images/job-screen-full.png";
+import screen5 from "./Images/filter-screen.png";
 import "./HomeTest.css";
 
 function HomeTest() {
+  const refElement = useRef()
   const [textSwitch, setTextSwitch] = useState(false);
   const timeout = setInterval(() => {
     setTextSwitch(true);
-  }, 5000);
+  }, 3000);
 
   useEffect(() => {}, [textSwitch]);
 
   return (
-    <div className="home">
-      {/* <span className={textSwitch ? "scroll-arrow" : "hide"}>
-        <BsArrowDownCircleFill color={"#0914AE"} size={"40px"} />
-      </span> */}
-
+    <div 
+    ref={refElement}
+    className="home">
       <section>
         <div className={textSwitch ? "hidden" : "show home-landing"}>
           <h2 className="home-italic">Welcome To</h2>
@@ -56,13 +54,17 @@ function HomeTest() {
 
           <img className="blue-tree" src={initTree} alt="blue-tree" />
 
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
           <span className="text-scroll">LEARN MORE ABOUT inIT</span>
+
+          <ScrollArrow 
+          element={refElement}
+          />
         </div>
       </section>
       {/* SECOND SLIDE */}
@@ -88,23 +90,25 @@ function HomeTest() {
         </div>
 
         <div className="home-links-div">
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
         </div>
+        
       </section>
       {/* THIRD SLIDE */}
       <section className="home-guide-2">
-        <div className="search-screen">
+
+      <div className="applied-screen">
           <span>
-            Job Search By City, Skills, and Remote Work
-            <TiArrowForward className="icon-flip-down" size={"30px"} />
+            Keep Track of Your Job Applications!
+            <TiArrowForward size={"30px"} />
           </span>
         </div>
-        <img className="search-screenshot" src={screen5} alt="searchbar" />
+        <img className="applied-screenshot" src={screen3} alt="applied" />
 
         <img className="job-screenshot" src={screen4} alt="job-screen" />
         <div className="job-screen">
@@ -115,22 +119,23 @@ function HomeTest() {
           <TiArrowForward className="icon-vertical-flip" size={"30px"} />
         </div>
 
-        <div className="applied-screen">
+        <div className="search-screen">
           <span>
-            Keep Track of Your Job Applications!
-            <TiArrowForward size={"30px"} />
+            Job Search By City, Skills, and Remote Work
+            <TiArrowForward className="icon-flip-down" size={"30px"} />
           </span>
         </div>
-        <img className="applied-screenshot" src={screen3} alt="applied" />
+        <img className="search-screenshot" src={screen5} alt="searchbar" />
 
         <div className="home-links-div">
-          <Link className="home-register" to="/">
+          <Link className="home-register" to="/register">
             REGISTER NOW
           </Link>
-          <Link className="home-sign" to="/">
+          <Link className="home-sign" to="/login">
             SIGN IN
           </Link>
         </div>
+
       </section>
       {/* LAST SLIDE */}
       <section className="home-final">
@@ -139,10 +144,10 @@ function HomeTest() {
           <img src={teamStock} alt="misc" />
         </div>
 
-        <Link className="home-sign" to="/">
+        <Link className="home-sign" to="/login">
           <span>SIGN IN</span>
         </Link>
-        <Link className="home-register" to="/">
+        <Link className="home-register" to="/register">
           <span>REGISTER</span>
         </Link>
         <Link className="home-about" to="/about">

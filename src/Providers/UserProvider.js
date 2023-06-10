@@ -9,20 +9,38 @@ export function useUserProvider() {
 
 function UserProvider({ children }) {
   const navigate = useNavigate();
-  const { userID, API, axios, isSignedIn, setIsSignedIn, theme } = useContextProvider();
+  const {
+    userID,
+    API,
+    axios,
+    isSignedIn,
+    setIsSignedIn,
+    theme,
+    accessRegTwo,
+    setAccessRegTwo,
+    isRecruiterAcc,
+  } = useContextProvider();
   const [userProfile, setUserProfile] = useState({});
   const [editForm, setEditForm] = useState({});
   const [userSkills, setUserSkills] = useState([]);
   const [userJobs, setUserJobs] = useState([]);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (isSignedIn) {
+    axios
+      .get(`${API}/logins/${userID}`)
+      .then(({ data }) => setEmail(data.email))
+      .catch((error) => console.log(error));
+  }, [userID]);
+
+  useEffect(() => {
+    if (userID !== null) {
       axios
         .get(`${API}/users/${userID}`)
         .then(({ data }) => {
           setUserProfile(data);
           setEditForm(data);
-          setUserSkills(data.skills["skill_ids"])
+          setUserSkills(data.skills["skill_ids"]);
         })
         .catch((error) => {
           console.log(error);
@@ -30,7 +48,9 @@ function UserProvider({ children }) {
         });
       axios
         .get(`${API}/user-jobs/${userID}`)
-        .then(({ data }) => setUserJobs(data.reverse()))
+        .then(({ data }) => {
+          const jobsSorted = data.sort((a,b) => new Date(b.date_applied) - new Date(a.date_applied))
+          setUserJobs(jobsSorted)})
         .catch((error) => console.log(error));
     }
   }, [isSignedIn, userID]);
@@ -51,7 +71,11 @@ function UserProvider({ children }) {
         setIsSignedIn,
         userSkills,
         setUserSkills,
-        theme
+        theme,
+        accessRegTwo,
+        setAccessRegTwo,
+        isRecruiterAcc,
+        email
       }}
     >
       {children}
