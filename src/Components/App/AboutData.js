@@ -34,7 +34,7 @@ export const team = {
     name: "Salina Malek",
     pronoun: "She/Her",
     img: SMPhoto,
-    bio: "Born and raised in Brooklyn, Salina is a passionate full stack web developer with a deep love for technology. With her technical skills and knowledge in full stack development, she aspires to make a positive impact on the world. She is driven by the belief that technology can be a catalyst for change and strives to use her expertise to contribute to a brighter and more inclusive future. Outside of coding, Salina loves to be immersed in the world of gaming and has a weakness to sweets.",
+    bio: "Born and raised in Brooklyn, Salina is a passionate full stack web developer with a deep love for technology. With her technical skills and knowledge, she aspires to make a positive impact on the world. She believes that technology can be a catalyst for change and strives to contribute to a brighter and more inclusive future.",
     links: [
       "https://github.com/Salinamalek",
       "https://www.linkedin.com/in/salina-malek/",
