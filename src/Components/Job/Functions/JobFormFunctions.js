@@ -17,18 +17,22 @@ function removeTask(stateVar, setFunction, index) {
     setFunction(remove)
 }
 
-function checkArrays(arr, compareArr) {
-  console.log(arr.length)
-  if(arr.length < 1){
+function newFormCheck(arr, arr2, dropdown) {
+  const content = arr.every(el => el)
+  const content2 = arr2.every(el => el)
+  if(arr.length < 1 || !content ){
     return false
   }
-  if(compareArr){
-    if(compareArr.length === arr.length){
-      return arr.every((el,i) => el !== compareArr[i])
-    }
+  if(arr2.length > 0 && !content2){
+    return false
   }
-  
-
+  if(!dropdown){
+    console.log("dropdown")
+    return false
+  }
+  else {
+    return true
+  }
 }
 function checkForm(obj, stateVar) {
     const { jobDetails } = obj;
@@ -69,5 +73,5 @@ export {
     handleTasks,
     removeTask,
     checkForm,
-    checkArrays,
+    newFormCheck,
 }

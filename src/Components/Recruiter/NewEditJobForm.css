@@ -240,6 +240,14 @@
   border-color: var(--init-mint);
 }
 
+.job-form-error {
+  color: var(--init-rust);
+  font-size: 20px;
+  position:relative;
+  bottom: 4vh;
+  left: 13vw;
+}
+
 /* dark mode */
 .dark .job-form-header {
   background-color: var(--init-gold);

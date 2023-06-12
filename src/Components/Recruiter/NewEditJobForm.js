@@ -11,7 +11,7 @@ import SkillsComponent from "../Job/SkillsComponent.js";
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { convertTasks } from "../Job/Functions/JobFunctions";
-import { checkForm, checkArrays } from "../Job/Functions/JobFormFunctions";
+import { checkForm, newFormCheck } from "../Job/Functions/JobFormFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { asterisk } from "../Job/Data/Icons.js"
 import { IoMdAddCircle } from "react-icons/io";
@@ -42,7 +42,7 @@ export default function NewEditJobForm({ edit }) {
     tasks: ["", ""],
     recruiter_id: recruiterID,
   });
-  let originalData = {}
+  const [formError, setFormError] = useState(null)
 
   function handleSkills(e) {
     const id = +e.target.id;
@@ -67,13 +67,10 @@ export default function NewEditJobForm({ edit }) {
       jobDetails: jobForm,
     };
     // check tasks
-    const changes = checkArrays(taskArr)
-    console.log(changes)
+    // console.log(changes)
     obj.jobDetails.tasks = taskArr;
     obj.skills = skills;
     // check for updates
-    // console.log(obj)
-    // const changes = checkForm(obj, originalData);
     // remote boolean to string
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
 
@@ -85,12 +82,20 @@ export default function NewEditJobForm({ edit }) {
     //       .catch((err) => console.log(err));
     //   } else if (edit && !changes) {
     //     navigate(`/jobs/${jobID}`);
-    //   } else {
-    //     axios
-    //       .post(`${API}/jobs`, obj)
-    //       .then(({ data }) => navigate(`/jobs/${data.id}`))
-    //       .catch((err) => console.log(err));
-    //   }
+    //   } 
+   if(!edit) {
+    const changedForm = newFormCheck(skills, taskArr.filter(el => el), jobDropdown)
+    if(changedForm){
+      axios
+          .post(`${API}/jobs`, obj)
+          .then(({ data }) => navigate(`/jobs/${data.id}`))
+          .catch((err) => console.log(err));
+    }
+    else {
+      setFormError(true)
+    }
+        
+      }
 
     // }
    
@@ -241,6 +246,12 @@ export default function NewEditJobForm({ edit }) {
           value={edit ? "SAVE" : "SUBMIT"}
         />
       </form>
+     {
+      formError &&
+      <span className="job-form-error">
+      "Form is incomplete"
+     </span>
+     }
     </div>
   );
 }
