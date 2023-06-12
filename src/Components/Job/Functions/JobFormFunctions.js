@@ -27,13 +27,46 @@ function newFormCheck(arr, arr2, dropdown) {
     return false
   }
   if(!dropdown){
-    console.log("dropdown")
     return false
   }
   else {
     return true
   }
 }
+
+function editFormCheck(originalData, editedData) {
+  for (let key in editedData){
+    if(!Array.isArray(editedData[key])){
+      if(key === "full_remote"){
+        if(originalData[key] === true && editedData[key] === "false" ){
+          console.log("boolean")
+          return true
+        }
+        if(originalData[key] === false && editedData[key === "true"]){
+          console.log("boolean")
+          return true
+        }
+      }
+      else if(originalData[key] !== editedData[key]){
+        console.log("non array change")
+        console.log(originalData[key], editedData[key], key )
+       return true
+      }
+    }
+    if(Array.isArray(editedData[key])){
+      if(originalData[key].length === editedData[key].length){
+        const check = editedData[key].every((el, i) => el === originalData[i])
+        if(!check){
+          console.log("array change", check, originalData[key], editedData[key])
+          return true
+        }
+      }
+    }
+  }
+  return false
+}
+
+
 function checkForm(obj, stateVar) {
     const { jobDetails } = obj;
     // key values
@@ -74,4 +107,5 @@ export {
     removeTask,
     checkForm,
     newFormCheck,
+    editFormCheck,
 }

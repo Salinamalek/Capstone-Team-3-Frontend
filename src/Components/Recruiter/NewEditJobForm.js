@@ -11,7 +11,7 @@ import SkillsComponent from "../Job/SkillsComponent.js";
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { convertTasks } from "../Job/Functions/JobFunctions";
-import { checkForm, newFormCheck } from "../Job/Functions/JobFormFunctions";
+import { checkForm, editFormCheck, newFormCheck } from "../Job/Functions/JobFormFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { asterisk } from "../Job/Data/Icons.js"
 import { IoMdAddCircle } from "react-icons/io";
@@ -30,6 +30,7 @@ export default function NewEditJobForm({ edit }) {
     isSignedIn,
   } = useJobProvider();
   const navigate = useNavigate();
+  const [originalData, setOriginalData] = useState({})
   const [jobDropdown, setJobDropdown] = useState("");
   const [taskArr, setTaskArr] = useState(["", ""]);
   const [skills, setSkills] = useState([]);
@@ -66,25 +67,34 @@ export default function NewEditJobForm({ edit }) {
     const obj = {
       jobDetails: jobForm,
     };
-    // check tasks
-    // console.log(changes)
-    obj.jobDetails.tasks = taskArr;
+    const taskFilter = taskArr.filter(el => el !== "")
+    obj.jobDetails.tasks = taskFilter;
     obj.skills = skills;
-    // check for updates
-    // remote boolean to string
+    // check form values
+    
+    const changedForm = newFormCheck(skills, taskFilter , jobDropdown)
+
+    // for edit
+    // const arrayCheck = newFormCheck(obj.skills, taskArr, city)
+    // const compareCheck = editFormCheck(originalData.jobDetails, obj.jobDetails )
+    // console.log(arrayCheck, compareCheck, "edit")
+    
     obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
 
-    // if(changes){
-    //   if (edit) {
-    //     axios
-    //       .put(`${API}/jobs/${jobID}`, obj)
-    //       .then(({ data }) => navigate(`/jobs/${data.id}`))
-    //       .catch((err) => console.log(err));
-    //   } else if (edit && !changes) {
-    //     navigate(`/jobs/${jobID}`);
-    //   } 
+      if (edit) {
+        console.log(obj.jobDetails, originalData)
+        const arrayCheck = newFormCheck(obj.skills, taskFilter, city)
+        const compareCheck = editFormCheck(originalData, obj.jobDetails )
+        console.log(arrayCheck, compareCheck, "edit")
+        // if(arrayCheck && !)
+        // console.log(obj.jobDetails, originalData.jobDetails)
+        // if(arrayCheck && )
+        // axios
+        //   .put(`${API}/jobs/${jobID}`, obj)
+        //   .then(({ data }) => navigate(`/jobs/${data.id}`))
+        //   .catch((err) => console.log(err));
+      } 
    if(!edit) {
-    const changedForm = newFormCheck(skills, taskArr.filter(el => el), jobDropdown)
     if(changedForm){
       axios
           .post(`${API}/jobs`, obj)
@@ -121,7 +131,7 @@ export default function NewEditJobForm({ edit }) {
               ["city"]: data.city,
               ["skills"]: convertSkills(data.skills),
             };
-            originalData = {...form}
+            setOriginalData({...form}) 
             setJobForm(form);
             setTaskArr(convertTasks(data.tasks));
             setSkills(convertSkills(data.skills));
