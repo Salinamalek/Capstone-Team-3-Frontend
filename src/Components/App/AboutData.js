@@ -1,5 +1,4 @@
 import DMphoto from "../../Assets/DMphoto.jpeg";
-import RJPhoto from "../../Assets/RJphoto.png";
 import SMPhoto from "../../Assets/SMphoto.jpg";
 import DJphoto from "../../Assets/DJphoto.jpg";
 import group from "../../Assets/group.png";
@@ -39,18 +38,6 @@ export const team = {
       "https://github.com/Salinamalek",
       "https://www.linkedin.com/in/salina-malek/",
       "mailto:salinamalek@pursuit.org",
-    ],
-  },
-  4: {
-    id: 4,
-    name: "Ron Johnson",
-    pronoun: "He/Him",
-    img: RJPhoto,
-    bio: "Ron John is a curious and driven full stack developer from Brooklyn with a deep love for tinkering and understanding how things work. With expertise in both front-end and back-end technologies, Ron enjoys creating seamless digital experiences and solving complex problems. Learning is his constant motivation, and he finds great fulfillment in using his skills to help others and make a positive impact in the world.",
-    links: [
-      "https://github.com/ronJohnPursuit",
-      "https://www.linkedin.com/in/ronald-johnson-97b22830/",
-      "mailto:ronjohnson@pursuit.org",
     ],
   },
   6: {

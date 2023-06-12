@@ -21,7 +21,7 @@ export default function Nav() {
     isRecruiterAcc,
     navbarClick,
     openNav,
-    setOpenNav
+    setOpenNav,
   } = useContextProvider();
 
   // const [openNav, setOpenNav] = useState(false);
@@ -70,6 +70,14 @@ export default function Nav() {
   function logoutClick() {
     setIsSignedIn(false);
     setIsRecruiterAcc(false);
+    setRecruiterID(null);
+    setUserID(null);
+    if(localStorage.getItem("userID")){
+      localStorage.removeItem("userID")
+    }
+    if(localStorage.getItem("recruiterID")){
+      localStorage.removeItem("recruiterID")
+    }
     navbarClick();
   }
 
@@ -81,6 +89,10 @@ export default function Nav() {
 
   function userDemo() {
     setUserID(30);
+    localStorage.setItem("userID", 30)
+    if(localStorage.getItem("recruiterID")){
+      localStorage.removeItem("recruiterID")
+    }
     setIsSignedIn(true);
     setIsRecruiterAcc(false);
     setRecruiterID(null);
@@ -90,6 +102,10 @@ export default function Nav() {
 
   function recruiterDemo() {
     setRecruiterID(1);
+    localStorage.setItem("recruiterID", 1)
+    if(localStorage.getItem("userID")){
+      localStorage.removeItem("userID")
+    }
     setIsRecruiterAcc(true);
     setIsSignedIn(false);
     setUserID(null);

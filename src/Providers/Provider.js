@@ -11,17 +11,21 @@ export function useContextProvider() {
 const API = process.env.REACT_APP_API_URL;
 
 function Provider({ children }) {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isRecruiterAcc, setIsRecruiterAcc] = useState(false);
+  const localUserID = localStorage.getItem("userID");
+  const localRecruiterID = localStorage.getItem("recruiterID");
+  const [isSignedIn, setIsSignedIn] = useState(localUserID ? true : false);
+  const [isRecruiterAcc, setIsRecruiterAcc] = useState(
+    localRecruiterID ? true : false
+  );
   // for the time being we will assign a fixed userID when clicking login
-  const [userID, setUserID] = useState(null);
-  const [recruiterID, setRecruiterID] = useState(null);
+  const [userID, setUserID] = useState(localUserID);
+  const [recruiterID, setRecruiterID] = useState(localRecruiterID);
   // authToken will be manually hardcoded for now
   const [authToken, setAuthToken] = useState(
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRtQGVtYWlsLmNvbSIsImlhdCI6MTY4NjMyOTYwMCwiZXhwIjoxNjg4OTIxNjAwfQ.xbvOYV9eWX97WghUE5YSrZRKIjJsfF6T19CWKBDfIqU"
   );
   const [openNav, setOpenNav] = useState(false);
-  const [accessRegTwo, setAccessRegTwo] = useState(false)
+  const [accessRegTwo, setAccessRegTwo] = useState(false);
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -56,7 +60,7 @@ function Provider({ children }) {
           setAccessRegTwo,
           navbarClick,
           openNav,
-          setOpenNav
+          setOpenNav,
         }}
       >
         <Nav />

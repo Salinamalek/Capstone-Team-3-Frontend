@@ -4,7 +4,6 @@ import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 import { team } from "./AboutData";
 import DMphoto from "../../Assets/DMphoto.jpeg";
-import RJphoto from "../../Assets/RJphoto.png";
 import SMphoto from "../../Assets/SMphoto.jpg";
 import DJphoto from "../../Assets/DJphoto.jpg";
 import Header from "../Job/Header";
@@ -43,12 +42,6 @@ function AboutPage(props) {
           id="3"
           className="devicon"
           src={SMphoto}
-          onClick={(event) => aboutCard(event)}
-        ></img>
-        <img
-          id="4"
-          className="devicon"
-          src={RJphoto}
           onClick={(event) => aboutCard(event)}
         ></img>
       </div>
