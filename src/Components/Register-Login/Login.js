@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../Job/Header.js";
 import "./Login.css";
 
-export default function Login () {
+export default function Login() {
   const navigate = useNavigate();
   const {
     axios,
@@ -43,12 +43,20 @@ export default function Login () {
         setAuthToken(data.token);
         if (isRecruiter) {
           setRecruiterID(data.recruiter_id);
+          localStorage.setItem("recruiterID", data.recruiter_id);
+          if (localStorage.getItem("userID")) {
+            localStorage.removeItem("userID");
+          }
           setIsSignedIn(false);
           setIsRecruiterAcc(true);
           setUserID(null);
           navigate("/recruiter");
         } else {
           setUserID(data.user_id);
+          localStorage.setItem("userID", data.user_id);
+          if (localStorage.getItem("recruiterID")) {
+            localStorage.removeItem("recruiterID");
+          }
           setRecruiterID(null);
           setIsSignedIn(true);
           setIsRecruiterAcc(false);

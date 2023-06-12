@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUserProvider } from "../../Providers/UserProvider.js";
-import Header from "../Job/Header.js"
+import Header from "../Job/Header.js";
 import SkillsComponent from "../Job/SkillsComponent.js";
 import userIcon from "../../Assets/USER.png";
 import pencilBlack from "../../Assets/pencil-black.png";
@@ -10,9 +10,23 @@ import "./UserProfile.css";
 
 export default function UserProfile() {
   const navigate = useNavigate();
-  const { userProfile, userJobs, isSignedIn, setIsSignedIn, theme, isRecruiterAcc, email, userID } =
-    useUserProvider();
+  const {
+    userProfile,
+    userJobs,
+    isSignedIn,
+    setIsSignedIn,
+    theme,
+    isRecruiterAcc,
+    email,
+    userID,
+  } = useUserProvider();
   const [limit, setLimit] = useState(true);
+
+  useEffect(() => {
+    if (isRecruiterAcc && !userID) {
+      navigate("/recruiter");
+    }
+  }, []);
 
   const dateFormat = (date) => {
     const newDate = date.split("T")[0].split("-");
@@ -69,16 +83,18 @@ export default function UserProfile() {
             </div>
             <div className="icon-edit">
               <img id="icon-user" src={userIcon} alt="user icon" />
-              {!isRecruiterAcc && <button
-                onClick={() => navigate(`/user/edit`)}
-                className="profile-button"
-              >
-                EDIT{" "}
-                <img
-                  src={theme === "light" ? pencilBlack : pencilGrey}
-                  alt="pencil"
-                />
-              </button>}
+              {!isRecruiterAcc && (
+                <button
+                  onClick={() => navigate(`/user/edit`)}
+                  className="profile-button"
+                >
+                  EDIT{" "}
+                  <img
+                    src={theme === "light" ? pencilBlack : pencilGrey}
+                    alt="pencil"
+                  />
+                </button>
+              )}
             </div>
           </div>
           <br />
@@ -105,31 +121,37 @@ export default function UserProfile() {
           </ul>
           <br />
           <p>About me</p>
-          <p className="bio-section bold label-spacing">{userProfile.bio || "add a short bio"}</p>
+          <p className="bio-section bold label-spacing">
+            {userProfile.bio || "add a short bio"}
+          </p>
           <br />
-          {isRecruiterAcc && <div className="user-email">
-            Contact me here
-            <p>{email}</p>
-            </div>}
-          {!isRecruiterAcc && <div className="applications">
-            <p className="bold">My Applications</p>
-            <div>
-              {userJobs.length > 0 && mapJobs(userJobs)}
-              <br />
-              <button
-                id="activity-button"
-                onClick={() =>
-                  userJobs.length === 0 ? navigate("/jobs") : setLimit(!limit)
-                }
-              >
-                {userJobs.length > 0
-                  ? limit
-                    ? "VIEW ALL"
-                    : "HIDE"
-                  : "FIND JOBS"}
-              </button>
+          {isRecruiterAcc && (
+            <div className="user-email">
+              Contact me here
+              <p>{email}</p>
             </div>
-          </div>}
+          )}
+          {!isRecruiterAcc && (
+            <div className="applications">
+              <p className="bold">My Applications</p>
+              <div>
+                {userJobs.length > 0 && mapJobs(userJobs)}
+                <br />
+                <button
+                  id="activity-button"
+                  onClick={() =>
+                    userJobs.length === 0 ? navigate("/jobs") : setLimit(!limit)
+                  }
+                >
+                  {userJobs.length > 0
+                    ? limit
+                      ? "VIEW ALL"
+                      : "HIDE"
+                    : "FIND JOBS"}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
