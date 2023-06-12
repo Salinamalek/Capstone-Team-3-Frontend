@@ -17,6 +17,19 @@ function removeTask(stateVar, setFunction, index) {
     setFunction(remove)
 }
 
+function checkArrays(arr, compareArr) {
+  console.log(arr.length)
+  if(arr.length < 1){
+    return false
+  }
+  if(compareArr){
+    if(compareArr.length === arr.length){
+      return arr.every((el,i) => el !== compareArr[i])
+    }
+  }
+  
+
+}
 function checkForm(obj, stateVar) {
     const { jobDetails } = obj;
     // key values
@@ -56,4 +69,5 @@ export {
     handleTasks,
     removeTask,
     checkForm,
+    checkArrays,
 }
