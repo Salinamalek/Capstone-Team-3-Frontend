@@ -9,12 +9,15 @@ import "./Applicants.css";
 import { Link } from "react-router-dom";
 
 export default function Applicants() {
-  const { recruiterJobs, recruiterID, access, jobID } = useJobProvider();
+  const { recruiterJobs, recruiterID, access, jobID, isSignedIn, isRecruiterAcc } = useJobProvider();
   const navigate = useNavigate();
   const [applicants, setApplicants] = useState([]);
   const [thisJob, setThisJob] = useState({});
 
   useEffect(() => {
+    if(isSignedIn || !isRecruiterAcc){
+      navigate("/not-found")
+    }
     const filter = recruiterJobs.find(({ id }) => id === +jobID);
     if (filter) {
       setThisJob(filter);

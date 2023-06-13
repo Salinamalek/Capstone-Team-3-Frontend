@@ -173,7 +173,7 @@ export default function NewEditJobForm({ edit }) {
         })
         .catch((err) => console.log(err));
     }
-    if (isSignedIn) {
+    if (isSignedIn || !isRecruiterAcc) {
       navigate("/not-found");
     }
   }, []);
