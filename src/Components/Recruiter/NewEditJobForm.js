@@ -27,11 +27,11 @@ export default function NewEditJobForm({ edit }) {
     axios,
     jobID,
     recruiterID,
-    setRecruiterID,
     access,
     setAccess,
     isRecruiterAcc,
     isSignedIn,
+    originalJobData,
   } = useJobProvider();
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState({});
@@ -113,16 +113,10 @@ export default function NewEditJobForm({ edit }) {
   }
   //   useEffect for edit
   useEffect(() => {
-    if (isRecruiterAcc) {
-      setAccess(true);
-    }
     if (edit) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
-          // setRecruiterID(data["recruiter_id"]);
-          if (data["recruiter_id"] === recruiterID) {
-            setAccess(true);
             if (data["full_remote"] === "false") {
               data["full_remote"] = false;
             }
@@ -140,20 +134,14 @@ export default function NewEditJobForm({ edit }) {
             setTaskArr(convertTasks(data.tasks));
             setSkills(convertSkills(data.skills));
             setJobDropdown(data.city);
-          } else {
-            setAccess(false);
-            navigate("/not-found");
-          }
+          
         })
         .catch((err) => console.log(err));
     }
-    if (!isRecruiterAcc) {
-      navigate("/not-found");
-    }
-  }, [jobID]);
+  }, []);
 
   return (
-    access && (
+  ( (isRecruiterAcc && !edit) || access ) && (
       <div className="job-form-page">
         <Header header={edit ? "Edit Post" : "New Job"} />
 
