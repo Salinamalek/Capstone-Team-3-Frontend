@@ -43,7 +43,7 @@ function RouteComponent() {
         {/* JOBS ROUTES */}
         <Route path="jobs">
           <Route index element={<Jobs />} />
-          <Route path="new" element={<JobForm />} />
+          <Route path="new" element={<JobForm edit = {false} />} />
           <Route path=":jobID">
             <Route
               index

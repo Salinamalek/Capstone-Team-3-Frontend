@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
 import Header from "../Job/Header.js";
 import ApplicantCard from "./ApplicantCard";
 import { jobCompany, jobLocation } from "../Job/Data/Icons";
 import "./Applicants.css";
-import { Link } from "react-router-dom";
 
 export default function Applicants() {
-  const { recruiterJobs, recruiterID, access, jobID } = useJobProvider();
+  const { recruiterJobs, recruiterID, showAccess, setShowAccess, jobID, isSignedIn, isRecruiterAcc } = useJobProvider();
   const navigate = useNavigate();
   const [applicants, setApplicants] = useState([]);
   const [thisJob, setThisJob] = useState({});
@@ -22,10 +21,14 @@ export default function Applicants() {
     if (filter && filter.users) {
       setApplicants(filter.users);
     }
+    if(isSignedIn || !showAccess || !isRecruiterAcc ){
+      navigate("/not-found")
+    }
   }, [jobID, recruiterJobs.length]);
 
   return (
-    <div className="job-applicant-page">
+    showAccess &&
+      <div className="job-applicant-page">
       <Header header={"Job Applicants"} />
       <section className="job-applicant-job-details">
         <Link to={`/jobs/${thisJob.id}`} className="applicant-title">
@@ -59,5 +62,7 @@ export default function Applicants() {
         VIEW JOB DETAILS
       </Link>
     </div>
+    
+    
   );
 }

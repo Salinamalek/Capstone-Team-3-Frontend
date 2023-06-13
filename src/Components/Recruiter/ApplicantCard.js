@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContextProvider } from "../../Providers/Provider";
 import user from "../../Assets/USER.png"
 import "./ApplicantCard.css"

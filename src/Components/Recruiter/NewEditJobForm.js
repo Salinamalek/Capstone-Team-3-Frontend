@@ -11,11 +11,6 @@ import SkillsComponent from "../Job/SkillsComponent.js";
 import { dropdownCities } from "../Job/Data/Cities";
 import { handleSearchBar } from "../Job/Functions/SearchBarFunctions";
 import { convertTasks } from "../Job/Functions/JobFunctions";
-import {
-  checkForm,
-  editFormCheck,
-  newFormCheck,
-} from "../Job/Functions/JobFormFunctions";
 import { convertSkills } from "../Job/Functions/SkillsFunctions";
 import { asterisk } from "../Job/Data/Icons.js";
 import { IoMdAddCircle } from "react-icons/io";
@@ -27,9 +22,7 @@ export default function NewEditJobForm({ edit }) {
     axios,
     jobID,
     recruiterID,
-    setRecruiterID,
-    access,
-    setAccess,
+    editAccess,
     isRecruiterAcc,
     isSignedIn,
   } = useJobProvider();
@@ -38,6 +31,7 @@ export default function NewEditJobForm({ edit }) {
   const [jobDropdown, setJobDropdown] = useState("");
   const [taskArr, setTaskArr] = useState(["", ""]);
   const [skills, setSkills] = useState([]);
+  const [formError, setFormError] = useState(null);
   const [jobForm, setJobForm] = useState({
     title: "",
     company: "",
@@ -47,7 +41,6 @@ export default function NewEditJobForm({ edit }) {
     tasks: ["", ""],
     recruiter_id: recruiterID,
   });
-  const [formError, setFormError] = useState(null);
 
   function handleSkills(e) {
     const id = +e.target.id;
@@ -68,92 +61,125 @@ export default function NewEditJobForm({ edit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    // check values
+    const taskFilter = taskArr.filter((el) => el !== "");
     const obj = {
       jobDetails: jobForm,
+      skills: skills,
     };
-    const taskFilter = taskArr.filter((el) => el !== "");
     obj.jobDetails.tasks = taskFilter;
-    obj.skills = skills;
-    // check form values
+    if (skills.length < 1 || taskFilter < 1 || !jobForm.city) {
+      setFormError(true);
+    } else {
+      if (edit) {
+        let checkSkill = null;
+        let checkTask = null;
+        let checkStr = null;
+        if (
+          skills.length === originalData.skills.length ||
+          taskFilter.length === originalData.tasks
+        ) {
+          if (skills.length === originalData.skills.length) {
+            checkSkill = skills.every((el, i) => el === originalData.skills[i]);
+          }
+          if (taskFilter.length === originalData.tasks.length) {
+            checkTask = taskFilter.every(
+              (el, i) => el === originalData.tasks[i]
+            );
+          }
+        }
+        if (checkSkill && checkTask) {
+          const originalValues = Object.entries(originalData)
+            .filter(([key, value]) => {
+              if (
+                key !== "skills" &&
+                key !== "tasks" &&
+                key !== "id" &&
+                key !== "recruiter_id"
+              ) {
+                return value;
+              }
+            })
+            .map((arr) => arr[1]);
 
-    const changedForm = newFormCheck(skills, taskFilter, jobDropdown);
-
-    // for edit
-    // const arrayCheck = newFormCheck(obj.skills, taskArr, city)
-    // const compareCheck = editFormCheck(originalData.jobDetails, obj.jobDetails )
-    // console.log(arrayCheck, compareCheck, "edit")
-
-    obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
-
-    if (edit) {
-      console.log(obj.jobDetails, originalData);
-      const arrayCheck = newFormCheck(obj.skills, taskFilter, city);
-      const compareCheck = editFormCheck(originalData, obj.jobDetails);
-      console.log(arrayCheck, compareCheck, "edit");
-      // if(arrayCheck && !)
-      // console.log(obj.jobDetails, originalData.jobDetails)
-      // if(arrayCheck && )
-      // axios
-      //   .put(`${API}/jobs/${jobID}`, obj)
-      //   .then(({ data }) => navigate(`/jobs/${data.id}`))
-      //   .catch((err) => console.log(err));
-    }
-    if (!edit) {
-      if (changedForm) {
+          const editValues = Object.entries(jobForm)
+            .filter(([key, value]) => {
+              if (
+                key !== "skills" &&
+                key !== "tasks" &&
+                key !== "id" &&
+                key !== "recruiter_id"
+              ) {
+                return value;
+              }
+            })
+            .map((arr) => arr[1]);
+            if(editValues.length !== originalValues.length){
+              checkStr = false
+            }
+            else {
+              checkStr = editValues.every((el, i) => el === originalValues[i]);
+            } 
+        }
+        if (checkSkill && checkTask && checkStr) {
+          navigate(`/jobs/${jobID}`);
+        } else {
+          obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
+          setFormError(false);
+          axios
+            .put(`${API}/jobs/${jobID}`, obj)
+            .then(({ data }) => navigate(`/jobs/${data.id}`))
+            .catch((err) => console.log(err));
+        }
+      }
+      if (!edit) {
+        setFormError(false);
+        obj.jobDetails.full_remote = `${obj.jobDetails.full_remote}`;
         axios
           .post(`${API}/jobs`, obj)
           .then(({ data }) => navigate(`/jobs/${data.id}`))
           .catch((err) => console.log(err));
-      } else {
-        setFormError(true);
       }
     }
-
-    // }
   }
+
+  // remove error
+  useEffect(() => {
+    setFormError(false);
+  }, [jobForm]);
   //   useEffect for edit
   useEffect(() => {
-    if (isRecruiterAcc) {
-      setAccess(true);
-    }
     if (edit) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
-          // setRecruiterID(data["recruiter_id"]);
-          if (data["recruiter_id"] === recruiterID) {
-            setAccess(true);
-            if (data["full_remote"] === "false") {
-              data["full_remote"] = false;
-            }
-            if (data["full_remote"] === "true") {
-              data["full_remote"] = true;
-            }
-            const form = {
-              ...data,
-              ["tasks"]: convertTasks(data.tasks),
-              ["city"]: data.city,
-              ["skills"]: convertSkills(data.skills),
-            };
-            setOriginalData({ ...form });
-            setJobForm(form);
-            setTaskArr(convertTasks(data.tasks));
-            setSkills(convertSkills(data.skills));
-            setJobDropdown(data.city);
-          } else {
-            setAccess(false);
-            navigate("/not-found");
+          if (data["full_remote"] === "false") {
+            data["full_remote"] = false;
           }
+          if (data["full_remote"] === "true") {
+            data["full_remote"] = true;
+          }
+          const form = {
+            ...data,
+            ["tasks"]: convertTasks(data.tasks),
+            ["city"]: data.city,
+            ["skills"]: convertSkills(data.skills),
+          };
+          setOriginalData({ ...form });
+          setJobForm(form);
+          setTaskArr(convertTasks(data.tasks));
+          setSkills(convertSkills(data.skills));
+          setJobDropdown(data.city);
         })
         .catch((err) => console.log(err));
     }
-    if (!isRecruiterAcc) {
+    if (isSignedIn || !isRecruiterAcc) {
       navigate("/not-found");
     }
-  }, [jobID]);
+  }, []);
 
   return (
-    access && (
+    ((isRecruiterAcc && !edit) || editAccess) && (
       <div className="job-form-page">
         <Header header={edit ? "Edit Post" : "New Job"} />
 
@@ -232,6 +258,9 @@ export default function NewEditJobForm({ edit }) {
               ))}
             </div>
             <section className="task-header">
+              <span className="task-req">
+                Min. 1 Job Task req. 
+              </span>
               <span onClick={(event) => taskButton(event)}>
                 Click to Add A Task
               </span>
