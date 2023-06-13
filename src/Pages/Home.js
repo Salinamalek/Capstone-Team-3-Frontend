@@ -1,8 +1,8 @@
-import HomeTest from "../Components/Job/HomePage/HomeTest";
+import HomePage from "../Components/Job/HomePage/HomePage";
 
 function Home() {
     return (
-        <HomeTest />
+        <HomePage />
     );
 }
 

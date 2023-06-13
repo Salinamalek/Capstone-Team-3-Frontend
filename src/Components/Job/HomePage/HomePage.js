@@ -13,9 +13,9 @@ import screen2 from "./Images/profile-screen-copy.png";
 import screen3 from "./Images/applied-screen.png";
 import screen4 from "./Images/job-screen-full.png";
 import screen5 from "./Images/filter-screen.png";
-import "./HomeTest.css";
+import "./HomePage.css";
 
-function HomeTest() {
+function HomePage() {
   const refElement = useRef()
   const [textSwitch, setTextSwitch] = useState(false);
   const timeout = setInterval(() => {
@@ -55,7 +55,7 @@ function HomeTest() {
           <img className="blue-tree" src={initTree} alt="blue-tree" />
 
           <Link className="home-sign" to="/login">
-            SIGN IN
+            LOG IN
           </Link>
           <Link className="home-register" to="/register">
             REGISTER NOW
@@ -94,7 +94,7 @@ function HomeTest() {
             REGISTER NOW
           </Link>
           <Link className="home-sign" to="/login">
-            SIGN IN
+          LOG IN
           </Link>
         </div>
         
@@ -132,7 +132,7 @@ function HomeTest() {
             REGISTER NOW
           </Link>
           <Link className="home-sign" to="/login">
-            SIGN IN
+            LOG IN
           </Link>
         </div>
 
@@ -145,7 +145,7 @@ function HomeTest() {
         </div>
 
         <Link className="home-sign" to="/login">
-          <span>SIGN IN</span>
+          <span>LOG IN</span>
         </Link>
         <Link className="home-register" to="/register">
           <span>REGISTER</span>
@@ -160,4 +160,4 @@ function HomeTest() {
   );
 }
 
-export default HomeTest;
+export default HomePage;
