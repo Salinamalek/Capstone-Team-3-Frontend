@@ -9,7 +9,7 @@ export const team = {
     name: "Destiny Joyner",
     pronoun: "She/Her",
     img: DJphoto,
-    bio: "Born and raised in New York City, Destiny always had a flare for solving math and logic puzzles. She wants to continue expanding her coding knowledge in order to create immersive worlds inside of the virtual universe. Destiny worked on the back end and front end development of inIT",
+    bio: "Born and raised in New York City, Destiny always had a flare for solving math and logic puzzles. She wants to expand her coding knowledge aiming to build immersive worlds inside of the virtual universe. Destiny worked on the back end and front end development of inIT",
     links: [
       "https://github.com/DestinyJoyner",
       "https://www.linkedin.com/in/destinyjoyner/",
