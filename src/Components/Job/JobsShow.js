@@ -16,14 +16,9 @@ function JobsShow() {
     axios,
     jobID,
     userID,
-    recruiterID,
     TASK,
-    access,
-    setAccess,
     isRecruiterAcc,
-    setIsRecruiterAcc,
     isSignedIn,
-    showAccess,
     editAccess
   } = useJobProvider();
   const navigate = useNavigate();

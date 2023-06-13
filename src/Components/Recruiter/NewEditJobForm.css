@@ -138,15 +138,21 @@
 .task-header {
   font-size: 16px;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 40% 50% 10%;
   width: 100%;
   margin-right: 1vw;
   padding-top: 2px;
 }
-.task-header span {
+.task-header span:nth-child(2) {
   justify-self: right;
   margin-right: 2vw;
   color: var(--init-blue);
+}
+.task-req {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--init-rust);
+  justify-self: center;
 }
 .task-header svg {
   position: relative;

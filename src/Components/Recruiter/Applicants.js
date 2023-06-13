@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useJobProvider } from "../../Providers/JobProvider";
 import { v4 as uuidv4 } from "uuid";
 import Header from "../Job/Header.js";
 import ApplicantCard from "./ApplicantCard";
 import { jobCompany, jobLocation } from "../Job/Data/Icons";
 import "./Applicants.css";
-import { Link } from "react-router-dom";
 
 export default function Applicants() {
   const { recruiterJobs, recruiterID, access, jobID, isSignedIn, isRecruiterAcc } = useJobProvider();

@@ -31,6 +31,7 @@ export default function NewEditJobForm({ edit }) {
   const [jobDropdown, setJobDropdown] = useState("");
   const [taskArr, setTaskArr] = useState(["", ""]);
   const [skills, setSkills] = useState([]);
+  const [formError, setFormError] = useState(null);
   const [jobForm, setJobForm] = useState({
     title: "",
     company: "",
@@ -40,7 +41,6 @@ export default function NewEditJobForm({ edit }) {
     tasks: ["", ""],
     recruiter_id: recruiterID,
   });
-  const [formError, setFormError] = useState(null);
 
   function handleSkills(e) {
     const id = +e.target.id;
@@ -258,6 +258,9 @@ export default function NewEditJobForm({ edit }) {
               ))}
             </div>
             <section className="task-header">
+              <span className="task-req">
+                Min. 1 Job Task req. 
+              </span>
               <span onClick={(event) => taskButton(event)}>
                 Click to Add A Task
               </span>
