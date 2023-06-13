@@ -59,9 +59,12 @@ export default function UserProfile() {
           </button>
         </div>
       )}
-      {isRecruiterAcc && <Header header={"Applicant Profile"} />}
+      
       {userProfile.id && (
+        <>
+        {isRecruiterAcc && <Header header={"Applicant Profile"} />}
         <div className="profile">
+          
           <div className="top-profile">
             <div>
               <p>Name</p>
@@ -153,6 +156,7 @@ export default function UserProfile() {
             </div>
           )}
         </div>
+        </>
       )}
     </div>
   );

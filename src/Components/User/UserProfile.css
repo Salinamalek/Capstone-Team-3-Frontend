@@ -1,3 +1,7 @@
+.full-user-profile {
+  height: 84vh;
+}
+
 .full-user-profile .app-header h1 {
   font-size: 30px;
 }
@@ -29,7 +33,6 @@
   padding: 20px 30px;
   font-size: 18px;
   /* border: 3px solid red; */
-  height: 84vh;
 }
 
 .dark .profile a {
