@@ -44,8 +44,17 @@ function JobProvider({ children }) {
       axios
         .get(`${API}/recruiters/${recruiterID}`)
         .then(({ data }) => {
-          setShowAccess(true)
-          setRecruiterJobs(data["jobs_posted"])})
+          setRecruiterJobs(data["jobs_posted"])
+          if(jobID){
+            const applicantAccess = data["jobs_posted"].find(({id}) => id=== +jobID)
+            if(applicantAccess){
+              setShowAccess(true)
+            }
+            else {
+              setShowAccess(false)
+            }
+          }
+        })
         .catch((err) => console.log(err));
     }
     if (jobID && recruiterID) {
@@ -85,6 +94,7 @@ function JobProvider({ children }) {
         isSignedIn,
         setIsRecruiterAcc,
         showAccess,
+        setShowAccess
       }}
     >
       {children}

@@ -8,15 +8,12 @@ import { jobCompany, jobLocation } from "../Job/Data/Icons";
 import "./Applicants.css";
 
 export default function Applicants() {
-  const { recruiterJobs, recruiterID, access, jobID, isSignedIn, isRecruiterAcc } = useJobProvider();
+  const { recruiterJobs, recruiterID, showAccess, setShowAccess, jobID, isSignedIn, isRecruiterAcc } = useJobProvider();
   const navigate = useNavigate();
   const [applicants, setApplicants] = useState([]);
   const [thisJob, setThisJob] = useState({});
 
   useEffect(() => {
-    if(isSignedIn || !isRecruiterAcc){
-      navigate("/not-found")
-    }
     const filter = recruiterJobs.find(({ id }) => id === +jobID);
     if (filter) {
       setThisJob(filter);
@@ -24,10 +21,14 @@ export default function Applicants() {
     if (filter && filter.users) {
       setApplicants(filter.users);
     }
+    if(isSignedIn || !showAccess || !isRecruiterAcc ){
+      navigate("/not-found")
+    }
   }, [jobID, recruiterJobs.length]);
 
   return (
-    <div className="job-applicant-page">
+    showAccess &&
+      <div className="job-applicant-page">
       <Header header={"Job Applicants"} />
       <section className="job-applicant-job-details">
         <Link to={`/jobs/${thisJob.id}`} className="applicant-title">
@@ -61,5 +62,7 @@ export default function Applicants() {
         VIEW JOB DETAILS
       </Link>
     </div>
+    
+    
   );
 }
