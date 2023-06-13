@@ -43,7 +43,9 @@ function JobProvider({ children }) {
     if (recruiterID) {
       axios
         .get(`${API}/recruiters/${recruiterID}`)
-        .then(({ data }) => setRecruiterJobs(data["jobs_posted"]))
+        .then(({ data }) => {
+          setShowAccess(true)
+          setRecruiterJobs(data["jobs_posted"])})
         .catch((err) => console.log(err));
     }
     if (jobID && recruiterID) {
@@ -53,9 +55,6 @@ function JobProvider({ children }) {
           if (data["recruiter_id"] === +recruiterID) {
             setEditAccess(true);
           } 
-          else if(recruiterID){
-            setShowAccess(true)
-          }
           else {
             navigate("/not-found");
           }
