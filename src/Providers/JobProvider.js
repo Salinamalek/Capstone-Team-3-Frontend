@@ -27,7 +27,8 @@ function JobProvider({ children }) {
   const [recruiterJobs, setRecruiterJobs] = useState([]);
   const [originalJobData, setOriginalJobData] = useState({});
 
-  const [access, setAccess] = useState(false);
+  const [editAccess, setEditAccess] = useState(false);
+  const [showAccess, setShowAccess] = useState(isRecruiterAcc)
 
   useEffect(() => {
     axios
@@ -52,8 +53,12 @@ function JobProvider({ children }) {
         .then(({ data }) => {
           setOriginalJobData(data);
           if (data["recruiter_id"] === +recruiterID) {
-            setAccess(true);
-          } else {
+            setEditAccess(true);
+          } 
+          else if(recruiterID){
+            setShowAccess(true)
+          }
+          else {
             navigate("/not-found");
           }
         })
@@ -75,14 +80,15 @@ function JobProvider({ children }) {
         TASK,
         recruiterID,
         setRecruiterID,
-        access,
-        setAccess,
+        editAccess,
+        setEditAccess,
         isRecruiterAcc,
         recruiterJobs,
         isSignedIn,
         setIsRecruiterAcc,
         originalJobData,
         setOriginalJobData,
+        showAccess,
       }}
     >
       {children}

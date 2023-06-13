@@ -27,8 +27,8 @@ export default function NewEditJobForm({ edit }) {
     axios,
     jobID,
     recruiterID,
-    access,
-    setAccess,
+    editAccess,
+    setEditAccess,
     isRecruiterAcc,
     isSignedIn,
     originalJobData,
@@ -141,7 +141,7 @@ export default function NewEditJobForm({ edit }) {
   }, []);
 
   return (
-  ( (isRecruiterAcc && !edit) || access ) && (
+  ( (isRecruiterAcc && !edit) || editAccess ) && (
       <div className="job-form-page">
         <Header header={edit ? "Edit Post" : "New Job"} />
 

@@ -23,6 +23,8 @@ function JobsShow() {
     isRecruiterAcc,
     setIsRecruiterAcc,
     isSignedIn,
+    showAccess,
+    editAccess
   } = useJobProvider();
   const navigate = useNavigate();
   const [jobDetails, setJobDetails] = useState({});
@@ -33,16 +35,16 @@ function JobsShow() {
   const applyButtonClick =
     !isSignedIn && !isRecruiterAcc
       ? null
-      : isRecruiterAcc
+      : isRecruiterAcc && editAccess
       ? () => navigate(`/jobs/${jobID}/edit`)
-      : applied 
+      : applied && isSignedIn
       ? () =>  navigate("/user")
       : () =>  applyToJob();
 
   const appliedButtonView =
     !isSignedIn && !isRecruiterAcc
       ? null
-      : isRecruiterAcc && !isSignedIn
+      : isRecruiterAcc && editAccess
       ? "EDIT"
       : !applied && isSignedIn
       ? "APPLY"
@@ -70,7 +72,6 @@ function JobsShow() {
       axios
       .get(`${API}/user-jobs/${userID}`)
       .then(({ data }) => {
-        console.log(data)
         const match = data.find(({ id }) => id === +jobID);
         setApplied(match);
       })
@@ -81,10 +82,6 @@ function JobsShow() {
     axios
       .get(`${API}/jobs/${jobID}`)
       .then(({ data }) => {
-        data["recruiter_id"] === recruiterID
-          ? setAccess(true)
-          : setAccess(false);
-
         setJobDetails(data);
         setSkillIdArr(convertSkills(data.skills));
       })
@@ -112,11 +109,11 @@ function JobsShow() {
           </span>
         )}
         {
-          isSignedIn  || (isRecruiterAcc && access) ?
+          isSignedIn  || (isRecruiterAcc && editAccess) ?
           <button onClick={applyButtonClick} className={appliedButtonClass}>
           <span>
             {appliedButtonView}
-            {!isSignedIn && isRecruiterAcc && access && (
+            {!isSignedIn && isRecruiterAcc && editAccess && (
               <GrEdit size={"25px"} color={"#ffde59"} />
             )}
           </span>
@@ -155,7 +152,7 @@ function JobsShow() {
        isRecruiterAcc || (isSignedIn && !applied ) ? (
         <button
           onClick={applyButtonClick}
-          className={(isRecruiterAcc && !access) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
+          className={(isRecruiterAcc && !editAccess) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
         >
           {appliedButtonView}
         </button>
