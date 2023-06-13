@@ -77,8 +77,6 @@ function JobsShow() {
       })
       .catch((err) => console.log(err));
     }
-    
-
     axios
       .get(`${API}/jobs/${jobID}`)
       .then(({ data }) => {
