@@ -25,7 +25,6 @@ function JobProvider({ children }) {
   const [jobs, setJobs] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const [recruiterJobs, setRecruiterJobs] = useState([]);
-  const [originalJobData, setOriginalJobData] = useState({});
 
   const [editAccess, setEditAccess] = useState(false);
   const [showAccess, setShowAccess] = useState(isRecruiterAcc)
@@ -51,7 +50,6 @@ function JobProvider({ children }) {
       axios
         .get(`${API}/jobs/${jobID}`)
         .then(({ data }) => {
-          setOriginalJobData(data);
           if (data["recruiter_id"] === +recruiterID) {
             setEditAccess(true);
           } 
@@ -86,8 +84,6 @@ function JobProvider({ children }) {
         recruiterJobs,
         isSignedIn,
         setIsRecruiterAcc,
-        originalJobData,
-        setOriginalJobData,
         showAccess,
       }}
     >
