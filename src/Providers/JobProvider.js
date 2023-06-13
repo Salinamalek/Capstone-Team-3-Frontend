@@ -56,6 +56,7 @@ function JobProvider({ children }) {
             setEditAccess(true);
           } 
           else {
+            if(!editAccess && !showAccess && !isRecruiterAcc)
             navigate("/not-found");
           }
         })
