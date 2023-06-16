@@ -64,7 +64,6 @@ function SearchBar() {
       const skillFilter = filterSearch.filter((obj) => {
         let includesAll = true;
         for (let i = 0; i < searchOptions.skills.length; i++) {
-          console.log(obj, "skills")
           const skillDataType = typeof obj["skill_id"] === "number" ? [obj["skill_id"]] : obj["skill_id"];
           if (!skillDataType.includes(searchOptions.skills[i])) {
             includesAll = false;
