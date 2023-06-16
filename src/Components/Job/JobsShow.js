@@ -51,6 +51,13 @@ function JobsShow() {
     ? "job-show-header-apply"
     : "job-show-header-applied";
 
+    // ADDED DELETE FOR RECRUITERS
+    function deleteJob () {
+      axios.delete(`${API}/jobs/${jobID}`)
+      .then(() => navigate("/recruiter"))
+      .catch(err => console.log(err))
+    }
+
   function applyToJob() {
     const obj = {
       user_id: userID,
@@ -144,10 +151,10 @@ function JobsShow() {
       {
        isRecruiterAcc || (isSignedIn && !applied ) ? (
         <button
-          onClick={applyButtonClick}
+          onClick={appliedButtonView === "EDIT" ? () => deleteJob() : applyButtonClick}
           className={(isRecruiterAcc && !editAccess) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
         >
-          {appliedButtonView}
+          {appliedButtonView === "EDIT" ? "DELETE" : appliedButtonView}
         </button>
       ) : 
         isSignedIn && applied ?
