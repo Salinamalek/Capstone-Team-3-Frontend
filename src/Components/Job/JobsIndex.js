@@ -11,10 +11,14 @@ function JobsIndex() {
        <div className="jobsIndex">
            <SearchBar />
            {
-               jobs.map(obj =>
-               <JobsCard
-               key = {uuidv4()}
-               jobObj = {obj}  />
+               jobs.map(obj =>{
+                if(obj["job_id"] !== 22){
+                    return <JobsCard
+                    key = {uuidv4()}
+                    jobObj = {obj}  />
+                }
+               }
+               
                )
            }
        </div>
