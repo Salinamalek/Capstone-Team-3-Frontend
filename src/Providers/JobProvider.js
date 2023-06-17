@@ -29,6 +29,9 @@ function JobProvider({ children }) {
   const [editAccess, setEditAccess] = useState(false);
   const [showAccess, setShowAccess] = useState(isRecruiterAcc)
 
+  const [bonus, setBonus] = useState({})
+  const [triggerBonus, setTriggerBonus] = useState(false)
+
   useEffect(() => {
     axios
       .get(`${API}/jobs`)
@@ -37,6 +40,9 @@ function JobProvider({ children }) {
         setSearchResult(data);
       })
       .catch((error) => console.log(error));
+      axios.get(`${API}/jobs/22`)
+      .then(({data}) => setBonus(data))
+      .catch(err=> console.log(err))
   }, []);
 
   useEffect(() => {
@@ -94,7 +100,11 @@ function JobProvider({ children }) {
         isSignedIn,
         setIsRecruiterAcc,
         showAccess,
-        setShowAccess
+        setShowAccess,
+        bonus,
+        setBonus,
+        triggerBonus,
+        setTriggerBonus,
       }}
     >
       {children}

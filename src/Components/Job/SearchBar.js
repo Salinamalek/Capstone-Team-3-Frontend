@@ -6,7 +6,7 @@ import { searchIcon } from "./Data/Icons";
 import "./SearchBar.css";
 
 function SearchBar() {
-  const { setJobs, searchResult } = useJobProvider();
+  const { setJobs, searchResult, setTriggerBonus } = useJobProvider();
   const [search, setSearch] = useState("");
   const [searchOptions, setSearchOptions] = useState({
     searchbar: "",
@@ -22,6 +22,12 @@ function SearchBar() {
       searchOptions.dropdown === ""
     ) {
       setJobs(searchResult);
+    }
+    // bonus
+    if(searchOptions.searchbar === "Matrix"){
+        setTriggerBonus(true)
+      return
+      
     }
     let filterSearch = searchResult;
     if (searchOptions.searchbar) {
