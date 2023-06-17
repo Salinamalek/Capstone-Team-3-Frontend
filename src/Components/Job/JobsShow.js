@@ -92,6 +92,7 @@ function JobsShow() {
     <div className="job-show">
       <section className="job-show-header">
         <Header header={jobDetails.title} />
+        <span className="job-disclaimer">**Not a real job posting. For Demo purposes ONLY</span>
         <div className="job-show-header-details">
           <span className="job-show-company">
             {jobCompany}
