@@ -176,7 +176,7 @@ function JobsShow() {
        isRecruiterAcc || (isSignedIn && !applied ) ? (
         <button
           onClick={appliedButtonView === "EDIT" ? () => deleteJob() : applyButtonClick}
-          className={(isRecruiterAcc && !editAccess) || !isSignedIn && !isRecruiterAcc  ? "hide" : "job-show-apply"}
+          className={(isRecruiterAcc && !editAccess) || (!isSignedIn && !isRecruiterAcc)  || jobID === "22" ? "hide" : "job-show-apply"}
         >
           {appliedButtonView === "EDIT" ? "DELETE" : appliedButtonView}
         </button>

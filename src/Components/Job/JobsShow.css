@@ -297,7 +297,7 @@
   border-right: 0.15em solid grey;
   white-space: nowrap;
   width: 12em;
-  animation: type 12s steps(60, end);
+  animation: type 10s steps(60, end);
 }
 
 @keyframes type {
