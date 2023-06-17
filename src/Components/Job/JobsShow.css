@@ -300,26 +300,12 @@
   animation: type 10s steps(60, end);
 }
 
+.dark .bonus-job .app-header {
+  color: var(--init-background);
+}
 @keyframes type {
   from {
     width: 0;
   }
 }
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
 
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: white;
-  }
-}
