@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useContextProvider } from "../../Providers/Provider";
 import { useJobProvider } from "../../Providers/JobProvider";
 import FilterBar from "./FilterBar";
 import { handleSearchBar } from "./Functions/SearchBarFunctions";
@@ -6,7 +7,8 @@ import { searchIcon } from "./Data/Icons";
 import "./SearchBar.css";
 
 function SearchBar() {
-  const { setJobs, searchResult, setTriggerBonus } = useJobProvider();
+  const { setTriggerBonus } = useContextProvider()
+  const { setJobs, searchResult } = useJobProvider();
   const [search, setSearch] = useState("");
   const [searchOptions, setSearchOptions] = useState({
     searchbar: "",
@@ -17,7 +19,7 @@ function SearchBar() {
 
   function handleSearch() {
     if (
-      searchOptions.search === "" &&
+      searchOptions.searchbar === "" &&
       !searchOptions.isRemote &&
       searchOptions.dropdown === ""
     ) {

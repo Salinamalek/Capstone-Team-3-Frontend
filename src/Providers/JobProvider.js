@@ -30,7 +30,6 @@ function JobProvider({ children }) {
   const [showAccess, setShowAccess] = useState(isRecruiterAcc)
 
   const [bonus, setBonus] = useState({})
-  const [triggerBonus, setTriggerBonus] = useState(false)
 
   useEffect(() => {
     axios
@@ -103,8 +102,6 @@ function JobProvider({ children }) {
         setShowAccess,
         bonus,
         setBonus,
-        triggerBonus,
-        setTriggerBonus,
       }}
     >
       {children}

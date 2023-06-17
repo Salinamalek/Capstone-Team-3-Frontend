@@ -273,3 +273,40 @@
 .dark .job-show-header-apply {
     color: var(--init-blue);
 }
+
+/* BONUS */
+.bonus-job .app-header {
+    background-image: url("https://thumbs.gfycat.com/AliveAdmirableEidolonhelvum-max-1mb.gif");
+}
+
+.bonus-show {
+    background-color: black;
+    color: #00FF41 ;
+    grid-row: 2;
+    grid-column: span 2;
+    grid-row: 2/6;
+    height: 3vh;
+    width:fit-content;
+    justify-self: center;
+    align-self: center;
+
+    overflow: hidden; 
+  padding: 0px 10px;
+    border-right: .15em solid grey; 
+    white-space: nowrap;
+  width:12em;
+  animation: type 12s steps(60, end);
+}
+
+@keyframes type{ 
+    from { width: 0; } 
+  } 
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+  }

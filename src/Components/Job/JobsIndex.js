@@ -1,3 +1,4 @@
+import { useContextProvider } from "../../Providers/Provider.js";
 import { useJobProvider } from "../../Providers/JobProvider.js";
 import { v4 as uuidv4 } from 'uuid';
 import JobsCard from "./JobsCard";
@@ -6,7 +7,8 @@ import Bonus from "./Bonus.js";
 import "./JobsIndex.css"
 
 function JobsIndex() {
-   const { jobs, triggerBonus, bonus } = useJobProvider()
+    const { triggerBonus } = useContextProvider()
+   const { jobs, bonus } = useJobProvider()
 
    return (
        <div className="jobsIndex">

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { convertCities } from "./Functions/JobFunctions";
 import { GiPill } from "react-icons/gi"
 import "./JobsCard.css";
 import "./Bonus.css"
@@ -7,7 +6,6 @@ import "./Bonus.css"
 function Bonus({ jobObj }) {
   const { title, company, skill_id, full_remote, city, id } = jobObj;
 
-console.log(id)
   return (
     <Link to={`/jobs/${id}`}>
       <div className="job-card bonus-job">
