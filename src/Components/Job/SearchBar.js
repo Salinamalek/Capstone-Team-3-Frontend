@@ -88,7 +88,9 @@ function SearchBar() {
   }
 
   useEffect(() => {
+    setTriggerBonus(false)
     handleSearch();
+
   }, [
     searchOptions.searchbar,
     searchOptions.city,
