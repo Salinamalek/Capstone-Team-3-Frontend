@@ -1,0 +1,82 @@
+.recruiter-profile .app-header h1 {
+    font-size: 28px;
+}
+
+.recruiter-profile-top {
+    margin: 20px 30px;
+    font-size: 22px;
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--init-blue);
+}
+
+.recruiter-profile-top svg {
+    fill: black;
+    stroke: black;
+    height: 1.2em;
+    width: 1.2em;
+    position: relative;
+    top: 4px;
+    margin-right: 4px;
+}
+
+.recruiter-profile-top p {
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.recruiter-profile-top img {
+    margin: 0 auto;
+    height: 60px;
+    border: 2px solid var(--init-charcoal);
+    padding: 4px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.recruiter-jobs {
+    margin: 20px 30px;
+    display: grid;
+    grid-auto-rows: 70px ;
+    row-gap: 10px;
+    overflow-y: scroll;
+    height: 48vh;
+}
+
+.recruiter-profile .jobs-posted-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.recruiter-profile .jobs-posted-header img {
+    height: 40px;
+    position: relative;
+    bottom: 4px
+}
+
+.recruiter-profile .jobs-posted-header h2 {
+    margin: 0 30px;
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+
+.recruiter-profile-new-job {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    font-size: 24px;
+}
+
+.dark .recruiter-profile-top svg {
+fill: var(--init-background);
+stroke: var(--init-background);
+}
+
+.dark .recruiter-profile-top {
+    border-color: var(--init-background);
+}
+
+.dark .recruiter-profile-new-job {
+    color: var(--init-gold);
+}

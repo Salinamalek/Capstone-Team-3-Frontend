@@ -1,0 +1,31 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 5vh;
+  width: 100vw;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  border-top: 2px solid #41cdbc;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr;
+  column-gap: 3px;
+  align-items: center;
+  justify-items: left;
+}
+footer a {
+  color: var(--init-blue);
+  font-weight: 500;
+  justify-self: right;
+}
+
+footer img {
+  height: 32px;
+  justify-self: center;
+}
+
+.dark footer a {
+  color: var(--init-gold);
+}

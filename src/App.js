@@ -1,9 +1,10 @@
-import './App.css';
+import RouteComponent from "./Components/Routes/RouteComponent.js";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>Pursuit App Template</h1>
+      <RouteComponent />
     </div>
   );
 }

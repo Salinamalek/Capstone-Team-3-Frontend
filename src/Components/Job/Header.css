@@ -1,0 +1,22 @@
+.app-header {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    align-items: center;
+    background-color: var(--init-mint);
+    height: 5vh;
+    width: 100%;
+}
+.app-header svg {
+    margin-left: 3vw;
+    grid-column: 1;
+}
+.app-header h1 {
+    justify-self: center;
+    grid-column: 2;
+    font-size: 36px;
+}
+
+.dark .app-header {
+    background-color: var(--init-gold);
+    color: var(--init-charcoal);
+}

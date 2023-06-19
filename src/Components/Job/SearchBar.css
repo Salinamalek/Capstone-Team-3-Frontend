@@ -1,0 +1,24 @@
+.search-component {
+    display: grid;
+    grid-template-rows: 5vh auto;
+    max-height: 30vh;
+}
+
+.search-component .search-bar-icon {
+    position: relative;
+    left: 6vw;
+    top: .7vh;
+    z-index: 1;
+}
+
+.searchbar {
+    border: 2px solid var(--init-mint);
+    width: 85vw;
+    height: 4vh;
+    border-radius: 20px;
+    text-indent: 10vw;
+    font-size: 18px;
+    position: relative;
+    right: 3vw;
+    margin-top: 1vh;
+}

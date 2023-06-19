@@ -1,0 +1,20 @@
+.skills-component {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    row-gap: 10px;
+}
+
+.skills-component span svg {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.skills-component span {
+    z-index: 5;
+    height: fit-content;
+}
+
+.skill-icon svg {
+    fill: var(--init-blue);
+}

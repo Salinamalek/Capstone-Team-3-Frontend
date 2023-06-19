@@ -1,0 +1,103 @@
+.dev-cards {
+  height: 84vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.2fr 0.5fr auto;
+  text-align: center;
+  justify-content: center;
+}
+/* .dev-img {
+  height: 30%;
+  border-radius: 100px;
+  border: 5px solid #ffde59;
+} */
+.dev-cards h2 {
+  font-size: 20px;
+  position: relative;
+  bottom: 5px;
+}
+.dev-cards p {
+  width: 90%;
+  height: 180px;
+  font-size: 16px;
+  position: relative;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.indiv-card,
+.emptyState {
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  justify-self: center;
+  border-radius: 30px;
+  margin-top: 10px;
+  padding: 15px;
+  height: 470px;
+  width: 80%;
+  background-color: #0cbdbd;
+  align-self: center;
+}
+
+.dev-socials a {
+  padding: 10px 30px 10px 30px;
+  font-size: x-large;
+  color: #ffde59;
+}
+
+.socials-line {
+  width: 90%;
+  margin: 10px;
+  height: 1px;
+}
+
+.dev-title {
+  font-style: italic;
+  padding-bottom: 10px;
+  font-weight: 100;
+}
+
+.devicon {
+  height: 85px;
+  border: 3px solid var(--init-blue);
+  border-radius: 100px;
+  margin: 4px;
+}
+
+.devicon2 {
+  height: 100px;
+  border-radius: 100px;
+}
+
+.devPronoun {
+  font-family: ysabeau;
+  padding-bottom: 10px;
+}
+
+.emptyState {
+  grid-template-rows: auto 60% 5% 20%;
+  align-items: center;
+}
+
+.emptyState h2 {
+  height: fit-content;
+}
+.emptyState p {
+  grid-row: 4;
+  font-size: 20px;
+  height: fit-content;
+}
+.emptyState img {
+  height: 250px;
+}
+
+.dev-icons {
+  margin-top: 12px;
+}
+
+/* dark mode */
+.dark .devicon {
+  border: 3px solid var(--init-gold);
+}
