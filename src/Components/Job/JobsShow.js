@@ -100,7 +100,6 @@ function JobsShow() {
         {
           jobDetails.id !== 22 ?
           <><Header header={jobDetails.title} />
-        <span className="job-disclaimer">**Not a real job posting. For Demo purposes ONLY</span>
         <div className="job-show-header-details">
           <span className="job-show-company">
             {jobCompany}
@@ -152,6 +151,7 @@ function JobsShow() {
       <section className="job-show-details">
         <div className="job-show-description">
           <span className="job-show-label">Description:</span>
+          <span className="job-disclaimer">*Not a real job posting. For Demo purposes ONLY*</span>
           <span>{jobDetails.details}</span>
         </div>
 
